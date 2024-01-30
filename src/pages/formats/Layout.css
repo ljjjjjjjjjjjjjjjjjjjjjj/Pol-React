@@ -1,0 +1,146 @@
+/* ---------  Page  ------------ */
+
+
+.primary {
+  margin: 0 ;
+  padding-left: 0px;
+}
+
+
+
+.header-zone {
+  margin-top: 70px;
+}
+
+
+
+header {
+  height: 60px;
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  align-items: left;
+  position: fixed;
+  background-color: AliceBlue; 
+  z-index: 1000; /* Ensure the header appears above other elements */
+}
+
+
+ 
+/* ---------  Page Header  ------------ */
+
+.upper-header {
+  height: 61px;
+  background-color: AliceBlue;
+  display: flex;
+  align-items: center;
+}
+
+.upper-header img {
+  display: block;
+  width: 17%; 
+  height: auto; 
+  padding: 10px;
+ 
+}
+
+.upper-header p {
+  color: #3883b5;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 20px;
+  flex: 1; 
+ 
+}
+  
+  
+  
+  
+
+
+/* ---------  Router List  ------------ */
+
+  
+.list {
+  list-style: none;
+  float: top;
+  background-color: rgba(240, 248, 255, 0.9);
+  display: flex;
+  width: 100%; 
+  margin: auto; 
+  align-items: center;
+  position: fixed; 
+  top: 61px;
+  z-index: 999;
+  padding-bottom: 3px;
+   
+}
+  
+.item {
+  flex: 1;
+  padding: 10;
+  text-align: center;
+}
+
+.link {
+  flex: 1; 
+  height: 50px;
+  background-color: rgba(52, 152, 219, 0.9);
+  color: white;
+  padding: 5px ;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  margin-right: 10px;
+
+  
+}
+
+.link:hover {
+  background-color: #2980b9;
+}
+
+
+
+
+
+/* ---------  Layout content   ------------ */
+
+
+
+.content-container {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 25% 85%; /* Two columns: 15% for left, 1fr for right */
+  grid-gap: 0px; /* Adjust the gap between columns */
+  margin: 0;
+  
+}
+
+.content-container-left {
+  width: 100%;
+  height: auto;
+
+  background-color: AliceBlue;
+  padding: 20px; /* Adjust the padding as needed */
+  margin: 0; /* Reset margin */
+  margin-left: 0px;
+}
+
+.content-container-right {
+  width: 100%;
+  height: auto;
+  
+  background-color: white; /* Optionally set the background color for the right column */
+  padding: 20px; /* Adjust the padding as needed */
+}
+
+
+
+
+

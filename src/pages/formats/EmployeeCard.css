@@ -1,0 +1,57 @@
+.employee-card {
+    height: auto;
+    width: calc(25% - 32px); /*  32px for border and margin combined */
+    border: 1px solid #e0e0e0; /* border replaces margin */
+    border-radius: 8px; /* apvalinti kampai */
+    overflow: hidden; /* užtikrina, kad viskas liktų kortelės ribose */
+    background-color: #fff; /* balta fono spalva */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* švelnus šešėlis po kortele */
+    margin: 1px; /* atstumas nuo kitų elementų */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* animacija paspaudus */
+    display: flex;
+    flex-direction: column;
+    justify-content:  space-between;
+  }
+  
+  .employee-card:hover {
+    transform: translateY(-5px); /* pakelia kortelę kai pele užvedama ant jos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* didesnis šešėlis pelei užvedus */
+  }
+  
+  .employee-card img {
+    width: 80%; /* vaizdas užpildo kortelės plotį */
+    height: auto; /* vaizdo aukštis automatiškai pritaikomas */
+    display: block; /* pašalina bet kokius tarpus po vaizdu */
+    margin: 0 auto; /* Center the image horizontally */
+  }
+  
+  .employee-card h3 {
+    font-size: 1.2em; /* didesnis šrifto dydis produktų pavadinimams */
+    margin: 0.5em; /* atstumas nuo kortelės kraštų */
+    color: #333; /* tamsi teksto spalva */
+  }
+  
+  .employee-card p {
+    font-size: 0.8em; /* šrifto dydis kainai */
+    padding-left: 2%;
+    margin: 0.5em; /* atstumas nuo kortelės kraštų */
+    color: #888; /* šviesesnė teksto spalva */
+    font-weight: bold; /* pabrėžiama kaina */
+  }
+
+  
+  .employee-card .btn {
+    font-size: 0.8em; /* Adjust the font size for the button */
+    font-weight: bold;
+    height: 10%;
+    padding: 3% 3% 3% 3%; /* Adjust padding for the button */
+    margin-right: 2px; /* Add a 10px gap between buttons */
+    margin-bottom: 2px;
+    align-self: flex-end; /* Adjust the distance from the right*/
+  }
+
+
+
+
+  
+  

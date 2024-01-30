@@ -1,0 +1,77 @@
+header {
+    height: 60px;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    align-items: left;
+    position: fixed;
+    background-color: AliceBlue; 
+    z-index: 1000; /* Ensure the header appears above other elements */
+  }
+  
+  .kontaktai {
+    padding-left: 1%;
+    max-width: 1200px;
+    /*margin: 0 auto;  Centruoja turinį ekrano viduryje */
+    padding-top: 100px;
+  }
+  
+  .kontaktai h1 {
+    padding-top: 60px;
+    max-width: 1200px;
+   
+  }
+
+  .kontaktai h3 {
+    color: rgb(68, 68, 79);
+    padding-top: 30px;
+    padding-bottom: 20px;
+    
+   
+  }
+  
+  .kontaktai p {
+    padding-top: 0px;
+    max-width: 1200px;
+    color:  rgb(103, 103, 112);
+  }
+
+  .text-info{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    grid-gap: 0px; /* Adjust the gap between columns */
+    max-width: 100%;
+   
+   
+
+  }
+
+  .text-info-2 {
+    grid-column: span 1;
+    max-width: 50%;
+    padding-bottom: 40px;
+   
+  }
+
+
+  .map {
+    list-style: none;
+    float: top;
+    background-color: white;
+    display: flex;
+    width: 80%; 
+    align-items: left;
+    z-index: 999;
+    padding-bottom: 10px;
+    
+  }
+
+  .map img {
+  height: 10%; 
+  width: auto; 
+  padding: 10px;
+  }
+
+
+  
+  
