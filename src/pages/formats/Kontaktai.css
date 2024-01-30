@@ -13,11 +13,11 @@ header {
     padding-left: 1%;
     max-width: 1200px;
     /*margin: 0 auto;  Centruoja turinį ekrano viduryje */
-    padding-top: 100px;
+    padding-top: 0px;
   }
   
   .kontaktai h1 {
-    padding-top: 60px;
+    padding-top: 40px;
     max-width: 1200px;
    
   }

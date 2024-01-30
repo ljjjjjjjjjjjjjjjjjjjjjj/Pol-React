@@ -4,3 +4,103 @@
     padding-left: 0px;
 }
 
+.paslaugos h1 {
+  color: rgb(73, 80, 83);
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-right: 10px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.product-category {
+    margin: 0 ;
+    padding-left: 0px;
+}
+
+.other {
+    width: 100%;
+    margin: 0 ;
+    padding-left: 0px;
+}
+
+.box-container {
+    width: 100%; 
+    margin-right: 5px;
+    
+}
+
+
+.box-1-header {
+    float: left;
+    width: 45%;
+    height: 50px; /* only for demonstration, should be removed */
+    background:  AliceBlue;
+    padding: 10px;
+    margin-right: 20px;
+}
+
+.box-1-header h3{
+    color: rgb(77, 77, 82);
+    font-size: 20px;
+    font-weight: bold;
+    
+
+    /*font-weight: bold;*/
+}
+
+.box-1-content {
+    float: left;
+    width: 45%;
+    height: 250px; /* only for demonstration, should be removed */
+    background: rgba(240, 248, 255, 0.3);
+    padding: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.box-1-content ul{ 
+    color: rgb(73, 80, 83);
+    font-size: 15px;
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+
+    /*font-weight: bold;*/
+}
+.box-1-content p{   
+    color: rgb(73, 80, 83);
+    font-size: 15px;
+    margin-top: 15px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+    
+
+    /*font-weight: bold;*/
+}
+
+.box-2-content {   
+    float: left;
+    width: 100%;
+    height: 65px; /* only for demonstration, should be removed */
+    background: rgba(240, 248, 255, 0.4);
+    padding: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    margin-top: 10px;
+    text-align: left;
+}
+  
+.box-2-content button{   
+    background-color: rgba(52, 152, 219, 0.9);
+    border-color: rgba(62, 162, 229, 0.5);
+    border-width: 5px;
+    margin-left: 20px;
+    
+ }
+  
+

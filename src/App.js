@@ -7,6 +7,10 @@ import Paslaugos from "./pages/Paslaugos";
 import Personalas from "./pages/Personalas";
 import Kontaktai from "./pages/Kontaktai";
 import NoPage from "./pages/NoPage";
+import SignIn from "./pages/SignIn";
+import Appointments from "./pages/Appointments";
+
+
 
 
 function App() {  
@@ -18,7 +22,9 @@ return (
         <Route path="informacija" element={<Informacija />} />
         <Route path="paslaugos" element={<Paslaugos />} />
         <Route path="personalas" element={<Personalas />} />
-        <Route path="Kontaktai" element={<Kontaktai />} />
+        <Route path="kontaktai" element={<Kontaktai />} />
+        <Route path="signin" element={<SignIn />} />
+        <Route path="appointments" element={<Appointments />} />
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>
