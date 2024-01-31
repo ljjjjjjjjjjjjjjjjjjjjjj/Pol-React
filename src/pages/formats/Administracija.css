@@ -1,0 +1,140 @@
+
+.administracija {
+    margin: 0 ;
+    padding-left: 0px;
+}
+
+.administracija h1 {
+  color: rgb(73, 80, 83);
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-right: 10px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+
+
+
+
+.administracija-box-container { 
+    width: 100%; 
+    margin-right: 5px;
+    
+}
+
+.administracija-box-main {
+    float: left;
+    width: 90%;
+    height: auto; /* only for demonstration, should be removed */
+    background:  AliceBlue;
+    padding: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+   
+  
+}
+
+
+.administracija-box-1 {
+    float: left;
+    width: 90%;
+    height: auto; /* only for demonstration, should be removed */
+    background:  AliceBlue;
+    padding: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1.5px solid rgb(230, 238, 245);
+  
+}
+
+.administracija-box-1:last-child {
+    border-bottom: none;
+  
+}
+
+
+.administracija-box-1 h4{
+    color: rgb(77, 77, 82);
+    font-size: 17px;
+    
+    
+
+    /*font-weight: bold;*/
+}
+
+
+.administracija-box-1-button-box {   
+   margin-left: 50px;
+   margin-bottom: 20px;
+      
+ }
+  
+.administracija-box-1-button-b {   
+   background-color: rgba(52, 152, 219, 0.9);
+    border-color: rgba(62, 162, 229, 0.5);
+    border-width: 1px;
+     
+}
+
+.administracija-box-1-button-g {   
+    background-color: rgba(187, 195, 201, 0.9);
+     border-color: rgba(197, 205, 211, 0.5);
+     border-width: 1px;
+      
+ }
+
+
+
+.administracija-box-1 label {
+
+    display: block;
+    padding: 10px;
+    margin-right: 20px;
+    margin-bottom: 5px; 
+    
+}
+
+.administracija-box-1 input {
+    margin-left: 20px;
+   
+      
+}
+
+.success-message{
+    margin-left: 50px;
+    color: rgb(110, 118, 122);
+    font-size: 15px;
+    
+
+}
+
+.error-message{
+    margin-left: 50px;
+    color: rgb(248, 73, 73);
+    font-size: 15px;
+
+}
+
+
+.administracija-box-2 {
+    float: left;
+    width: 100%;
+    height: auto; /* only for demonstration, should be removed */
+    background:  AliceBlue;
+    padding: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+ 
+.administracija-box-2 button{   
+    background-color: rgba(52, 152, 219, 0.9);
+    border-color: rgba(62, 162, 229, 0.5);
+    border-width: 5px;
+    margin-left: 20px;
+    
+}
+  
+

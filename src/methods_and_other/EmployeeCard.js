@@ -1,5 +1,5 @@
-import config from './config.js';
-import './pages/formats/EmployeeCard.css';
+import config from '../main/config.js';
+import '../pages/formats/EmployeeCard.css';
 
 function EmployeeCard({employee}) {
 

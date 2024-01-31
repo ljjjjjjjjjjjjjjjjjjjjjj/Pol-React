@@ -1,4 +1,4 @@
-import './pages/formats/EmployeeCard.css';
+import '../pages/formats/EmployeeCard.css';
 
 function ProductCard({product}) {
 

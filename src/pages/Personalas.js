@@ -1,7 +1,11 @@
+
+
+
 import { useState, useEffect } from 'react';
-import EmployeeCard from '../EmployeeCard';
+import EmployeeCard from '../methods_and_other/EmployeeCard';
 import './formats/App.css';
-import '../custom-bootstrap.css';
+import '../main/custom-bootstrap.css';
+
 
 
 

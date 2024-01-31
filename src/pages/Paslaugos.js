@@ -3,9 +3,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import ProductCard from '../ProductCard';
 import './formats/Paslaugos.css';
-import '../custom-bootstrap.css';
+import '../main/custom-bootstrap.css';
 
 
 

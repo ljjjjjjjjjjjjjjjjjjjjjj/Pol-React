@@ -1,0 +1,50 @@
+.employee-list {
+    margin: 0 ;
+    padding-left: 0px;
+    height: auto;
+    width:70%; /*  32px for border and margin combined */
+  
+  }
+  
+  .employee-card:list {
+    transform: translateY(-5px); /* pakelia kortelę kai pele užvedama ant jos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* didesnis šešėlis pelei užvedus */
+  }
+  
+  .employee-list img {
+    width: 80%; /* vaizdas užpildo kortelės plotį */
+    height: auto; /* vaizdo aukštis automatiškai pritaikomas */
+    display: block; /* pašalina bet kokius tarpus po vaizdu */
+    margin: 0 auto; /* Center the image horizontally */
+  }
+  
+  .employee-list h3 {
+    font-size: 1.2em; /* didesnis šrifto dydis produktų pavadinimams */
+    margin: 0.5em; /* atstumas nuo kortelės kraštų */
+    color: #333; /* tamsi teksto spalva */
+  }
+  
+  .employee-list p {
+    font-size: 0.8em; /* šrifto dydis kainai */
+    padding-left: 2%;
+    margin: 0.5em; /* atstumas nuo kortelės kraštų */
+    color: #888; /* šviesesnė teksto spalva */
+    font-weight: bold; /* pabrėžiama kaina */
+  }
+
+  
+  .employee-list .btn {
+    font-size: 0.8em; /* Adjust the font size for the button */
+    font-weight: bold;
+    height: 10%;
+    padding: 3% 3% 3% 3%; /* Adjust padding for the button */
+    margin-right: 2px; /* Add a 10px gap between buttons */
+    margin-bottom: 2px;
+    align-self: flex-end; /* Adjust the distance from the right*/
+  }
+
+
+
+
+  
+  

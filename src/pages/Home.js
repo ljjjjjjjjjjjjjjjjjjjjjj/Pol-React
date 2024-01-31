@@ -1,6 +1,6 @@
 
 import './formats/Home.css';
-import '../custom-bootstrap.css';
+import '../main/custom-bootstrap.css';
 
 
 
