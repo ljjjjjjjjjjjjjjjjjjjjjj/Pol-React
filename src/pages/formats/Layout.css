@@ -102,6 +102,7 @@ header {
 
 .link:hover {
   background-color: #2980b9;
+  
 }
 
 
@@ -116,7 +117,7 @@ header {
   width: 100%;
   height: auto;
   display: grid;
-  grid-template-columns: 25% 85%; /* Two columns: 15% for left, 1fr for right */
+  grid-template-columns: 20% 80%; /* Two columns: 15% for left, 1fr for right */
   grid-gap: 0px; /* Adjust the gap between columns */
   margin: 0;
   

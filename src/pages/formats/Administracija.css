@@ -14,6 +14,56 @@
   margin-bottom: 30px;
 }
 
+.administracija h3 {
+    color: rgb(73, 80, 83);
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+}
+
+.administracija h4 {
+    color: rgb(73, 80, 83);
+    font-size: 20px;
+    margin-top: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.administracija-drop-down {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.administracija-drop-down label {
+    color: rgb(73, 80, 83);
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+    
+}
+
+.administracija-drop-down select {
+    padding-left: 5px;
+    padding-right: 20px;
+}
+
+.administracija-list  {
+    width: 95%;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+    
+}
+
 
 
 
@@ -43,6 +93,19 @@
     height: auto; /* only for demonstration, should be removed */
     background:  AliceBlue;
     padding: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1.5px solid rgb(230, 238, 245);
+  
+}
+
+.administracija-box-1-plus {
+    float: left;
+    width: 100%;
+    height: auto; /* only for demonstration, should be removed */
+    background:  AliceBlue;
+    padding: 10px;
+    margin-left: 0px;
     margin-right: 20px;
     margin-bottom: 20px;
     border-bottom: 1.5px solid rgb(230, 238, 245);
@@ -87,6 +150,7 @@
 
 
 
+
 .administracija-box-1 label {
 
     display: block;
@@ -98,6 +162,23 @@
 
 .administracija-box-1 input {
     margin-left: 20px;
+   
+      
+}
+
+.administracija-box-1-product-infolist {
+    margin-left: 20px;
+   
+}
+
+.administracija-box-1-product-infolist strong{
+    margin-left: 20px;
+    color: #3883b5;
+}
+
+
+.administracija-box-1-cond {
+    margin-left: 10px;
    
       
 }

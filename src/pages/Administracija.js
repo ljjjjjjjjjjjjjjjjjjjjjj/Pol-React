@@ -14,18 +14,18 @@ const Administracija = () => {
   
 
   const navigateToAddPatient = () => {
-    navigate('/page_administracija/addpatient');};
+    navigate('/addpatient');};
   
   const navigateToEditPatient = () => {
-    navigate('/page_administracija/editpatient');};
+    navigate('/editpatient');};
   
   
   const navigateToDeletePatient = () => {
-    navigate('/page_administracija/deletepatient');};
+    navigate('/deletepatient');};
   
   
   const navigateToReadPatient = () => {
-    navigate('/page_administracija/readpatient');};
+    navigate('/readpatient');};
 
 
 
@@ -84,7 +84,7 @@ const Administracija = () => {
 
 
         <div className='administracija-box-1'  /* EDIT - P */>        
-          <h4>3. Pakeisti esamo paciento duomenis</h4>
+          <h4>3. Keisti esamo paciento duomenis</h4>
 
           <p>Info apie keitimą</p>
                                                   

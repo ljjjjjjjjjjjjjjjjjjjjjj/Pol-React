@@ -36,6 +36,9 @@ const Layout = () => {
                <li className='item'>
                  <Link to="/kontaktai" className='link'>Kontaktai</Link>
                </li>
+               <li className='item'>
+                 <Link to="/administracija" className='link' style={{ backgroundColor: 'rgba(65, 192, 64, 0.8)' }}>Admin</Link>
+               </li>
              </ul>
             </nav>
 

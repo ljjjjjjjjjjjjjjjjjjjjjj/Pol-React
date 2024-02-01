@@ -12,6 +12,10 @@ const AddPatient = () => {
  
     const [patientName, setPatientName] = useState("");
     const [patientSurname, setPatientSurname] = useState("");
+    const [patientAddress, setPatientAddress] = useState("");
+    const [patientPhone, setPatientPhone] = useState("");
+    const [patientEmail, setPatientEmail] = useState("");
+    const [patientCategory, setPatientCategory] = useState("");
  
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -22,9 +26,12 @@ const AddPatient = () => {
 
     try {
       const response = await axios.post('http://localhost:8080/patients/add', {
-      
-        patientName,
-        patientSurname,
+        patientName, 
+        patientSurname, 
+        patientAddress, 
+        patientPhone, 
+        patientEmail, 
+        patientCategory
         });
 
         console.log('Response:', response.data);
@@ -45,6 +52,10 @@ const AddPatient = () => {
     
     setPatientName('');
     setPatientSurname('');
+    setPatientAddress(''); 
+    setPatientPhone(''); 
+    setPatientEmail(''); 
+    setPatientCategory('');
     
   };
 
@@ -52,6 +63,10 @@ const AddPatient = () => {
     
     setPatientName('');
     setPatientSurname('');
+    setPatientAddress(''); 
+    setPatientPhone(''); 
+    setPatientEmail(''); 
+    setPatientCategory('');
     
   };
     
@@ -96,6 +111,42 @@ const AddPatient = () => {
                 type='text' 
                 value={patientSurname} 
                 onChange={(p) => setPatientSurname(p.target.value)} 
+                
+                />
+                </label>
+
+                <label> Adresas: 
+                <input 
+                type='text' 
+                value={patientAddress} 
+                onChange={(p) => setPatientAddress(p.target.value)} 
+                
+                />
+                </label>
+
+                <label> Tel. nr: 
+                <input 
+                type='text' 
+                value={patientPhone} 
+                onChange={(p) => setPatientPhone(p.target.value)} 
+                
+                />
+                </label>
+
+                <label> E-paštas: 
+                <input 
+                type='text' 
+                value={patientEmail} 
+                onChange={(p) => setPatientEmail(p.target.value)} 
+                
+                />
+                </label>
+
+                <label> Kategorija: 
+                <input 
+                type='text' 
+                value={patientCategory} 
+                onChange={(p) => setPatientCategory(p.target.value)} 
                 
                 />
                 </label>
