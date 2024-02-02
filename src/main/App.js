@@ -19,6 +19,22 @@ import EditPatientFROMLIST from "../pages/page_administracija/EditPatientFROMLIS
 import DeletePatientFROMLIST from "../pages/page_administracija/DeletePatientFROMLIST";
 
 
+import AddEmployee from "../pages/page_administracija/AddEmployee";
+import ReadEmployee from "../pages/page_administracija/ReadEmployee";
+import EditEmployee from "../pages/page_administracija/EditEmployee";
+import DeleteEmployee from "../pages/page_administracija/DeleteEmployee";
+import EditEmployeeFROMLIST from "../pages/page_administracija/EditEmployeeFROMLIST";
+import DeleteEmployeeFROMLIST from "../pages/page_administracija/DeleteEmployeeFROMLIST";
+
+import AddProduct from "../pages/page_administracija/AddProduct";
+import ReadProduct from "../pages/page_administracija/ReadProduct";
+import EditProduct from "../pages/page_administracija/EditProduct";
+import DeleteProduct from "../pages/page_administracija/DeleteProduct";
+import EditProductFROMLIST from "../pages/page_administracija/EditProductFROMLIST";
+import DeleteProductFROMLIST from "../pages/page_administracija/DeleteProductFROMLIST";
+
+
+
 
 
 
@@ -35,13 +51,28 @@ return (
         <Route path="signin" element={<SignIn />} />
         <Route path="appointments" element={<Appointments />} />
         <Route path="administracija" element={<Administracija />} />
+
+        
         <Route path="addpatient" element={<AddPatient />} />
         <Route path="readpatient" element={<ReadPatient />} />
         <Route path="editpatient" element={<EditPatient />} />
         <Route path="deletepatient" element={<DeletePatient />} />
-
         <Route path="editpatient/:id" element={<EditPatientFROMLIST />} />
         <Route path="deletepatient/:id" element={<DeletePatientFROMLIST />} />
+
+        <Route path="addemployee" element={<AddEmployee />} />
+        <Route path="reademployee" element={<ReadEmployee />} />
+        <Route path="editemployee" element={<EditEmployee />} />
+        <Route path="deleteemployee" element={<DeleteEmployee />} />
+        <Route path="editemployee/:id" element={<EditEmployeeFROMLIST />} />
+        <Route path="deleteemployee/:id" element={<DeleteEmployeeFROMLIST />} />
+
+        <Route path="addproduct" element={<AddProduct />} />
+        <Route path="readproduct" element={<ReadProduct />} />
+        <Route path="editproduct" element={<EditProduct />} />
+        <Route path="deleteproduct" element={<DeleteProduct />} />
+        <Route path="editproduct/:id" element={<EditProductFROMLIST />} />
+        <Route path="deleteproduct/:id" element={<DeleteProductFROMLIST />} />
 
         <Route path="*" element={<NoPage />} />
       </Route>

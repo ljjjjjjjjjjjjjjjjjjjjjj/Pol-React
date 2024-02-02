@@ -1,23 +1,47 @@
-import config from '../main/config.js';
-import './EmployeeList.css';
+
+import '../main/custom-bootstrap.css';
+import './PatientList.css';
+import { useNavigate } from 'react-router-dom';
 
 
-function EmployeeCard({employee}) {
+function EmployeeList({employee}) {
+
+  const navigate = useNavigate();
+
+ 
+  const navigateToEditEmployee = () => {
+    navigate(`/editemployee/${employee.empID}`);};
+  
+  const navigateToDeleteEmployee = () => {
+    navigate(`/deleteemployee/${employee.empID}`);};
 
     
       return (
 
-      
-
-        <div className='employee-card'>
-          <img src={ config + employee.imageUrl} alt={employee.empName} />
-          <h3> {employee.empName}&nbsp;{employee.empSurname}</h3>
-          <p> {employee.empCategory}</p>
-        </div>
+        
+        <tr>
+          <td> {employee.empID} </td>
+          <td> {employee.empName} </td>
+          <td> {employee.empSurname} </td>
+          <td> {employee.empAddress} </td>
+          <td> {employee.empPhone} </td>
+          <td> {employee.empEmail} </td>
+          <td> {employee.empCategory} </td>
+          <td> {employee.imageUrl} </td>
+          <td> 
+            <div className='patient-list-button-box'>
+              <button type="button" className="btn btn-primary patient-list-button-b" onClick={navigateToEditEmployee}>Koreguoti</button>
+              <button type="button" className="btn btn-primary patient-list-button-g" onClick={navigateToDeleteEmployee}>Pašalinti</button>
+            </div>     
+          </td>
+         
+        </tr>
+        
       );
     }
   
-    export default EmployeeCard;
+    export default EmployeeList;
+  
   
   
   

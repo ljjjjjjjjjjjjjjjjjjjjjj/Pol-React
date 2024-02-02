@@ -7,27 +7,24 @@ import axios from 'axios';
 
 
 
-const DeletePatient = () => {
+const DeleteProduct = () => {
 
   
   const navigate = useNavigate();
-  const navigateToReadPatient = () => {
-    navigate(`/readpatient`);
+  const navigateToReadProduct = () => {
+    navigate(`/readproduct`);
   };
   
   const navigateToAdministracija = () => {
     navigate(`/administracija`);
   };
 
-  const [selectedPatientID, setSelectedPatientID] = useState("");
+  const [selectedProductID, setSelectedProductID] = useState("");
   
-  const [patientID, setPatientID] = useState("");
-  const [patientName, setPatientName] = useState("");
-  const [patientSurname, setPatientSurname] = useState("");
-  const [patientAddress, setPatientAddress] = useState("");
-  const [patientPhone, setPatientPhone] = useState("");
-  const [patientEmail, setPatientEmail] = useState("");
-  const [patientCategory, setPatientCategory] = useState("");
+  const [productID, setProductID] = useState("");
+  const [productTitle, setProductTitle] = useState("");
+  const [productSubCategory, setProductSubCategory] = useState("");
+  const [productCategory, setProductCategory] = useState("");
 
 
   const [successMessage, setSuccessMessage] = useState('');
@@ -42,17 +39,13 @@ const DeletePatient = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/patients/get/${selectedPatientID}`);
-      const patientData = response.data;
+      const response = await axios.get(`http://localhost:8080/medical-products/get/${selectedProductID}`);
+      const productData = response.data;
 
-      setPatientID(patientData.patientID);
-      setPatientName(patientData.patientName);
-      setPatientSurname(patientData.patientSurname);
-      setPatientAddress(patientData.patientAddress);
-      setPatientPhone(patientData.patientPhone);
-      setPatientEmail(patientData.patientEmail);
-      setPatientCategory(patientData.patientCategory);
-
+      setProductID(productData.productID);
+      setProductTitle(productData.productTitle);
+      setProductSubCategory(productData.productSubCategory);
+      setProductCategory(productData.productCategory);
      
          
       setSuccessMessage('');
@@ -65,16 +58,10 @@ const DeletePatient = () => {
 
     } catch (error) {
       console.error('Error:', error);
-      setPatientID('');
-      setPatientName('');
-      setPatientSurname('');
-      setPatientAddress(''); 
-      setPatientPhone(''); 
-      setPatientEmail(''); 
-      setPatientCategory('');
+      handlePartReset();
 
       setSuccessMessage('');
-      setErrorMessage('Pacientas su tokiu ID nerastas');
+      setErrorMessage('Produktas su tokiu ID nerastas');
       setConditionalFieldMessage(true);
       setConditionalFieldButtons(false);
       
@@ -82,23 +69,18 @@ const DeletePatient = () => {
   };
   
 
-  const handlePatientDeleteSubmit = async (event) => {
+  const handleProductDeleteSubmit = async (event) => {
     event.preventDefault();
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/patients/delete/${selectedPatientID}`);
+    const response = await axios.delete(`http://localhost:8080/medical-products/delete/${selectedProductID}`);
 
       console.log('Response:', response.data);
-      setSuccessMessage('Pacientas sėkmingai ištrintas');
+      setSuccessMessage('Produktas sėkmingai ištrintas');
       setErrorMessage('');
-      setPatientID('');
-      setPatientName('');
-      setPatientSurname('');
-      setPatientAddress(''); 
-      setPatientPhone(''); 
-      setPatientEmail(''); 
-      setPatientCategory('');
+
+      handlePartReset();
 
       setConditionalFieldMessage(true);
       setConditionalFieldInfo(false);
@@ -110,7 +92,7 @@ const DeletePatient = () => {
   } catch (error) {
       console.error('Error:', error);
       setSuccessMessage('');
-      setErrorMessage('Pacientas NEBUVO ištrintas');
+      setErrorMessage('Produktas NEBUVO ištrintas');
 
       setConditionalFieldMessage(true);
       setConditionalFieldInfo(true);
@@ -120,19 +102,24 @@ const DeletePatient = () => {
 };
 
 const handleReset = () => {
-  setSelectedPatientID('');
+  setSelectedProductID('');
   
-  setPatientID('');
-  setPatientName('');
-  setPatientSurname('');
-  setPatientAddress(''); 
-  setPatientPhone(''); 
-  setPatientEmail(''); 
-  setPatientCategory('');
-
+  setProductID('');
+  setProductTitle('');
+  setProductSubCategory('');
+  setProductCategory(''); 
   
   setConditionalFieldInfo(false);
   setConditionalFieldButtons(false);
+   
+};
+
+
+const handlePartReset = () => {
+  setProductID('');
+  setProductTitle('');
+  setProductSubCategory('');
+  setProductCategory(''); 
    
 };
 
@@ -153,19 +140,19 @@ const handleReset = () => {
       </div>
   
         <div className='administracija-box-1'>
-            <h3>Pacienų sąrašo valdymas</h3>
+            <h3>Paslaugų sąrašo valdymas</h3>
             
             <div>
   
-              <h4>4.Ištrinti esamą pacientą</h4>
+              <h4>4.Ištrinti esamą paslaugą</h4>
   
               <div className='administracija-box-1-plus'>
                 <form  onSubmit={handleSearchSubmit}>
-                  <label>Įveskite paciento ID numerį:
+                  <label>Įveskite paslaugos ID numerį:
                     <input style={{ width: '50px', }}
                       type="text" 
-                      value={selectedPatientID}
-                      onChange={(e) => setSelectedPatientID(e.target.value)}
+                      value={selectedProductID}
+                      onChange={(e) => setSelectedProductID(e.target.value)}
                     />
                   </label>
   
@@ -187,13 +174,10 @@ const handleReset = () => {
               
                 <div>
                   {/* P */}
-                  <p className='administracija-box-1-product-infolist'>ID: <strong>{patientID}</strong> </p>
-                  <p className='administracija-box-1-product-infolist'>Vardas: <strong>{patientName}</strong> </p>
-                  <p className='administracija-box-1-product-infolist'>Pavarde <strong>{patientSurname}</strong> </p>
-                  <p className='administracija-box-1-product-infolist'>Adresas: <strong>{patientAddress}</strong> </p>
-                  <p className='administracija-box-1-product-infolist'>Tel nr.: <strong>{patientPhone}</strong> </p>
-                  <p className='administracija-box-1-product-infolist'>E-pastas: <strong>{patientEmail}</strong> </p>
-                  <p className='administracija-box-1-product-infolist'>Kategorija: <strong>{patientCategory}</strong> </p>
+                  <p className='administracija-box-1-product-infolist'>ID: <strong>{productID}</strong> </p>
+                  <p className='administracija-box-1-product-infolist'>Pavadinimas: <strong>{productTitle}</strong> </p>
+                  <p className='administracija-box-1-product-infolist'>Sub-kategorija <strong>{productSubCategory}</strong> </p>
+                  <p className='administracija-box-1-product-infolist'>Kategorija: <strong>{productCategory}</strong> </p>
                 </div>
             
               </div>
@@ -207,10 +191,10 @@ const handleReset = () => {
                 <div className='administracija-box-1-button-box'>
                   {/* BUTTONS */}
     
-                  <p>Ar tikrai norite ištrinti šį pacientą? </p>
+                  <p>Ar tikrai norite ištrinti šią paslaugą? </p>
     
                   <input type='submit' className="btn btn-primary administracija-box-1-button-b" 
-                  value="Taip" onClick={handlePatientDeleteSubmit}/>
+                  value="Taip" onClick={handleProductDeleteSubmit}/>
       
                   <input type='reset' className="btn btn-secondary administracija-box-1-button-g" 
                   value="Ne" onClick={handleReset}/>
@@ -231,9 +215,9 @@ const handleReset = () => {
               )}
 
               <div className='administracija-box-1'>
-                <div className='administracija-box-1-button-box'>                  
+                <div className='administracija-box-1-button-box-center'>                  
                   <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                   value="&#9665; Pacientų sąrašas" onClick={navigateToReadPatient}/>
+                   value="&#9665; Paslaugų sąrašas" onClick={navigateToReadProduct}/>
                    <br></br>
                    <br></br>
                   <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
@@ -255,23 +239,6 @@ const handleReset = () => {
 };
 
   
-  export default DeletePatient;
+  export default DeleteProduct;
 
-  /*
-  const [patientID, setPatientID] = useState("");
-  const [patientName, setPatientName] = useState("");
-  const [patientSurname, setPatientSurname] = useState("");
-  const [patientAddress, setPatientAddress] = useState("");
-  const [patientPhone, setPatientPhone] = useState("");
-  const [patientEmail, setPatientEmail] = useState("");
-  const [patientCategory, setPatientCategory] = useState("");
-
-
-  setPatientID('');
-  setPatientName('');
-  setPatientSurname('');
-  setPatientAddress(''); 
-  setPatientPhone(''); 
-  setPatientEmail(''); 
-  setPatientCategory('');
-  */
+  

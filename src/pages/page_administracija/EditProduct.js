@@ -6,11 +6,11 @@ import axios from 'axios';
 
 
 
-const EditPatient = () => {
+const EditProduct = () => {
 
   const navigate = useNavigate();
-  const navigateToReadPatient = () => {
-    navigate(`/readpatient`);
+  const navigateToReadProduct = () => {
+    navigate(`/readproduct`);
   };
   
   const navigateToAdministracija = () => {
@@ -18,15 +18,12 @@ const EditPatient = () => {
   };
 
 
-  const [selectedPatientID, setSelectedPatientID] = useState("");
+  const [selectedProductID, setSelectedProductID] = useState("");
 
-  const [patientID, setPatientID] = useState("");
-  const [patientName, setPatientName] = useState("");
-  const [patientSurname, setPatientSurname] = useState("");
-  const [patientAddress, setPatientAddress] = useState("");
-  const [patientPhone, setPatientPhone] = useState("");
-  const [patientEmail, setPatientEmail] = useState("");
-  const [patientCategory, setPatientCategory] = useState("");
+  const [productID, setProductID] = useState("");
+  const [productTitle, setProductTitle] = useState("");
+  const [productSubCategory, setProductSubCategory] = useState("");
+  const [productCategory, setProductCategory] = useState("");
 
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -36,16 +33,13 @@ const EditPatient = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/patients/get/${selectedPatientID}`);
-      const patientData = response.data;
+      const response = await axios.get(`http://localhost:8080/medical-products/get/${selectedProductID}`);
+      const productData = response.data;
 
-      setPatientID(patientData.patientID);
-      setPatientName(patientData.patientName);
-      setPatientSurname(patientData.patientSurname);
-      setPatientAddress(patientData.patientAddress);
-      setPatientPhone(patientData.patientPhone);
-      setPatientEmail(patientData.patientEmail);
-      setPatientCategory(patientData.patientCategory);
+      setProductID(productData.productID);
+      setProductTitle(productData.productTitle);
+      setProductSubCategory(productData.productSubCategory);
+      setProductCategory(productData.productCategory);
 
       setSuccessMessage('');
       setErrorMessage('');
@@ -53,27 +47,24 @@ const EditPatient = () => {
     } catch (error) {
       console.error('Error:', error);
       setSuccessMessage('');
-      setErrorMessage('Pacientas su tokiu ID nerastas');
+      setErrorMessage('Paslauga su tokiu ID nerasta');
     }
   };
   
 
-  const handlePatientEditSubmit = async (event) => {
+  const handleProductEditSubmit = async (event) => {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/patients/edit/${selectedPatientID}`, {
-      patientID,
-      patientName, 
-      patientSurname, 
-      patientAddress, 
-      patientPhone, 
-      patientEmail, 
-      patientCategory
+    const response = await axios.put(`http://localhost:8080/medical-products/edit/${selectedProductID}`, {
+      productID,
+      productTitle, 
+      productSubCategory, 
+      productCategory
       });
 
       console.log('Response:', response.data);
-      setSuccessMessage('Pacientas sėkmingai atnaujintas');
+      setSuccessMessage('Paslauga sėkmingai atnaujinta');
       setErrorMessage('');
       handleReset();
       
@@ -81,21 +72,18 @@ const EditPatient = () => {
   } catch (error) {
       console.error('Error:', error);
       setSuccessMessage('');
-      setErrorMessage('Pacientas NEBUVO atnaujintas');
+      setErrorMessage('Paslauga NEBUVO atnaujinta');
     
   }
 };
 
 const handleReset = () => {
-  setSelectedPatientID('');
-  setPatientID('');
-  setPatientName('');
-  setPatientSurname('');
-  setPatientAddress(''); 
-  setPatientPhone(''); 
-  setPatientEmail(''); 
-  setPatientCategory('');
-  
+  setSelectedProductID('');
+  setProductID('');
+  setProductTitle('');
+  setProductSubCategory('');
+  setProductCategory(''); 
+
 };
 
 
@@ -117,19 +105,19 @@ const handleReset = () => {
     </div>
 
       <div className='administracija-box-1'>
-          <h3>Pacienų sąrašo valdymas</h3>
+          <h3>Paslaugų sąrašo valdymas</h3>
           
           <div>
 
-            <h4>3. Keisti esamo paciento duomenis</h4>
+            <h4>3. Keisti esamos paslaugos duomenis</h4>
 
             <div className='administracija-box-1-plus'>
               <form  onSubmit={handleSearchSubmit}>
-                <label>Įveskite paciento ID numerį:
+                <label>Įveskite paslaugos ID numerį:
                   <input style={{ width: '50px', }}
                     type="text" 
-                    value={selectedPatientID}
-                    onChange={(e) => setSelectedPatientID(e.target.value)}
+                    value={selectedProductID}
+                    onChange={(e) => setSelectedProductID(e.target.value)}
                   />
                 </label>
 
@@ -146,17 +134,17 @@ const handleReset = () => {
 
 
             <div>
-            <form onSubmit={handlePatientEditSubmit}>
+            <form onSubmit={handleProductEditSubmit}>
 
-              <p>&ensp;ID:&emsp;&emsp;&emsp; <strong style={{color:'#3883b5'}}>{patientID}</strong> </p>
+              <p>&ensp;ID:&emsp;&emsp;&emsp; <strong style={{color:'#3883b5'}}>{productID}</strong> </p>
             
                
                
               <label> Vardas: 
               <input 
               type='text' 
-              value={patientName} 
-              onChange={(p) => setPatientName(p.target.value)} 
+              value={productTitle} 
+              onChange={(p) => setProductTitle(p.target.value)} 
               />
               </label>
                
@@ -165,45 +153,18 @@ const handleReset = () => {
               <label> Pavarde: 
               <input 
               type='text' 
-              value={patientSurname} 
-              onChange={(p) => setPatientSurname(p.target.value)} 
-              
+              value={productSubCategory} 
+              onChange={(p) => setProductSubCategory(p.target.value)}              
               />
               </label>
 
-              <label> Adresas: 
-              <input 
-              type='text' 
-              value={patientAddress} 
-              onChange={(p) => setPatientAddress(p.target.value)} 
-              
-              />
-              </label>
 
-              <label> Tel. nr: 
-              <input 
-              type='text' 
-              value={patientPhone} 
-              onChange={(p) => setPatientPhone(p.target.value)} 
-              
-              />
-              </label>
-
-              <label> E-paštas: 
-              <input 
-              type='text' 
-              value={patientEmail} 
-              onChange={(p) => setPatientEmail(p.target.value)} 
-              
-              />
-              </label>
 
               <label> Kategorija: 
               <input 
               type='text' 
-              value={patientCategory} 
-              onChange={(p) => setPatientCategory(p.target.value)} 
-              
+              value={productCategory} 
+              onChange={(p) => setProductCategory(p.target.value)}         
               />
               </label>
 
@@ -231,9 +192,9 @@ const handleReset = () => {
             </div>
 
             <div className='administracija-box-1'>
-                  <div className='administracija-box-1-button-box'>                  
+                  <div className='administracija-box-1-button-box-center'>                  
                     <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                     value="&#9665; Pacientų sąrašas" onClick={navigateToReadPatient}/>
+                     value="&#9665; Pacientų sąrašas" onClick={navigateToReadProduct}/>
                      <br></br>
                      <br></br>
                     <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
@@ -253,7 +214,7 @@ const handleReset = () => {
 };
 
   
-  export default EditPatient;
+  export default EditProduct;
 
 
 

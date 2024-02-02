@@ -82,9 +82,56 @@
     padding: 10px;
     margin-right: 20px;
     margin-bottom: 20px;
-   
+    
+}
+
+.administracija-box-4items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 90%;
+    background:  AliceBlue;
+    padding: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    
+}
+
+
+.administracija-box-4items-items {
+    box-sizing: border-box;
+    flex-basis: calc(25% - 25px); 
+    height: 150px;
+    background:  AliceBlue;
+    padding: 10px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    border-right: 1.5px solid rgb(230, 238, 245);
+    border-left: 1.5px solid rgb(230, 238, 245);
   
 }
+
+.administracija-box-4items-items button {   
+    background-color: rgba(49, 165, 238, 0.6);
+    border-color: AliceBlue;
+
+    height: 80%;
+    width: 90%;
+    border-width: 1px;
+    margin-left: 10px;
+
+    color: rgb(255,245,238);
+    font-weight: bold;
+
+    /*font-size: 15px;*/
+    /*font-weight: bold;*/
+    /*color: rgb(70,130,180);*/
+    font-family: 'Montserrat', sans-serif;
+      
+ }
 
 
 .administracija-box-1 {
@@ -112,6 +159,19 @@
   
 }
 
+.administracija-box-1-center {
+    float: left;
+    width: 90%;
+    height: auto; /* only for demonstration, should be removed */
+    background:  AliceBlue;
+    padding: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1.5px solid rgb(230, 238, 245);
+    align-items: center;
+  
+}
+
 .administracija-box-1:last-child {
     border-bottom: none;
   
@@ -132,7 +192,17 @@
    margin-left: 50px;
    margin-bottom: 30px;
       
- }
+}
+
+.administracija-box-1-button-box-center { 
+    margin-left: 50px;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    align-items: center;
+    text-align: center;
+    border-top: 1.5px solid rgb(230, 238, 245);
+       
+}
   
 .administracija-box-1-button-b {   
    background-color: rgba(52, 152, 219, 0.9);

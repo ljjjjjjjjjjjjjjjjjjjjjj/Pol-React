@@ -9,43 +9,37 @@ import axios from 'axios';
 
 
 
-const AddPatient = () => {
+const AddProduct = () => {
 
   const navigate = useNavigate();
-  const navigateToReadPatient = () => {
-    navigate(`/readpatient`);
+  const navigateToReadProduct = () => {
+    navigate(`/readproduct`);
   };
   
   const navigateToAdministracija = () => {
     navigate(`/administracija`);
   };
  
-    const [patientName, setPatientName] = useState("");
-    const [patientSurname, setPatientSurname] = useState("");
-    const [patientAddress, setPatientAddress] = useState("");
-    const [patientPhone, setPatientPhone] = useState("");
-    const [patientEmail, setPatientEmail] = useState("");
-    const [patientCategory, setPatientCategory] = useState("");
+    const [productTitle, setProductTitle] = useState("");
+    const [productSubCategory, setProductSubCategory] = useState("");
+    const [productCategory, setProductCategory] = useState("");
  
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handlePatientEditSubmit = async (event) => {
+    const handleProductEditSubmit = async (event) => {
       event.preventDefault();
 
 
     try {
-      const response = await axios.post('http://localhost:8080/patients/add', {
-        patientName, 
-        patientSurname, 
-        patientAddress, 
-        patientPhone, 
-        patientEmail, 
-        patientCategory
+      const response = await axios.post('http://localhost:8080/medical-products/add', {
+        productTitle, 
+        productSubCategory,
+        productCategory
         });
 
         console.log('Response:', response.data);
-        setSuccessMessage('Pacientas sėkmingai įvestas');
+        setSuccessMessage('Paslauga sėkmingai įvesta');
         setErrorMessage('');
         handleSubmit();
         
@@ -53,30 +47,24 @@ const AddPatient = () => {
     } catch (error) {
         console.error('Error:', error);
         setSuccessMessage('');
-        setErrorMessage('Pacientas NEBUVO įvestas');
+        setErrorMessage('Paslauga NEBUVO įvesta');
       
     }
   };
 
   const handleReset = () => {
     
-    setPatientName('');
-    setPatientSurname('');
-    setPatientAddress(''); 
-    setPatientPhone(''); 
-    setPatientEmail(''); 
-    setPatientCategory('');
+    setProductTitle('');
+    setProductSubCategory(''); 
+    setProductCategory('');
     
   };
 
   const handleSubmit = () => {
     
-    setPatientName('');
-    setPatientSurname('');
-    setPatientAddress(''); 
-    setPatientPhone(''); 
-    setPatientEmail(''); 
-    setPatientCategory('');
+    setProductTitle('');
+    setProductSubCategory(''); 
+    setProductCategory('');
     
   };
     
@@ -94,70 +82,42 @@ const AddPatient = () => {
       </div>
 
         <div className='administracija-box-1'>
-            <h3>Pacienų sąrašo valdymas</h3>
+            <h3>Paslaugų sąrašo valdymas</h3>
             <div>
 
-              <h4>1. Įvesti naują pacientą</h4>
+              <h4>1. Įvesti naują paslaugą</h4>
 
               <div>
-              <form onSubmit={handlePatientEditSubmit}>
+              <form onSubmit={handleProductEditSubmit}>
                  
               
                  
                  
                  
-                <label> Vardas: 
+                <label> Pavadinimas: 
                 <input 
                 type='text' 
-                value={patientName} 
-                onChange={(p) => setPatientName(p.target.value)} 
+                value={productTitle} 
+                onChange={(p) => setProductTitle(p.target.value)} 
                 />
                 </label>
                  
                  
-                 
-                <label> Pavarde: 
-                <input 
-                type='text' 
-                value={patientSurname} 
-                onChange={(p) => setPatientSurname(p.target.value)} 
-                
-                />
-                </label>
 
-                <label> Adresas: 
+                <label> Sub-kategorija: 
                 <input 
                 type='text' 
-                value={patientAddress} 
-                onChange={(p) => setPatientAddress(p.target.value)} 
-                
+                value={productSubCategory} 
+                onChange={(p) => setProductSubCategory(p.target.value)} 
                 />
                 </label>
-
-                <label> Tel. nr: 
-                <input 
-                type='text' 
-                value={patientPhone} 
-                onChange={(p) => setPatientPhone(p.target.value)} 
-                
-                />
-                </label>
-
-                <label> E-paštas: 
-                <input 
-                type='text' 
-                value={patientEmail} 
-                onChange={(p) => setPatientEmail(p.target.value)} 
-                
-                />
-                </label>
+           
 
                 <label> Kategorija: 
                 <input 
                 type='text' 
-                value={patientCategory} 
-                onChange={(p) => setPatientCategory(p.target.value)} 
-                
+                value={productCategory} 
+                onChange={(p) => setProductCategory(p.target.value)}                 
                 />
                 </label>
 
@@ -184,9 +144,9 @@ const AddPatient = () => {
               </form>
 
                 <div className='administracija-box-1'>
-                  <div className='administracija-box-1-button-box'>                  
+                  <div className='administracija-box-1-button-box-center'>                  
                     <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                     value="&#9665; Pacientų sąrašas" onClick={navigateToReadPatient}/>
+                     value="&#9665; Paslaugų sąrašas" onClick={navigateToReadProduct}/>
                      <br></br>
                      <br></br>
                     <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
@@ -206,7 +166,7 @@ const AddPatient = () => {
   };
 
   
-  export default AddPatient;
+  export default AddProduct;
 
 
 

@@ -164,6 +164,14 @@ const handleReset = () => {
           <br></br>
           {/* MESSAGES */}
         </div>
+
+
+        <div className='administracija-box-1'>
+          <div className='administracija-box-1-button-box'>                  
+            <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
+             value="&#9665; Grįžti į sąrašą" onClick={navigateToReadPatient}/>                                
+          </div>
+        </div>
               
             
              

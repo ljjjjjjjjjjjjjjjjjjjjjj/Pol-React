@@ -9,43 +9,45 @@ import axios from 'axios';
 
 
 
-const AddPatient = () => {
+const AddEmployee = () => {
 
   const navigate = useNavigate();
-  const navigateToReadPatient = () => {
-    navigate(`/readpatient`);
+  const navigateToReadEmployee = () => {  
+    navigate(`/reademployee`);
   };
   
   const navigateToAdministracija = () => {
     navigate(`/administracija`);
   };
  
-    const [patientName, setPatientName] = useState("");
-    const [patientSurname, setPatientSurname] = useState("");
-    const [patientAddress, setPatientAddress] = useState("");
-    const [patientPhone, setPatientPhone] = useState("");
-    const [patientEmail, setPatientEmail] = useState("");
-    const [patientCategory, setPatientCategory] = useState("");
+    const [empName, setEmpName] = useState("");
+    const [empSurname, setEmpSurname] = useState("");
+    const [empAddress, setEmpAddress] = useState("");
+    const [empPhone, setEmpPhone] = useState("");
+    const [empEmail, setEmpEmail] = useState("");
+    const [empCategory, setEmpCategory] = useState("");
+    const [imageUrl, setImageUrl] = useState("/imagesEmployees/Employee_profile.png");
  
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handlePatientEditSubmit = async (event) => {
+    const handleEmpEditSubmit = async (event) => {
       event.preventDefault();
 
 
     try {
-      const response = await axios.post('http://localhost:8080/patients/add', {
-        patientName, 
-        patientSurname, 
-        patientAddress, 
-        patientPhone, 
-        patientEmail, 
-        patientCategory
+      const response = await axios.post('http://localhost:8080/employees/add', {
+        empName, 
+        empSurname, 
+        empAddress, 
+        empPhone, 
+        empEmail, 
+        empCategory,
+        imageUrl
         });
 
         console.log('Response:', response.data);
-        setSuccessMessage('Pacientas sėkmingai įvestas');
+        setSuccessMessage('Darbuotojas sėkmingai įvestas');
         setErrorMessage('');
         handleSubmit();
         
@@ -53,30 +55,32 @@ const AddPatient = () => {
     } catch (error) {
         console.error('Error:', error);
         setSuccessMessage('');
-        setErrorMessage('Pacientas NEBUVO įvestas');
+        setErrorMessage('Darbuotojas NEBUVO įvestas');
       
     }
   };
 
   const handleReset = () => {
     
-    setPatientName('');
-    setPatientSurname('');
-    setPatientAddress(''); 
-    setPatientPhone(''); 
-    setPatientEmail(''); 
-    setPatientCategory('');
+    setEmpName('');
+    setEmpSurname('');
+    setEmpAddress(''); 
+    setEmpPhone(''); 
+    setEmpEmail(''); 
+    setEmpCategory('');
+    setImageUrl('');
     
   };
 
   const handleSubmit = () => {
     
-    setPatientName('');
-    setPatientSurname('');
-    setPatientAddress(''); 
-    setPatientPhone(''); 
-    setPatientEmail(''); 
-    setPatientCategory('');
+    setEmpName('');
+    setEmpSurname('');
+    setEmpAddress(''); 
+    setEmpPhone(''); 
+    setEmpEmail(''); 
+    setEmpCategory('');
+    setImageUrl('');
     
   };
     
@@ -94,13 +98,13 @@ const AddPatient = () => {
       </div>
 
         <div className='administracija-box-1'>
-            <h3>Pacienų sąrašo valdymas</h3>
+            <h3>Darbuotojų sąrašo valdymas</h3>
             <div>
 
-              <h4>1. Įvesti naują pacientą</h4>
+              <h4>1. Įvesti naują darbuotoją</h4>
 
               <div>
-              <form onSubmit={handlePatientEditSubmit}>
+              <form onSubmit={handleEmpEditSubmit}>
                  
               
                  
@@ -109,8 +113,8 @@ const AddPatient = () => {
                 <label> Vardas: 
                 <input 
                 type='text' 
-                value={patientName} 
-                onChange={(p) => setPatientName(p.target.value)} 
+                value={empName} 
+                onChange={(p) => setEmpName(p.target.value)} 
                 />
                 </label>
                  
@@ -119,8 +123,8 @@ const AddPatient = () => {
                 <label> Pavarde: 
                 <input 
                 type='text' 
-                value={patientSurname} 
-                onChange={(p) => setPatientSurname(p.target.value)} 
+                value={empSurname} 
+                onChange={(p) => setEmpSurname(p.target.value)} 
                 
                 />
                 </label>
@@ -128,8 +132,8 @@ const AddPatient = () => {
                 <label> Adresas: 
                 <input 
                 type='text' 
-                value={patientAddress} 
-                onChange={(p) => setPatientAddress(p.target.value)} 
+                value={empAddress} 
+                onChange={(p) => setEmpAddress(p.target.value)} 
                 
                 />
                 </label>
@@ -137,8 +141,8 @@ const AddPatient = () => {
                 <label> Tel. nr: 
                 <input 
                 type='text' 
-                value={patientPhone} 
-                onChange={(p) => setPatientPhone(p.target.value)} 
+                value={empPhone} 
+                onChange={(p) => setEmpPhone(p.target.value)} 
                 
                 />
                 </label>
@@ -146,8 +150,8 @@ const AddPatient = () => {
                 <label> E-paštas: 
                 <input 
                 type='text' 
-                value={patientEmail} 
-                onChange={(p) => setPatientEmail(p.target.value)} 
+                value={empEmail} 
+                onChange={(p) => setEmpEmail(p.target.value)} 
                 
                 />
                 </label>
@@ -155,8 +159,19 @@ const AddPatient = () => {
                 <label> Kategorija: 
                 <input 
                 type='text' 
-                value={patientCategory} 
-                onChange={(p) => setPatientCategory(p.target.value)} 
+                value={empCategory} 
+                onChange={(p) => setEmpCategory(p.target.value)} 
+                
+                />
+                </label>
+
+                
+
+                <label> Nuotraukos url: 
+                <input 
+                type='text' 
+                value={imageUrl} 
+                onChange={(p) => setImageUrl(p.target.value)} 
                 
                 />
                 </label>
@@ -186,9 +201,7 @@ const AddPatient = () => {
                 <div className='administracija-box-1'>
                   <div className='administracija-box-1-button-box'>                  
                     <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                     value="&#9665; Pacientų sąrašas" onClick={navigateToReadPatient}/>
-                     <br></br>
-                     <br></br>
+                     value="&#9665; Darbuotojų sąrašas" onClick={navigateToReadEmployee}/>   
                     <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
                      value=" &#9665; Administracija " onClick={navigateToAdministracija}/>                                     
                   </div>
@@ -206,7 +219,7 @@ const AddPatient = () => {
   };
 
   
-  export default AddPatient;
+  export default AddEmployee;
 
 
 

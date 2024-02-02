@@ -5,23 +5,24 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
-function EditPatientFROMLIST() {
+function EditEmployeeFROMLIST() {
 
   const { id } = useParams();
 
   const navigate = useNavigate();
-  const navigateToReadPatient = () => {
-    navigate(`/readpatient`);
+  const navigateToReadEmployee = () => {
+    navigate(`/reademployee`);
   };
   
   
-  const [patientID, setPatientID] = useState("");
-  const [patientName, setPatientName] = useState("");
-  const [patientSurname, setPatientSurname] = useState("");
-  const [patientAddress, setPatientAddress] = useState("");
-  const [patientPhone, setPatientPhone] = useState("");
-  const [patientEmail, setPatientEmail] = useState("");
-  const [patientCategory, setPatientCategory] = useState("");
+  const [empID, setEmpID] = useState("");  
+  const [empName, setEmpName] = useState("");
+  const [empSurname, setEmpSurname] = useState("");
+  const [empAddress, setEmpAddress] = useState("");
+  const [empPhone, setEmpPhone] = useState("");
+  const [empEmail, setEmpEmail] = useState("");
+  const [empCategory, setEmpCategory] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
 
   const [successMessage, setSuccessMessage] = useState('');
@@ -33,16 +34,17 @@ function EditPatientFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/patients/get/${id}`);
-        const patientData = response.data;
+        const response = await axios.get(`http://localhost:8080/employees/get/${id}`);
+        const empData = response.data;
               
-        setPatientID(patientData.patientID);
-        setPatientName(patientData.patientName);
-        setPatientSurname(patientData.patientSurname);
-        setPatientAddress(patientData.patientAddress);
-        setPatientPhone(patientData.patientPhone);
-        setPatientEmail(patientData.patientEmail);
-        setPatientCategory(patientData.patientCategory);
+        setEmpID(empData.empID);
+        setEmpName(empData.empName);
+        setEmpSurname(empData.empSurname);
+        setEmpAddress(empData.empAddress);
+        setEmpPhone(empData.empPhone);
+        setEmpEmail(empData.empEmail);
+        setEmpCategory(empData.empCategory);
+        setImageUrl(empData.imageUrl);
                       
         setSuccessMessage('');
         setErrorMessage('');
@@ -50,55 +52,57 @@ function EditPatientFROMLIST() {
       } catch (error) {
         console.error('Error:', error);
         setSuccessMessage('');
-        setErrorMessage('Pacientas su tokiu ID nerastas');
+        setErrorMessage('Darbuotojas su tokiu ID nerastas');
       }
   };
   
   handleSearchSubmit(); 
   
   
-  }, [] ); // Patient array - to run once 
+  }, [] ); // Empty array - to run once 
   
   
 
 
-  const handlePatientEditSubmit = async (event) => {
+  const handleEmployeeEditSubmit = async (event) => {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/patients/edit/${id}`, {
-      patientID, 
-      patientName, 
-      patientSurname, 
-      patientAddress, 
-      patientPhone, 
-      patientEmail, 
-      patientCategory
+    const response = await axios.put(`http://localhost:8080/employees/edit/${id}`, {
+      empID,
+      empName, 
+      empSurname, 
+      empAddress, 
+      empPhone, 
+      empEmail, 
+      empCategory,
+      imageUrl
       });
 
       console.log('Response:', response.data);
       handleReset();
 
-      setSuccessMessage('Pacientas sėkmingai atnaujintas');
+      setSuccessMessage('Darbuotojas sėkmingai atnaujintas');
       setErrorMessage('');
       
           
   } catch (error) {
       console.error('Error:', error);
       setSuccessMessage('');
-      setErrorMessage('Pacientas NEBUVO atnaujintas');
+      setErrorMessage('Darbuotojas NEBUVO atnaujintas');
     
   }
 };
 
 const handleReset = () => {
-  setPatientID('');
-  setPatientName('');
-  setPatientSurname('');
-  setPatientAddress(''); 
-  setPatientPhone(''); 
-  setPatientEmail(''); 
-  setPatientCategory('');
+  setEmpID('');
+  setEmpName('');
+  setEmpSurname('');
+  setEmpAddress(''); 
+  setEmpPhone(''); 
+  setEmpEmail(''); 
+  setEmpCategory('');
+  setImageUrl('');
   
 };
 
@@ -121,20 +125,20 @@ const handleReset = () => {
     </div>
 
       <div className='administracija-box-1'>
-        <h3>Pacienų sąrašo valdymas</h3>                           
+        <h3>Darbuotojų sąrašo valdymas</h3>                           
         <h4>3. Keisti esamo darbuotojo duomenis</h4>
                          
         <div>
-          <form onSubmit={handlePatientEditSubmit}>
+          <form onSubmit={handleEmployeeEditSubmit}>
                
-            <p>&ensp;ID:&emsp;&emsp;&emsp; <strong style={{color:'#3883b5'}}>{patientID}</strong> </p>
+            <p>&ensp;ID:&emsp;&emsp;&emsp; <strong style={{color:'#3883b5'}}>{empID}</strong> </p>
                   
              
             <label> Vardas: 
             <input 
             type='text' 
-            value={patientName} 
-            onChange={(p) => setPatientName(p.target.value)} 
+            value={empName} 
+            onChange={(p) => setEmpName(p.target.value)} 
             />
             </label>
              
@@ -143,8 +147,8 @@ const handleReset = () => {
             <label> Pavarde: 
             <input 
             type='text' 
-            value={patientSurname} 
-            onChange={(p) => setPatientSurname(p.target.value)} 
+            value={empSurname} 
+            onChange={(p) => setEmpSurname(p.target.value)} 
             
             />
             </label>
@@ -152,8 +156,8 @@ const handleReset = () => {
             <label> Adresas: 
             <input 
             type='text' 
-            value={patientAddress} 
-            onChange={(p) => setPatientAddress(p.target.value)} 
+            value={empAddress} 
+            onChange={(p) => setEmpAddress(p.target.value)} 
             
             />
             </label>
@@ -161,8 +165,8 @@ const handleReset = () => {
             <label> Tel. nr: 
             <input 
             type='text' 
-            value={patientPhone} 
-            onChange={(p) => setPatientPhone(p.target.value)} 
+            value={empPhone} 
+            onChange={(p) => setEmpPhone(p.target.value)} 
             
             />
             </label>
@@ -170,8 +174,8 @@ const handleReset = () => {
             <label> E-paštas: 
             <input 
             type='text' 
-            value={patientEmail} 
-            onChange={(p) => setPatientEmail(p.target.value)} 
+            value={empEmail} 
+            onChange={(p) => setEmpEmail(p.target.value)} 
             
             />
             </label>
@@ -179,12 +183,20 @@ const handleReset = () => {
             <label> Kategorija: 
             <input 
             type='text' 
-            value={patientCategory} 
-            onChange={(p) => setPatientCategory(p.target.value)} 
+            value={empCategory} 
+            onChange={(p) => setEmpCategory(p.target.value)} 
             
             />
             </label>
 
+            <label> Nuotraukos url: 
+            <input 
+            type='text' 
+            value={imageUrl} 
+            onChange={(p) => setImageUrl(p.target.value)} 
+            
+            />
+            </label>
                          
                     
                          
@@ -209,7 +221,7 @@ const handleReset = () => {
             <div className='administracija-box-1'>
               <div className='administracija-box-1-button-box'>                  
                 <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                 value="Grįžti į sąrašą" onClick={navigateToReadPatient}/>                              
+                 value="Grįžti į sąrašą" onClick={navigateToReadEmployee}/>                              
               </div>
             </div>
                    
@@ -227,7 +239,7 @@ const handleReset = () => {
 };
 
   
-  export default EditPatientFROMLIST;
+  export default EditEmployeeFROMLIST;
 
 
 
