@@ -15,6 +15,8 @@ import AddPatient from "../pages/page_administracija/AddPatient";
 import ReadPatient from "../pages/page_administracija/ReadPatient";
 import EditPatient from "../pages/page_administracija/EditPatient";
 import DeletePatient from "../pages/page_administracija/DeletePatient";
+import EditPatientFROMLIST from "../pages/page_administracija/EditPatientFROMLIST";
+import DeletePatientFROMLIST from "../pages/page_administracija/DeletePatientFROMLIST";
 
 
 
@@ -37,6 +39,9 @@ return (
         <Route path="readpatient" element={<ReadPatient />} />
         <Route path="editpatient" element={<EditPatient />} />
         <Route path="deletepatient" element={<DeletePatient />} />
+
+        <Route path="editpatient/:id" element={<EditPatientFROMLIST />} />
+        <Route path="deletepatient/:id" element={<DeletePatientFROMLIST />} />
 
         <Route path="*" element={<NoPage />} />
       </Route>

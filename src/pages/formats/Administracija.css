@@ -130,7 +130,7 @@
 
 .administracija-box-1-button-box {   
    margin-left: 50px;
-   margin-bottom: 20px;
+   margin-bottom: 30px;
       
  }
   
@@ -145,6 +145,14 @@
     background-color: rgba(187, 195, 201, 0.9);
      border-color: rgba(197, 205, 211, 0.5);
      border-width: 1px;
+      
+ }
+
+ .administracija-box-1-button-z {   
+    background-color: rgba(65, 192, 84, 0.8);
+     border-color: rgba(75, 202, 94, 0.4);
+     border-width: 1px;
+     margin-left: 60%;
       
  }
 

@@ -3,12 +3,18 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
 import { useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
 
 
 const AddPatient = () => {
+
+  const navigate = useNavigate();
+  const navigateToReadPatient = () => {
+    navigate(`/readpatient`);
+  };
  
     const [patientName, setPatientName] = useState("");
     const [patientSurname, setPatientSurname] = useState("");
@@ -172,6 +178,13 @@ const AddPatient = () => {
                 </div>
   
               </form>
+
+                <div className='administracija-box-1'>
+                  <div className='administracija-box-1-button-box'>                  
+                    <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
+                     value="Grįžti į sąrašą" onClick={navigateToReadPatient}/>                              
+                  </div>
+                </div>
               </div>
             </div>
         </div>

@@ -2,11 +2,20 @@ import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
 import PatientList from '../../methods_and_other/PatientList';
 import { useState,  useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
 
 const ReadPatient = () => {
+
+  const navigate = useNavigate();
+  const navigateToAddPatient = () => {
+    navigate(`/addpatient`);
+  };
+  const navigateToAdministracija = () => {
+    navigate(`/administracija`);
+  };
 
   const [patients, setPatients] = useState( [] );
   const [selectedOption, setSelectedOption] = useState("");
@@ -55,6 +64,9 @@ const ReadPatient = () => {
           <option value="patientName">Vardas</option>
           <option value="patientSurname">Pavardė</option>
         </select>
+
+        <input type='button' className="btn btn-secondary administracija-box-1-button-z" 
+                   value="Prideti naują" onClick={navigateToAddPatient}/>      
         
       </div>
 
@@ -69,9 +81,10 @@ const ReadPatient = () => {
               <th scope='col'>Vardas</th>
               <th scope='col'>Pavarde</th>
               <th scope='col'>Adresas</th>
-              <th scope='col'>Telefono nr.</th>
+              <th scope='col'>Tel. nr.</th>
               <th scope='col'>E-pastas</th>
               <th scope='col'>Kategorija</th>
+              <th scope='col'>Keisti</th>
              
             </tr>
           </thead>
@@ -83,6 +96,14 @@ const ReadPatient = () => {
           </tbody> 
                  
         </table>
+
+                <div className='administracija-box-1'>
+                  <div className='administracija-box-1-button-box'>     
+                    <p>&ensp;</p>             
+                    <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
+                     value="Grįžti atgal" onClick={navigateToAdministracija}/>                              
+                  </div>
+                </div>
 
       </div>
 

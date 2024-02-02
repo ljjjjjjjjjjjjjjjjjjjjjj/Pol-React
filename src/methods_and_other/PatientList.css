@@ -44,6 +44,33 @@
   }
 
 
+  .patient-list-button-box {  
+    display: flex; 
+    margin-left: 10px;
+    margin-bottom: 10px;
+       
+  }
+   
+ .patient-list-button-b {   
+     flex: 1;
+     background-color: rgba(52, 152, 219, 0.9);
+     border-color: rgba(62, 162, 229, 0.5);
+     border-width: 1px;
+  
+      
+ }
+ 
+ .patient-list-button-g {   
+      flex: 1;
+      background-color: rgba(187, 195, 201, 0.9);
+      border-color: rgba(197, 205, 211, 0.5);
+      border-width: 1px;
+      margin-left: 10px;
+       
+  }
+
+
+
 
 
   
