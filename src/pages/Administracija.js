@@ -44,12 +44,12 @@ const Administracija = () => {
    
 
   <div className='administracija'>
-   <p /* ---------------------------------      PSL     ----------------------------------    START */> </p>
+   {/* ---------------------------------      PSL     ----------------------------------    START */}
    <h1>Administracija</h1>
 
     
     <div className='administracija-box-container'> 
-    <p /* -----------------------------      ALL BOXES     -------------------------------    START */> </p>
+    {/* -----------------------------      ALL BOXES     -------------------------------    START */}
 
 
 
@@ -60,7 +60,7 @@ const Administracija = () => {
             
               
       <div className='administracija-box-main'> 
-      <p /* -------------------------    1. PACIENTAI    -------------------------------    START */> </p>
+      { /* -------------------------    1. PACIENTAI    -------------------------------    START */}
 
       
       <h3>Pacienų sąrašo valdymas</h3>

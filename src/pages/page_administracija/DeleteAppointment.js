@@ -12,7 +12,7 @@ const DeleteAppointment = () => {
   
   const navigate = useNavigate();
   const navigateToReadAppointment = () => {
-    navigate(`/readproduct`);
+    navigate(`/readappointment`);
   };
   
   const navigateToAdministracija = () => {

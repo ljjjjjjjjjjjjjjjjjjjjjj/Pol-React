@@ -23,32 +23,9 @@ function EditAppointmentFROMLIST() {
   
   
   const [appID, setAppID] = useState("");
-  const [appCategory, setAppCategory] = useState("");
+  const [ppCategory, setAppCategory] = useState("");
   const [appReason, setAppReason] = useState("");
   const [appDate, setAppDate] = useState("");
-
-  
-  /*  -----------------   Date    ------------------*/
-  registerLocale('lt', lt); // Register Lithuanian locale
-  setDefaultLocale('lt'); // Set Lithuanian locale as the default
-
-
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedHour, setSelectedHour] = useState('');
-  const [selectedMinute, setSelectedMinute] = useState('');
-
-
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);};
-  
-
-  const handleTimeChange = (event) => {
-    const [selectedHour, selectedMinute] = event.target.value.split(':');
-    setSelectedHour(parseInt(selectedHour));
-    setSelectedMinute(parseInt(selectedMinute));
-  };
-  /*  -----------------   Date    ------------------*/
 
 
 
@@ -65,16 +42,9 @@ function EditAppointmentFROMLIST() {
         const appointmentData = response.data;
               
         setAppID(appointmentData.appID);
-        setAppCategory(appointmentData.appCategory);
+        setAppCategory(appointmentData.ppCategory);
         setAppReason(appointmentData.appReason);
         setAppDate(appointmentData.appDate);
-
-        const appDateObj = appointmentData.appDate ? new Date(appointmentData.appDate) : new Date();
-
-        setSelectedDate(appDateObj);
-        setSelectedHour(appDateObj.getHours());
-        setSelectedMinute(appDateObj.getMinutes());
-        
                       
         setSuccessMessage('');
         setErrorMessage('');
@@ -89,7 +59,7 @@ function EditAppointmentFROMLIST() {
   handleSearchSubmit(); 
   
   
-  }, [id] ); // Appointment array - to run once 
+  }, [] ); // Appointment array - to run once 
   
   
 
@@ -98,29 +68,17 @@ function EditAppointmentFROMLIST() {
     event.preventDefault();
 
   try {
-
-    const formattedDate = selectedDate
-        ? format(selectedDate, 'yyyy/MM/dd')
-        : '';
-      const formattedTime = selectedDate
-        ? `${selectedHour}:${selectedMinute.toString().padStart(2, '0')}`
-        : '';
-
-
     const response = await axios.put(`http://localhost:8080/appointments/edit/${id}`, {
       appID, 
-      appCategory, 
+      ppCategory, 
       appReason,
-      appDate: `${formattedDate}, ${formattedTime}`,
+      appDate
       });
 
       console.log('Response:', response.data);
       handleReset();
 
-      setSuccessMessage(<div>Rezervacija sėkmingai atnaujinta: <br /> <br />
-                          <strong>Data ir laikas:</strong> &nbsp; {formattedDate} &nbsp; ({formattedTime} val.)<br /> 
-                          <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
-                          <strong>Priežastis:</strong> &nbsp; {appReason}</div>);
+      setSuccessMessage('Rezervacija sėkmingai atnaujinta');
       setErrorMessage('');
       
           
@@ -136,10 +94,7 @@ const handleReset = () => {
   setAppID('');
   setAppCategory('');
   setAppReason('');
-
-  setSelectedDate(new Date());
-  setSelectedHour(7);
-  setSelectedMinute(0); 
+  setAppDate(''); 
   
 };
 
@@ -174,7 +129,7 @@ const handleReset = () => {
             <label> Kategorija: 
                 <input 
                 type='text' 
-                value={appCategory} 
+                value={ppCategory} 
                 onChange={(p) => setAppCategory(p.target.value)} 
                 />
                 </label>
@@ -188,41 +143,18 @@ const handleReset = () => {
                 onChange={(p) => setAppReason(p.target.value)} 
                 />
                 </label>
+           
 
-
-
-
-                <br></br>
-                <label> Data: &emsp;&emsp;&emsp; {appDate} <br></br>
-                  <div className='administracija-box-1-datepicker'>
-                  <br></br>
-                    <DatePicker
-                      selected={selectedDate}
-                      onChange={handleDateChange}
-                      dateFormat="yyyy/MM/dd"
-                    />
-                    <div className='administracija-box-1'>
-                      <label>Laikas:</label>
-                      <select
-                        onChange={handleTimeChange}
-                        defaultValue={`${selectedHour.toString().padStart(2, '0')}:${selectedMinute.toString().padStart(2, '0')}`}
-                      >
-                        {[...Array(13).keys()].map((hour) => (
-                          [...Array(4).keys()].map((quarter) => {
-                            const time = `${(hour + 7).toString().padStart(2, '0')}:${(quarter * 15).toString().padStart(2, '0')}`;
-                            return (
-                              time <= "19:00" && (
-                                <option key={time} value={time}>
-                                  {time}
-                                </option>
-                              )
-                            );
-                          })
-                        ))}
-                      </select>
-                    </div>
-                  </div>
+                <label> Data: 
+                <input 
+                type='text' 
+                value={appDate} 
+                onChange={(p) => setAppDate(p.target.value)} 
+                
+                />
                 </label>
+
+
                          
                     
                          

@@ -12,7 +12,7 @@ function DeleteAppointmentFROMLIST() {
 
   const navigate = useNavigate();
   const navigateToReadAppointment = () => {
-    navigate(`/readproduct`);
+    navigate(`/readappointment`);
   };
   
   
