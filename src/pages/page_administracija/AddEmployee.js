@@ -199,7 +199,7 @@ const AddEmployee = () => {
               </form>
 
                 <div className='administracija-box-1'>
-                  <div className='administracija-box-1-button-box'>                  
+                  <div className='administracija-box-1-button-box-center'>                  
                     <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
                      value="&#9665; Darbuotojų sąrašas" onClick={navigateToReadEmployee}/>   
                     <input type='button' className="btn btn-secondary administracija-box-1-button-b" 

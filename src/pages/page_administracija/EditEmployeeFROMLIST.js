@@ -219,7 +219,7 @@ const handleReset = () => {
             </div>
                      
             <div className='administracija-box-1'>
-              <div className='administracija-box-1-button-box'>                  
+              <div className='administracija-box-1-button-box-center'>                  
                 <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
                  value="Grįžti į sąrašą" onClick={navigateToReadEmployee}/>                              
               </div>
