@@ -33,6 +33,13 @@ import DeleteProduct from "../pages/page_administracija/DeleteProduct";
 import EditProductFROMLIST from "../pages/page_administracija/EditProductFROMLIST";
 import DeleteProductFROMLIST from "../pages/page_administracija/DeleteProductFROMLIST";
 
+import AddAppointment from "../pages/page_administracija/AddAppointment";
+import ReadAppointment from "../pages/page_administracija/ReadAppointment";
+import EditAppointment from "../pages/page_administracija/EditAppointment";
+import DeleteAppointment from "../pages/page_administracija/DeleteAppointment";
+import EditAppointmentFROMLIST from "../pages/page_administracija/EditAppointmentFROMLIST";
+import DeleteAppointmentFROMLIST from "../pages/page_administracija/DeleteAppointmentFROMLIST";
+
 
 
 
@@ -73,6 +80,13 @@ return (
         <Route path="deleteproduct" element={<DeleteProduct />} />
         <Route path="editproduct/:id" element={<EditProductFROMLIST />} />
         <Route path="deleteproduct/:id" element={<DeleteProductFROMLIST />} />
+
+        <Route path="addappointment" element={<AddAppointment />} />
+        <Route path="readappointment" element={<ReadAppointment />} />
+        <Route path="editappointment" element={<EditAppointment />} />
+        <Route path="deleteappointment" element={<DeleteAppointment />} />
+        <Route path="editappointment/:id" element={<EditAppointmentFROMLIST />} />
+        <Route path="deleteappointment/:id" element={<DeleteAppointmentFROMLIST />} />
 
         <Route path="*" element={<NoPage />} />
       </Route>

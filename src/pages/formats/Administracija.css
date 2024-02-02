@@ -244,6 +244,19 @@
       
 }
 
+.administracija-box-1-datepicker {
+    float: left;
+    width: 100%;
+    height: auto; /* only for demonstration, should be removed */
+    background:  AliceBlue;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1.5px solid rgb(230, 238, 245);
+  
+}
+
 .administracija-box-1-product-infolist {
     margin-left: 20px;
    
