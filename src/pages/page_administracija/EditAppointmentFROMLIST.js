@@ -8,6 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { format } from 'date-fns';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import lt from 'date-fns/locale/lt'; // Import Lithuanian locale
+import { getDay } from 'date-fns';
 
 
 
@@ -32,10 +33,29 @@ function EditAppointmentFROMLIST() {
   registerLocale('lt', lt); // Register Lithuanian locale
   setDefaultLocale('lt'); // Set Lithuanian locale as the default
 
+  const getInitialDate = () => {
+    const currentDate = new Date();
+    let nextWorkingDay = currentDate;
+
+    // If today is Saturday (6) or Sunday (0), find the next Monday (1)
+    while (nextWorkingDay.getDay() === 0 || nextWorkingDay.getDay() === 6) {
+      nextWorkingDay.setDate(nextWorkingDay.getDate() + 1);
+    }
+
+    return nextWorkingDay;
+  };
+
 
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedHour, setSelectedHour] = useState('');
   const [selectedMinute, setSelectedMinute] = useState('');
+
+
+  const handleDateFilter = (date) => {
+    const day = getDay(date);
+    // Allow selection only if the day is Monday (1) to Friday (5)
+    return day >= 1 && day <= 5;
+  };
 
 
 
@@ -48,6 +68,7 @@ function EditAppointmentFROMLIST() {
     setSelectedHour(parseInt(selectedHour));
     setSelectedMinute(parseInt(selectedMinute));
   };
+
   /*  -----------------   Date    ------------------*/
 
 
@@ -69,7 +90,7 @@ function EditAppointmentFROMLIST() {
         setAppReason(appointmentData.appReason);
         setAppDate(appointmentData.appDate);
 
-        const appDateObj = appointmentData.appDate ? new Date(appointmentData.appDate) : new Date();
+        const appDateObj = appointmentData.appDate ? new Date(appointmentData.appDate) : getInitialDate();
 
         setSelectedDate(appDateObj);
         setSelectedHour(appDateObj.getHours());
@@ -111,17 +132,19 @@ function EditAppointmentFROMLIST() {
       appID, 
       appCategory, 
       appReason,
-      appDate: `${formattedDate}, ${formattedTime}`,
+      appDate: `${formattedDate}, ${formattedTime}`
       });
 
       console.log('Response:', response.data);
-      handleReset();
+      
 
       setSuccessMessage(<div>Rezervacija sėkmingai atnaujinta: <br /> <br />
                           <strong>Data ir laikas:</strong> &nbsp; {formattedDate} &nbsp; ({formattedTime} val.)<br /> 
                           <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
                           <strong>Priežastis:</strong> &nbsp; {appReason}</div>);
       setErrorMessage('');
+
+      handleReset();
       
           
   } catch (error) {
@@ -137,7 +160,7 @@ const handleReset = () => {
   setAppCategory('');
   setAppReason('');
 
-  setSelectedDate(new Date());
+  setSelectedDate( getInitialDate());
   setSelectedHour(7);
   setSelectedMinute(0); 
   
@@ -192,14 +215,17 @@ const handleReset = () => {
 
 
 
-                <br></br>
+                <br></br> 
                 <label> Data: &emsp;&emsp;&emsp; {appDate} <br></br>
                   <div className='administracija-box-1-datepicker'>
                   <br></br>
+                  
                     <DatePicker
                       selected={selectedDate}
                       onChange={handleDateChange}
                       dateFormat="yyyy/MM/dd"
+                      filterDate={handleDateFilter}
+                     
                     />
                     <div className='administracija-box-1'>
                       <label>Laikas:</label>

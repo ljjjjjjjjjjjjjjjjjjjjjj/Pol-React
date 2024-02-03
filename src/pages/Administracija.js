@@ -75,7 +75,7 @@ const Administracija = () => {
 
         <div className='administracija-box-4items-items'                      /* ADD - P */>                                                            
             <button type="button" className="btn btn-primary" onClick={navigateToAddPatient}>
-              Įvesti naują pacientą <br></br> (pagal ID)</button>                                     
+              Įvesti naują pacientą <br></br> </button>                                     
         </div>
                      
         <div className='administracija-box-4items-items'                      /* EDIT - P */>                                                                              
@@ -119,7 +119,7 @@ const Administracija = () => {
 
         <div className='administracija-box-4items-items'                      /* ADD - P */>                                                            
             <button type="button" className="btn btn-primary" onClick={navigateToAddEmployee}>
-              Įvesti naują darbuotoją <br></br> (pagal ID)</button>                                     
+              Įvesti naują darbuotoją <br></br></button>                                     
         </div>
                      
         <div className='administracija-box-4items-items'                      /* EDIT - P */>                                                                              
@@ -160,7 +160,7 @@ const Administracija = () => {
 
         <div className='administracija-box-4items-items'                      /* ADD - P */>                                                            
             <button type="button" className="btn btn-primary" onClick={navigateToAddProduct}>
-              Įvesti naują paslaugą <br></br> (pagal ID)</button>                                     
+              Įvesti naują paslaugą <br></br> </button>                                     
         </div>
                      
         <div className='administracija-box-4items-items'                      /* EDIT - P */>                                                                              
@@ -202,7 +202,7 @@ const Administracija = () => {
 
         <div className='administracija-box-4items-items'                      /* ADD - P */>                                                            
             <button type="button" className="btn btn-primary" onClick={navigateToAddAppointment}>
-              Įvesti naują rezervaciją <br></br> (pagal ID)</button>                                     
+              Įvesti naują rezervaciją <br></br> </button>                                     
         </div>
                      
         <div className='administracija-box-4items-items'                      /* EDIT - P */>                                                                              

@@ -10,6 +10,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { format } from 'date-fns';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import lt from 'date-fns/locale/lt'; // Import Lithuanian locale
+import { getDay } from 'date-fns';
 
 
 
@@ -35,12 +36,31 @@ const AddAppointment = () => {
   registerLocale('lt', lt); // Register Lithuanian locale
   setDefaultLocale('lt'); // Set Lithuanian locale as the default
 
+  const getInitialDate = () => {
+    const currentDate = new Date();
+    let nextWorkingDay = currentDate;
+
+    // If today is Saturday (6) or Sunday (0), find the next Monday (1)
+    while (nextWorkingDay.getDay() === 0 || nextWorkingDay.getDay() === 6) {
+      nextWorkingDay.setDate(nextWorkingDay.getDate() + 1);
+    }
+
+    return nextWorkingDay;
+  };
+
+
  
 
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState( getInitialDate());
   const [selectedHour, setSelectedHour] = useState(7);
   const [selectedMinute, setSelectedMinute] = useState(0);
 
+  
+  const handleDateFilter = (date) => {
+    const day = getDay(date);
+    // Allow selection only if the day is Monday (1) to Friday (5)
+    return day >= 1 && day <= 5;
+  };
 
 
   const handleDateChange = (date) => {
@@ -52,6 +72,8 @@ const AddAppointment = () => {
     setSelectedHour(parseInt(selectedHour));
     setSelectedMinute(parseInt(selectedMinute));
   };
+
+
   /*  -----------------   Date    ------------------*/
 
 
@@ -98,7 +120,7 @@ const AddAppointment = () => {
   };
 
   const handleReset = () => {
-    setSelectedDate(new Date());
+    setSelectedDate( getInitialDate());
     setSelectedHour(7);
     setSelectedMinute(0);
     
@@ -147,6 +169,8 @@ const AddAppointment = () => {
                       selected={selectedDate}
                       onChange={handleDateChange}
                       dateFormat="yyyy/MM/dd"
+                      filterDate={handleDateFilter}
+
                     />
                     <div className='administracija-box-1'>
                       <label>Laikas:</label>
