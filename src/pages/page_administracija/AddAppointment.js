@@ -1,8 +1,8 @@
 
 
+import React from 'react';
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
-import EmployeeSelectionRow from '../../methods_and_other/EmployeeSelectionRow.js';
 import HandleEmployeeSelection from '../../methods_and_other/HandleEmployeeSelection.js';
 import HandlePatientSelection from '../../methods_and_other/HandlePatientSelection.js';
 import { useState, useEffect} from 'react';
@@ -34,6 +34,40 @@ const AddAppointment = () => {
 
   const [appCategory, setAppCategory] = useState("");
   const [appReason, setAppReason] = useState("");
+
+
+  /*  -----------------   Employee    ------------------*/
+  const [appEmployee, setAppEmployee] = useState('');
+
+  const handleEmployeeSelect = (employee) => {
+    setAppEmployee(employee);
+  };
+
+  useEffect(() => {
+    console.log("useEffect-employee (APP):", appEmployee);
+    if (appEmployee == null)
+    {handleEmployeeSelect();}
+  }, [appEmployee]);
+  /*  -----------------   Employee    ------------------*/
+
+  
+
+
+
+
+   /*  ------------------   Patient    -------------------*/
+   const [appPatient, setAppPatient] = useState('');
+   const handlePatientSelect = (patient) => {
+     setAppPatient(patient);
+   };
+
+   useEffect(() => {
+    console.log("useEffect-patient (APP):", appPatient);
+    if (appPatient == null)
+    {handlePatientSelect();}
+  }, [appPatient]);
+   /*  ------------------   Patient    -------------------*/
+
 
   
  
@@ -81,29 +115,7 @@ const AddAppointment = () => {
     setSelectedMinute(parseInt(selectedMinute));
   };
 
-  /*  -----------------   Date    ------------------*/
-
-
-
-
-
-
-
-
-
-  /*  -----------------   Employees   ------------------*/
-
-  /*  -----------------   Employees    ------------------*/
-
-
-  /*  -----------------   Patients   ------------------*/
-
-  /*  -----------------   Patients    ------------------*/
-
-
-
-
-
+  
 
 
   const [successMessage, setSuccessMessage] = useState('');
@@ -115,6 +127,11 @@ const AddAppointment = () => {
 
     try {
 
+      if (!appEmployee || !appPatient) {
+        setErrorMessage('Būtina pasirinkti gydytoją ir pacientą.');
+        return;
+      }
+
       const formattedDate = selectedDate
         ? format(selectedDate, 'yyyy/MM/dd')
         : '';
@@ -123,19 +140,29 @@ const AddAppointment = () => {
         : '';
 
 
+      const nameEmp = appEmployee.empName;
+      const namePat = appPatient.patientName;
+      console.log('TEST:', nameEmp);
+      console.log('TEST:', namePat);
+
+
       const response = await axios.post('http://localhost:8080/appointments/add', {
         appCategory, 
         appReason,
         appDate: `${formattedDate}, ${formattedTime}`,
-        });
+      });
+
+      
+
+
 
         console.log('Response:', response.data);
         setSuccessMessage(<div>Rezervacija sėkmingai įvesta: <br /> <br />
                           <strong>Data ir laikas:</strong> &nbsp; {formattedDate} &nbsp; ({formattedTime} val.)<br /> 
                           <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
-                          <strong>Priežastis:</strong> &nbsp; uzdeti lauztinius skliaustus: appReason <br />
-                          <strong>Gydytojas:</strong> &nbsp; uzdeti lauztinius skliaustus: appEmployee.getEmpName <br />
-                          <strong>Pacientas:</strong> &nbsp; uzdeti lauztinius skliaustus:  appPatient.getPatientName</div>);
+                          <strong>Priežastis:</strong> &nbsp; {appReason} <br />
+                          <strong>Gydytojas:</strong> &nbsp; {nameEmp} <br />
+                          <strong>Pacientas:</strong> &nbsp; {namePat}</div>);
         setErrorMessage('');
         handleReset();
         
@@ -172,19 +199,23 @@ const AddAppointment = () => {
           <h1>Administracija</h1>
         </div>
         <div className='administracija-box-1'>
-          <h3>Rezervacijų sąrašo valdymas</h3>
+          <h3>Rezervacijų sąrašo valdymas - naujos rezervacijos įvedimas</h3>
           <div>
-            <h4>1. Įvesti naują Rezervaciją</h4>
+            
             <div>
 
 
-              <div>
-              <HandleEmployeeSelection/>
+              <div className='administracija-box-3-PATIENTS-main'>
+              <h4>1.1. Pasirinkti gydytoją</h4>
+              <HandleEmployeeSelection onEmployeeSelect={handleEmployeeSelect}/>
+              <p>&nbsp;</p>
               </div>
 
 
-              <div>
-              <HandlePatientSelection/>
+              <div className='administracija-box-3-PATIENTS-main'>
+              <h4>1.2. Pasirinkti pacientą</h4>
+              <HandlePatientSelection onPatientSelect={handlePatientSelect}/>
+              
               </div>
 
 
@@ -194,16 +225,20 @@ const AddAppointment = () => {
 
 
 
+              <div className='administracija-box-1'>
+              <h4>1.3. Kiti duomenys: </h4>
+
+              <div className='administracija-box-3-PATIENTS-plus'>
 
               <form onSubmit={handleAppointmentEditSubmit}>
-                <label> Kategorija:
+                <label> Kategorija (gyvai, telefonu arba ūmus):
                   <input
                     type='text'
                     value={appCategory}
                     onChange={(p) => setAppCategory(p.target.value)}
                   />
                 </label>
-                <label> Priežastis:
+                <label> Priežastis (nusiskundimai):
                   <input
                     type='text'
                     value={appReason}
@@ -211,7 +246,7 @@ const AddAppointment = () => {
                   />
                 </label>
                 <br></br>
-                <label> Data:
+                <label > Data:
                   <div className='administracija-box-1-datepicker'>
                     <DatePicker
                       selected={selectedDate}
@@ -222,7 +257,7 @@ const AddAppointment = () => {
                     />
                     <div className='administracija-box-1'>
                       <label>Laikas:</label>
-                      <select
+                      <select 
                         onChange={handleTimeChange}
                         defaultValue={`${selectedHour.toString().padStart(2, '0')}:${selectedMinute.toString().padStart(2, '0')}`}
                       >
@@ -248,7 +283,7 @@ const AddAppointment = () => {
                   {errorMessage && <div className="error-message">{errorMessage}</div>}
                   <br></br>
                 </div>
-                <div className='administracija-box-1-button-box'>
+                <div className='administracija-box-1-button-box-differnet'>
                   <br></br>
                   <input type='submit' className="btn btn-primary administracija-box-1-button-b"
                     value="Išsaugoti" />
@@ -256,6 +291,8 @@ const AddAppointment = () => {
                     value="Išvalyti" onClick={handleReset} />
                 </div>
               </form>
+              </div>
+              </div>
               <div className='administracija-box-1'>
                 <div className='administracija-box-1-button-box-center'>
                   <input type='button' className="btn btn-secondary administracija-box-1-button-b"

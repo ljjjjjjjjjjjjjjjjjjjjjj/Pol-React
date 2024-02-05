@@ -8,7 +8,7 @@ import axios from 'axios';
 
 
 
-function HandleEmployeeSelection() {
+function HandleEmployeeSelection( { onEmployeeSelect } ) {
 
   
   const [appEmployee, setAppEmployee] = useState("");
@@ -43,6 +43,12 @@ function HandleEmployeeSelection() {
     {fetchEmployeeByCategoryData();}
   }, [appEmployeeCategory]);
 
+  useEffect(() => {
+    console.log("useEffect-Employee:", appEmployee);
+    if (appEmployee == null)
+    {handleEmployeeChange();}
+  }, [appEmployee]);
+
 
 
 
@@ -62,6 +68,8 @@ function HandleEmployeeSelection() {
   const handleEmployeeChange = (event) => {
     const selectedEmployee = event.target.value;
     setAppEmployee(selectedEmployee);
+    console.log("handleEmployeeChange-employee:", selectedEmployee);
+    onEmployeeSelect(selectedEmployee);
     
   
   }
@@ -72,8 +80,10 @@ function HandleEmployeeSelection() {
   
   
   return (
-    <div>
-      <form>
+    <div className='administracija-box-container'>
+      
+
+      <form className='administracija-box-3'>
         <label>Gydytojo kategorija: </label>
         <select               
           value={appEmployeeCategory}
@@ -89,7 +99,7 @@ function HandleEmployeeSelection() {
 
 
       {categorySelected && (
-        <form>
+        <form className='administracija-box-3'>
           <label>Pasirinkite gydytoją: </label>
           <select
             value={appEmployee}

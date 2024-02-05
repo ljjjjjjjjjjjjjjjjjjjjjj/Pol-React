@@ -196,6 +196,14 @@
       
 }
 
+.administracija-box-1-button-box-differnet { 
+    margin-left: 50px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding-top: 10px;
+       
+}
+
 .administracija-box-1-button-box-center { 
     margin-left: 50px;
     margin-bottom: 30px;
@@ -205,6 +213,9 @@
     border-top: 1.5px solid rgb(230, 238, 245);
        
 }
+
+
+
   
 .administracija-box-1-button-b {   
    background-color: rgba(52, 152, 219, 0.9);
@@ -338,6 +349,134 @@
     border-right: 1.5px solid rgb(230, 238, 245);
     border-left: 1.5px solid rgb(230, 238, 245);
   
+}
+
+
+.administracija-box-3-with_bottom {
+    width: 100%;
+    background:  AliceBlue;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+}
+
+.administracija-box-3 {
+    width: 100%;
+    background:  AliceBlue;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+}
+
+.administracija-box-3-with-button{
+    align-Items: 'left';   
+    width: 100%;
+    background:  AliceBlue;
+    padding: 10px;
+    margin-left: 120px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+    
+}
+
+.administracija-box-3-PATIENTS-main {
+    width: 100%;
+    height: auto; 
+    background:  AliceBlue;
+    padding: 10px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    border-bottom: 1.5px solid rgb(230, 238, 245);
+  
+}
+
+.administracija-box-3-PATIENTS-main p {
+   font-size: 1px;
+   padding: 0px;
+  
+}
+
+
+.administracija-box-3-PATIENTS {
+    display: flex;
+    align-items: left;
+    width: 100%;
+    background:  AliceBlue;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+}
+
+.administracija-box-3-PATIENTS-plus {
+    display: flex;
+    align-items: left;
+    width: 100%;
+    background:  AliceBlue;
+    padding: 10px;
+    margin-left: 30px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+}
+
+.administracija-box-3-PATIENTS-flex-container {
+    display: flex;
+    align-items: left;
+    width: 100%;
+    background:  AliceBlue;
+    padding: 10px;
+    margin-left: 0px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+  
+}
+
+.administracija-box-3-PATIENTS-flex-container label{
+    margin-right: 10px;
+    margin-left: 0px;
+}
+
+.administracija-box-3-PATIENTS-flex-container input[type="text"]{
+    margin-right: 10px;
+}
+
+.administracija-box-3-PATIENTS-flex-container option{
+    margin-right: 10px;
+    padding-top: 0px;
+    height: 10px;
+}
+
+.administracija-box-3-PATIENTS-with-button{ 
+    margin-left: 0; 
+    margin-top: 6px;
+    margin-right: 20px;
+    margin-bottom: 0px;  
+}
+
+.administracija-box-3-PATIENTS-button{   
+    background-color: rgba(125, 190, 234, 0.9);
+    border-color: rgba(135, 200, 244, 0.5);
+    border-width: 5px;
+    margin-left: 0px;
+    margin-right: 20px;
+
+    padding-top: 1px;
+    padding-bottom: 1px;
+    
+}
+
+.administracija-box-4-PATIENTS {
+    display: flex;
+    align-items: left;
+    width: 100%;
+    background:  AliceBlue;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 25px;
+    margin-right: 20px;
+    margin-bottom: 0px;
 }
 
 
