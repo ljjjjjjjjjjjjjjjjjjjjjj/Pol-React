@@ -108,9 +108,9 @@ const AddAppointment = () => {
 
 
   const handleEmployeeCategoryChange = (event) => {
-    console.log('handleEmployeeCategoryChange - Event:', event.target.value);
+    console.log('Event (handle):', event.target.value);
     setAppEmployeeCategory("Seimos-medicina"); 
-    console.log("handleEmployeeCategoryChange - Category Selected:", appEmployeeCategory);
+    console.log("Category (handle) Selected:", appEmployeeCategory);
     setCategorySelected(true);
     fetchEmployeeByCategoryData();
 
