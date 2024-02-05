@@ -3,6 +3,8 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
 import EmployeeSelectionRow from '../../methods_and_other/EmployeeSelectionRow.js';
+import HandleEmployeeSelection from '../../methods_and_other/HandleEmployeeSelection.js';
+import HandlePatientSelection from '../../methods_and_other/HandlePatientSelection.js';
 import { useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -33,13 +35,8 @@ const AddAppointment = () => {
   const [appCategory, setAppCategory] = useState("");
   const [appReason, setAppReason] = useState("");
 
-
-  const [appEmployee, setAppEmployee] = useState("");
-  const [appEmployeeCategory, setAppEmployeeCategory] = useState("");
-  const [appSelectedEmployees, setAppSelectedEmployees] = useState( [] );
-
   
-  const [appPatient, setAppPatient] = useState("");
+ 
   
            
 
@@ -94,51 +91,14 @@ const AddAppointment = () => {
 
 
 
-   /*  -----------------   Employees   ------------------*/
-
-   
-
-
-   const [categorySelected, setCategorySelected] = useState(false); 
-
-  useEffect(() => {
-    console.log("Category Selected:", appEmployeeCategory);
-  }, [ appEmployeeCategory]);
-
-
-
-  const handleEmployeeCategoryChange = (event) => {
-    console.log('Event (handle):', event.target.value);
-    setAppEmployeeCategory("Seimos-medicina"); 
-    console.log("Category (handle) Selected:", appEmployeeCategory);
-    setCategorySelected(true);
-    fetchEmployeeByCategoryData();
-
-    
-  };
-
-
-
-  const fetchEmployeeByCategoryData = async () => {
-      
-    try {
-      const url = `http://localhost:8080/employees/get/category/${appEmployeeCategory}`;
-      console.log('Uzklausos url adresas:', url);
-      console.log('Emp kategorija:', appEmployeeCategory);
-      const response = await axios.get(url);
-      const employeeData = response.data;
-      setAppSelectedEmployees(employeeData);
-
-
-      console.log('Response:', response.data);
-    } catch (error) {
-      console.error('Error:', error); 
-    }
-  };
-
-  
+  /*  -----------------   Employees   ------------------*/
 
   /*  -----------------   Employees    ------------------*/
+
+
+  /*  -----------------   Patients   ------------------*/
+
+  /*  -----------------   Patients    ------------------*/
 
 
 
@@ -167,17 +127,15 @@ const AddAppointment = () => {
         appCategory, 
         appReason,
         appDate: `${formattedDate}, ${formattedTime}`,
-        appEmployee,
-        appPatient
         });
 
         console.log('Response:', response.data);
         setSuccessMessage(<div>Rezervacija sėkmingai įvesta: <br /> <br />
                           <strong>Data ir laikas:</strong> &nbsp; {formattedDate} &nbsp; ({formattedTime} val.)<br /> 
                           <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
-                          <strong>Priežastis:</strong> &nbsp; {appReason} <br />
-                          <strong>Gydytojas:</strong> &nbsp; {appEmployee.getEmpName} <br />
-                          <strong>Pacientas:</strong> &nbsp; {appPatient.getPatientName}</div>);
+                          <strong>Priežastis:</strong> &nbsp; uzdeti lauztinius skliaustus: appReason <br />
+                          <strong>Gydytojas:</strong> &nbsp; uzdeti lauztinius skliaustus: appEmployee.getEmpName <br />
+                          <strong>Pacientas:</strong> &nbsp; uzdeti lauztinius skliaustus:  appPatient.getPatientName</div>);
         setErrorMessage('');
         handleReset();
         
@@ -199,9 +157,6 @@ const AddAppointment = () => {
     
     setAppCategory('');
     setAppReason(''); 
-    setAppEmployee('');
-    setAppPatient(''); 
-    
     
   };
 
@@ -223,60 +178,19 @@ const AddAppointment = () => {
             <div>
 
 
-            <form>
-              <label htmlFor="appEmpCategorySelection">Gydytojo kategorija: </label>
-              <select
-                id="appEmpCategorySelection"
-                value={appEmployeeCategory}
-                onChange={(event) => {
-                handleEmployeeCategoryChange(event); 
-                }}
-              >
-                <option value=""> ... </option>
-                <option value="Seimos-medicina">Šeimos medicina</option>
-                <option value="Gydytojai-specialistai">Gydytojas specialistas</option>
-                <option value="Odontologija">Odontologas</option>
-                <option value="Slaugytojos">Tyrimai ir skiepai</option>
-              </select>
-            </form>
+              <div>
+              <HandleEmployeeSelection/>
+              </div>
 
 
-
-            {categorySelected && (
-              <form>
-                <label htmlFor="AppEmployeeSelection">Pasirinkite gydytoją: </label>
-                <select
-                  id="AppEmployeeSelection"
-                  value={appEmployee}
-                  onChange={(p) => setAppEmployee(p.target.value)}
-                >
-                  <option value=""> ... </option>
-                  {appSelectedEmployees.map((employee) => (
-                    <EmployeeSelectionRow key={employee.empID} employee={employee}/>
-                    ))}
-                </select>
-              </form>
-            )}
+              <div>
+              <HandlePatientSelection/>
+              </div>
 
 
-          
-
-
-
-
-            <form>
-              <label htmlFor="patientSelection">Pacientas:</label>
-              <select id="patientSelection" value={appPatient} onChange={(p) => setAppPatient(p.target.value)}>
-                <option value="p1">p1</option>
-                <option value="p2">p2</option>
-                <option value="p3">p3</option>
-              </select>              
-            </form>
 
 
             
-
-
 
 
 
