@@ -73,9 +73,9 @@ const ReadAppointment = () => {
       
       <div className='administracija-list'>
 
-        <table class="table table-hover">
+        <table className="table table-hover">
 
-          <thead class="table-light">
+          <thead className="table-light">
             <tr>
               <th scope='col'>ID</th>
               <th scope='col'>Kategorija</th>

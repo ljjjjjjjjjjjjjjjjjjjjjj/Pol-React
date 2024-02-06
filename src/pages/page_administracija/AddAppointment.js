@@ -22,26 +22,38 @@ import { getDay } from 'date-fns';
 
 const AddAppointment = () => {
 
+  /*  -----------------   Navigate    ------------------*/
   const navigate = useNavigate();
   const navigateToReadAppointment = () => {
-    navigate(`/readappointment`);
-  };
+    navigate(`/readappointment`);};
   
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
-  };
+    navigate(`/administracija`);};
+  /*  -----------------   Navigate    ------------------*/
 
 
+
+
+
+  /*  -----------------   Const setters    ------------------*/
   const [appCategory, setAppCategory] = useState("");
   const [appReason, setAppReason] = useState("");
+  /*  -----------------   Const setters    ------------------*/
+
+
+
 
 
   /*  -----------------   Employee    ------------------*/
   const [appEmployee, setAppEmployee] = useState('');
+  const [empInfo, setEmpInfo] = useState('');
 
-  const handleEmployeeSelect = (employee) => {
+  const handleEmployeeSelect = (employee, info) => {
     setAppEmployee(employee);
+    setEmpInfo(info);
   };
+
+ 
 
   useEffect(() => {
     console.log("useEffect-employee (APP):", appEmployee);
@@ -90,9 +102,6 @@ const AddAppointment = () => {
     return nextWorkingDay;
   };
 
-
- 
-
   const [selectedDate, setSelectedDate] = useState( getInitialDate());
   const [selectedHour, setSelectedHour] = useState(7);
   const [selectedMinute, setSelectedMinute] = useState(0);
@@ -114,16 +123,19 @@ const AddAppointment = () => {
     setSelectedHour(parseInt(selectedHour));
     setSelectedMinute(parseInt(selectedMinute));
   };
+  /*  -----------------   Date    ------------------*/
+
+
 
   
 
 
+  /*  -----------------   Handling    ------------------*/
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
        
   const handleAppointmentEditSubmit = async (event) => {
-      event.preventDefault();
-
+    event.preventDefault();
 
     try {
 
@@ -140,29 +152,30 @@ const AddAppointment = () => {
         : '';
 
 
-      const nameEmp = appEmployee.empName;
-      const namePat = appPatient.patientName;
-      console.log('TEST:', nameEmp);
-      console.log('TEST:', namePat);
+      
+      console.log('TEST:', appEmployee);
+      console.log('TEST:', appPatient);
 
 
-      const response = await axios.post('http://localhost:8080/appointments/add', {
+      const request = await axios.post('http://localhost:8080/appointments/add', {
         appCategory, 
         appReason,
         appDate: `${formattedDate}, ${formattedTime}`,
+        appEmployee,
+        appPatient
       });
 
       
 
 
 
-        console.log('Response:', response.data);
+        console.log('Request:', request.data);
         setSuccessMessage(<div>Rezervacija sėkmingai įvesta: <br /> <br />
                           <strong>Data ir laikas:</strong> &nbsp; {formattedDate} &nbsp; ({formattedTime} val.)<br /> 
                           <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
                           <strong>Priežastis:</strong> &nbsp; {appReason} <br />
-                          <strong>Gydytojas:</strong> &nbsp; {nameEmp} <br />
-                          <strong>Pacientas:</strong> &nbsp; {namePat}</div>);
+                          <strong>Gydytojas:</strong> &nbsp; {appEmployee} <br />
+                          <strong>Pacientas:</strong> &nbsp; {appPatient}</div>);
         setErrorMessage('');
         handleReset();
         
@@ -186,6 +199,10 @@ const AddAppointment = () => {
     setAppReason(''); 
     
   };
+  /*  -----------------   Handling    ------------------*/
+
+
+
 
   
 

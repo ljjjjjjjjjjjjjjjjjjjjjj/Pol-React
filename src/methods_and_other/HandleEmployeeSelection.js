@@ -14,6 +14,8 @@ function HandleEmployeeSelection( { onEmployeeSelect } ) {
   const [appEmployee, setAppEmployee] = useState("");
   const [appEmployeeCategory, setAppEmployeeCategory] = useState("");
   const [appSelectedEmployees, setAppSelectedEmployees] = useState( [] );
+  const [empInfo, setEmpInfo] = useState ("");
+  
 
 
   const [categorySelected, setCategorySelected] = useState(false); 
@@ -50,6 +52,13 @@ function HandleEmployeeSelection( { onEmployeeSelect } ) {
   }, [appEmployee]);
 
 
+  useEffect(() => {
+    console.log("useEffect-INFO APP:", empInfo);
+    if (empInfo == null)
+    {handleEmployeeChange();}
+  }, [empInfo]);
+
+
 
 
   const handleEmployeeCategoryChange = (event) => {
@@ -69,7 +78,14 @@ function HandleEmployeeSelection( { onEmployeeSelect } ) {
     const selectedEmployee = event.target.value;
     setAppEmployee(selectedEmployee);
     console.log("handleEmployeeChange-employee:", selectedEmployee);
-    onEmployeeSelect(selectedEmployee);
+
+    const info = `${selectedEmployee.empName} ${selectedEmployee.empSurname} (${selectedEmployee.jobTitle})`;
+    setEmpInfo(info);
+    console.log("INFO TO BE TRANSFERED:", empInfo );
+
+    onEmployeeSelect(selectedEmployee, empInfo);
+
+    
     
   
   }
