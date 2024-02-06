@@ -22,6 +22,7 @@ const AddPatient = () => {
  
     const [patientName, setPatientName] = useState("");
     const [patientSurname, setPatientSurname] = useState("");
+    const [patientNO, setPatientNO] = useState("");
     const [patientAddress, setPatientAddress] = useState("");
     const [patientPhone, setPatientPhone] = useState("");
     const [patientEmail, setPatientEmail] = useState("");
@@ -38,6 +39,7 @@ const AddPatient = () => {
       const response = await axios.post('http://localhost:8080/patients/add', {
         patientName, 
         patientSurname, 
+        patientNO, 
         patientAddress, 
         patientPhone, 
         patientEmail, 
@@ -62,6 +64,7 @@ const AddPatient = () => {
     
     setPatientName('');
     setPatientSurname('');
+    setPatientNO('');
     setPatientAddress(''); 
     setPatientPhone(''); 
     setPatientEmail(''); 
@@ -73,6 +76,7 @@ const AddPatient = () => {
     
     setPatientName('');
     setPatientSurname('');
+    setPatientNO('');
     setPatientAddress(''); 
     setPatientPhone(''); 
     setPatientEmail(''); 
@@ -120,8 +124,7 @@ const AddPatient = () => {
                 <input 
                 type='text' 
                 value={patientSurname} 
-                onChange={(p) => setPatientSurname(p.target.value)} 
-                
+                onChange={(p) => setPatientSurname(p.target.value)}           
                 />
                 </label>
 
@@ -129,35 +132,43 @@ const AddPatient = () => {
                 <input 
                 type='text' 
                 value={patientAddress} 
-                onChange={(p) => setPatientAddress(p.target.value)} 
-                
+                onChange={(p) => setPatientAddress(p.target.value)}                 
                 />
                 </label>
+
+                <label> No.: 
+                <input 
+                type='text' 
+                value={patientNO} 
+                onChange={(p) => setPatientNO(p.target.value)}                 
+                />
+                <p className='administracija-box-1-comment'> <small>(Numerį gali sudaryti tik skaičiai)</small></p>
+                </label>
+
 
                 <label> Tel. nr: 
                 <input 
                 type='text' 
                 value={patientPhone} 
-                onChange={(p) => setPatientPhone(p.target.value)} 
-                
+                onChange={(p) => setPatientPhone(p.target.value)}                
                 />
                 </label>
+
 
                 <label> E-paštas: 
                 <input 
                 type='text' 
                 value={patientEmail} 
-                onChange={(p) => setPatientEmail(p.target.value)} 
-                
+                onChange={(p) => setPatientEmail(p.target.value)}                 
                 />
                 </label>
+
 
                 <label> Kategorija: 
                 <input 
                 type='text' 
                 value={patientCategory} 
-                onChange={(p) => setPatientCategory(p.target.value)} 
-                
+                onChange={(p) => setPatientCategory(p.target.value)}                 
                 />
                 </label>
 

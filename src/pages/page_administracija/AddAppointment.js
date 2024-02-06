@@ -45,21 +45,21 @@ const AddAppointment = () => {
 
 
   /*  -----------------   Employee    ------------------*/
-  const [appEmployee, setAppEmployee] = useState('');
+  const [appEmployeeID, setAppEmployeeID] = useState('');
   const [empInfo, setEmpInfo] = useState('');
 
   const handleEmployeeSelect = (employee, info) => {
-    setAppEmployee(employee);
+    setAppEmployeeID(employee);
     setEmpInfo(info);
   };
 
  
 
   useEffect(() => {
-    console.log("useEffect-employee (APP):", appEmployee);
-    if (appEmployee == null)
+    console.log("useEffect-employee (APP):", appEmployeeID);
+    if (appEmployeeID == null)
     {handleEmployeeSelect();}
-  }, [appEmployee]);
+  }, [appEmployeeID]);
   /*  -----------------   Employee    ------------------*/
 
   
@@ -68,16 +68,16 @@ const AddAppointment = () => {
 
 
    /*  ------------------   Patient    -------------------*/
-   const [appPatient, setAppPatient] = useState('');
+   const [appPatientID, setAppPatientID] = useState('');
    const handlePatientSelect = (patient) => {
-     setAppPatient(patient);
+     setAppPatientID(patient);
    };
 
    useEffect(() => {
-    console.log("useEffect-patient (APP):", appPatient);
-    if (appPatient == null)
+    console.log("useEffect-patient (APP):", appPatientID);
+    if (appPatientID == null)
     {handlePatientSelect();}
-  }, [appPatient]);
+  }, [appPatientID]);
    /*  ------------------   Patient    -------------------*/
 
 
@@ -139,7 +139,7 @@ const AddAppointment = () => {
 
     try {
 
-      if (!appEmployee || !appPatient) {
+      if (!appEmployeeID || !appPatientID) {
         setErrorMessage('Būtina pasirinkti gydytoją ir pacientą.');
         return;
       }
@@ -153,16 +153,16 @@ const AddAppointment = () => {
 
 
       
-      console.log('TEST:', appEmployee);
-      console.log('TEST:', appPatient);
+      console.log('TEST:', appEmployeeID);
+      console.log('TEST:', appPatientID);
 
 
       const request = await axios.post('http://localhost:8080/appointments/add', {
         appCategory, 
         appReason,
         appDate: `${formattedDate}, ${formattedTime}`,
-        appEmployee,
-        appPatient
+        appEmployeeID,
+        appPatientID
       });
 
       
@@ -174,8 +174,8 @@ const AddAppointment = () => {
                           <strong>Data ir laikas:</strong> &nbsp; {formattedDate} &nbsp; ({formattedTime} val.)<br /> 
                           <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
                           <strong>Priežastis:</strong> &nbsp; {appReason} <br />
-                          <strong>Gydytojas:</strong> &nbsp; {appEmployee} <br />
-                          <strong>Pacientas:</strong> &nbsp; {appPatient}</div>);
+                          <strong>Gydytojas:</strong> &nbsp; {appEmployeeID} <br />
+                          <strong>Pacientas:</strong> &nbsp; {appPatientID}</div>);
         setErrorMessage('');
         handleReset();
         

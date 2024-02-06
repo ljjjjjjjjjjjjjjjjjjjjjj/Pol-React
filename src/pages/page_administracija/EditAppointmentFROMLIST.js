@@ -28,6 +28,35 @@ function EditAppointmentFROMLIST() {
   const [appReason, setAppReason] = useState("");
   const [appDate, setAppDate] = useState("");
 
+
+  /*  -----------------   Employee    ------------------*/
+  const [appEmployeeID, setAppEmployeeID] = useState('');
+  const [appEmployee, setAppEmployee] = useState('');
+  const [empInfo, setEmpInfo] = useState('');
+
+  const handleEmployeeSelect = (employee, info) => {
+    setAppEmployeeID(employee);
+    setEmpInfo(info);
+  };
+
+ 
+  useEffect(() => {
+    console.log("useEffect-employee (APP):", appEmployeeID);
+    if (appEmployeeID == null)
+    {handleEmployeeSelect();}
+  }, [appEmployeeID]);
+  /*  -----------------   Employee    ------------------*/
+
+
+
+
+
+
+
+
+
+
+
   
   /*  -----------------   Date    ------------------*/
   registerLocale('lt', lt); // Register Lithuanian locale
@@ -82,7 +111,7 @@ function EditAppointmentFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/appointments/get/${id}`);
+        const response = await axios.get(`http://localhost:8080/appointments/get/objects${id}`);
         const appointmentData = response.data;
               
         setAppID(appointmentData.appID);

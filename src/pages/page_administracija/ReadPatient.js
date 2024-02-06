@@ -27,11 +27,21 @@ const ReadPatient = () => {
       try {
         const response = await axios.get('http://localhost:8080/patients/get/all');
         
+
         let sortedPatients = response.data;
 
         if (selectedOption) {
-        sortedPatients = sortedPatients.sort((a, b) => a[selectedOption].localeCompare(b[selectedOption]));
+            sortedPatients = sortedPatients.sort((a, b) => {
+                const isNumeric = !isNaN(a[selectedOption]) && !isNaN(b[selectedOption]);
+        
+                if (isNumeric) {
+                    return a[selectedOption] - b[selectedOption]; // number comparison
+                } else {                   
+                    return a[selectedOption].localeCompare(b[selectedOption]);  // String comparison
+                }
+            });
         }
+
         setPatients(sortedPatients);
 
         console.log('Response:', response.data);
@@ -60,9 +70,9 @@ const ReadPatient = () => {
         <label>Pasirinkti filtrą: </label>
         <select value={selectedOption} onChange={handleSelectedOption}>
           <option value="">pasirinkti...</option>
-          <option value="patientID">ID</option>
           <option value="patientName">Vardas</option>
           <option value="patientSurname">Pavardė</option>
+          <option value="patientNO">NO.</option>
         </select>
 
         <input type='button' className="btn btn-secondary administracija-box-1-button-z" 
@@ -76,10 +86,10 @@ const ReadPatient = () => {
         <table className="table table-hover">
 
           <thead className="table-light">
-            <tr>
-              <th scope='col'>ID</th>
+            <tr>              
               <th scope='col'>Vardas</th>
               <th scope='col'>Pavarde</th>
+              <th scope='col'>NO.</th>
               <th scope='col'>Adresas</th>
               <th scope='col'>Tel. nr.</th>
               <th scope='col'>E-pastas</th>

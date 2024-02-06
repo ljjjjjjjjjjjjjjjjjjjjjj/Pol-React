@@ -23,6 +23,7 @@ const EditPatient = () => {
   const [patientID, setPatientID] = useState("");
   const [patientName, setPatientName] = useState("");
   const [patientSurname, setPatientSurname] = useState("");
+  const [patientNO, setPatientNO] = useState("");
   const [patientAddress, setPatientAddress] = useState("");
   const [patientPhone, setPatientPhone] = useState("");
   const [patientEmail, setPatientEmail] = useState("");
@@ -41,6 +42,7 @@ const EditPatient = () => {
 
       setPatientID(patientData.patientID);
       setPatientName(patientData.patientName);
+      setPatientNO(patientData.patientNO);
       setPatientSurname(patientData.patientSurname);
       setPatientAddress(patientData.patientAddress);
       setPatientPhone(patientData.patientPhone);
@@ -66,6 +68,7 @@ const EditPatient = () => {
       patientID,
       patientName, 
       patientSurname, 
+      patientNO,
       patientAddress, 
       patientPhone, 
       patientEmail, 
@@ -90,6 +93,7 @@ const handleReset = () => {
   setSelectedPatientID('');
   setPatientID('');
   setPatientName('');
+  setPatientNO('');
   setPatientSurname('');
   setPatientAddress(''); 
   setPatientPhone(''); 
@@ -166,44 +170,58 @@ const handleReset = () => {
               <input 
               type='text' 
               value={patientSurname} 
-              onChange={(p) => setPatientSurname(p.target.value)} 
-              
+              onChange={(p) => setPatientSurname(p.target.value)}               
               />
               </label>
+
+
+              <label> No.: 
+              <input 
+              type='text' 
+              value={patientNO} 
+              onChange={(p) => setPatientNO(p.target.value)}                 
+              />
+              <p className='administracija-box-1-comment'> <small>(Numerį gali sudaryti tik skaičiai)</small></p>
+              </label>
+
+
+
 
               <label> Adresas: 
               <input 
               type='text' 
               value={patientAddress} 
-              onChange={(p) => setPatientAddress(p.target.value)} 
-              
+              onChange={(p) => setPatientAddress(p.target.value)}              
               />
               </label>
+
+
 
               <label> Tel. nr: 
               <input 
               type='text' 
               value={patientPhone} 
-              onChange={(p) => setPatientPhone(p.target.value)} 
-              
+              onChange={(p) => setPatientPhone(p.target.value)}               
               />
               </label>
+
+
 
               <label> E-paštas: 
               <input 
               type='text' 
               value={patientEmail} 
-              onChange={(p) => setPatientEmail(p.target.value)} 
-              
+              onChange={(p) => setPatientEmail(p.target.value)}               
               />
               </label>
+
+
 
               <label> Kategorija: 
               <input 
               type='text' 
               value={patientCategory} 
-              onChange={(p) => setPatientCategory(p.target.value)} 
-              
+              onChange={(p) => setPatientCategory(p.target.value)}               
               />
               </label>
 

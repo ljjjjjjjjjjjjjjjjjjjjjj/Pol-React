@@ -19,6 +19,7 @@ function DeletePatientFROMLIST() {
   const [patientID, setPatientID] = useState("");
   const [patientName, setPatientName] = useState("");
   const [patientSurname, setPatientSurname] = useState("");
+  const [patientNO, setPatientNO] = useState("");
   const [patientAddress, setPatientAddress] = useState("");
   const [patientPhone, setPatientPhone] = useState("");
   const [patientEmail, setPatientEmail] = useState("");
@@ -41,6 +42,7 @@ function DeletePatientFROMLIST() {
         setPatientID(patientData.patientID);
         setPatientName(patientData.patientName);
         setPatientSurname(patientData.patientSurname);
+        setPatientNO(patientData.patientNO);
         setPatientAddress(patientData.patientAddress);
         setPatientPhone(patientData.patientPhone);
         setPatientEmail(patientData.patientEmail);
@@ -91,6 +93,7 @@ const handleReset = () => {
   setPatientID('');
   setPatientName('');
   setPatientSurname('');
+  setPatientNO('');
   setPatientAddress(''); 
   setPatientPhone(''); 
   setPatientEmail(''); 
@@ -126,6 +129,7 @@ const handleReset = () => {
               <p className='administracija-box-1-product-infolist'>ID: <strong>{patientID}</strong> </p>
               <p className='administracija-box-1-product-infolist'>Vardas: <strong>{patientName}</strong> </p>
               <p className='administracija-box-1-product-infolist'>Pavarde <strong>{patientSurname}</strong> </p>
+              <p className='administracija-box-1-product-infolist'>No.: <strong>{patientNO}</strong> </p>
               <p className='administracija-box-1-product-infolist'>Adresas: <strong>{patientAddress}</strong> </p>
               <p className='administracija-box-1-product-infolist'>Tel nr.: <strong>{patientPhone}</strong> </p>
               <p className='administracija-box-1-product-infolist'>E-pastas: <strong>{patientEmail}</strong> </p>

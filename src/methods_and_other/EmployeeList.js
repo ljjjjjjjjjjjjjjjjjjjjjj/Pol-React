@@ -20,12 +20,13 @@ function EmployeeList({employee}) {
 
         
         <tr>
-          <td> {employee.empID} </td>
           <td> {employee.empName} </td>
           <td> {employee.empSurname} </td>
+          <td> {employee.empNO} </td>
           <td> {employee.empAddress} </td>
           <td> {employee.empPhone} </td>
           <td> {employee.empEmail} </td>
+          <td> {employee.empJobTitle} </td>
           <td> {employee.empCategory} </td>
           <td> {employee.imageUrl} </td>
           <td> 

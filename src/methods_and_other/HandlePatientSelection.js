@@ -10,7 +10,7 @@ import axios from 'axios';
 
 function HandlePatientSelection( { onPatientSelect } ) {
 
-  const [appPatient, setAppPatient] = useState("");
+  const [appPatientID, setAppPatientID] = useState("");
   const [appPatientName, setAppPatientName] = useState("");
   const [appSelectedPatients, setAppSelectedPatients] = useState( [] );
 
@@ -44,10 +44,10 @@ function HandlePatientSelection( { onPatientSelect } ) {
   
 
   useEffect(() => {
-    console.log("useEffect-Patient:", appPatient);
-    if (appPatient == null)
+    console.log("useEffect-Patient:", appPatientID);
+    if (appPatientID == null)
     {handlePatientNameChange();}
-  }, [appPatient]);
+  }, [appPatientID]);
 
 
 
@@ -65,8 +65,8 @@ function HandlePatientSelection( { onPatientSelect } ) {
 
   const handlePatientNameChange = (event) => {
     const selectedPatient = event.target.value;
-    setAppPatient(selectedPatient);
-    console.log("handlePatientNameChange-patient:", appPatient);
+    setAppPatientID(selectedPatient);
+    console.log("handlePatientNameChange-patient:", appPatientID);
     onPatientSelect(selectedPatient); // Send selected employee to parent
     
   
@@ -114,7 +114,7 @@ function HandlePatientSelection( { onPatientSelect } ) {
         <form >
           <label>Pasirinkite pacientą: </label>
           <select
-            value={appPatient}
+            value={appPatientID}
             onChange={(p) => handlePatientNameChange(p)}
           >
             <option value=""> ... </option>
