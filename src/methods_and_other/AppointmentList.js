@@ -25,7 +25,7 @@ function AppointmentList({appointment}) {
           <td> {appointment.appDate} </td>
 
           <td> {appointment.empName} {appointment.empSurname} ({appointment.empJobTitle})</td>
-          <td> {appointment.appPatient} </td>
+          <td> {appointment.patientName} {appointment.patientSurname} ({appointment.patientNO}) </td>
           <td> 
             <div className='patient-list-button-box'>
               <button type="button" className="btn btn-primary patient-list-button-b" onClick={navigateToEditAppointment}>Koreguoti</button>

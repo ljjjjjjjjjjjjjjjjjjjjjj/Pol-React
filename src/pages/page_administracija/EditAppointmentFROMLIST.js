@@ -1,5 +1,9 @@
+
+
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import HandleEmployeeSelectionEDIT from '../../methods_and_other/HandleEmployeeSelectionEDIT.js';
+import HandlePatientSelection from '../../methods_and_other/HandlePatientSelection.js';
 import { useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -13,35 +17,50 @@ import { getDay } from 'date-fns';
 
 
 
-function EditAppointmentFROMLIST() {
+function EditAppointmentFROMLIST(  ) {
 
-  const { id } = useParams();
+  
 
+  /*  -----------------   Navigate    ------------------*/
   const navigate = useNavigate();
   const navigateToReadAppointment = () => {
     navigate(`/readappointment`);
   };
+  /*  -----------------   Navigate    ------------------*/
+
   
   
+  /*  -----------------   Const setters    ------------------*/
+  const { id } = useParams();
   const [appID, setAppID] = useState("");
   const [appCategory, setAppCategory] = useState("");
   const [appReason, setAppReason] = useState("");
-  const [appDate, setAppDate] = useState("");
+  /*  -----------------   Const setters    ------------------*/
+
+
+
 
 
   /*  -----------------   Employee    ------------------*/
   const [appEmployeeID, setAppEmployeeID] = useState('');
-  const [appEmployee, setAppEmployee] = useState('');
-  const [empInfo, setEmpInfo] = useState('');
+  
+
+  const [existingAppEmployeeID, setExistingAppEmployeeID] = useState('');
+  const [existingAppEmployeeName, setExistingAppEmployeeName] = useState('');
+  const [existingAppEmployeeSurname, setExistingAppEmployeeSurname] = useState('');
+  const [existingAppEmployeeJobTitle, setExistingAppEmployeeJobTitle] = useState('');
+  const [existingAppEmployeeCategory, setExistingAppEmployeeCategory] = useState('');
 
   const handleEmployeeSelect = (employee, info) => {
     setAppEmployeeID(employee);
-    setEmpInfo(info);
+    setExistingAppEmployeeName(info.empName);
+    setExistingAppEmployeeSurname(info.empSurname);
+    setExistingAppEmployeeJobTitle(info.empJobTitle);
   };
 
  
   useEffect(() => {
-    console.log("useEffect-employee (APP):", appEmployeeID);
+    console.log("1. EDITAPP - employee useEffect (appEmployee):", appEmployeeID);
     if (appEmployeeID == null)
     {handleEmployeeSelect();}
   }, [appEmployeeID]);
@@ -49,6 +68,31 @@ function EditAppointmentFROMLIST() {
 
 
 
+
+
+  /*  ------------------   Patient    -------------------*/
+  const [appPatientID, setAppPatientID] = useState('');
+  
+
+  const [existingPatientID, setExistingPatientID] = useState('');
+  const [existingPatientName, setExistingPatientName] = useState('');
+  const [existingPatientSurname, setExistingPatientSurname] = useState('');
+  const [existingPatientNO, setExistingPatientNO] = useState('');
+
+
+
+
+
+  const handlePatientSelect = (patient) => {
+    setAppPatientID(patient);
+  };
+
+  useEffect(() => {
+   console.log("1. EDITAPP - patient useEffect (appPatientID):", appPatientID);
+   if (appPatientID == null)
+   {handlePatientSelect();}
+ }, [appPatientID]);
+  /*  ------------------   Patient    -------------------*/
 
 
 
@@ -59,6 +103,7 @@ function EditAppointmentFROMLIST() {
 
   
   /*  -----------------   Date    ------------------*/
+  const [appDate, setAppDate] = useState("");
   registerLocale('lt', lt); // Register Lithuanian locale
   setDefaultLocale('lt'); // Set Lithuanian locale as the default
 
@@ -97,17 +142,18 @@ function EditAppointmentFROMLIST() {
     setSelectedHour(parseInt(selectedHour));
     setSelectedMinute(parseInt(selectedMinute));
   };
-
   /*  -----------------   Date    ------------------*/
 
 
 
+
+
+  /*  -----------------   Handling    ------------------*/
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
 
-  
-  
+
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
@@ -119,6 +165,21 @@ function EditAppointmentFROMLIST() {
         setAppReason(appointmentData.appReason);
         setAppDate(appointmentData.appDate);
 
+        setAppEmployeeID(appointmentData.appEmployeeID);
+        console.info('1. EDITAPP - handleSearchSubmit (appEmployeeID): ', (appointmentData.appEmployeeID));
+
+        setExistingAppEmployeeID(appointmentData.appEmployeeID);
+        setExistingAppEmployeeName(appointmentData.empName);
+        setExistingAppEmployeeSurname(appointmentData.empSurname);
+        setExistingAppEmployeeJobTitle(appointmentData.empJobTitle);
+        setExistingAppEmployeeCategory(appointmentData.empCategory);
+
+        console.info('1. EDITAPP - handleSearchSubmit (appointmentData.empCategory): ', (appointmentData.empCategory), '(ID): ', (appointmentData.appEmployeeID));
+        
+        setExistingPatientID(appointmentData.appPatientID);
+        setAppPatientID(appointmentData.appPatientID);
+        console.info('1. EDITAPP - handleSearchSubmit (appointmentData.appPatientID): ', (appointmentData.appPatientID));
+
         const appDateObj = appointmentData.appDate ? new Date(appointmentData.appDate) : getInitialDate();
 
         setSelectedDate(appDateObj);
@@ -128,9 +189,11 @@ function EditAppointmentFROMLIST() {
                       
         setSuccessMessage('');
         setErrorMessage('');
+
+        
                    
       } catch (error) {
-        console.error('Error:', error);
+        console.error('1. EDITAPP - Error:', error);
         setSuccessMessage('');
         setErrorMessage('Rezervacija su tokiu ID nerasta');
       }
@@ -139,7 +202,10 @@ function EditAppointmentFROMLIST() {
   handleSearchSubmit(); 
   
   
+  
   }, [id] ); // Appointment array - to run once 
+
+  
   
   
 
@@ -149,35 +215,52 @@ function EditAppointmentFROMLIST() {
 
   try {
 
+    if (!appEmployeeID || !appPatientID) {
+      setErrorMessage('Būtina pasirinkti gydytoją ir pacientą.');
+      return;
+    }
+
+
     const formattedDate = selectedDate
-        ? format(selectedDate, 'yyyy/MM/dd')
-        : '';
-      const formattedTime = selectedDate
-        ? `${selectedHour}:${selectedMinute.toString().padStart(2, '0')}`
-        : '';
+      ? format(selectedDate, 'yyyy/MM/dd')
+      : ''
+    ;
+    const formattedTime = selectedDate
+      ? `${selectedHour}:${selectedMinute.toString().padStart(2, '0')}`
+      : ''
+    ;
+
+    console.log('1. EDITAPP - TEST (appEmployeeID):', appEmployeeID);
+    console.log('1. EDITAPP - TEST (appPatientID):', appPatientID);    
 
 
-    const response = await axios.put(`http://localhost:8080/appointments/edit/${id}`, {
+    const request = await axios.put(`http://localhost:8080/appointments/edit/objects${id}`, {
       appID, 
       appCategory, 
       appReason,
-      appDate: `${formattedDate}, ${formattedTime}`
-      });
+      appDate: `${formattedDate}, ${formattedTime}`,
+      appEmployeeID,
+      appPatientID
+    });
 
-      console.log('Response:', response.data);
+
+
+    console.log('1. EDITAPP - Request:', request.data);
       
+    setSuccessMessage(<div>Rezervacija sėkmingai atnaujina: <br /> <br />
+                        <strong>Data ir laikas:</strong> &nbsp; {formattedDate} &nbsp; ({formattedTime} val.)<br /> 
+                        <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
+                        <strong>Priežastis:</strong> &nbsp; {appReason} <br />
+                        <strong>Gydytojas:</strong> &nbsp; {existingAppEmployeeName} {existingAppEmployeeSurname} ({existingAppEmployeeJobTitle})  <br />
+                        <strong>Pacientas:</strong> &nbsp; {appPatientID}</div>);
+    setErrorMessage('');
 
-      setSuccessMessage(<div>Rezervacija sėkmingai atnaujinta: <br /> <br />
-                          <strong>Data ir laikas:</strong> &nbsp; {formattedDate} &nbsp; ({formattedTime} val.)<br /> 
-                          <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
-                          <strong>Priežastis:</strong> &nbsp; {appReason}</div>);
-      setErrorMessage('');
 
-      handleReset();
+    handleReset();
       
           
   } catch (error) {
-      console.error('Error:', error);
+      console.error('1. EDITAPP - Error:', error);
       setSuccessMessage('');
       setErrorMessage('Rezervacija NEBUVO atnaujinta');
     
@@ -185,15 +268,26 @@ function EditAppointmentFROMLIST() {
 };
 
 const handleReset = () => {
+  setSelectedDate( getInitialDate());
+  setSelectedHour(7);
+  setSelectedMinute(0); 
+
   setAppID('');
   setAppCategory('');
   setAppReason('');
 
-  setSelectedDate( getInitialDate());
-  setSelectedHour(7);
-  setSelectedMinute(0); 
+  setAppEmployeeID('');
+  setExistingAppEmployeeID('');
+  setExistingAppEmployeeName('');
+  setExistingAppEmployeeSurname('');
+  setExistingAppEmployeeJobTitle('');
+  setExistingAppEmployeeCategory('');
+
+  setAppPatientID('');
+
   
 };
+/*  -----------------   Handling    ------------------*/
 
 
 
@@ -203,9 +297,9 @@ const handleReset = () => {
  
 
 
-  return (
+return (
 
-  <div className='administracija'>
+<div className='administracija'>
 
   <div className='administracija-box-container'>
 
@@ -213,79 +307,112 @@ const handleReset = () => {
     <h1>Administracija</h1>
     </div>
 
+    <div className='administracija-box-1'>
+      <h3>Rezervacijų sąrašo valdymas - keisti esamos rezervacijos duomenis</h3>                          
+      <p>&ensp;ID:&emsp;&emsp;&emsp; <strong style={{color:'#3883b5'}}>{appID}</strong> </p>
+         
+
+
+      <div className='administracija-box-3-PATIENTS-main'>
+        <h4>1.1. Pasirinkti gydytoją</h4>
+        <h5>Gydytojas: <strong>{existingAppEmployeeName}  {existingAppEmployeeSurname} ({existingAppEmployeeJobTitle})</strong></h5>  
+       
+
+        <HandleEmployeeSelectionEDIT 
+          
+          
+          idInfo={existingAppEmployeeID}
+          nameInfo={existingAppEmployeeName}
+          surnameInfo={existingAppEmployeeSurname}
+          jobTitleInfo={existingAppEmployeeJobTitle}
+          categoryInfo={existingAppEmployeeCategory}
+          onEmployeeSelect={handleEmployeeSelect}
+                   
+        />
+        <p>&nbsp;</p>
+      </div>
+
+
+      <div className='administracija-box-3-PATIENTS-main'>
+        <h4>1.2. Pasirinkti pacientą</h4>
+        <h5>Pacientas: <strong>{existingPatientName}  {existingPatientSurname} ({existingPatientNO})</strong></h5> 
+        <HandlePatientSelection onPatientSelect={handlePatientSelect}/>
+              
+      </div>
+
+
+
+
+
+
+
+
       <div className='administracija-box-1'>
-        <h3>Rezervacijų sąrašo valdymas</h3>                           
-        <h4>3. Keisti esamos rezervacijos duomenis</h4>
-                         
-        <div>
+        <h4>1.3. Kiti duomenys: </h4>
+
+        <div className='administracija-box-3-PATIENTS-plus'>
+
           <form onSubmit={handleAppointmentEditSubmit}>
-               
-            <p>&ensp;ID:&emsp;&emsp;&emsp; <strong style={{color:'#3883b5'}}>{appID}</strong> </p>
-                  
-             
-            <label> Kategorija: 
-                <input 
-                type='text' 
-                value={appCategory} 
-                onChange={(p) => setAppCategory(p.target.value)} 
+            <label> Kategorija (gyvai, telefonu arba ūmus):
+              <input
+                type='text'
+                value={appCategory}
+                onChange={(p) => setAppCategory(p.target.value)}
+              />
+            </label>
+
+                
+            <label> Priežastis (nusiskundimai):
+              <input
+                type='text'
+                value={appReason}
+                onChange={(p) => setAppReason(p.target.value)}
+              />
+            </label>
+
+
+
+            <br></br>
+            <p>Data: &emsp;&emsp;&emsp; <strong style={{color:'#3883b5'}}>{appDate}</strong></p>    
+            <label > Data:
+              <div className='administracija-box-1-datepicker'>
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={handleDateChange}
+                  dateFormat="yyyy/MM/dd"
+                  filterDate={handleDateFilter}
+                            
                 />
-                </label>
-                 
-                 
-
-                <label> Priežastis: 
-                <input 
-                type='text' 
-                value={appReason} 
-                onChange={(p) => setAppReason(p.target.value)} 
-                />
-                </label>
-
-
-
-
-                <br></br> 
-                <label> Data: &emsp;&emsp;&emsp; {appDate} <br></br>
-                  <div className='administracija-box-1-datepicker'>
-                  <br></br>
-                  
-                    <DatePicker
-                      selected={selectedDate}
-                      onChange={handleDateChange}
-                      dateFormat="yyyy/MM/dd"
-                      filterDate={handleDateFilter}
-                     
-                    />
-                    <div className='administracija-box-1'>
-                      <label>Laikas:</label>
-                      <select
-                        onChange={handleTimeChange}
-                        defaultValue={`${selectedHour.toString().padStart(2, '0')}:${selectedMinute.toString().padStart(2, '0')}`}
-                      >
-                        {[...Array(13).keys()].map((hour) => (
-                          [...Array(4).keys()].map((quarter) => {
-                            const time = `${(hour + 7).toString().padStart(2, '0')}:${(quarter * 15).toString().padStart(2, '0')}`;
-                            return (
-                              time <= "19:00" && (
-                                <option key={time} value={time}>
-                                  {time}
-                                </option>
-                              )
-                            );
-                          })
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                </label>
+                <div className='administracija-box-1'>
+                  <label>Laikas:</label>
+                  <select 
+                    onChange={handleTimeChange}
+                    defaultValue={`${selectedHour.toString().padStart(2, '0')}:${selectedMinute.toString().padStart(2, '0')}`}
+                  >
+                    {[...Array(13).keys()].map((hour) => (
+                      [...Array(4).keys()].map((quarter) => {
+                        const time = `${(hour + 7).toString().padStart(2, '0')}:${(quarter * 15).toString().padStart(2, '0')}`;
+                        return (
+                          time <= "19:00" && (
+                            <option key={time} value={time}>
+                              {time}
+                            </option>
+                          )
+                        );
+                      })
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </label>
                          
                     
                          
             <div>
-            <br></br>
-            {successMessage && <div className="success-message">{successMessage}</div>}
-            {errorMessage && <div className="error-message">{errorMessage}</div>}
-            <br></br>
+              <br></br>
+              {successMessage && <div className="success-message">{successMessage}</div>}
+              {errorMessage && <div className="error-message">{errorMessage}</div>}
+              <br></br>
             </div>
              
              
@@ -307,6 +434,7 @@ const handleReset = () => {
             </div>
                    
           </form>
+          </div>
         </div>
       </div>
     </div>

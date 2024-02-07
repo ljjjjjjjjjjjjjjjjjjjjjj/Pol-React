@@ -3,7 +3,7 @@
 import React from 'react';
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
-import HandleEmployeeSelection from '../../methods_and_other/HandleEmployeeSelection.js';
+import HandleEmployeeSelectionNEW from '../../methods_and_other/HandleEmployeeSelectionNEW.js';
 import HandlePatientSelection from '../../methods_and_other/HandlePatientSelection.js';
 import { useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -169,15 +169,15 @@ const AddAppointment = () => {
 
 
 
-        console.log('Request:', request.data);
-        setSuccessMessage(<div>Rezervacija sėkmingai įvesta: <br /> <br />
+      console.log('Request:', request.data);
+      setSuccessMessage(<div>Rezervacija sėkmingai įvesta: <br /> <br />
                           <strong>Data ir laikas:</strong> &nbsp; {formattedDate} &nbsp; ({formattedTime} val.)<br /> 
                           <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
                           <strong>Priežastis:</strong> &nbsp; {appReason} <br />
                           <strong>Gydytojas:</strong> &nbsp; {appEmployeeID} <br />
                           <strong>Pacientas:</strong> &nbsp; {appPatientID}</div>);
-        setErrorMessage('');
-        handleReset();
+      setErrorMessage('');
+      handleReset();
         
         
       
@@ -224,7 +224,7 @@ const AddAppointment = () => {
 
               <div className='administracija-box-3-PATIENTS-main'>
               <h4>1.1. Pasirinkti gydytoją</h4>
-              <HandleEmployeeSelection onEmployeeSelect={handleEmployeeSelect}/>
+              <HandleEmployeeSelectionNEW onEmployeeSelect={handleEmployeeSelect}/>
               <p>&nbsp;</p>
               </div>
 
@@ -255,6 +255,7 @@ const AddAppointment = () => {
                     onChange={(p) => setAppCategory(p.target.value)}
                   />
                 </label>
+
                 <label> Priežastis (nusiskundimai):
                   <input
                     type='text'
@@ -262,6 +263,9 @@ const AddAppointment = () => {
                     onChange={(p) => setAppReason(p.target.value)}
                   />
                 </label>
+
+
+
                 <br></br>
                 <label > Data:
                   <div className='administracija-box-1-datepicker'>
@@ -294,19 +298,28 @@ const AddAppointment = () => {
                     </div>
                   </div>
                 </label>
+
+
+
+
+
                 <div>
                   <br></br>
                   {successMessage && <div className="success-message">{successMessage}</div>}
                   {errorMessage && <div className="error-message">{errorMessage}</div>}
                   <br></br>
                 </div>
+
+
                 <div className='administracija-box-1-button-box-differnet'>
                   <br></br>
                   <input type='submit' className="btn btn-primary administracija-box-1-button-b"
                     value="Išsaugoti" />
+
                   <input type='reset' className="btn btn-secondary administracija-box-1-button-g"
                     value="Išvalyti" onClick={handleReset} />
                 </div>
+
               </form>
               </div>
               </div>

@@ -34,30 +34,37 @@ const SignIn = () => {
       console.log('Email:', email);
       console.log('Password:', password);
       // Add logic to authenticate user with email and password
-    };
+  };
   
-    return (
+
+
+
+
+  return (
+    <div className='administracija'>
+        
+      <h1>Sign In</h1>
+      <br></br>
       <div>
-        <div>Sign in text </div>
-        <div>Sign in text </div>
-        <div>Sign in text </div>
-        <div>Sign in text </div>
 
 
-        <br></br>
-        <h2>Sign In</h2>
-        <br></br>
+      <div className='administracija-signin-box-1'>
 
 
-        <div>
-          <label>Select User Type:</label>
+       <div className='administracija-drop-down'>
+
+          <h1>Pasirinkti vartotojo tipą:</h1>
           <div >
-            <button type="button" onClick={() => handleUserTypeChange('customer')} className={`btn btn-primary ${userType === 'customer' ? 'active' : ''}`}>
-              Customer
+            <button type="button" onClick={() => handleUserTypeChange('customer')} 
+              className={`administracija-signin-box-1-button-larger-b ${userType === 'customer' ? 'active' : ''}`}>
+              Pacientai ir lankytojai
             </button>
 
-            <button type="button" onClick={() => handleUserTypeChange('employee')} className={`btn btn-primary ${userType === 'customer' ? 'active' : ''}`}>
-              Employee
+        
+
+            <button type="button" onClick={() => handleUserTypeChange('employee')} 
+              className={`administracija-signin-box-1-button-g ${userType === 'employee' ? 'active' : ''}`}>
+              Darbuotojai
             </button>
           </div>
           <br></br>
@@ -65,7 +72,7 @@ const SignIn = () => {
 
 
         <form onSubmit={handleSubmit}>
-          <div>
+          <div administracija-box-1-plus>
             <label>Email:</label>
             <input type="email" value={email} onChange={handleEmailChange} required />
           </div>
@@ -76,13 +83,14 @@ const SignIn = () => {
 
           <div>
             <br></br>
-            <button  className="btn btn-primary" type="submit">Sign In</button>
+            <button   type="submit" className={`administracija-signin-box-1-button-smaller-b`}>Sign In</button>
           </div>     
         </form>
+        </div>
 
-        
-      </div>
-    );
+      </div>  
+    </div>
+  );
   };
   
   export default SignIn;

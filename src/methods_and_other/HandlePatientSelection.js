@@ -20,14 +20,14 @@ function HandlePatientSelection( { onPatientSelect } ) {
   const fetchPatientByNameData = async () => {
     try {
       const myUrl = `http://localhost:8080/patients/get/name/${appPatientName}`;
-      console.log('Fetch - patient name:', appPatientName);
+      console.log('3. Handle - Fetch - (appPatientName):', appPatientName);
 
       const response = await axios.get(myUrl);
 
       const patientData = response.data;
       setAppSelectedPatients(patientData);
 
-      console.log('Fetch - patient data:', response.data);
+      console.log('3. Handle - Fetch - patient data (response.data):', response.data);
     } catch (error) {
       console.error('Error:', error);  
     }
@@ -37,14 +37,14 @@ function HandlePatientSelection( { onPatientSelect } ) {
 
 
   useEffect(() => {
-    console.log("useEffect-Name:", appPatientName);
+    console.log("3. Handle - useEffect-Name (appPatientName):", appPatientName);
     if (appPatientName.length > 0)
     {fetchPatientByNameData();}
   }, [appPatientName]);
   
 
   useEffect(() => {
-    console.log("useEffect-Patient:", appPatientID);
+    console.log("3. Handle - useEffect (appPatientID):", appPatientID);
     if (appPatientID == null)
     {handlePatientNameChange();}
   }, [appPatientID]);
@@ -54,7 +54,7 @@ function HandlePatientSelection( { onPatientSelect } ) {
 
 
   const  handlePatientSearchByName = (event) => {
-    console.log("handlePatientSearchByName-Name:", appPatientName);
+    console.log("3. handlePatientSearchByName (appPatientName):", appPatientName);
     setNameSelected(true);
     fetchPatientByNameData();
     
@@ -66,7 +66,8 @@ function HandlePatientSelection( { onPatientSelect } ) {
   const handlePatientNameChange = (event) => {
     const selectedPatient = event.target.value;
     setAppPatientID(selectedPatient);
-    console.log("handlePatientNameChange-patient:", appPatientID);
+    setAppPatientID(selectedPatient);
+    console.log("3. handlePatientNameChange (event.target.value):", appPatientID);
     onPatientSelect(selectedPatient); // Send selected employee to parent
     
   

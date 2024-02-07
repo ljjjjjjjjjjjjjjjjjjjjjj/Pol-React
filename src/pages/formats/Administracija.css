@@ -407,6 +407,18 @@
   
 }
 
+.administracija-box-3-PATIENTS-main h5 {
+    font-size: 15px;
+    color: rgb(77, 77, 82);
+    padding: 0px;
+   
+}
+
+.administracija-box-3-PATIENTS-main strong{   
+    color:#3883b5;  
+   
+}
+
 
 .administracija-box-3-PATIENTS {
     display: flex;
@@ -486,6 +498,178 @@
     margin-left: 25px;
     margin-right: 20px;
     margin-bottom: 0px;
+}
+
+
+
+
+
+.administracija-signin-box-1 { 
+    float: left;
+    width: 100%;
+    height: auto; /* only for demonstration, should be removed */
+    background:  AliceBlue;
+    padding: 10px;
+    margin-left: 0px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    /*border-bottom: 1.5px solid rgb(230, 238, 245);*/
+       
+}
+
+.administracija-signin-box-1 h1{ 
+    color: rgb(73, 80, 83);
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+          
+}
+
+.administracija-signin-box-1 p{ 
+    color: rgb(73, 80, 83);
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+          
+}
+
+.administracija-signin-box-1 label{ 
+    color: rgb(83, 90, 93);
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+          
+}
+
+
+
+
+.administracija-signin-box-button-box-1 { 
+    margin-left: 50px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding-top: 10px;
+       
+}
+
+
+
+.administracija-signin-box-button-box-center { 
+    margin-left: 50px;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    align-items: center;
+    text-align: center;
+    border-top: 1.5px solid rgb(230, 238, 245);
+       
+}
+
+
+
+  
+.administracija-signin-box-1-button-larger-b {   
+     
+    color: #fff;
+    background-color: rgba(30, 190, 237, 0.8);
+    border-radius: 6px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    width: 230px;
+
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    
+
+    margin-right: 10px;
+    margin-left: 10px;
+    
+   
+    border: 1px solid transparent;
+    transition: background-color 0.3s ease; /* Adding a transition for smooth color change */   
+}
+
+
+.administracija-signin-box-1-button-g {   
+    background-color: rgba(192, 200, 206, 0.8);
+    color: #fff;
+    border-radius: 6px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    width: 220px;
+
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+
+    margin-right: 10px;
+    margin-left: 10px;
+    
+   
+    border: 1px solid transparent;
+    transition: background-color 0.3s ease; /* Adding a transition for smooth color change */   
+}
+
+.administracija-signin-box-1-button-smaller-b {   
+     
+    color: #fff;
+    background-color: rgba(30, 190, 237, 0.8);
+    border-radius: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 1rem;
+    line-height: 1.3;
+    
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    
+
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    
+   
+    border: 1px solid transparent;
+    transition: background-color 0.3s ease; /* Adding a transition for smooth color change */   
+}
+      
+
+
+
+.administracija-signin-box-1-button-larger-b:hover {
+    background-color: rgba(25, 180, 227, 1); /* Change background color on hover */
+    font-weight: bold;
+}
+
+.administracija-signin-box-1-button-smaller-b:hover {
+    background-color: rgba(25, 180, 227, 1); /* Change background color on hover */
+    
+}
+
+
+.administracija-signin-box-1-button-g:hover {
+    background-color: rgba(185, 195, 201, 0.9); /* Change background color on hover */
+    font-weight: bold;
 }
 
 

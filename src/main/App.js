@@ -40,7 +40,7 @@ import DeleteAppointment from "../pages/page_administracija/DeleteAppointment";
 import EditAppointmentFROMLIST from "../pages/page_administracija/EditAppointmentFROMLIST";
 import DeleteAppointmentFROMLIST from "../pages/page_administracija/DeleteAppointmentFROMLIST";
 
-
+import PatientPage from "../pages/PatientPage";
 
 
 
@@ -87,6 +87,8 @@ return (
         <Route path="deleteappointment" element={<DeleteAppointment />} />
         <Route path="editappointment/:id" element={<EditAppointmentFROMLIST />} />
         <Route path="deleteappointment/:id" element={<DeleteAppointmentFROMLIST />} />
+
+        <Route path="patientpage/:id" element={<PatientPage />} />
 
         <Route path="*" element={<NoPage />} />
       </Route>
