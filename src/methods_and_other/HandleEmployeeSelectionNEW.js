@@ -8,31 +8,34 @@ import axios from 'axios';
 
 
 
-function HandleEmployeeSelectionNEW( { onEmployeeSelect } ) {
+function HandleEmployeeSelectionNEW( props ) {
 
+  const [appEmployee, setAppEmployee] = useState('');
+  const [appEmployeeID, setAppEmployeeID] = useState('');
+  const [appEmployeeCategory, setAppEmployeeCategory] = useState('');
   
-  const [appEmployee, setAppEmployee] = useState("");
-  const [appEmployeeCategory, setAppEmployeeCategory] = useState("");
-  const [appSelectedEmployees, setAppSelectedEmployees] = useState( [] );
-  const [empInfo, setEmpInfo] = useState ("");
-  
-
 
   const [categorySelected, setCategorySelected] = useState(false); 
 
 
+  const [appSelectedEmployees, setAppSelectedEmployees] = useState( [] );
+  const [empInfo, setEmpInfo] = useState('');
+
+
+  
+
   const fetchEmployeeByCategoryData = async () => {
     try {
       const myUrl = `http://localhost:8080/employees/get/category/${appEmployeeCategory}`;
-      console.log('Emp kategorija:', appEmployeeCategory);
+      console.log('2. HANDLE - fetchEmployeeByCategoryData (appEmployeeCategory):', appEmployeeCategory);
 
       const response = await axios.get(myUrl);
       const employeeData = response.data;
       setAppSelectedEmployees(employeeData);
 
-      console.log('Response:', response.data);
+      console.log('2. HANDLE - fetchEmployeeByCategoryData (Response): ', response.data);
     } catch (error) {
-      console.error('Error:', error); 
+      console.error('2. HANDLE - fetchEmployeeByCategoryData (Error): ', error); 
     }
   };
 
@@ -40,21 +43,21 @@ function HandleEmployeeSelectionNEW( { onEmployeeSelect } ) {
 
 
   useEffect(() => {
-    console.log("useEffect-Category:", appEmployeeCategory);
+    console.log("2. HANDLE - useEffect CAT (appEmployeeCategory):", appEmployeeCategory);
     if (appEmployeeCategory.length > 0)
     {fetchEmployeeByCategoryData();}
   }, [appEmployeeCategory]);
 
   useEffect(() => {
-    console.log("useEffect-Employee:", appEmployee);
-    if (appEmployee == null)
+    console.log("2. HANDLE - useEffect ID  (appEmployeeID): ", appEmployeeID);
+    if (appEmployeeID == null)
     {handleEmployeeChange();}
-  }, [appEmployee]);
+  }, [appEmployeeID]);
 
 
   useEffect(() => {
-    console.log("useEffect-INFO APP:", empInfo);
-    if (empInfo == null)
+    console.log("2. HANDLE - useEffect INFO (empInfo): ", empInfo);
+    if (empInfo == null || undefined)
     {handleEmployeeChange();}
   }, [empInfo]);
 
@@ -63,7 +66,7 @@ function HandleEmployeeSelectionNEW( { onEmployeeSelect } ) {
 
   const handleEmployeeCategoryChange = (event) => {
     const selectedCategory = event.target.value;
-           
+      
     setAppEmployeeCategory(selectedCategory);
     console.log("handleEmployeeCategoryChange-Category:", appEmployeeCategory);
 
@@ -76,17 +79,22 @@ function HandleEmployeeSelectionNEW( { onEmployeeSelect } ) {
 
   const handleEmployeeChange = (event) => {
     const selectedEmployee = event.target.value;
-    setAppEmployee(selectedEmployee);
-    console.log("handleEmployeeChange-employee:", selectedEmployee);
+    setAppEmployeeID(selectedEmployee);
+    console.log("2. HANDLE - handle ID (selectedEmployee): ", selectedEmployee);
+    console.log("2. HANDLE - handle ID (appEmployeeID): ", appEmployeeID);
 
-    const info = `${selectedEmployee.empName} ${selectedEmployee.empSurname} (${selectedEmployee.jobTitle})`;
+    
+    const info = {
+      empName: selectedEmployee.empName,
+      empSurname: selectedEmployee.empSurname,
+      empJobTitle: selectedEmployee.jobTitle
+    };
+
     setEmpInfo(info);
-    console.log("INFO TO BE TRANSFERED:", empInfo );
+    console.log("2. HANDLE - handle INFO (empInfo):", info );
 
-    onEmployeeSelect(selectedEmployee, empInfo);
-
-    
-    
+    props.onEmployeeSelect(selectedEmployee);
+   
   
   }
 
@@ -118,7 +126,7 @@ function HandleEmployeeSelectionNEW( { onEmployeeSelect } ) {
         <form className='administracija-box-3'>
           <label>Pasirinkite gydytoją: </label>
           <select
-            value={appEmployee}
+            value={appEmployeeID}
             onChange={(e) => handleEmployeeChange(e)}
           >
             <option value=""> ... </option>

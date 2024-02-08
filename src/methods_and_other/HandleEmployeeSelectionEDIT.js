@@ -149,6 +149,7 @@ console.log('2. HANDLE - pirminiai duomenys (props.categoryInfo): ',props.catego
             {appSelectedEmployees.map((employee) => (
               <EmployeeSelectionRow key={employee.empID} employee={employee}/>
             ))}
+            
           </select>
         </form>
       

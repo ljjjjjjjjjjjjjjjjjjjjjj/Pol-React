@@ -3,7 +3,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
 import HandleEmployeeSelectionEDIT from '../../methods_and_other/HandleEmployeeSelectionEDIT.js';
-import HandlePatientSelection from '../../methods_and_other/HandlePatientSelection.js';
+import HandlePatientSelectionEDIT from '../../methods_and_other/HandlePatientSelectionEDIT.js';
 import { useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -74,18 +74,22 @@ function EditAppointmentFROMLIST(  ) {
   const [appPatientID, setAppPatientID] = useState('');
   
 
-  const [existingPatientID, setExistingPatientID] = useState('');
-  const [existingPatientName, setExistingPatientName] = useState('');
-  const [existingPatientSurname, setExistingPatientSurname] = useState('');
-  const [existingPatientNO, setExistingPatientNO] = useState('');
+  const [existingAppPatientID, setExistingAppPatientID] = useState('');
+  const [existingAppPatientName, setExistingAppPatientName] = useState('');
+  const [existingAppPatientSurname, setExistingAppPatientSurname] = useState('');
+  const [existingAppPatientNO, setExistingAppPatientNO] = useState('');
 
 
 
 
 
-  const handlePatientSelect = (patient) => {
+  const handlePatientSelect = (patient, infoPatient) => {
     setAppPatientID(patient);
+    setExistingAppPatientName(infoPatient.patientName);
+    setExistingAppPatientSurname(infoPatient.patientSurname);
+    setExistingAppPatientNO(infoPatient.patientNO);
   };
+  
 
   useEffect(() => {
    console.log("1. EDITAPP - patient useEffect (appPatientID):", appPatientID);
@@ -176,8 +180,12 @@ function EditAppointmentFROMLIST(  ) {
 
         console.info('1. EDITAPP - handleSearchSubmit (appointmentData.empCategory): ', (appointmentData.empCategory), '(ID): ', (appointmentData.appEmployeeID));
         
-        setExistingPatientID(appointmentData.appPatientID);
         setAppPatientID(appointmentData.appPatientID);
+        setExistingAppPatientID(appointmentData.appPatientID);
+        setExistingAppPatientName(appointmentData.patientName);
+        setExistingAppPatientSurname(appointmentData.patientSurname);
+        setExistingAppPatientNO(appointmentData.patientNO);
+        
         console.info('1. EDITAPP - handleSearchSubmit (appointmentData.appPatientID): ', (appointmentData.appPatientID));
 
         const appDateObj = appointmentData.appDate ? new Date(appointmentData.appDate) : getInitialDate();
@@ -252,7 +260,7 @@ function EditAppointmentFROMLIST(  ) {
                         <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
                         <strong>Priežastis:</strong> &nbsp; {appReason} <br />
                         <strong>Gydytojas:</strong> &nbsp; {existingAppEmployeeName} {existingAppEmployeeSurname} ({existingAppEmployeeJobTitle})  <br />
-                        <strong>Pacientas:</strong> &nbsp; {appPatientID}</div>);
+                        <strong>Pacientas:</strong> &nbsp; {existingAppPatientName}  {existingAppPatientSurname} ({existingAppPatientNO})</div>);
     setErrorMessage('');
 
 
@@ -284,6 +292,11 @@ const handleReset = () => {
   setExistingAppEmployeeCategory('');
 
   setAppPatientID('');
+  setExistingAppPatientID('');
+  setExistingAppPatientName('');
+  setExistingAppPatientSurname('');
+  setExistingAppPatientNO('');
+ 
 
   
 };
@@ -326,6 +339,7 @@ return (
           surnameInfo={existingAppEmployeeSurname}
           jobTitleInfo={existingAppEmployeeJobTitle}
           categoryInfo={existingAppEmployeeCategory}
+
           onEmployeeSelect={handleEmployeeSelect}
                    
         />
@@ -335,8 +349,15 @@ return (
 
       <div className='administracija-box-3-PATIENTS-main'>
         <h4>1.2. Pasirinkti pacientą</h4>
-        <h5>Pacientas: <strong>{existingPatientName}  {existingPatientSurname} ({existingPatientNO})</strong></h5> 
-        <HandlePatientSelection onPatientSelect={handlePatientSelect}/>
+        <h5>Pacientas: <strong>{existingAppPatientName}  {existingAppPatientSurname} ({existingAppPatientNO})</strong></h5> 
+        <HandlePatientSelectionEDIT 
+        
+          idInfoPatient={existingAppPatientID}
+          nameInfoPatient={existingAppPatientName}
+          surnameInfoPatient={existingAppPatientSurname}
+          noInfoPatient={existingAppPatientNO}
+        
+          onPatientSelect={handlePatientSelect}/>
               
       </div>
 

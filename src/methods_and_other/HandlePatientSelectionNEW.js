@@ -8,7 +8,7 @@ import axios from 'axios';
 
 
 
-function HandlePatientSelection( { onPatientSelect } ) {
+function HandlePatientSelectionNEW( { onPatientSelect } ) {
 
   const [appPatientID, setAppPatientID] = useState("");
   const [appPatientName, setAppPatientName] = useState("");
@@ -147,7 +147,7 @@ function HandlePatientSelection( { onPatientSelect } ) {
   );
 }
 
-export default HandlePatientSelection;
+export default HandlePatientSelectionNEW;
   
   
   
