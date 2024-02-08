@@ -68,6 +68,7 @@ function HandlePatientSelectionNEW( { onPatientSelect } ) {
     setAppPatientID(selectedPatient);
     setAppPatientID(selectedPatient);
     console.log("3. handlePatientNameChange (event.target.value):", appPatientID);
+    
     onPatientSelect(selectedPatient); // Send selected employee to parent
     
   

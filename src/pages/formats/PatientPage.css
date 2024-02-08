@@ -1,0 +1,151 @@
+
+.patientPage {
+    margin: 0 ;
+    padding-left: 0px;
+}
+
+.patientPage h1 {
+  color: rgb(73, 80, 83);
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-right: 10px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.patientPage h3 {
+    color: rgb(73, 80, 83);
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+}
+
+
+.patientPage p {
+    color: rgb(73, 80, 83);
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    
+}
+
+.patientPage strong {
+    color: rgb(73, 80, 83);
+    margin-right: 10px;
+       
+}
+
+
+.patientPage-box-container { 
+    width: 100%; 
+    margin-right: 5px;
+    margin-top: 0px;
+    padding: 0px;
+    background:  AliceBlue;
+    
+}
+
+.patientPage-box-main {
+    float: left;
+    width: 100%;
+    background:  AliceBlue;
+    padding-left: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    
+}
+
+.patientPage-box-1 {
+    float: left;
+    width: 100%;
+    height: auto; /* only for demonstration, should be removed */
+    background:  AliceBlue;
+    padding: 10px;
+    margin-left: 0px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1.5px solid rgb(230, 238, 245);
+  
+}
+
+
+.patientPage-box-1-button-b {   
+    background-color: rgba(52, 152, 219, 0.9);
+    border-color: rgba(62, 162, 229, 0.5);
+    border-width: 1px;
+    margin-top: 20;
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+      
+ }
+ 
+.patientPage-box-1-button-g {   
+     background-color: rgba(187, 195, 201, 0.9);
+      border-color: rgba(197, 205, 211, 0.5);
+      border-width: 1px;
+       
+}
+ 
+.patientPage-box-1-button-z {   
+     background-color: rgba(65, 192, 84, 0.8);
+      border-color: rgba(75, 202, 94, 0.4);
+      border-width: 1px;
+      margin-left: 60%;
+       
+}
+
+.patientPage-box-1-button-box-center { 
+    float: left;
+    width: 100%;
+    background:  AliceBlue;
+    height: 150px;
+    margin-left: 0px;
+    padding-top: 30px;
+    align-items: center;
+    text-align: center;
+    border-top: 1.5px solid rgb(230, 238, 245);
+    margin-bottom: 20px;
+    border-bottom: 1.5px solid rgb(230, 238, 245);
+       
+}
+
+.patientPage-box-1-button-box-left { 
+    float: left;
+    width: 100%;
+    background:  AliceBlue;
+    height: 150px;
+    margin-left: 0px;
+    padding-top: 30px;
+    align-items: left;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    
+       
+}
+
+
+.patientPage-box-2-without-bottom-line {
+    float: left;
+    width: 100%;
+    height: auto; /* only for demonstration, should be removed */
+    background:  AliceBlue;
+    padding: 10px;
+    margin-left: 0px;
+    margin-right: 20px;
+    margin-right: 20px;
+    margin-top: 0px;
+    
+  
+}
+
+
+ 
+ 

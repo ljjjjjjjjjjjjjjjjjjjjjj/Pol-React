@@ -49,6 +49,8 @@ function App() {
 return (
   <BrowserRouter>
     <Routes>
+
+      
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="informacija" element={<Informacija />} />

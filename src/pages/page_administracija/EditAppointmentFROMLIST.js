@@ -17,7 +17,7 @@ import { getDay } from 'date-fns';
 
 
 
-function EditAppointmentFROMLIST(  ) {
+function EditAppointmentFROMLIST() {
 
   
 

@@ -81,7 +81,34 @@ const AddAppointment = () => {
   }, [existingAppEmployeeName]);
 
 
+  const handleGetEmployeeInfo = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8080/employees/get/${appEmployeeID}`);
+      const employeeData = response.data;
+            
 
+      setAppEmployeeID(employeeData.empID);
+      setExistingAppEmployeeName(employeeData.empName);
+      setExistingAppEmployeeSurname(employeeData.empSurname);
+      setExistingAppEmployeeJobTitle(employeeData.empJobTitle);
+    
+      console.info('1. EDITAPP - handleGetEmployeeInfo (appEmployeeID): ', (employeeData.empID));
+      console.info('1. EDITAPP - handleGetEmployeeInfo (employeeData.empName): ', (employeeData.empName));
+      console.info('1. EDITAPP - handleGetEmployeeInfo (employeeData.empSurname): ', (employeeData.empSurname));
+      console.info('1. EDITAPP - handleGetEmployeeInfo (employeeData.empJobTitle): ', (employeeData.empJobTitle));
+
+                    
+      setSuccessMessage('');
+      setErrorMessage('');
+
+      
+                 
+    } catch (error) {
+      console.error('1. EDITAPP - Error:', error);
+      setSuccessMessage('');
+      setErrorMessage('Darbuotojas su tokiu ID nerastas');
+    }
+}
    
   /*  -----------------   Employee    ------------------*/
 
@@ -90,13 +117,15 @@ const AddAppointment = () => {
 
 
 
+
+
+
   /*  ------------------   Patient    -------------------*/
   const [appPatientID, setAppPatientID] = useState('');
 
-  const [existingPatientName, setExistingPatientName] = useState('');
-  const [existingPatientSurname, setExistingPatientSurname] = useState('');
-  const [existingPatientNO, setExistingPatientNO] = useState('');
-
+  const [existingAppPatientName, setExistingAppPatientName] = useState('');
+  const [existingAppPatientSurname, setExistingAppPatientSurname] = useState('');
+  const [existingAppPatientNO, setExistingAppPatientNO] = useState('');
 
 
 
@@ -111,7 +140,42 @@ const AddAppointment = () => {
     {handlePatientSelect();}
   }, [appPatientID]);
 
+
+  useEffect(() => {
+    console.log("1. EDITAPP - patient useEffect (appPatientID) NOT NULL:", appPatientID);
+    if (appPatientID > 0)
+    {handleGetPatientInfo();}
+  }, [appPatientID]);
+
   
+  const handleGetPatientInfo = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8080/patients/get/${appPatientID}`);
+      const patientData = response.data;
+            
+
+      setAppPatientID(patientData.patientID);
+      setExistingAppPatientName(patientData.patientName);
+      setExistingAppPatientSurname(patientData.patientSurname);
+      setExistingAppPatientNO(patientData.patientNO);
+    
+      console.info('1. EDITAPP - handleGetPatientInfo (appPatientID): ', (patientData.patientID));
+      console.info('1. EDITAPP - handleGetPatientInfo (patientData.patientName): ', (patientData.patientName));
+      console.info('1. EDITAPP - handleGetPatientInfo (patientData.patientSurname): ', (patientData.patientSurname));
+      console.info('1. EDITAPP - handleGetPatientInfo (patientData.patientJobTitle): ', (patientData.patientJobTitle));
+
+                    
+      setSuccessMessage('');
+      setErrorMessage('');
+
+      
+                 
+    } catch (error) {
+      console.error('1. EDITAPP - Error:', error);
+      setSuccessMessage('');
+      setErrorMessage('Pacientas su tokiu ID nerastas');
+    }
+}
    /*  ------------------   Patient    -------------------*/
 
 
@@ -170,40 +234,6 @@ const AddAppointment = () => {
 
 
 
-  
-  const handleGetEmployeeInfo = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8080/employees/get/${appEmployeeID}`);
-        const employeeData = response.data;
-              
-
-        setAppEmployeeID(employeeData.empID);
-        setExistingAppEmployeeName(employeeData.empName);
-        setExistingAppEmployeeSurname(employeeData.empSurname);
-        setExistingAppEmployeeJobTitle(employeeData.empJobTitle);
-      
-        console.info('1. EDITAPP - handleGetEmployeeInfo (appEmployeeID): ', (employeeData.empID));
-        console.info('1. EDITAPP - handleGetEmployeeInfo (employeeData.empName): ', (employeeData.empName));
-        console.info('1. EDITAPP - handleGetEmployeeInfo (employeeData.empSurname): ', (employeeData.empSurname));
-        console.info('1. EDITAPP - handleGetEmployeeInfo (employeeData.empJobTitle): ', (employeeData.empJobTitle));
- 
-                      
-        setSuccessMessage('');
-        setErrorMessage('');
-
-        
-                   
-      } catch (error) {
-        console.error('1. EDITAPP - Error:', error);
-        setSuccessMessage('');
-        setErrorMessage('Darbuotojas su tokiu ID nerastas');
-      }
-  }
-  
-  
-  
-  
-
        
   const handleAppointmentEditSubmit = async (event) => {
     event.preventDefault();
@@ -240,8 +270,6 @@ const AddAppointment = () => {
 
 
 
-      
-
 
       console.log('1. EDITAPP - Request:', request.data);
 
@@ -250,7 +278,7 @@ const AddAppointment = () => {
                           <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
                           <strong>Priežastis:</strong> &nbsp; {appReason} <br />
                           <strong>Gydytojas:</strong> &nbsp; {existingAppEmployeeName} {existingAppEmployeeSurname} ({existingAppEmployeeJobTitle}) <br />
-                          <strong>Pacientas:</strong> &nbsp; {appPatientID}</div>);
+                          <strong>Pacientas:</strong> &nbsp; {existingAppPatientName} {existingAppPatientSurname} ({existingAppPatientNO})</div>);
       setErrorMessage('');
 
 
@@ -295,6 +323,7 @@ const AddAppointment = () => {
     setAppReason(''); 
 
     setAppEmployeeID('');
+
     setAppPatientID('');
     
   };
@@ -335,7 +364,9 @@ const AddAppointment = () => {
 
               <div className='administracija-box-3-PATIENTS-main'>
               <h4>1.2. Pasirinkti pacientą</h4>
-              <HandlePatientSelectionNEW onPatientSelect={handlePatientSelect}/>
+              <HandlePatientSelectionNEW 
+              
+                onPatientSelect={handlePatientSelect}/>
               
               </div>
 
