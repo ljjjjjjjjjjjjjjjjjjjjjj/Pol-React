@@ -22,7 +22,7 @@ const Layout = () => {
             <nav className='list'>  
              <ul className='list'>
                <li className='item'>
-                 <Link to="/" className='link'>Home</Link>
+                 <Link to="/" className='link'>Pradžia</Link>
                </li>
                <li className='item'>
                  <Link to="/informacija" className='link'>Informacija</Link>
