@@ -7,16 +7,33 @@ import axios from 'axios';
 
 const PatientPage = () => {
 
-  const { id } = useParams();
+  const { idP } = useParams();
    
 
   const navigate = useNavigate();
+
+
+  /* const navigateToEditPatient = () => {
+      navigate(`/editpatient/${appPatientID}`);};
+  */
+
+  const navigateToReadAppointment = () => {
+    navigate(`readappointmentpatient`);
+  };
+
+
+
+  const navigateToAddAppointment = () => {
+    navigate(`addappointmentpatient`);
+  };
+
   const navigateToHomePage = () => {
     navigate(`/`);
   };
-  const navigateToEditPatient = () => {
-    navigate(`editpatient/${id}`);
-  };
+
+ 
+
+  
  
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -25,7 +42,7 @@ const PatientPage = () => {
 
 
   /*  ------------------   Patient info    -------------------*/
-  const [appPatientID, setAppPatientID] = useState(id);
+  const [patientID, setPatientID] = useState(idP);
   
 
   const [existingPatientID, setExistingPatientID] = useState('');
@@ -39,7 +56,7 @@ const PatientPage = () => {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/patients/get/${id}`);
+        const response = await axios.get(`http://localhost:8080/patients/get/${patientID}`);
         const patientData = response.data;
               
         setExistingPatientName(patientData.patientName);
@@ -77,7 +94,7 @@ const PatientPage = () => {
   return (
 
   <div className='patientPage'>
-   <h1>Patient page ({appPatientID})</h1>
+   <h1>Patient page ({patientID})</h1>
 
     <div className='patientPage-box-container'>
       
@@ -98,12 +115,37 @@ const PatientPage = () => {
           <p> <strong> E-mail: </strong> &nbsp; {existingPatientEmail  } </p> 
   
 
-          <div className='patientPage-box-1-button-box-left'>
-            <input type='button' className="btn btn-secondary patientPage-box-1-button-b" 
-                   value="Koreguoti duomenis" onClick={navigateToEditPatient}/>       
+          <div>
+            <br></br>
+            <p className='patientPage-box-1-comment'> (Dėl savo duomenų koregavimo galite kreiptis į registratūrą) </p>   
           </div>
           
-        </div>        
+        </div>  
+
+
+        <div className='patientPage-box-2-without-bottom-line'> 
+          <p /* ------------------------    4. REZERVACIJOS    ----------------------------    START */> </p>
+          <h3>Rezervacijų sąrašo valdymas</h3>
+                     
+                     
+          <div className='patientPage-box-2items-container'>                
+        
+ 
+            <div className='patientPage-box-2items-items'                      /* READ - P */>                                                                      
+                <button type="button" className="btn btn-primary" onClick={navigateToReadAppointment}>
+                  Mano rezervacijų <br></br> sąrašas</button>                          
+            </div>
+    
+            <div className='patientPage-box-2items-items'                      /* ADD - P */>                                                            
+                <button type="button" className="btn btn-primary" onClick={navigateToAddAppointment}>
+                  Įvesti naują rezervaciją <br></br> </button>                                     
+            </div>
+                         
+            
+   
+            <p /* -------------------------    4. REZERVACIJOS    ------------------------ END */> </p>
+          </div>
+        </div>       
   
   
   

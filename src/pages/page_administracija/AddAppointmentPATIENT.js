@@ -2,11 +2,11 @@
 
 import React from 'react';
 import '../../main/custom-bootstrap.css';
+import '../formats/PatientPage.css';
 import '../formats/Administracija.css';
 import HandleEmployeeSelectionNEW from '../../methods_and_other/HandleEmployeeSelectionNEW.js';
-import HandlePatientSelectionNEW from '../../methods_and_other/HandlePatientSelectionNEW.js';
 import { useState, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -20,16 +20,22 @@ import { getDay } from 'date-fns';
 
 
 
-const AddAppointment = () => {
+const AddAppointmentPATIENT = () => {
+
+  const { idP } = useParams();
+  
 
   /*  -----------------   Navigate    ------------------*/
   const navigate = useNavigate();
-  const navigateToReadAppointment = () => {
-    navigate(`/readappointment`);};
+  const navigateToReadAppointmentPatient = () => {
+    navigate(`/patientpage/${appPatientID}/readappointmentpatient`);};
   
-  const navigateToAdministracija = () => {
-    navigate(`/administracija`);};
+  const navigateToPatientPage = () => {
+    navigate(`/patientpage/${appPatientID}`);};
   /*  -----------------   Navigate    ------------------*/
+
+  
+
 
 
 
@@ -121,61 +127,47 @@ const AddAppointment = () => {
 
 
   /*  ------------------   Patient    -------------------*/
-  const [appPatientID, setAppPatientID] = useState('');
-
+  
+  const [appPatientID] = useState(idP);
   const [existingAppPatientName, setExistingAppPatientName] = useState('');
   const [existingAppPatientSurname, setExistingAppPatientSurname] = useState('');
   const [existingAppPatientNO, setExistingAppPatientNO] = useState('');
 
 
 
-  const handlePatientSelect = (patient) => {
-     setAppPatientID(patient);
-   };
-
-
-   useEffect(() => {
-    console.log("1. EDITAPP - patient useEffect (appPatientID) NULL:", appPatientID);
-    if (appPatientID == null)
-    {handlePatientSelect();}
-  }, [appPatientID]);
-
-
   useEffect(() => {
-    console.log("1. EDITAPP - patient useEffect (appPatientID) NOT NULL:", appPatientID);
-    if (appPatientID > 0)
-    {handleGetPatientInfo();}
+    const handleGetPatientInfo = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/patients/get/${appPatientID}`);
+        const patientData = response.data;
+              
+  
+        setExistingAppPatientName(patientData.patientName);
+        setExistingAppPatientSurname(patientData.patientSurname);
+        setExistingAppPatientNO(patientData.patientNO);
+      
+        console.info('1. EDITAPP - handleGetPatientInfo (appPatientID): ', (appPatientID));
+        console.info('1. EDITAPP - handleGetPatientInfo (patientData.patientName): ', (patientData.patientName));
+        console.info('1. EDITAPP - handleGetPatientInfo (patientData.patientSurname): ', (patientData.patientSurname));
+        console.info('1. EDITAPP - handleGetPatientInfo (patientData.patientNO): ', (patientData.patientNO));
+  
+                      
+        setSuccessMessage('');
+        setErrorMessage('');
+  
+        
+                   
+      } catch (error) {
+        console.error('1. EDITAPP - Error:', error);
+        setSuccessMessage('');
+        setErrorMessage('Pacientas su tokiu ID nerastas');
+      }
+    };
+
+    handleGetPatientInfo();
+
   }, [appPatientID]);
 
-  
-  const handleGetPatientInfo = async () => {
-    try {
-      const response = await axios.get(`http://localhost:8080/patients/get/${appPatientID}`);
-      const patientData = response.data;
-            
-
-      setAppPatientID(patientData.patientID);
-      setExistingAppPatientName(patientData.patientName);
-      setExistingAppPatientSurname(patientData.patientSurname);
-      setExistingAppPatientNO(patientData.patientNO);
-    
-      console.info('1. EDITAPP - handleGetPatientInfo (appPatientID): ', (patientData.patientID));
-      console.info('1. EDITAPP - handleGetPatientInfo (patientData.patientName): ', (patientData.patientName));
-      console.info('1. EDITAPP - handleGetPatientInfo (patientData.patientSurname): ', (patientData.patientSurname));
-      console.info('1. EDITAPP - handleGetPatientInfo (patientData.patientNO): ', (patientData.patientNO));
-
-                    
-      setSuccessMessage('');
-      setErrorMessage('');
-
-      
-                 
-    } catch (error) {
-      console.error('1. EDITAPP - Error:', error);
-      setSuccessMessage('');
-      setErrorMessage('Pacientas su tokiu ID nerastas');
-    }
-}
    /*  ------------------   Patient    -------------------*/
 
 
@@ -233,6 +225,10 @@ const AddAppointment = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
 
+  const [buttonBoxSave, setButtonBoxSave] = useState(true);
+  const [buttonBoxNew, setButtonBoxNew] = useState(false);
+
+
 
        
   const handleAppointmentEditSubmit = async (event) => {
@@ -241,7 +237,7 @@ const AddAppointment = () => {
     try {
 
       if (!appEmployeeID || !appPatientID) {
-        setErrorMessage('Būtina pasirinkti gydytoją ir pacientą.');
+        setErrorMessage('Būtina pasirinkti gydytoją.');
         return;
       }
 
@@ -284,6 +280,9 @@ const AddAppointment = () => {
 
       handlePartReset()
 
+      setButtonBoxNew(true)
+      setButtonBoxSave(false)
+
  
       
     } catch (error) {
@@ -293,6 +292,8 @@ const AddAppointment = () => {
       
     }
   };
+
+  
 
   const handleReset = () => {
     setSelectedDate( getInitialDate());
@@ -308,7 +309,11 @@ const AddAppointment = () => {
     setExistingAppEmployeeSurname('');
     setExistingAppEmployeeJobTitle('');
 
-    setAppPatientID('');
+    setExistingAppPatientName('');
+    setExistingAppPatientSurname('');
+    setExistingAppPatientNO('');
+
+    
     
   };
 
@@ -324,7 +329,7 @@ const AddAppointment = () => {
 
     setAppEmployeeID('');
 
-    setAppPatientID('');
+   
     
   };
   /*  -----------------   Handling    ------------------*/
@@ -338,18 +343,18 @@ const AddAppointment = () => {
     
    
   return (
-    <div className='administracija'>
-      <div className='administracija-box-container'>
+    <div className='patientPage'>
+      <div className='patientPage'>
         <div>
-          <h1>Administracija</h1>
+          <h1>Rezervacijos</h1>
         </div>
         <div className='administracija-box-1'>
-          <h3>Rezervacijų sąrašo valdymas - naujos rezervacijos įvedimas</h3>
+          <h3>Naujos rezervacijos įvedimas</h3>
           <div>
             
             <div>
 
-
+              {buttonBoxSave && (
               <div className='administracija-box-3-PATIENTS-main'>
               <h4>1.1. Pasirinkti gydytoją</h4>
               <HandleEmployeeSelectionNEW 
@@ -360,23 +365,13 @@ const AddAppointment = () => {
               />
               <p>&nbsp;</p>
               </div>
+              )}
 
 
-              <div className='administracija-box-3-PATIENTS-main'>
-              <h4>1.2. Pasirinkti pacientą</h4>
-              <HandlePatientSelectionNEW 
-              
-                onPatientSelect={handlePatientSelect}/>
-              
-              </div>
+                         
 
 
-
-
-            
-
-
-
+              {buttonBoxSave && (
               <div className='administracija-box-1'>
               <h4>1.3. Kiti duomenys: </h4>
 
@@ -438,14 +433,7 @@ const AddAppointment = () => {
 
 
 
-                <div>
-                  <br></br>
-                  {successMessage && <div className="success-message">{successMessage}</div>}
-                  {errorMessage && <div className="error-message">{errorMessage}</div>}
-                  <br></br>
-                </div>
-
-
+                
                 <div className='administracija-box-1-button-box-differnet'>
                   <br></br>
                   <input type='submit' className="btn btn-primary administracija-box-1-button-b"
@@ -454,20 +442,63 @@ const AddAppointment = () => {
                   <input type='reset' className="btn btn-secondary administracija-box-1-button-g"
                     value="Išvalyti" onClick={handleReset} />
                 </div>
+                
 
               </form>
               </div>
               </div>
+              )}
+
+                <div className='patientPage-box-1'>
+                  <br></br>
+                  {successMessage && <div className="success-message">{successMessage}</div>}
+                  {errorMessage && <div className="error-message">{errorMessage}</div>}
+                  <br></br>
+                </div>
+
+
+
+
+
+              {buttonBoxNew && (
+              <div className='administracija-box-1'>
+                <div className='administracija-box-1-button-box-center'>
+                    <br></br>
+                    <input type='button' className="btn btn-primary administracija-box-1-button-z"
+                      value="Įvesti dar vieną rezervaciją" onClick={() => {
+                        setButtonBoxSave(true);
+                        setButtonBoxNew(false);
+                        setSuccessMessage('');
+                    }}/>
+  
+                    
+                </div>
+              </div>
+              )}
+
+
+
+
+
+
+
+
+
+
+
+
               <div className='administracija-box-1'>
                 <div className='administracija-box-1-button-box-center'>
                   <input type='button' className="btn btn-secondary administracija-box-1-button-b"
-                    value="&#9665; Rezervacijų sąrašas" onClick={navigateToReadAppointment} />
+                    value="&#9665; Rezervacijų sąrašas" onClick={navigateToReadAppointmentPatient} />
                   <br></br>
                   <br></br>
                   <input type='button' className="btn btn-secondary administracija-box-1-button-b"
-                    value=" &#9665; Administracija " onClick={navigateToAdministracija} />
+                    value=" &#9665; Mano puslapis " onClick={navigateToPatientPage} />
                 </div>
               </div>
+
+
             </div>
           </div>
         </div>
@@ -476,8 +507,6 @@ const AddAppointment = () => {
   );
 };
 
-export default AddAppointment;
-
-
+export default AddAppointmentPATIENT;
 
 

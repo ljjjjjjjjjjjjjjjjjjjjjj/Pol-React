@@ -41,6 +41,11 @@ import EditAppointmentFROMLIST from "../pages/page_administracija/EditAppointmen
 import DeleteAppointmentFROMLIST from "../pages/page_administracija/DeleteAppointmentFROMLIST";
 
 import PatientPage from "../pages/PatientPage";
+import ReadAppointmentPATIENT from "../pages/page_administracija/ReadAppointmentPATIENT";
+import AddAppointmentPATIENT from "../pages/page_administracija/AddAppointmentPATIENT";
+import EDIT_APPOINTMENT_FROMLIST_PATIENT from "../pages/page_administracija/EDIT_APPOINTMENT_FROMLIST_PATIENT";
+import DELETE_APPOINTMENT_FROMLIST_PATIENT from "../pages/page_administracija/DELETE_APPOINTMENT_FROMLIST_PATIENT";
+
 
 
 
@@ -90,7 +95,11 @@ return (
         <Route path="editappointment/:id" element={<EditAppointmentFROMLIST />} />
         <Route path="deleteappointment/:id" element={<DeleteAppointmentFROMLIST />} />
 
-        <Route path="patientpage/:id" element={<PatientPage />} />
+        <Route path="patientpage/:idP" element={<PatientPage />} />
+        <Route path="patientpage/:idP/readappointmentpatient" element={<ReadAppointmentPATIENT />} />
+        <Route path="patientpage/:idP/addappointmentpatient" element={<AddAppointmentPATIENT />} />
+        <Route path="patientpage/:idP/editappointmentpatient/:idA" element={<EDIT_APPOINTMENT_FROMLIST_PATIENT />} />
+        <Route path="patientpage/:idP/deleteappointmentpatient/:idA" element={<DELETE_APPOINTMENT_FROMLIST_PATIENT />} />
 
         <Route path="*" element={<NoPage />} />
       </Route>

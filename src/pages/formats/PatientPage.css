@@ -75,6 +75,30 @@
 }
 
 
+.patientPage-box-1 strong{   
+    color:#3883b5;  
+   
+}
+
+.patientPage-box-1 h5 {
+    font-size: 15px;
+    color: rgb(77, 77, 82);
+    padding: 0px;
+   
+}
+
+
+.patientPage-box-1-comment {
+    margin-left: 48px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    opacity: 0.5;
+    font-size: 14px;
+  
+}
+
+
 .patientPage-box-1-button-b {   
     background-color: rgba(52, 152, 219, 0.9);
     border-color: rgba(62, 162, 229, 0.5);
@@ -101,12 +125,14 @@
        
 }
 
+
 .patientPage-box-1-button-box-center { 
     float: left;
     width: 100%;
     background:  AliceBlue;
     height: 150px;
     margin-left: 0px;
+    margin-right: 20px;
     padding-top: 30px;
     align-items: center;
     text-align: center;
@@ -140,11 +166,84 @@
     padding: 10px;
     margin-left: 0px;
     margin-right: 20px;
-    margin-right: 20px;
     margin-top: 0px;
     
   
 }
+
+.patientPage-box-2-without-bottom-line-nomargins {
+    float: left;
+    width: 100%;
+    height: auto; /* only for demonstration, should be removed */
+    background:  AliceBlue;
+    margin-left: 0px;
+    margin-right: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    
+  
+}
+
+.patientPage-box-2-button-box-center { 
+    margin-left: 50px;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    align-items: center;
+    text-align: center;
+   
+       
+}
+
+
+
+.patientPage-box-2items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 90%;
+    background:  AliceBlue;
+    padding-left: 10px;
+    margin-right: 20px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    
+}
+
+
+.patientPage-box-2items-items {
+    box-sizing: border-box;
+    flex-basis: calc(50% - 25px); 
+    height: 150px;
+    background:  AliceBlue;
+    padding: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+   
+  
+}
+
+.patientPage-box-2items-items button {   
+    background-color: rgba(49, 165, 238, 0.6);
+    border-color: AliceBlue;
+
+    height: 80%;
+    width: 90%;
+    border-width: 1px;
+    margin-left: 10px;
+
+    color: rgb(255,245,238);
+    font-weight: bold;
+
+    /*font-size: 15px;*/
+    /*font-weight: bold;*/
+    /*color: rgb(70,130,180);*/
+    font-family: 'Montserrat', sans-serif;
+      
+ }
+
 
 
  
