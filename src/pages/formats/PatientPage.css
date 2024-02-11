@@ -161,7 +161,7 @@
 .patientPage-box-2-without-bottom-line {
     float: left;
     width: 100%;
-    height: auto; /* only for demonstration, should be removed */
+    height: auto;
     background:  AliceBlue;
     padding: 10px;
     margin-left: 0px;

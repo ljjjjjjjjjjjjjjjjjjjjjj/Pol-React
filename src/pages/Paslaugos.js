@@ -148,10 +148,33 @@ const Products = () => {
            <button type="button" className="btn btn-primary" onClick={navigateToSignIn}>Registruotis internetu</button>
            </div>
 
-           <div className='box-2-content'>
-           <h4>&nbsp;&nbsp;&nbsp;Kita:</h4>
-           <p></p>
-           </div>
+           
+      </div>
+
+      <div>
+        <div className='paslaugos-box-3-header'>
+           <h3>&ensp;Paslaugų kokybė </h3>
+        </div>
+        <div className='paslaugos-box-3-content'>
+          <h5>Mūsų klinikoje aukštą paslaugų kokybę užtikrina ne tik personalo kompetencija ir plati patirtis,
+           bet ir taikomos naujausios technologijos.
+          </h5>
+          <p></p>
+
+
+          <div className='home-imagecontainer-cover'>
+           <img className='home-imagecontainer-cover-image' src="./images/technology-1.jpg" alt={"technology"} /> 
+          </div> 
+
+          <h5>Jūsu sveikata rūpintis padeda atnaujinta tyrimų laboratorija, moderni oftalmologų diagnostikos, 
+            bei echoskopijos tyrimų įranga, ir įdiegtos naujausios odontologijos technologijos.
+            <br></br>&ensp;
+            <br></br>&ensp;
+          </h5>
+
+ 
+        </div>
+           
       </div>
 
 
