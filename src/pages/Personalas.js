@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import EmployeeCard from '../methods_and_other/EmployeeCard';
 import './formats/App.css';
+import './formats/Personalas.css';
 import '../main/custom-bootstrap.css';
 
 
@@ -35,29 +36,41 @@ const Employees = () => {
 
 
   return (
-    <div className='app'>
+    <div className='personalas'>
 
       <div>   
-           <p>My Page</p>
-           <br></br>
-           <p>TBD</p>
-           <br></br>
-           <p>TBD</p>
-           <br></br>
-           <p>TBD</p>
+           <h1>Personalas</h1>         
       </div>
 
-      <br></br>
+       
+
+      <div className='home-imagecontainer-cover'>
+         <img className='home-imagecontainer-cover-image' 
+              src="./images/healthcare-doctors2052.jpeg" 
+              alt={"healthcare"} /> 
+      </div> 
+
 
       <div>
-      <br></br>
-      <h1>Employee data</h1>
-      <br></br>
-      <div className='employee-list'>
-       {employees.map( employee => (
-          <EmployeeCard key={employee.empID} employee={employee} />
-       ))}
+        <p>&ensp;</p>
+        <h3>Poliklinikoje dirba kvalifikuoti šeimos gydytojai, slaugytojos, akušerės, gydytojai specialistai, bei odontologai:</h3>
+        <p>&ensp;</p>
       </div>
+          
+          
+          
+     
+
+      
+
+      <div className='personalas-emp-card-container'>
+      
+        
+       
+         {employees.map( employee => (
+            <EmployeeCard key={employee.empID} employee={employee} />
+         ))}
+        
       </div>
 
     </div>

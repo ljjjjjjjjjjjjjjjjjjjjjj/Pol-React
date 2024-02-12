@@ -53,26 +53,53 @@ const Layout = () => {
 
           <div className='content-container-left'>
             <div className='header-zone'>   
-              <p>&nbsp;</p>  
+              <p>&ensp;</p>  
             </div>
                       
-            <div>     
-              <p>text1</p>
-              <p>text2</p>
-              <p>text3</p>
-              <p>text4</p>
-              <p>text5</p>
-              <p>text6</p>
-              <p>text7</p>
-              <p>text8</p>
-              <p>text9</p>
+            <div className='content-bottomleft'> 
+              <p className='content-bottomleft'>
+                <br></br>
+                <strong> &emsp;&ensp;Registruotis tel.:</strong> 
+                <br></br>
+                &ensp;<strong className='blue-icon' >&#128381;</strong>  +370 643 12345
+                <br></br>
+                &ensp;
+              </p> 
+                 
+            
+              <p className='content-bottomleft'>
+                <strong> &emsp;&ensp;Registruotis </strong>
+                <br></br>
+                &#127760; 
+                <Link to="/signin" type="button" className='link-login'>  Internetu </Link>                
+              </p>
+              <p> &emsp;</p>
             </div>
+
+
+            <div className='content-bottomleft' >                 
+              <h5 className='content-bottomleft'>
+                <strong> Naujienos ir naudingos nuorodos:</strong>
+              </h5>
+
+              <div className='content-bottomleft-image-box' > 
+                <img className='content-bottomleft-images' 
+                  src="./images/random-news-1.jpg" 
+                  alt={"healthcare"} /> 
+                <h6>&emsp;</h6> 
+                <img className='content-bottomleft-images' 
+                  src="./images/random-news-2.jpg" 
+                  alt={"healthcare"} />  
+              </div> 
+            </div>
+              
+            
                        
           </div>
                    
           <div className='content-container-right'>
             <div className='header-zone'>   
-              <p>&nbsp;</p>  
+              <p>&ensp;</p>  
             </div>
           <Outlet />
           </div>

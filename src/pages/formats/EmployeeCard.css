@@ -1,6 +1,6 @@
 .employee-card {
     height: auto;
-    width: calc(25% - 32px); /*  32px for border and margin combined */
+    width: calc(20% - 32px); /*  32px for border and margin combined */
     border: 1px solid #e0e0e0; /* border replaces margin */
     border-radius: 8px; /* apvalinti kampai */
     overflow: hidden; /* užtikrina, kad viskas liktų kortelės ribose */

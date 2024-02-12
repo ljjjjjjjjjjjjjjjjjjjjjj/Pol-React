@@ -212,6 +212,70 @@ header {
   margin-left: 20%;
   margin-bottom: 20px;
 }
+
+.content-bottomleft  {
+ background-color: aliceblue ;
+ margin-right: 0px;
+ padding-right: 0px;
+  
+}
+
+.content-bottomleft p {
+  margin-left: 5%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: rgb(95, 103, 106);
+  font-size: 17px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  
+}
+
+.content-bottomleft h5 {
+  margin-left: 5%;
+  color: rgb(95, 103, 106);
+  font-size: 17px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  
+  
+}
+
+.content-bottomleft h6 {
+  margin-left: 5%;
+  color: rgb(95, 103, 106);
+  font-size: 17px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 10px;
+  
+  
+  
+}
+
+.content-bottomleft link {
+  color: rgb(93, 142, 160);
+  
+}
+
+.content-bottomleft-image-box {
+  margin-left: 5%;
+  width: 95%;
+  height: auto;
+  text-align: left;
+}
+
+.content-bottomleft-images {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 6px;
+  
+}
   
 
 
@@ -240,6 +304,11 @@ header {
   margin-top: 2px; /* Reset margin */
   margin-bottom: 0; /* Reset margin */
 
+}
+
+.blue-icon {
+  color:rgb(49, 171, 215); 
+  font-weight: bold;
 }
     
 

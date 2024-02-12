@@ -1,4 +1,5 @@
 import config from '../main/config.js';
+import '../pages/formats/Personalas.css';
 import '../pages/formats/EmployeeCard.css';
 
 function EmployeeCard({employee}) {
@@ -8,7 +9,7 @@ function EmployeeCard({employee}) {
         <div className='employee-card'>
           <img src={ config + employee.imageUrl} alt={employee.empName} />
           <h3> {employee.empName}&nbsp;{employee.empSurname}</h3>
-          <p> {employee.empCategory}</p>
+          <p> {employee.empJobTitle}</p>
         </div>
       );
     }
