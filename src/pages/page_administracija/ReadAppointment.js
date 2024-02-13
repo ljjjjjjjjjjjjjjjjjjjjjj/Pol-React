@@ -25,7 +25,7 @@ const ReadAppointment = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/appointments/get/all-objects');
+        const response = await axios.get('http://localhost:8080/logged/appointments/get/all-objects');
         
         let sortedAppointments = response.data;
 

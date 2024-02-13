@@ -2,27 +2,8 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import './formats/Paslaugos.css';
 import '../main/custom-bootstrap.css';
-
-
-
-const fetchData = () => {                                 // function    =   () => {}    
-  return fetch( "http://localhost:8080/medical-products/get/all" );  
-}                                                         // fetch irgi yra Promise
-
-
-// const fetchProductByID = (productId) => {
-//   return fetch(`http://localhost:8080/medical-products/get/${productId}`);
-// };
-
-// fetchProductByID()
-// .then((response) => response.json())
-// .then((json) => setSelectedProduct(json))
-// .catch((e) => console.error(e));
-
-
 
 
 
@@ -30,7 +11,7 @@ const fetchData = () => {                                 // function    =   () 
 const Products = () => {
 
      
-  const [products, setProducts] = useState( [] );
+  
   const navigate = useNavigate();
 
 
@@ -38,18 +19,6 @@ const Products = () => {
     navigate('/signin');
   };
 
-  
-
-  useEffect( () => {
-  
-      fetchData()
-      .then( response => response.json())
-      .then( json => setProducts( json ))
-      .catch( e => console.error (e))
-      
-      console.log("Promisas paleistas");
-    
-    } , [] );
 
 
 
@@ -187,24 +156,3 @@ const Products = () => {
   
   export default Products;
 
-
-  // div className='product-category'>
-  // <h3>Gydytojai specialistai:</h3>
-  // {products
-  //  .filter((product) => ["Seimos medicina ir slauga"].includes(product.productCategory))
-  //  .map((product) => (
-  //    <ProductCard key={product.Category} product={product} />
-  //  ))}
-  // </div>
-
-
-  // <div>
-  //       <br></br>
-  //       <h1>Products data</h1>
-  //       <br></br>
-  //       <div>
-  //        {products.map( product => (
-  //           <ProductCard key={product.productID} product={product} />
-  //        ))}
-  //       </div>
-  //     </div>

@@ -36,7 +36,7 @@ const AddPatient = () => {
 
 
     try {
-      const response = await axios.post('http://localhost:8080/patients/add', {
+      const response = await axios.post('http://localhost:8080/logged/patients/add', {
         patientName, 
         patientSurname, 
         patientNO, 

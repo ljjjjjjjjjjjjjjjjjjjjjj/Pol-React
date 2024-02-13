@@ -34,7 +34,7 @@ function EditPatientFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/patients/get/${id}`);
+        const response = await axios.get(`http://localhost:8080/logged/patients/get/${id}`);
         const patientData = response.data;
               
         setPatientID(patientData.patientID);
@@ -68,7 +68,7 @@ function EditPatientFROMLIST() {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/patients/edit/${id}`, {
+    const response = await axios.put(`http://localhost:8080/logged/patients/edit/${id}`, {
       patientID, 
       patientName, 
       patientSurname, 

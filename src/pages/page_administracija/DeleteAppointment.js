@@ -39,7 +39,7 @@ const DeleteAppointment = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/appointments/get/${selectedAppID}`);
+      const response = await axios.get(`http://localhost:8080/logged/appointments/get/${selectedAppID}`);
       const appData = response.data;
 
       setAppID(appData.appID);
@@ -74,7 +74,7 @@ const DeleteAppointment = () => {
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/appointments/delete/${selectedAppID}`);
+    const response = await axios.delete(`http://localhost:8080/logged/appointments/delete/${selectedAppID}`);
 
       console.log('Response:', response.data);
       setSuccessMessage('Rezervacija sėkmingai ištrinta');

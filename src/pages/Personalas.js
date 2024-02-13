@@ -10,9 +10,9 @@ import '../main/custom-bootstrap.css';
 
 
 
-const fetchData = () => {                                 // function    =   () => {}    
-  return fetch( "http://localhost:8080/employees/get/all" );  
-}                                                         // fetch irgi yra Promise
+const fetchData = () => {                                 
+  return fetch( "http://localhost:8080/public/employees/get/all" );  
+}                                                      
 
 
 

@@ -8,7 +8,7 @@ function EmployeeCard({employee}) {
       return (
         <div className='employee-card'>
           <img src={ config + employee.imageUrl} alt={employee.empName} />
-          <h3> {employee.empName}&nbsp;{employee.empSurname}</h3>
+          <h3 > {employee.empName}&nbsp;{employee.empSurname}</h3>
           <p> {employee.empJobTitle}</p>
         </div>
       );

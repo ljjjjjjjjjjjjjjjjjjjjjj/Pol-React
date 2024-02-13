@@ -56,7 +56,7 @@ const PatientPage = () => {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/patients/get/${patientID}`);
+        const response = await axios.get(`http://localhost:8080/logged/patients/get/${patientID}`);
         const patientData = response.data;
               
         setExistingPatientName(patientData.patientName);

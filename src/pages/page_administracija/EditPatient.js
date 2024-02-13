@@ -37,7 +37,7 @@ const EditPatient = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/patients/get/${selectedPatientID}`);
+      const response = await axios.get(`http://localhost:8080/logged/patients/get/${selectedPatientID}`);
       const patientData = response.data;
 
       setPatientID(patientData.patientID);
@@ -64,7 +64,7 @@ const EditPatient = () => {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/patients/edit/${selectedPatientID}`, {
+    const response = await axios.put(`http://localhost:8080/logged/patients/edit/${selectedPatientID}`, {
       patientID,
       patientName, 
       patientSurname, 

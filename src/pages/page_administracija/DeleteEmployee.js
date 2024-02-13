@@ -44,7 +44,7 @@ const DeleteEmployee = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/employees/get/${selectedEmpID}`);
+      const response = await axios.get(`http://localhost:8080/logged/employees/get/${selectedEmpID}`);
       const empData = response.data;
 
       setEmpID(empID.empID);
@@ -84,7 +84,7 @@ const DeleteEmployee = () => {
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/employees/delete/${selectedEmpID}`);
+    const response = await axios.delete(`http://localhost:8080/logged/employees/delete/${selectedEmpID}`);
 
       console.log('Response:', response.data);
       setSuccessMessage('Darbuotojas sėkmingai ištrintas');

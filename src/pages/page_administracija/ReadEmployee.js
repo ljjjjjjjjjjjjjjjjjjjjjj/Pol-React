@@ -25,7 +25,7 @@ const ReadEmployee = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/employees/get/all');
+        const response = await axios.get('http://localhost:8080/logged/employees/get/all');
         
         let sortedEmployees = response.data;
 

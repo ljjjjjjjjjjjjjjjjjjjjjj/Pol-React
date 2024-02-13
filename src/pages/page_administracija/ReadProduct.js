@@ -25,7 +25,7 @@ const ReadProduct = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/medical-products/get/all');
+        const response = await axios.get('http://localhost:8080/logged/medical-products/get/all');
         
         let sortedProducts = response.data;
 

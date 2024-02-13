@@ -38,7 +38,7 @@ function DeleteEmployeeFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/employees/get/${id}`);
+        const response = await axios.get(`http://localhost:8080/logged/employees/get/${id}`);
         const empData = response.data;
               
         setEmpID(empData.empID);

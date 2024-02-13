@@ -83,7 +83,7 @@ const AddAppointment = () => {
 
   const handleGetEmployeeInfo = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/employees/get/${appEmployeeID}`);
+      const response = await axios.get(`http://localhost:8080/logged/employees/get/${appEmployeeID}`);
       const employeeData = response.data;
             
 
@@ -150,7 +150,7 @@ const AddAppointment = () => {
   
   const handleGetPatientInfo = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/patients/get/${appPatientID}`);
+      const response = await axios.get(`http://localhost:8080/logged/patients/get/${appPatientID}`);
       const patientData = response.data;
             
 
@@ -260,7 +260,7 @@ const AddAppointment = () => {
       console.log('1. EDITAPP - TEST:', appPatientID);
 
 
-      const request = await axios.post('http://localhost:8080/appointments/add-objects', {
+      const request = await axios.post('http://localhost:8080/logged/appointments/add-objects', {
         appCategory, 
         appReason,
         appDate: `${formattedDate}, ${formattedTime}`,

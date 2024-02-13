@@ -1,7 +1,7 @@
-import { Button } from 'bootstrap';
 import '../main/custom-bootstrap.css';
 import './formats/Informacija.css';
-import { useState,  useEffect} from 'react';
+import { useState} from 'react';
+import config from '../main/config.js';
 
 const Informacija = () => {
 
@@ -226,19 +226,19 @@ const Informacija = () => {
           {templatesInfoVisible && (
             <div className='informacija-box-additional-info-content'>
               <p> &emsp;    
-              <a href="./documents/Vidaus_tvarkos_taisykles.pdf" 
+              <a href={ config + 'Vidaus_tvarkos_taisykles.pdf'} 
               target="_blank" rel="noopener noreferrer">
                Vidaus tvarkos taisyklės (pdf)</a>              
               </p>
 
               <p> &emsp;    
-              <a href="./documents/PACIENTO_SUTIKIMAS_forma_nr.1.pdf" 
+              <a href={ config + 'PACIENTO_SUTIKIMAS_forma_nr.1.pdf'} 
               target="_blank" rel="noopener noreferrer">
                Paciento sutikimas dėl jo tyrimo ir gydymo forma Nr.1 (pdf)</a>              
               </p>
 
               <p> &emsp;    
-              <a href="./documents/20231127_KAINYNAS.pdf" 
+              <a href={ config + '20231127_KAINYNAS.pdf'} 
               target="_blank" rel="noopener noreferrer">
                Mokamų asmens sveikatos priežiūros paslaugų kainynas (pdf)</a>              
               </p>

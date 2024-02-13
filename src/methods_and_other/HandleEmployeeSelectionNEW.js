@@ -26,7 +26,7 @@ function HandleEmployeeSelectionNEW( props ) {
 
   const fetchEmployeeByCategoryData = async () => {
     try {
-      const myUrl = `http://localhost:8080/employees/get/category/${appEmployeeCategory}`;
+      const myUrl = `http://localhost:8080/logged/employees/get/category/${appEmployeeCategory}`;
       console.log('2. HANDLE - fetchEmployeeByCategoryData (appEmployeeCategory):', appEmployeeCategory);
 
       const response = await axios.get(myUrl);

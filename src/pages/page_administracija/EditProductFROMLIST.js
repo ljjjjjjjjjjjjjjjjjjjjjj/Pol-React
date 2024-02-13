@@ -31,7 +31,7 @@ function EditProductFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/medical-products/get/${id}`);
+        const response = await axios.get(`http://localhost:8080/logged/medical-products/get/${id}`);
         const productData = response.data;
               
         setProductID(productData.productID);
@@ -61,7 +61,7 @@ function EditProductFROMLIST() {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/medical-products/edit/${id}`, {
+    const response = await axios.put(`http://localhost:8080/logged/medical-products/edit/${id}`, {
       productID, 
       productTitle, 
       productSubCategory,

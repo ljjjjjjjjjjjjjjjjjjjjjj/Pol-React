@@ -33,7 +33,7 @@ const EditProduct = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/medical-products/get/${selectedProductID}`);
+      const response = await axios.get(`http://localhost:8080/logged/medical-products/get/${selectedProductID}`);
       const productData = response.data;
 
       setProductID(productData.productID);
@@ -56,7 +56,7 @@ const EditProduct = () => {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/medical-products/edit/${selectedProductID}`, {
+    const response = await axios.put(`http://localhost:8080/logged/medical-products/edit/${selectedProductID}`, {
       productID,
       productTitle, 
       productSubCategory, 

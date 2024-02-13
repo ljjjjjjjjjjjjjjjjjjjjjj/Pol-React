@@ -19,7 +19,7 @@ function HandlePatientSelectionNEW( { onPatientSelect } ) {
 
   const fetchPatientByNameData = async () => {
     try {
-      const myUrl = `http://localhost:8080/patients/get/name/${appPatientName}`;
+      const myUrl = `http://localhost:8080/logged/patients/get/name/${appPatientName}`;
       console.log('3. Handle - Fetch - (appPatientName):', appPatientName);
 
       const response = await axios.get(myUrl);

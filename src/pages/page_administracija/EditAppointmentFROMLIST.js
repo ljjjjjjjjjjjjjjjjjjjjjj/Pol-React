@@ -161,7 +161,7 @@ function EditAppointmentFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/appointments/get/objects${id}`);
+        const response = await axios.get(`http://localhost:8080/logged/appointments/get/objects${id}`);
         const appointmentData = response.data;
               
         setAppID(appointmentData.appID);
@@ -242,7 +242,7 @@ function EditAppointmentFROMLIST() {
     console.log('1. EDITAPP - TEST (appPatientID):', appPatientID);    
 
 
-    const request = await axios.put(`http://localhost:8080/appointments/edit/objects${id}`, {
+    const request = await axios.put(`http://localhost:8080/logged/appointments/edit/objects${id}`, {
       appID, 
       appCategory, 
       appReason,

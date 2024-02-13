@@ -43,7 +43,7 @@ const DeletePatient = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/patients/get/${selectedPatientID}`);
+      const response = await axios.get(`http://localhost:8080/logged/patients/get/${selectedPatientID}`);
       const patientData = response.data;
 
       setPatientID(patientData.patientID);

@@ -37,7 +37,7 @@ const AddEmployee = () => {
 
 
     try {
-      const response = await axios.post('http://localhost:8080/employees/add', {
+      const response = await axios.post('http://localhost:8080/logged/employees/add', {
         empName, 
         empSurname, 
         empNO,

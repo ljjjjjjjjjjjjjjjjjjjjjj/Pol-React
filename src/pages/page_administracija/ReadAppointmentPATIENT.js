@@ -29,7 +29,7 @@ const ReadAppointmentPATIENT = () => {
   useEffect(() => {
     const fetchData = async () => { 
       try {
-        const response = await axios.get(`http://localhost:8080/appointments/get/all-patient-objects${appPatientID}`);
+        const response = await axios.get(`http://localhost:8080/logged/appointments/get/all-patient-objects${appPatientID}`);
         
         let sortedAppointments = response.data;
 

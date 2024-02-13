@@ -88,7 +88,7 @@ function EDIT_APPOINTMENT_FROMLIST_PATIENT() {
   useEffect(() => {
     const handleGetPatientInfo = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/patients/get/${appPatientID}`);
+        const response = await axios.get(`http://localhost:8080/logged/patients/get/${appPatientID}`);
         const patientData = response.data;
               
   
@@ -189,7 +189,7 @@ function EDIT_APPOINTMENT_FROMLIST_PATIENT() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/appointments/get/objects${appID}`);
+        const response = await axios.get(`http://localhost:8080/logged/appointments/get/objects${appID}`);
         const appointmentData = response.data;
               
         
@@ -269,7 +269,7 @@ function EDIT_APPOINTMENT_FROMLIST_PATIENT() {
     console.log('1. EDITAPP - TEST (appPatientID):', appPatientID);    
 
 
-    const request = await axios.put(`http://localhost:8080/appointments/edit/objects${appID}`, {
+    const request = await axios.put(`http://localhost:8080/logged/appointments/edit/objects${appID}`, {
       appID, 
       appCategory, 
       appReason,

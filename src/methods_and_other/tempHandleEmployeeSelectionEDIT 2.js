@@ -27,7 +27,7 @@ function HandleEmployeeSelectionEDIT( props ) {
   
   const fetchEmployeeByCategoryData = async () => {
     try {
-      const myUrl = `http://localhost:8080/employees/get/category/${appEmployeeCategory}`;
+      const myUrl = `http://localhost:8080/logged/employees/get/category/${appEmployeeCategory}`;
       console.log('Emp kategorija:', appEmployeeCategory);
 
       const response = await axios.get(myUrl);

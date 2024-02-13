@@ -1,12 +1,14 @@
 
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import './formats/Layout.css';
 
 
 
 const Layout = () => {
+
+  
 
  
     return (
@@ -18,7 +20,7 @@ const Layout = () => {
                <div className='upper-header'>
                  <img src="./logo-blue.png" alt={"logo"} /> 
                  <p>Istaigos pavadinimas</p>
-                 <Link to="/signin" type="button" className='link-login'> <span className='bust-in-silhouette'>&#128100;</span> Prisijungti</Link>
+                 <Link to="/signin" type="button" className='link-login'> <span className='bust-in-silhouette'>&#128100;</span> Prisijungti&ensp;</Link>
                  
                </div>     
             </header>
@@ -41,8 +43,9 @@ const Layout = () => {
                  <Link to="/kontaktai" className='link'>Kontaktai</Link>
                </li>
                <li className='item'>
-                 <Link to="/administracija" className='link' style={{ backgroundColor: 'rgba(65, 192, 64, 0.8)' }}>Admin</Link>
+                 <Link to="/loggedpage" className='link' style={{ backgroundColor: 'rgba(65, 192, 64, 0.8)' }}>Mano puslapis</Link>
                </li>
+               
              </ul>
             </nav>
 
@@ -73,25 +76,11 @@ const Layout = () => {
                 &#127760; 
                 <Link to="/signin" type="button" className='link-login'>  Internetu </Link>                
               </p>
-              <p> &emsp;</p>
+              
             </div>
 
 
-            <div className='content-bottomleft' >                 
-              <h5 className='content-bottomleft'>
-                <strong> Naujienos ir naudingos nuorodos:</strong>
-              </h5>
-
-              <div className='content-bottomleft-image-box' > 
-                <img className='content-bottomleft-images' 
-                  src="./images/random-news-1.jpg" 
-                  alt={"healthcare"} /> 
-                <h6>&emsp;</h6> 
-                <img className='content-bottomleft-images' 
-                  src="./images/random-news-2.jpg" 
-                  alt={"healthcare"} />  
-              </div> 
-            </div>
+            
               
             
                        

@@ -25,7 +25,7 @@ const ReadPatient = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/patients/get/all');
+        const response = await axios.get('http://localhost:8080/logged/patients/get/all');
         
 
         let sortedPatients = response.data;

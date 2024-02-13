@@ -38,7 +38,7 @@ const EditEmployee = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/employees/get/${selectedEmpID}`);
+      const response = await axios.get(`http://localhost:8080/logged/employees/get/${selectedEmpID}`);
       const empData = response.data;
 
       setEmpID(empData.empID);
@@ -66,7 +66,7 @@ const EditEmployee = () => {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/employees/edit/${selectedEmpID}`, {
+    const response = await axios.put(`http://localhost:8080/logged/employees/edit/${selectedEmpID}`, {
       empID,
       empName, 
       empSurname, 

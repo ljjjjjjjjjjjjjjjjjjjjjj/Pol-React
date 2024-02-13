@@ -35,7 +35,7 @@ function EditEmployeeFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/employees/get/${id}`);
+        const response = await axios.get(`http://localhost:8080/logged/employees/get/${id}`);
         const empData = response.data;
               
         setEmpID(empData.empID);
@@ -70,7 +70,7 @@ function EditEmployeeFROMLIST() {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/employees/edit/${id}`, {
+    const response = await axios.put(`http://localhost:8080/logged/employees/edit/${id}`, {
       empID,
       empName, 
       empSurname, 

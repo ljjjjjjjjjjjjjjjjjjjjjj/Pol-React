@@ -82,7 +82,7 @@ function EditAppointmentFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/appointments/get/${id}`);
+        const response = await axios.get(`http://localhost:8080/logged/appointments/get/${id}`);
         const appointmentData = response.data;
               
         setAppID(appointmentData.appID);
@@ -128,7 +128,7 @@ function EditAppointmentFROMLIST() {
         : '';
 
 
-    const response = await axios.put(`http://localhost:8080/appointments/edit/${id}`, {
+    const response = await axios.put(`http://localhost:8080/logged/appointments/edit/${id}`, {
       appID, 
       appCategory, 
       appReason,

@@ -36,7 +36,7 @@ function DeletePatientFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/patients/get/${id}`);
+        const response = await axios.get(`http://localhost:8080/logged/patients/get/${id}`);
         const patientData = response.data;
               
         setPatientID(patientData.patientID);
@@ -70,7 +70,7 @@ function DeletePatientFROMLIST() {
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/patients/delete/${id}`);
+    const response = await axios.delete(`http://localhost:8080/logged/patients/delete/${id}`);
 
       console.log('Response:', response.data);
     
