@@ -17,8 +17,13 @@ header {
 }
   
 .informacija h1 {
-    padding-top: 40px;
-    padding-bottom: 50px;
+    color: rgb(73, 80, 83);
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-bottom: 0px;
 }
   
 .informacija h3 {
@@ -91,7 +96,8 @@ header {
     align-items: left;
     text-align: left;
     margin-left: 10px;
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .informacija-table-1{

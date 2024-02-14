@@ -57,7 +57,7 @@ header {
   margin-right: 50px;
   margin-bottom: 10%;
 
-  padding-top: 80px;
+  padding-top: 60px;
   padding-right: 10px;
   padding-left: 40px;
   padding-bottom: 30px; 
@@ -150,7 +150,8 @@ header {
   display: block;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
-  border-radius: 50%;       
+  border-radius: 50%;  
+      
 }
 
 .signin-box-1-form-margins {
@@ -159,7 +160,7 @@ header {
     margin-left: 10px;
     margin-bottom: 10px;  
     
-    padding-top: 10px;
+    padding-top: 5px;
     padding-right: 10px;
     padding-left: 10px;
     padding-bottom: 10px;          

@@ -10,6 +10,8 @@ const Kontaktai = () => {
 
     <div className='kontaktai'>
       <h1>Kontaktai</h1>
+
+      <div className='kontaktai-box-container'>   
                   
       <div className='text-info'> 
 
@@ -56,7 +58,7 @@ const Kontaktai = () => {
         </div>
       </div>
 
-
+    </div>
                 
     </div>
 

@@ -1,18 +1,10 @@
-header {
-    height: 60px;
-    width: 100%;
-    padding: 10px;
-    text-align: left;
-    align-items: left;
-    position: fixed;
-    background-color: AliceBlue; 
-    z-index: 1000; /* Ensure the header appears above other elements */
-}
+
 
 .personalas {
-    padding: 40px;
     max-width: 1200px;
     margin: 0; 
+    margin-left: 20px;
+    margin-top: 50px;
 }
 
 .personalas-emp-card-container {

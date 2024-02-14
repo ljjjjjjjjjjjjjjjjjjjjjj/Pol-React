@@ -8,6 +8,7 @@ import Personalas from "../pages/Personalas";
 import Kontaktai from "../pages/Kontaktai";
 import NoPage from "../pages/NoPage";
 import SignIn from "../pages/SignIn";
+import Register from "../pages/Register";
 import Appointments from "../pages/Appointments";
 import Administracija from "../pages/Administracija";
 import LoggedPage from "../pages/LoggedPage";
@@ -47,10 +48,7 @@ import AddAppointmentPATIENT from "../pages/page_administracija/AddAppointmentPA
 import EDIT_APPOINTMENT_FROMLIST_PATIENT from "../pages/page_administracija/EDIT_APPOINTMENT_FROMLIST_PATIENT";
 import DELETE_APPOINTMENT_FROMLIST_PATIENT from "../pages/page_administracija/DELETE_APPOINTMENT_FROMLIST_PATIENT";
 
-import AuthService from "../services/auth.service";
 
-import Login from "../components/Login";
-import Register from "../components/Register";
 import Profile from "../components/Profile";
 
 
@@ -69,11 +67,6 @@ return (
         <Route path="kontaktai" element={<Kontaktai />} />
         <Route path="signin" element={<SignIn />} />
         <Route path="register" element={<Register />} />
-        <Route path="login" element={<Login />} />
-
-
-
-
         <Route path="appointments" element={<Appointments />} />
         <Route path="loggedpage" element={<LoggedPage />} />
        

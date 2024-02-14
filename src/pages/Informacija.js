@@ -42,6 +42,8 @@ const Informacija = () => {
       <div className='informacija-imagecontainer-cover'>
          <img className='informacija-imagecontainer-cover-image' src="./images/poliklinika-3.jpg" alt={"healthcare"} /> 
       </div>  
+
+      <h1>Informacija</h1>
       
 
       <div className='informacija-box-1'> 
