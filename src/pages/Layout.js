@@ -43,7 +43,7 @@ const Layout = () => {
                  <Link to="/kontaktai" className='link'>Kontaktai</Link>
                </li>
                <li className='item'>
-                 <Link to="/loggedpage" className='link' style={{ backgroundColor: 'rgba(65, 192, 64, 0.8)' }}>Mano puslapis</Link>
+                 <Link to="/loggedpage/profile" className='link' style={{ backgroundColor: 'rgba(65, 192, 64, 0.8)' }}>Mano puslapis</Link>
                </li>
                
              </ul>

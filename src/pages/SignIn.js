@@ -29,6 +29,8 @@ const SignIn = () => {
     setUserType(type);
   };
 
+  /* test */
+
 
   const navigateToRegister = () => {
     navigate('/register');
@@ -65,7 +67,7 @@ const SignIn = () => {
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(username, password).then(
         () => {
-          navigate("/profile");
+          navigate("/loggedpage/profile");
           window.location.reload();
         },
         (error) => {

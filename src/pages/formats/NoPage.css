@@ -1,0 +1,15 @@
+.nopage {
+    margin: 0 ;
+    padding-left: 0px;
+}
+
+.nopage h1 {
+  color: rgb(73, 80, 83);
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-right: 10px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+

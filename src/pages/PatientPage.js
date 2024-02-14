@@ -1,11 +1,15 @@
 import '../main/custom-bootstrap.css';
 import './formats/PatientPage.css';
+import config from '../main/config.js';
+import authHeader from "../services/auth-header";
 import { useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import AuthService from "../services/auth.service";
 import axios from 'axios';
 
 
 const PatientPage = () => {
+  const currentUser = AuthService.getCurrentUser();
 
   const { idP } = useParams();
    
@@ -53,10 +57,20 @@ const PatientPage = () => {
   const [existingPatientPhone, setExistingPatientPhone] = useState('');
   const [existingPatientEmail, setExistingPatientEmail] = useState('');
 
+
+
+
+
+  
+
+
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/logged/patients/get/${patientID}`);
+        console.log('LINKAS: ', `http://localhost:8080/logged/patients/get/${patientID}`);
+        console.log('USER: ', currentUser);
+        setSuccessMessage('');
+        const response = await axios.get(`http://localhost:8080/logged/patients/get/${patientID}`, {headers: authHeader()});
         const patientData = response.data;
               
         setExistingPatientName(patientData.patientName);
@@ -107,12 +121,12 @@ const PatientPage = () => {
         <div className='patientPage-box-2-without-bottom-line'>
               
     
-          <p> <strong> Vardas: </strong> &nbsp; {existingPatientName   } </p>       
-          <p> <strong> Pavardė: </strong>&nbsp; {existingPatientSurname} </p>            
-          <p> <strong> Asmens kodas: </strong> &nbsp; {existingPatientNO     } </p>     
-          <p> <strong> Adresas: </strong> &nbsp; {existingPatientAddress} </p>         
-          <p> <strong> Tel. nr.: </strong> &nbsp; {existingPatientPhone  } </p>      
-          <p> <strong> E-mail: </strong> &nbsp; {existingPatientEmail  } </p> 
+          <p> <strong> Vardas: </strong>       &ensp; {existingPatientName   } </p>       
+          <p> <strong> Pavardė: </strong>      &ensp; {existingPatientSurname} </p>            
+          <p> <strong> Asmens kodas: </strong> &ensp; {existingPatientNO     } </p>     
+          <p> <strong> Adresas: </strong>      &ensp; {existingPatientAddress} </p>         
+          <p> <strong> Tel. nr.: </strong>     &ensp; {existingPatientPhone  } </p>      
+          <p> <strong> E-mail: </strong>       &ensp; {existingPatientEmail  } </p> 
   
 
           <div>
