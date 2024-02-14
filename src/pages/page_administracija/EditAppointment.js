@@ -84,7 +84,7 @@ const EditAppointment = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/appointments/get/${selectedAppID}`);
+      const response = await axios.get(`http://localhost:8080/logged/appointments/get/${selectedAppID}`);
       const appointmentData = response.data;
             
       setAppID(appointmentData.appID);
@@ -122,7 +122,7 @@ const EditAppointment = () => {
       ? `${selectedHour}:${selectedMinute.toString().padStart(2, '0')}`
       : '';
 
-    const response = await axios.put(`http://localhost:8080/appointments/edit/${selectedAppID}`, {
+    const response = await axios.put(`http://localhost:8080/logged/appointments/edit/${selectedAppID}`, {
       appID,
       appCategory, 
       appReason, 

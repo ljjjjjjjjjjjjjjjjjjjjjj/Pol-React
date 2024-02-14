@@ -24,6 +24,7 @@ const DeletePatient = () => {
   const [patientID, setPatientID] = useState("");
   const [patientName, setPatientName] = useState("");
   const [patientSurname, setPatientSurname] = useState("");
+  const [patientNO, setPatientNO] = useState("");
   const [patientAddress, setPatientAddress] = useState("");
   const [patientPhone, setPatientPhone] = useState("");
   const [patientEmail, setPatientEmail] = useState("");
@@ -42,12 +43,13 @@ const DeletePatient = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/patients/get/${selectedPatientID}`);
+      const response = await axios.get(`http://localhost:8080/logged/patients/get/${selectedPatientID}`);
       const patientData = response.data;
 
       setPatientID(patientData.patientID);
       setPatientName(patientData.patientName);
       setPatientSurname(patientData.patientSurname);
+      setPatientNO(patientData.patientNO);
       setPatientAddress(patientData.patientAddress);
       setPatientPhone(patientData.patientPhone);
       setPatientEmail(patientData.patientEmail);
@@ -68,6 +70,7 @@ const DeletePatient = () => {
       setPatientID('');
       setPatientName('');
       setPatientSurname('');
+      setPatientNO('');
       setPatientAddress(''); 
       setPatientPhone(''); 
       setPatientEmail(''); 
@@ -92,13 +95,8 @@ const DeletePatient = () => {
       console.log('Response:', response.data);
       setSuccessMessage('Pacientas sėkmingai ištrintas');
       setErrorMessage('');
-      setPatientID('');
-      setPatientName('');
-      setPatientSurname('');
-      setPatientAddress(''); 
-      setPatientPhone(''); 
-      setPatientEmail(''); 
-      setPatientCategory('');
+      
+      handlePartialReset();
 
       setConditionalFieldMessage(true);
       setConditionalFieldInfo(false);
@@ -125,6 +123,7 @@ const handleReset = () => {
   setPatientID('');
   setPatientName('');
   setPatientSurname('');
+  setPatientNO('');
   setPatientAddress(''); 
   setPatientPhone(''); 
   setPatientEmail(''); 
@@ -133,6 +132,18 @@ const handleReset = () => {
   
   setConditionalFieldInfo(false);
   setConditionalFieldButtons(false);
+   
+};
+
+const handlePartialReset = () => {
+  setPatientID('');
+  setPatientName('');
+  setPatientSurname('');
+  setPatientNO('');
+  setPatientAddress(''); 
+  setPatientPhone(''); 
+  setPatientEmail(''); 
+  setPatientCategory('');
    
 };
 
@@ -189,7 +200,8 @@ const handleReset = () => {
                   {/* P */}
                   <p className='administracija-box-1-product-infolist'>ID: <strong>{patientID}</strong> </p>
                   <p className='administracija-box-1-product-infolist'>Vardas: <strong>{patientName}</strong> </p>
-                  <p className='administracija-box-1-product-infolist'>Pavarde <strong>{patientSurname}</strong> </p>
+                  <p className='administracija-box-1-product-infolist'>Pavarde: <strong>{patientSurname}</strong> </p>
+                  <p className='administracija-box-1-product-infolist'>No.: <strong>{patientNO}</strong> </p>
                   <p className='administracija-box-1-product-infolist'>Adresas: <strong>{patientAddress}</strong> </p>
                   <p className='administracija-box-1-product-infolist'>Tel nr.: <strong>{patientPhone}</strong> </p>
                   <p className='administracija-box-1-product-infolist'>E-pastas: <strong>{patientEmail}</strong> </p>

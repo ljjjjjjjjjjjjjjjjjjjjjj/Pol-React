@@ -1,6 +1,6 @@
 .employee-card {
     height: auto;
-    width: calc(25% - 32px); /*  32px for border and margin combined */
+    width: calc(33% - 32px); /*  32px for border and margin combined */
     border: 1px solid #e0e0e0; /* border replaces margin */
     border-radius: 8px; /* apvalinti kampai */
     overflow: hidden; /* užtikrina, kad viskas liktų kortelės ribose */
@@ -11,32 +11,45 @@
     display: flex;
     flex-direction: column;
     justify-content:  space-between;
+    margin-bottom: 15px;
   }
   
   .employee-card:hover {
-    transform: translateY(-5px); /* pakelia kortelę kai pele užvedama ant jos */
+    transform: translateY(-2px); /* pakelia kortelę kai pele užvedama ant jos */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* didesnis šešėlis pelei užvedus */
   }
   
   .employee-card img {
-    width: 80%; /* vaizdas užpildo kortelės plotį */
+    width: 70%; /* vaizdas užpildo kortelės plotį */
     height: auto; /* vaizdo aukštis automatiškai pritaikomas */
     display: block; /* pašalina bet kokius tarpus po vaizdu */
     margin: 0 auto; /* Center the image horizontally */
+    padding-top: 0px;
+    border-radius: 10px;
+    margin-top: 20px;
+    object-fit: cover;
   }
   
   .employee-card h3 {
     font-size: 1.2em; /* didesnis šrifto dydis produktų pavadinimams */
     margin: 0.5em; /* atstumas nuo kortelės kraštų */
     color: #333; /* tamsi teksto spalva */
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding-top: 10px;
+    padding-bottom: 0px;
   }
   
   .employee-card p {
-    font-size: 0.8em; /* šrifto dydis kainai */
+    margin-top: 10px;
+    font-size: 0.9em; /* šrifto dydis kainai */
     padding-left: 2%;
     margin: 0.5em; /* atstumas nuo kortelės kraštų */
     color: #888; /* šviesesnė teksto spalva */
     font-weight: bold; /* pabrėžiama kaina */
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   

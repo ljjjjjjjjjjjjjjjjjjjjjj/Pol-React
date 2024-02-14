@@ -39,7 +39,7 @@ const DeleteProduct = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/medical-products/get/${selectedProductID}`);
+      const response = await axios.get(`http://localhost:8080/logged/medical-products/get/${selectedProductID}`);
       const productData = response.data;
 
       setProductID(productData.productID);
@@ -74,7 +74,7 @@ const DeleteProduct = () => {
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/medical-products/delete/${selectedProductID}`);
+    const response = await axios.delete(`http://localhost:8080/logged/medical-products/delete/${selectedProductID}`);
 
       console.log('Response:', response.data);
       setSuccessMessage('Produktas sėkmingai ištrintas');

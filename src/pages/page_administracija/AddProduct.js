@@ -32,7 +32,7 @@ const AddProduct = () => {
 
 
     try {
-      const response = await axios.post('http://localhost:8080/medical-products/add', {
+      const response = await axios.post('http://localhost:8080/logged/medical-products/add', {
         productTitle, 
         productSubCategory,
         productCategory

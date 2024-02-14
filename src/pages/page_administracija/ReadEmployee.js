@@ -25,13 +25,21 @@ const ReadEmployee = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/employees/get/all');
+        const response = await axios.get('http://localhost:8080/logged/employees/get/all');
         
         let sortedEmployees = response.data;
 
         if (selectedOption) {
-        sortedEmployees = sortedEmployees.sort((a, b) => a[selectedOption].localeCompare(b[selectedOption]));
-        }
+          sortedEmployees = sortedEmployees.sort((a, b) => {
+              const isNumeric = !isNaN(a[selectedOption]) && !isNaN(b[selectedOption]);
+      
+              if (isNumeric) {
+                  return a[selectedOption] - b[selectedOption]; // number comparison
+              } else {                   
+                  return a[selectedOption].localeCompare(b[selectedOption]);  // String comparison
+              }
+          });
+      }
         setEmployees(sortedEmployees);
 
         console.log('Response:', response.data);
@@ -60,9 +68,9 @@ const ReadEmployee = () => {
         <label>Pasirinkti filtrą: </label>
         <select value={selectedOption} onChange={handleSelectedOption}>
           <option value="">pasirinkti...</option>
-          <option value="empID">ID</option>
           <option value="empName">Vardas</option>
           <option value="empSurname">Pavardė</option>
+          <option value="empNO">No.</option>
         </select>
 
         <input type='button' className="btn btn-secondary administracija-box-1-button-z" 
@@ -73,17 +81,18 @@ const ReadEmployee = () => {
       
       <div className='administracija-list'>
 
-        <table class="table table-hover">
+        <table className="table table-hover">
 
-          <thead class="table-light">
+          <thead className="table-light">
             <tr>
-              <th scope='col'>ID</th>
               <th scope='col'>Vardas</th>
               <th scope='col'>Pavarde</th>
+              <th scope='col'>No.</th>
               <th scope='col'>Adresas</th>
               <th scope='col'>Tel. nr.</th>
               <th scope='col'>E-pastas</th>
-              <th scope='col'>Kategorija</th>
+              <th scope='col'>Pareigos </th>
+              <th scope='col'>Pareigų kategorija</th>
               <th scope='col'>Nuotraukos url</th>
               <th scope='col'>Keisti</th>
              

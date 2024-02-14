@@ -30,6 +30,7 @@ header {
 /* ---------  Page Header  ------------ */
 
 .upper-header {
+  width: 100%;
   height: 61px;
   background-color: AliceBlue;
   display: flex;
@@ -38,8 +39,8 @@ header {
 
 .upper-header img {
   display: block;
-  width: 17%; 
-  height: auto; 
+  height: 100%; 
+  width: auto; 
   padding: 10px;
  
 }
@@ -106,10 +107,57 @@ header {
 }
 
 
+.link-login {  
+  margin-right: 20px; 
+  margin-left: 10px;
+  height: 30px;
+
+
+ 
+  border-color: rgba(169, 166, 163, 0.5);
+  border-width: 1.3px;
+  border-style: double;
+  border-radius: 5px;
+  
+  color: rgb(146, 142, 139);
+  font-size: 15px;
+  padding-top: 3px ; 
+  padding-bottom: 5px ; 
+  padding-left: 10px ; 
+  padding-right: 10px ; 
+  text-decoration: none;
+    
+}
+
+.bust-in-silhouette {
+  color: rgb(157, 169, 173); 
+}
+
+.link-login:hover {
+  color:  rgba(86, 94, 99, 0.9);
+  background-color: rgba(230, 238, 245, 1);
+}
+
+
+.patientPage-box-1-button-b {   
+  background-color: rgba(52, 152, 219, 0.9);
+  border-color: rgba(62, 162, 229, 0.5);
+  border-width: 1px;
+  margin-top: 20;
+  margin-left: 10px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+    
+}
+
+
 
 
 
 /* ---------  Layout content   ------------ */
+
+
+
 
 
 
@@ -140,6 +188,132 @@ header {
   background-color: white; /* Optionally set the background color for the right column */
   padding: 20px; /* Adjust the padding as needed */
 }
+
+
+.content-container-bottom {
+  width: 100%;
+  max-height: auto;
+  background-color: AliceBlue;
+ 
+  margin: 0; 
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display:  flex;
+}
+
+
+
+.content-container-bottomleft {
+  flex: 1;
+  padding-left: 50px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-left: 20%;
+  margin-bottom: 20px;
+}
+
+.content-bottomleft  {
+ background-color: aliceblue ;
+ margin-right: 0px;
+ padding-right: 0px;
+  
+}
+
+.content-bottomleft p {
+  margin-left: 5%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: rgb(95, 103, 106);
+  font-size: 17px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  
+}
+
+.content-bottomleft h5 {
+  margin-left: 5%;
+  color: rgb(95, 103, 106);
+  font-size: 17px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  
+  
+}
+
+.content-bottomleft h6 {
+  margin-left: 5%;
+  color: rgb(95, 103, 106);
+  font-size: 17px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 10px;
+  
+  
+  
+}
+
+.content-bottomleft link {
+  color: rgb(93, 142, 160);
+  
+}
+
+.content-bottomleft-image-box {
+  margin-left: 5%;
+  width: 95%;
+  height: auto;
+  text-align: left;
+}
+
+.content-bottomleft-images {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 6px;
+  
+}
+  
+
+
+.content-container-bottomright {
+  flex: 1;
+  padding-left: 10px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+}
+
+.content-container-bottomleft h5,
+.content-container-bottomright h5 {  
+  color: rgb(95, 103, 106);
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 0; /* Reset margin */
+  margin-bottom: 8px; /* Reset margin */
+
+}
+
+.content-container-bottomleft p,
+.content-container-bottomright p {  
+  color: rgb(95, 103, 106);
+  font-size: 14px;
+  margin-top: 2px; /* Reset margin */
+  margin-bottom: 0; /* Reset margin */
+
+}
+
+.blue-icon {
+  color:rgb(49, 171, 215); 
+  font-weight: bold;
+}
+    
+
+
+
 
 
 

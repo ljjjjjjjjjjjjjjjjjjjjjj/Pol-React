@@ -22,6 +22,7 @@ const EditEmployee = () => {
   const [empID, setEmpID] = useState("");  
   const [empName, setEmpName] = useState("");
   const [empSurname, setEmpSurname] = useState("");
+  const [empNO, setEmpNO] = useState("");
   const [empAddress, setEmpAddress] = useState("");
   const [empPhone, setEmpPhone] = useState("");
   const [empEmail, setEmpEmail] = useState("");
@@ -37,12 +38,13 @@ const EditEmployee = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/employees/get/${selectedEmpID}`);
+      const response = await axios.get(`http://localhost:8080/logged/employees/get/${selectedEmpID}`);
       const empData = response.data;
 
       setEmpID(empData.empID);
       setEmpName(empData.empName);
       setEmpSurname(empData.empSurname);
+      setEmpNO(empData.empNO);
       setEmpAddress(empData.empAddress);
       setEmpPhone(empData.empPhone);
       setEmpEmail(empData.empEmail);
@@ -64,10 +66,11 @@ const EditEmployee = () => {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/employees/edit/${selectedEmpID}`, {
+    const response = await axios.put(`http://localhost:8080/logged/employees/edit/${selectedEmpID}`, {
       empID,
       empName, 
       empSurname, 
+      empNO,
       empAddress, 
       empPhone, 
       empEmail, 
@@ -94,6 +97,7 @@ const handleReset = () => {
   setEmpID('');
   setEmpName('');
   setEmpSurname('');
+  setEmpNO('');
   setEmpAddress(''); 
   setEmpPhone(''); 
   setEmpEmail(''); 
@@ -170,53 +174,67 @@ const handleReset = () => {
               <input 
               type='text' 
               value={empSurname} 
-              onChange={(p) => setEmpSurname(p.target.value)} 
-              
+              onChange={(p) => setEmpSurname(p.target.value)}               
               />
               </label>
+
+
+              <label> No.: 
+              <input 
+              type='text' 
+              value={empNO} 
+              onChange={(p) => setEmpNO(p.target.value)}                 
+              />
+              <p className='administracija-box-1-comment'> <small>(Numerį gali sudaryti tik skaičiai)</small></p>
+              </label>
+
+
 
               <label> Adresas: 
               <input 
               type='text' 
               value={empAddress} 
-              onChange={(p) => setEmpAddress(p.target.value)} 
-              
+              onChange={(p) => setEmpAddress(p.target.value)}               
               />
               </label>
+
+
 
               <label> Tel. nr: 
               <input 
               type='text' 
               value={empPhone} 
-              onChange={(p) => setEmpPhone(p.target.value)} 
-              
+              onChange={(p) => setEmpPhone(p.target.value)}              
               />
               </label>
+
+
 
               <label> E-paštas: 
               <input 
               type='text' 
               value={empEmail} 
-              onChange={(p) => setEmpEmail(p.target.value)} 
-              
+              onChange={(p) => setEmpEmail(p.target.value)}               
               />
               </label>
+
+
 
               <label> Kategorija: 
               <input 
               type='text' 
               value={empCategory} 
-              onChange={(p) => setEmpCategory(p.target.value)} 
-              
+              onChange={(p) => setEmpCategory(p.target.value)}              
               />
               </label>
+
+
 
               <label> Nuotraukos url: 
               <input 
               type='text' 
               value={imageUrl} 
-              onChange={(p) => setImageUrl(p.target.value)} 
-              
+              onChange={(p) => setImageUrl(p.target.value)}               
               />
               </label>
 

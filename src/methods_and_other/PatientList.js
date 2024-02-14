@@ -19,9 +19,9 @@ function PatientList({patient}) {
 
         
         <tr>
-          <td> {patient.patientID} </td>
           <td> {patient.patientName} </td>
           <td> {patient.patientSurname} </td>
+          <td> {patient.patientNO} </td>
           <td> {patient.patientAddress} </td>
           <td> {patient.patientPhone} </td>
           <td> {patient.patientEmail} </td>

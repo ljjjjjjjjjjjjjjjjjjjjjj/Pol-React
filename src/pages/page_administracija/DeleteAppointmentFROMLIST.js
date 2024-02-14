@@ -32,7 +32,7 @@ function DeleteAppointmentFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/appointments/get/${id}`);
+        const response = await axios.get(`http://localhost:8080/logged/appointments/get/${id}`);
         const appData = response.data;
               
         setAppID(appData.appID);
@@ -62,7 +62,7 @@ function DeleteAppointmentFROMLIST() {
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/appointments/delete/${id}`);
+    const response = await axios.delete(`http://localhost:8080/logged/appointments/delete/${id}`);
 
       console.log('Response:', response.data);
     

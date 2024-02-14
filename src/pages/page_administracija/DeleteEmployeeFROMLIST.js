@@ -20,6 +20,7 @@ function DeleteEmployeeFROMLIST() {
   const [empID, setEmpID] = useState("");  
   const [empName, setEmpName] = useState("");
   const [empSurname, setEmpSurname] = useState("");
+  const [empNO, setEmpNO] = useState("");
   const [empAddress, setEmpAddress] = useState("");
   const [empPhone, setEmpPhone] = useState("");
   const [empEmail, setEmpEmail] = useState("");
@@ -37,12 +38,13 @@ function DeleteEmployeeFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/employees/get/${id}`);
+        const response = await axios.get(`http://localhost:8080/logged/employees/get/${id}`);
         const empData = response.data;
               
         setEmpID(empData.empID);
         setEmpName(empData.empName);
         setEmpSurname(empData.empSurname);
+        setEmpNO(empData.empNO);
         setEmpAddress(empData.empAddress);
         setEmpPhone(empData.empPhone);
         setEmpEmail(empData.empEmail);
@@ -94,6 +96,7 @@ const handleReset = () => {
   setEmpID('');
   setEmpName('');
   setEmpSurname('');
+  setEmpNO('');
   setEmpAddress(''); 
   setEmpPhone(''); 
   setEmpEmail(''); 
@@ -129,7 +132,8 @@ const handleReset = () => {
               {/* P */}
               <p className='administracija-box-1-product-infolist'>ID: <strong>{empID}</strong> </p>                    
               <p className='administracija-box-1-product-infolist'>Vardas: <strong>{empName}</strong> </p>            
-              <p className='administracija-box-1-product-infolist'>Pavarde <strong>{empSurname}</strong> </p>           
+              <p className='administracija-box-1-product-infolist'>Pavarde: <strong>{empSurname}</strong> </p>    
+              <p className='administracija-box-1-product-infolist'>No.: <strong>{empNO}</strong> </p>         
               <p className='administracija-box-1-product-infolist'>Adresas: <strong>{empAddress}</strong> </p>            
               <p className='administracija-box-1-product-infolist'>Tel nr.: <strong>{empPhone}</strong> </p>          
               <p className='administracija-box-1-product-infolist'>E-pastas: <strong>{empEmail}</strong> </p>          

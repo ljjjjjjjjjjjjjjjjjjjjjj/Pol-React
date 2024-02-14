@@ -1,39 +1,49 @@
-header {
-    height: 60px;
-    width: 100%;
-    padding: 10px;
-    text-align: left;
-    align-items: left;
-    position: fixed;
-    background-color: AliceBlue; 
-    z-index: 1000; /* Ensure the header appears above other elements */
-  }
+
   
   .kontaktai {
-    padding-left: 1%;
-    max-width: 1200px;
-    /*margin: 0 auto;  Centruoja turinį ekrano viduryje */
-    padding-top: 0px;
+    margin: 0 ;
+    padding-left: 0px;
   }
   
   .kontaktai h1 {
-    padding-top: 40px;
     max-width: 1200px;
+    color: rgb(73, 80, 83);
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
    
   }
 
   .kontaktai h3 {
-    color: rgb(68, 68, 79);
     padding-top: 30px;
     padding-bottom: 20px;
+
+    color: rgb(73, 80, 83);
+    font-size: 22px;
+    font-weight: bold;
     
    
   }
   
   .kontaktai p {
-    padding-top: 0px;
-    max-width: 1200px;
-    color:  rgb(103, 103, 112);
+    color: rgb(73, 80, 83);
+    font-size: 15px;
+    margin-top: 8px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+  }
+
+
+  .kontaktai-box-container {
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    
   }
 
   .text-info{
@@ -50,6 +60,7 @@ header {
     grid-column: span 1;
     max-width: 50%;
     padding-bottom: 40px;
+    
    
   }
 

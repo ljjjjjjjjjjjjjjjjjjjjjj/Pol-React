@@ -25,7 +25,7 @@ const ReadProduct = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/medical-products/get/all');
+        const response = await axios.get('http://localhost:8080/logged/medical-products/get/all');
         
         let sortedProducts = response.data;
 
@@ -73,9 +73,9 @@ const ReadProduct = () => {
       
       <div className='administracija-list'>
 
-        <table class="table table-hover">
+        <table className="table table-hover">
 
-          <thead class="table-light">
+          <thead className="table-light">
             <tr>
               <th scope='col'>ID</th>
               <th scope='col'>Pavadinimas</th>

@@ -14,6 +14,8 @@
   margin-bottom: 30px;
 }
 
+
+
 .product-category {
     margin: 0 ;
     padding-left: 0px;
@@ -58,6 +60,8 @@
     padding: 10px;
     margin-right: 20px;
     margin-bottom: 20px;
+    border-bottom: 1.5px solid rgba(240, 248, 255, 0.4);
+    border-width: 3px;
 }
 
 .box-1-content ul{ 
@@ -86,7 +90,7 @@
     float: left;
     width: 100%;
     height: 65px; /* only for demonstration, should be removed */
-    background: rgba(240, 248, 255, 0.4);
+    background: rgba(255, 255, 255, 0.4);
     padding: 10px;
     margin-right: 20px;
     margin-bottom: 20px;
@@ -102,5 +106,65 @@
     margin-left: 20px;
     
  }
+
+ .paslaugos-box-3-header {
+    float: left;
+    width: 90%;
+    height: auto;
+    background-color: rgba(240, 248, 255, 0.8);
+    
+    padding-top: 15px;
+    padding-right: 10px;
+    padding-left: 20px;
+    padding-bottom: 0px;
+
+   
+    align-items: left;
+    text-align: left;
+    margin-left: 10px;
+    margin-top: 20px;
+    
+}
+
+.paslaugos-box-3-header h3 {
+    color: rgb(73, 80, 83);
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-left: 10px;
+    margin-bottom: 25px;
+    padding: 0px;
+  }
+
+.paslaugos-box-3-content {
+    float: left;
+    width: 90%;
+    height: auto;
+    background-color: rgba(240, 248, 255, 0.4);
+    
+    padding-top: 15px;
+    padding-right: 10px;
+    padding-left: 20px;
+    padding-bottom: 0px;
+
+   
+    align-items: left;
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    
+}
+
+
+
+ .paslaugos-box-3-content h5 {
+    color: rgb(73, 80, 83);
+    font-size: 17px;
+    margin-top: 15px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+  }
   
 

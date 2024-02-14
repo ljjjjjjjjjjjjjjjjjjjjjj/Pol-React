@@ -1,8 +1,10 @@
 
 
+import React from 'react';
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
-import EmployeeSelectionRow from '../../methods_and_other/EmployeeSelectionRow.js';
+import HandleEmployeeSelectionNEW from '../../methods_and_other/HandleEmployeeSelectionNEW.js';
+import HandlePatientSelectionNEW from '../../methods_and_other/HandlePatientSelectionNEW.js';
 import { useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -20,26 +22,165 @@ import { getDay } from 'date-fns';
 
 const AddAppointment = () => {
 
+  /*  -----------------   Navigate    ------------------*/
   const navigate = useNavigate();
   const navigateToReadAppointment = () => {
-    navigate(`/readappointment`);
-  };
+    navigate(`/readappointment`);};
   
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
-  };
+    navigate(`/administracija`);};
+  /*  -----------------   Navigate    ------------------*/
 
 
+
+
+
+  /*  -----------------   Const setters    ------------------*/
   const [appCategory, setAppCategory] = useState("");
   const [appReason, setAppReason] = useState("");
+  /*  -----------------   Const setters    ------------------*/
 
 
-  const [appEmployee, setAppEmployee] = useState("");
-  const [appEmployeeCategory, setAppEmployeeCategory] = useState("");
-  const [appSelectedEmployees, setAppSelectedEmployees] = useState( [] );
+
+
+
+  /*  -----------------   Employee    ------------------*/
+  const [appEmployeeID, setAppEmployeeID] = useState('');
+
+  const [existingAppEmployeeName, setExistingAppEmployeeName] = useState('');
+  const [existingAppEmployeeSurname, setExistingAppEmployeeSurname] = useState('');
+  const [existingAppEmployeeJobTitle, setExistingAppEmployeeJobTitle] = useState('');
+
+  const [empInfo, setEmpInfo] = useState({}); 
+
+  const handleEmployeeSelect = (employee) => {
+    setAppEmployeeID(employee);
+    
+  };
+
+ 
+
+  useEffect(() => {
+    console.log("1. EDITAPP - employee useEffect (appEmployeeID) NULL:", appEmployeeID);
+    if (appEmployeeID == null)
+    {handleEmployeeSelect();}
+  }, [appEmployeeID]);
+
+
+  useEffect(() => {
+    console.log("1. EDITAPP - employee useEffect (appEmployeeID) NOT NULL:", appEmployeeID);
+    if (appEmployeeID > 0)
+    {handleGetEmployeeInfo();}
+  }, [appEmployeeID]);
+
+
+  useEffect(() => {
+    console.log("1. EDITAPP - employee useEffect (existingAppEmployeeName):", existingAppEmployeeName);
+    if (appEmployeeID == null)
+    {handleEmployeeSelect();}
+  }, [existingAppEmployeeName]);
+
+
+  const handleGetEmployeeInfo = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8080/logged/employees/get/${appEmployeeID}`);
+      const employeeData = response.data;
+            
+
+      setAppEmployeeID(employeeData.empID);
+      setExistingAppEmployeeName(employeeData.empName);
+      setExistingAppEmployeeSurname(employeeData.empSurname);
+      setExistingAppEmployeeJobTitle(employeeData.empJobTitle);
+    
+      console.info('1. EDITAPP - handleGetEmployeeInfo (appEmployeeID): ', (employeeData.empID));
+      console.info('1. EDITAPP - handleGetEmployeeInfo (employeeData.empName): ', (employeeData.empName));
+      console.info('1. EDITAPP - handleGetEmployeeInfo (employeeData.empSurname): ', (employeeData.empSurname));
+      console.info('1. EDITAPP - handleGetEmployeeInfo (employeeData.empJobTitle): ', (employeeData.empJobTitle));
+
+                    
+      setSuccessMessage('');
+      setErrorMessage('');
+
+      
+                 
+    } catch (error) {
+      console.error('1. EDITAPP - Error:', error);
+      setSuccessMessage('');
+      setErrorMessage('Darbuotojas su tokiu ID nerastas');
+    }
+}
+   
+  /*  -----------------   Employee    ------------------*/
 
   
-  const [appPatient, setAppPatient] = useState("");
+
+
+
+
+
+
+
+  /*  ------------------   Patient    -------------------*/
+  const [appPatientID, setAppPatientID] = useState('');
+
+  const [existingAppPatientName, setExistingAppPatientName] = useState('');
+  const [existingAppPatientSurname, setExistingAppPatientSurname] = useState('');
+  const [existingAppPatientNO, setExistingAppPatientNO] = useState('');
+
+
+
+  const handlePatientSelect = (patient) => {
+     setAppPatientID(patient);
+   };
+
+
+   useEffect(() => {
+    console.log("1. EDITAPP - patient useEffect (appPatientID) NULL:", appPatientID);
+    if (appPatientID == null)
+    {handlePatientSelect();}
+  }, [appPatientID]);
+
+
+  useEffect(() => {
+    console.log("1. EDITAPP - patient useEffect (appPatientID) NOT NULL:", appPatientID);
+    if (appPatientID > 0)
+    {handleGetPatientInfo();}
+  }, [appPatientID]);
+
+  
+  const handleGetPatientInfo = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8080/logged/patients/get/${appPatientID}`);
+      const patientData = response.data;
+            
+
+      setAppPatientID(patientData.patientID);
+      setExistingAppPatientName(patientData.patientName);
+      setExistingAppPatientSurname(patientData.patientSurname);
+      setExistingAppPatientNO(patientData.patientNO);
+    
+      console.info('1. EDITAPP - handleGetPatientInfo (appPatientID): ', (patientData.patientID));
+      console.info('1. EDITAPP - handleGetPatientInfo (patientData.patientName): ', (patientData.patientName));
+      console.info('1. EDITAPP - handleGetPatientInfo (patientData.patientSurname): ', (patientData.patientSurname));
+      console.info('1. EDITAPP - handleGetPatientInfo (patientData.patientNO): ', (patientData.patientNO));
+
+                    
+      setSuccessMessage('');
+      setErrorMessage('');
+
+      
+                 
+    } catch (error) {
+      console.error('1. EDITAPP - Error:', error);
+      setSuccessMessage('');
+      setErrorMessage('Pacientas su tokiu ID nerastas');
+    }
+}
+   /*  ------------------   Patient    -------------------*/
+
+
+  
+ 
   
            
 
@@ -58,9 +199,6 @@ const AddAppointment = () => {
 
     return nextWorkingDay;
   };
-
-
- 
 
   const [selectedDate, setSelectedDate] = useState( getInitialDate());
   const [selectedHour, setSelectedHour] = useState(7);
@@ -83,77 +221,31 @@ const AddAppointment = () => {
     setSelectedHour(parseInt(selectedHour));
     setSelectedMinute(parseInt(selectedMinute));
   };
-
   /*  -----------------   Date    ------------------*/
 
 
 
-
-
-
-
-
-
-   /*  -----------------   Employees   ------------------*/
-
-   
-
-
-   const [categorySelected, setCategorySelected] = useState(false); 
-
-  useEffect(() => {
-    console.log("Category Selected:", appEmployeeCategory);
-  }, [ appEmployeeCategory]);
-
-
-
-  const handleEmployeeCategoryChange = (event) => {
-    console.log('Event (main test):', event.target.value);
-    setAppEmployeeCategory("Seimos-medicina"); 
-    console.log("Category Selected (main test):", appEmployeeCategory);
-    setCategorySelected(true);
-    fetchEmployeeByCategoryData();
-
-    
-  };
-
-
-
-  const fetchEmployeeByCategoryData = async () => {
-      
-    try {
-      const url = `http://localhost:8080/employees/get/category/${appEmployeeCategory}`;
-      console.log('Uzklausos url adresas:', url);
-      console.log('Emp kategorija:', appEmployeeCategory);
-      const response = await axios.get(url);
-      const employeeData = response.data;
-      setAppSelectedEmployees(employeeData);
-
-
-      console.log('Response:', response.data);
-    } catch (error) {
-      console.error('Error:', error); 
-    }
-  };
-
   
 
-  /*  -----------------   Employees    ------------------*/
 
-
-
-
-
-
-
+  /*  -----------------   Handling    ------------------*/
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+
+
        
   const handleAppointmentEditSubmit = async (event) => {
-      event.preventDefault();
-
+    event.preventDefault();
 
     try {
+
+      if (!appEmployeeID || !appPatientID) {
+        setErrorMessage('Būtina pasirinkti gydytoją ir pacientą.');
+        return;
+      }
+
+    
 
       const formattedDate = selectedDate
         ? format(selectedDate, 'yyyy/MM/dd')
@@ -163,28 +255,39 @@ const AddAppointment = () => {
         : '';
 
 
-      const response = await axios.post('http://localhost:8080/appointments/add', {
+      
+      console.log('1. EDITAPP - TEST:', appEmployeeID);
+      console.log('1. EDITAPP - TEST:', appPatientID);
+
+
+      const request = await axios.post('http://localhost:8080/logged/appointments/add-objects', {
         appCategory, 
         appReason,
         appDate: `${formattedDate}, ${formattedTime}`,
-        appEmployee,
-        appPatient
-        });
+        appEmployeeID,
+        appPatientID
+      });
 
-        console.log('Response:', response.data);
-        setSuccessMessage(<div>Rezervacija sėkmingai įvesta: <br /> <br />
+
+
+
+      console.log('1. EDITAPP - Request:', request.data);
+
+      setSuccessMessage(<div>Rezervacija sėkmingai įvesta: <br /> <br />
                           <strong>Data ir laikas:</strong> &nbsp; {formattedDate} &nbsp; ({formattedTime} val.)<br /> 
                           <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
                           <strong>Priežastis:</strong> &nbsp; {appReason} <br />
-                          <strong>Gydytojas:</strong> &nbsp; {appEmployee.getEmpName} <br />
-                          <strong>Pacientas:</strong> &nbsp; {appPatient.getPatientName}</div>);
-        setErrorMessage('');
-        handleReset();
-        
-        
+                          <strong>Gydytojas:</strong> &nbsp; {existingAppEmployeeName} {existingAppEmployeeSurname} ({existingAppEmployeeJobTitle}) <br />
+                          <strong>Pacientas:</strong> &nbsp; {existingAppPatientName} {existingAppPatientSurname} ({existingAppPatientNO})</div>);
+      setErrorMessage('');
+
+
+      handlePartReset()
+
+ 
       
     } catch (error) {
-        console.error('Error:', error);
+        console.error('1. EDITAPP - Error:', error);
         setSuccessMessage('');
         setErrorMessage('Rezervacija NEBUVO įvesta');
       
@@ -199,11 +302,35 @@ const AddAppointment = () => {
     
     setAppCategory('');
     setAppReason(''); 
-    setAppEmployee('');
-    setAppPatient(''); 
-    
+
+    setAppEmployeeID('');
+    setExistingAppEmployeeName('');
+    setExistingAppEmployeeSurname('');
+    setExistingAppEmployeeJobTitle('');
+
+    setAppPatientID('');
     
   };
+
+
+  const handlePartReset = () => {
+    setSelectedDate( getInitialDate());
+    setSelectedHour(7);
+    setSelectedMinute(0);
+    
+    
+    setAppCategory('');
+    setAppReason(''); 
+
+    setAppEmployeeID('');
+
+    setAppPatientID('');
+    
+  };
+  /*  -----------------   Handling    ------------------*/
+
+
+
 
   
 
@@ -217,87 +344,65 @@ const AddAppointment = () => {
           <h1>Administracija</h1>
         </div>
         <div className='administracija-box-1'>
-          <h3>Rezervacijų sąrašo valdymas</h3>
+          <h3>Rezervacijų sąrašo valdymas - naujos rezervacijos įvedimas</h3>
           <div>
-            <h4>1. Įvesti naują Rezervaciją</h4>
+            
             <div>
 
 
-            <form>
-              <label htmlFor="appEmpCategorySelection">Gydytojo kategorija: </label>
-              <select
-                id="appEmpCategorySelection"
-                value={appEmployeeCategory}
-                onChange={(event) => {
-                handleEmployeeCategoryChange(event); 
-                }}
-              >
-                <option value=""> ... </option>
-                <option value="Seimos-medicina">Šeimos medicina</option>
-                <option value="Gydytojai-specialistai">Gydytojas specialistas</option>
-                <option value="Odontologija">Odontologas</option>
-                <option value="Slaugytojos">Tyrimai ir skiepai</option>
-              </select>
-            </form>
+              <div className='administracija-box-3-PATIENTS-main'>
+              <h4>1.1. Pasirinkti gydytoją</h4>
+              <HandleEmployeeSelectionNEW 
+
+                info={empInfo}
+                onEmployeeSelect={handleEmployeeSelect}
+                
+              />
+              <p>&nbsp;</p>
+              </div>
 
 
-
-            {categorySelected && (
-              <form>
-                <label htmlFor="AppEmployeeSelection">Pasirinkite gydytoją: </label>
-                <select
-                  id="AppEmployeeSelection"
-                  value={appEmployee}
-                  onChange={(p) => setAppEmployee(p.target.value)}
-                >
-                  <option value=""> ... </option>
-                  {appSelectedEmployees.map((employee) => (
-                    <EmployeeSelectionRow key={employee.empID} employee={employee}/>
-                    ))}
-                </select>
-              </form>
-            )}
+              <div className='administracija-box-3-PATIENTS-main'>
+              <h4>1.2. Pasirinkti pacientą</h4>
+              <HandlePatientSelectionNEW 
+              
+                onPatientSelect={handlePatientSelect}/>
+              
+              </div>
 
 
-          
-
-
-
-
-            <form>
-              <label htmlFor="patientSelection">Pacientas:</label>
-              <select id="patientSelection" value={appPatient} onChange={(p) => setAppPatient(p.target.value)}>
-                <option value="p1">p1</option>
-                <option value="p2">p2</option>
-                <option value="p3">p3</option>
-              </select>              
-            </form>
 
 
             
 
 
 
+              <div className='administracija-box-1'>
+              <h4>1.3. Kiti duomenys: </h4>
 
-
+              <div className='administracija-box-3-PATIENTS-plus'>
 
               <form onSubmit={handleAppointmentEditSubmit}>
-                <label> Kategorija:
+                <label> Kategorija (gyvai, telefonu arba ūmus):
                   <input
                     type='text'
                     value={appCategory}
                     onChange={(p) => setAppCategory(p.target.value)}
                   />
                 </label>
-                <label> Priežastis:
+
+                <label> Priežastis (nusiskundimai):
                   <input
                     type='text'
                     value={appReason}
                     onChange={(p) => setAppReason(p.target.value)}
                   />
                 </label>
+
+
+
                 <br></br>
-                <label> Data:
+                <label > Data:
                   <div className='administracija-box-1-datepicker'>
                     <DatePicker
                       selected={selectedDate}
@@ -308,7 +413,7 @@ const AddAppointment = () => {
                     />
                     <div className='administracija-box-1'>
                       <label>Laikas:</label>
-                      <select
+                      <select 
                         onChange={handleTimeChange}
                         defaultValue={`${selectedHour.toString().padStart(2, '0')}:${selectedMinute.toString().padStart(2, '0')}`}
                       >
@@ -328,20 +433,31 @@ const AddAppointment = () => {
                     </div>
                   </div>
                 </label>
+
+
+
+
+
                 <div>
                   <br></br>
                   {successMessage && <div className="success-message">{successMessage}</div>}
                   {errorMessage && <div className="error-message">{errorMessage}</div>}
                   <br></br>
                 </div>
-                <div className='administracija-box-1-button-box'>
+
+
+                <div className='administracija-box-1-button-box-differnet'>
                   <br></br>
                   <input type='submit' className="btn btn-primary administracija-box-1-button-b"
                     value="Išsaugoti" />
+
                   <input type='reset' className="btn btn-secondary administracija-box-1-button-g"
                     value="Išvalyti" onClick={handleReset} />
                 </div>
+
               </form>
+              </div>
+              </div>
               <div className='administracija-box-1'>
                 <div className='administracija-box-1-button-box-center'>
                   <input type='button' className="btn btn-secondary administracija-box-1-button-b"

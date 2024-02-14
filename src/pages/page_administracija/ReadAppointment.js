@@ -25,7 +25,7 @@ const ReadAppointment = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/appointments/get/all');
+        const response = await axios.get('http://localhost:8080/logged/appointments/get/all-objects');
         
         let sortedAppointments = response.data;
 
@@ -73,14 +73,16 @@ const ReadAppointment = () => {
       
       <div className='administracija-list'>
 
-        <table class="table table-hover">
+        <table className="table table-hover">
 
-          <thead class="table-light">
+          <thead className="table-light">
             <tr>
               <th scope='col'>ID</th>
               <th scope='col'>Kategorija</th>
               <th scope='col'>Priežastis</th>
               <th scope='col'>Data</th>
+              <th scope='col'>Gydytojas</th>
+              <th scope='col'>Pacientas</th>
               <th scope='col'>Keisti</th>
              
             </tr>

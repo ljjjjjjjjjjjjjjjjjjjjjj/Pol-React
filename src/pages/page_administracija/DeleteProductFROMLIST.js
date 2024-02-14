@@ -32,7 +32,7 @@ function DeleteProductFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/medical-products/get/${id}`);
+        const response = await axios.get(`http://localhost:8080/logged/medical-products/get/${id}`);
         const productData = response.data;
               
         setProductID(productData.productID);
@@ -62,7 +62,7 @@ function DeleteProductFROMLIST() {
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/medical-products/delete/${id}`);
+    const response = await axios.delete(`http://localhost:8080/logged/medical-products/delete/${id}`);
 
       console.log('Response:', response.data);
     

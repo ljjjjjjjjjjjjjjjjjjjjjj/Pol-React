@@ -24,6 +24,7 @@ const DeleteEmployee = () => {
   const [empID, setEmpID] = useState("");  
   const [empName, setEmpName] = useState("");
   const [empSurname, setEmpSurname] = useState("");
+  const [empNO, setEmpNO] = useState("");
   const [empAddress, setEmpAddress] = useState("");
   const [empPhone, setEmpPhone] = useState("");
   const [empEmail, setEmpEmail] = useState("");
@@ -43,12 +44,13 @@ const DeleteEmployee = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/employees/get/${selectedEmpID}`);
+      const response = await axios.get(`http://localhost:8080/logged/employees/get/${selectedEmpID}`);
       const empData = response.data;
 
       setEmpID(empID.empID);
       setEmpName(empData.empName);
       setEmpSurname(empData.empSurname);
+      setEmpNO(empData.empNO);
       setEmpAddress(empData.empAddress);
       setEmpPhone(empData.empPhone);
       setEmpEmail(empData.empEmail);
@@ -82,7 +84,7 @@ const DeleteEmployee = () => {
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/employees/delete/${selectedEmpID}`);
+    const response = await axios.delete(`http://localhost:8080/logged/employees/delete/${selectedEmpID}`);
 
       console.log('Response:', response.data);
       setSuccessMessage('Darbuotojas sėkmingai ištrintas');
@@ -115,6 +117,7 @@ const handleReset = () => {
   setEmpID('');
   setEmpName('');
   setEmpSurname('');
+  setEmpNO('');
   setEmpAddress(''); 
   setEmpPhone(''); 
   setEmpEmail(''); 
@@ -132,6 +135,7 @@ const handlePartReset = () => {
   setEmpID('');
   setEmpName('');
   setEmpSurname('');
+  setEmpNO('');
   setEmpAddress(''); 
   setEmpPhone(''); 
   setEmpEmail(''); 
@@ -193,7 +197,8 @@ const handlePartReset = () => {
                   {/* P */}
                   <p className='administracija-box-1-product-infolist'>ID: <strong>{selectedEmpID}</strong> </p>                    
                   <p className='administracija-box-1-product-infolist'>Vardas: <strong>{empName}</strong> </p>            
-                  <p className='administracija-box-1-product-infolist'>Pavarde <strong>{empSurname}</strong> </p>           
+                  <p className='administracija-box-1-product-infolist'>Pavarde: <strong>{empSurname}</strong> </p>
+                  <p className='administracija-box-1-product-infolist'>No.: <strong>{empNO}</strong> </p>                  
                   <p className='administracija-box-1-product-infolist'>Adresas: <strong>{empAddress}</strong> </p>            
                   <p className='administracija-box-1-product-infolist'>Tel nr.: <strong>{empPhone}</strong> </p>          
                   <p className='administracija-box-1-product-infolist'>E-pastas: <strong>{empEmail}</strong> </p>          

@@ -8,8 +8,10 @@ import Personalas from "../pages/Personalas";
 import Kontaktai from "../pages/Kontaktai";
 import NoPage from "../pages/NoPage";
 import SignIn from "../pages/SignIn";
+import Register from "../pages/Register";
 import Appointments from "../pages/Appointments";
 import Administracija from "../pages/Administracija";
+import LoggedPage from "../pages/LoggedPage";
 
 import AddPatient from "../pages/page_administracija/AddPatient";
 import ReadPatient from "../pages/page_administracija/ReadPatient";
@@ -40,8 +42,14 @@ import DeleteAppointment from "../pages/page_administracija/DeleteAppointment";
 import EditAppointmentFROMLIST from "../pages/page_administracija/EditAppointmentFROMLIST";
 import DeleteAppointmentFROMLIST from "../pages/page_administracija/DeleteAppointmentFROMLIST";
 
+import PatientPage from "../pages/PatientPage";
+import ReadAppointmentPATIENT from "../pages/page_administracija/ReadAppointmentPATIENT";
+import AddAppointmentPATIENT from "../pages/page_administracija/AddAppointmentPATIENT";
+import EDIT_APPOINTMENT_FROMLIST_PATIENT from "../pages/page_administracija/EDIT_APPOINTMENT_FROMLIST_PATIENT";
+import DELETE_APPOINTMENT_FROMLIST_PATIENT from "../pages/page_administracija/DELETE_APPOINTMENT_FROMLIST_PATIENT";
 
 
+import Profile from "../components/Profile";
 
 
 
@@ -49,6 +57,8 @@ function App() {
 return (
   <BrowserRouter>
     <Routes>
+
+      
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="informacija" element={<Informacija />} />
@@ -56,37 +66,48 @@ return (
         <Route path="personalas" element={<Personalas />} />
         <Route path="kontaktai" element={<Kontaktai />} />
         <Route path="signin" element={<SignIn />} />
+        <Route path="register" element={<Register />} />
         <Route path="appointments" element={<Appointments />} />
-        <Route path="administracija" element={<Administracija />} />
+        <Route path="loggedpage" element={<LoggedPage />} />
+       
+
+
+        <Route path="loggedpage/administracija" element={<Administracija />} />
 
         
-        <Route path="addpatient" element={<AddPatient />} />
-        <Route path="readpatient" element={<ReadPatient />} />
-        <Route path="editpatient" element={<EditPatient />} />
-        <Route path="deletepatient" element={<DeletePatient />} />
-        <Route path="editpatient/:id" element={<EditPatientFROMLIST />} />
-        <Route path="deletepatient/:id" element={<DeletePatientFROMLIST />} />
+        <Route path="loggedpage/addpatient" element={<AddPatient />} />
+        <Route path="loggedpage/readpatient" element={<ReadPatient />} />
+        <Route path="loggedpage/editpatient" element={<EditPatient />} />
+        <Route path="loggedpage/deletepatient" element={<DeletePatient />} />
+        <Route path="loggedpage/editpatient/:id" element={<EditPatientFROMLIST />} />
+        <Route path="loggedpage/deletepatient/:id" element={<DeletePatientFROMLIST />} />
 
-        <Route path="addemployee" element={<AddEmployee />} />
-        <Route path="reademployee" element={<ReadEmployee />} />
-        <Route path="editemployee" element={<EditEmployee />} />
-        <Route path="deleteemployee" element={<DeleteEmployee />} />
-        <Route path="editemployee/:id" element={<EditEmployeeFROMLIST />} />
-        <Route path="deleteemployee/:id" element={<DeleteEmployeeFROMLIST />} />
+        <Route path="loggedpage/addemployee" element={<AddEmployee />} />
+        <Route path="loggedpage/reademployee" element={<ReadEmployee />} />
+        <Route path="loggedpage/editemployee" element={<EditEmployee />} />
+        <Route path="loggedpage/deleteemployee" element={<DeleteEmployee />} />
+        <Route path="loggedpage/editemployee/:id" element={<EditEmployeeFROMLIST />} />
+        <Route path="loggedpage/deleteemployee/:id" element={<DeleteEmployeeFROMLIST />} />
 
-        <Route path="addproduct" element={<AddProduct />} />
-        <Route path="readproduct" element={<ReadProduct />} />
-        <Route path="editproduct" element={<EditProduct />} />
-        <Route path="deleteproduct" element={<DeleteProduct />} />
-        <Route path="editproduct/:id" element={<EditProductFROMLIST />} />
-        <Route path="deleteproduct/:id" element={<DeleteProductFROMLIST />} />
+        <Route path="loggedpage/addproduct" element={<AddProduct />} />
+        <Route path="loggedpage/readproduct" element={<ReadProduct />} />
+        <Route path="loggedpage/editproduct" element={<EditProduct />} />
+        <Route path="loggedpage/deleteproduct" element={<DeleteProduct />} />
+        <Route path="loggedpage/editproduct/:id" element={<EditProductFROMLIST />} />
+        <Route path="loggedpage/deleteproduct/:id" element={<DeleteProductFROMLIST />} />
 
-        <Route path="addappointment" element={<AddAppointment />} />
-        <Route path="readappointment" element={<ReadAppointment />} />
-        <Route path="editappointment" element={<EditAppointment />} />
-        <Route path="deleteappointment" element={<DeleteAppointment />} />
-        <Route path="editappointment/:id" element={<EditAppointmentFROMLIST />} />
-        <Route path="deleteappointment/:id" element={<DeleteAppointmentFROMLIST />} />
+        <Route path="loggedpage/addappointment" element={<AddAppointment />} />
+        <Route path="loggedpage/readappointment" element={<ReadAppointment />} />
+        <Route path="loggedpage/editappointment" element={<EditAppointment />} />
+        <Route path="loggedpage/deleteappointment" element={<DeleteAppointment />} />
+        <Route path="loggedpage/editappointment/:id" element={<EditAppointmentFROMLIST />} />
+        <Route path="loggedpage/deleteappointment/:id" element={<DeleteAppointmentFROMLIST />} />
+
+        <Route path="loggedpage/patientpage/:idP" element={<PatientPage />} />
+        <Route path="loggedpage/patientpage/:idP/readappointmentpatient" element={<ReadAppointmentPATIENT />} />
+        <Route path="loggedpage/patientpage/:idP/addappointmentpatient" element={<AddAppointmentPATIENT />} />
+        <Route path="loggedpage/patientpage/:idP/editappointmentpatient/:idA" element={<EDIT_APPOINTMENT_FROMLIST_PATIENT />} />
+        <Route path="loggedpage/patientpage/:idP/deleteappointmentpatient/:idA" element={<DELETE_APPOINTMENT_FROMLIST_PATIENT />} />
 
         <Route path="*" element={<NoPage />} />
       </Route>
