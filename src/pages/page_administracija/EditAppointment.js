@@ -1,5 +1,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import authHeader from "../../services/auth-header";
+import API_ROOT_PATH from '../../main/configLogged.js';
 import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -19,11 +21,11 @@ const EditAppointment = () => {
 
   const navigate = useNavigate();
   const navigateToReadAppointment = () => {
-    navigate(`/readappointment`);
+    navigate(`/loggedpage/readappointment`);
   };
   
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
+    navigate(`/loggedpage/administracija`);
   };
 
 
@@ -84,7 +86,7 @@ const EditAppointment = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/logged/appointments/get/${selectedAppID}`);
+      const response = await axios.get(`${API_ROOT_PATH}/appointments/get/${selectedAppID}`,  {headers: authHeader()});
       const appointmentData = response.data;
             
       setAppID(appointmentData.appID);
@@ -122,12 +124,15 @@ const EditAppointment = () => {
       ? `${selectedHour}:${selectedMinute.toString().padStart(2, '0')}`
       : '';
 
-    const response = await axios.put(`http://localhost:8080/logged/appointments/edit/${selectedAppID}`, {
+    const response = await axios.put(`${API_ROOT_PATH}/appointments/edit/${selectedAppID}`, 
+    {
       appID,
       appCategory, 
       appReason, 
       appDate: `${formattedDate}, ${formattedTime}`
-      });
+    },  
+    {headers: authHeader()}
+    );
 
       console.log('Response:', response.data);
       setSuccessMessage(<div>Rezervacija sėkmingai atnaujinta: <br /> <br />

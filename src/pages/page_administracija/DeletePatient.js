@@ -1,6 +1,8 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import API_ROOT_PATH from '../../main/configLogged.js';
+import authHeader from "../../services/auth-header";
 import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -12,11 +14,11 @@ const DeletePatient = () => {
   
   const navigate = useNavigate();
   const navigateToReadPatient = () => {
-    navigate(`/readpatient`);
+    navigate(`/loggedpage/readpatient`);
   };
   
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
+    navigate(`/loggedpage/administracija`);
   };
 
   const [selectedPatientID, setSelectedPatientID] = useState("");
@@ -43,7 +45,7 @@ const DeletePatient = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/logged/patients/get/${selectedPatientID}`);
+      const response = await axios.get(`${API_ROOT_PATH}/patients/get/${selectedPatientID}`,  {headers: authHeader()});
       const patientData = response.data;
 
       setPatientID(patientData.patientID);
@@ -90,7 +92,7 @@ const DeletePatient = () => {
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/patients/delete/${selectedPatientID}`);
+    const response = await axios.delete(`${API_ROOT_PATH}/patients/delete/${selectedPatientID}`,  {headers: authHeader()});
 
       console.log('Response:', response.data);
       setSuccessMessage('Pacientas sėkmingai ištrintas');

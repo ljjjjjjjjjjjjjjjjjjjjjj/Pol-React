@@ -1,5 +1,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import authHeader from "../../services/auth-header";
+import API_ROOT_PATH from '../../main/configLogged.js';
 import EmployeeList from '../../methods_and_other/EmployeeList';
 import { useState,  useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -11,10 +13,10 @@ const ReadEmployee = () => {
 
   const navigate = useNavigate();
   const navigateToAddEmployee = () => {
-    navigate(`/addemployee`);
+    navigate(`/loggedpage/addemployee`);
   };
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
+    navigate(`/loggedpage/administracija`);
   };
 
   const [employees, setEmployees] = useState( [] );
@@ -25,7 +27,7 @@ const ReadEmployee = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/logged/employees/get/all');
+        const response = await axios.get(`${API_ROOT_PATH}/employees/get/all`,  {headers: authHeader()});
         
         let sortedEmployees = response.data;
 

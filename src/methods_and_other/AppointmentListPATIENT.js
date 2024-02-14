@@ -11,10 +11,10 @@ function AppointmentListPATIENT({appointment}) {
 
  
   const navigateToEditAppointment = () => {
-    navigate(`/patientpage/${appPatientID}/editappointmentpatient/${appointment.appID}`);};
+    navigate(`/loggedpage/patientpage/${appPatientID}/editappointmentpatient/${appointment.appID}`);};
   
   const navigateToDeleteAppointment = () => {
-    navigate(`deleteappointment/${appointment.appID}`);};
+    navigate(`/loggedpage/patientpage/${appPatientID}/deleteappointment/${appointment.appID}`);};
 
     
       return (

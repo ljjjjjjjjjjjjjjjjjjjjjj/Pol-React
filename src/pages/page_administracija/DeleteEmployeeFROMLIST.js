@@ -1,6 +1,8 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import API_ROOT_PATH from '../../main/configLogged.js';
+import authHeader from "../../services/auth-header";
 import { useState, useEffect} from 'react';
 import { useNavigate,  useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -13,7 +15,7 @@ function DeleteEmployeeFROMLIST() {
 
   const navigate = useNavigate();
   const navigateToReadEmployee = () => {
-    navigate(`/reademployee`);
+    navigate(`/loggedpage/reademployee`);
   };
   
   
@@ -38,7 +40,7 @@ function DeleteEmployeeFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/logged/employees/get/${id}`);
+        const response = await axios.get(`${API_ROOT_PATH}/employees/get/${id}`,  {headers: authHeader()});
         const empData = response.data;
               
         setEmpID(empData.empID);
@@ -73,7 +75,7 @@ function DeleteEmployeeFROMLIST() {
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/employees/delete/${id}`);
+    const response = await axios.delete(`${API_ROOT_PATH}/employees/delete/${id}`,  {headers: authHeader()});
 
       console.log('Response:', response.data);
     

@@ -1,6 +1,8 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import API_ROOT_PATH from '../../main/configLogged.js';
+import authHeader from "../../services/auth-header";
 import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -12,11 +14,11 @@ const DeleteProduct = () => {
   
   const navigate = useNavigate();
   const navigateToReadProduct = () => {
-    navigate(`/readproduct`);
+    navigate(`/loggedpage/readproduct`);
   };
   
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
+    navigate(`/loggedpage/administracija`);
   };
 
   const [selectedProductID, setSelectedProductID] = useState("");
@@ -39,7 +41,7 @@ const DeleteProduct = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/logged/medical-products/get/${selectedProductID}`);
+      const response = await axios.get(`${API_ROOT_PATH}/medical-products/get/${selectedProductID}`,  {headers: authHeader()});
       const productData = response.data;
 
       setProductID(productData.productID);
@@ -74,7 +76,7 @@ const DeleteProduct = () => {
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/logged/medical-products/delete/${selectedProductID}`);
+    const response = await axios.delete(`${API_ROOT_PATH}/medical-products/delete/${selectedProductID}`,  {headers: authHeader()});
 
       console.log('Response:', response.data);
       setSuccessMessage('Produktas sėkmingai ištrintas');

@@ -1,6 +1,8 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import API_ROOT_PATH from '../../main/configLogged.js';
+import authHeader from "../../services/auth-header";
 import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -11,11 +13,11 @@ const DeleteEmployee = () => {
 
   const navigate = useNavigate();
   const navigateToReadEmployee = () => {  
-    navigate(`/reademployee`);
+    navigate(`/loggedpage/reademployee`);
   };
   
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
+    navigate(`/loggedpage/administracija`);
   };
 
 
@@ -44,7 +46,7 @@ const DeleteEmployee = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/logged/employees/get/${selectedEmpID}`);
+      const response = await axios.get(`${API_ROOT_PATH}/employees/get/${selectedEmpID}`,  {headers: authHeader()});
       const empData = response.data;
 
       setEmpID(empID.empID);
@@ -84,7 +86,7 @@ const DeleteEmployee = () => {
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/logged/employees/delete/${selectedEmpID}`);
+    const response = await axios.delete(`${API_ROOT_PATH}/employees/delete/${selectedEmpID}`,  {headers: authHeader()});
 
       console.log('Response:', response.data);
       setSuccessMessage('Darbuotojas sėkmingai ištrintas');

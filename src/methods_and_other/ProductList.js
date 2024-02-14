@@ -9,10 +9,10 @@ function ProductList({product}) {
 
  
   const navigateToEditProduct = () => {
-    navigate(`/editproduct/${product.productID}`);};
+    navigate(`/loggedpage/editproduct/${product.productID}`);};
   
   const navigateToDeleteProduct = () => {
-    navigate(`/deleteproduct/${product.productID}`);};
+    navigate(`/loggedpage/deleteproduct/${product.productID}`);};
 
     
       return (

@@ -1,6 +1,8 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import API_ROOT_PATH from '../../main/configLogged.js';
+import authHeader from "../../services/auth-header";
 import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -12,11 +14,11 @@ const DeleteAppointment = () => {
   
   const navigate = useNavigate();
   const navigateToReadAppointment = () => {
-    navigate(`/readappointment`);
+    navigate(`/loggedpage/readappointment`);
   };
   
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
+    navigate(`/loggedpage/administracija`);
   };
 
   const [selectedAppID, setSelectedAppID] = useState("");
@@ -39,7 +41,7 @@ const DeleteAppointment = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/logged/appointments/get/${selectedAppID}`);
+      const response = await axios.get(`${API_ROOT_PATH}/appointments/get/${selectedAppID}`,  {headers: authHeader()});
       const appData = response.data;
 
       setAppID(appData.appID);
@@ -74,7 +76,7 @@ const DeleteAppointment = () => {
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/logged/appointments/delete/${selectedAppID}`);
+    const response = await axios.delete(`${API_ROOT_PATH}/appointments/delete/${selectedAppID}`,  {headers: authHeader()});
 
       console.log('Response:', response.data);
       setSuccessMessage('Rezervacija sėkmingai ištrinta');

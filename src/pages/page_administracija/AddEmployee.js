@@ -2,6 +2,8 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import API_ROOT_PATH from '../../main/configLogged.js';
+import authHeader from "../../services/auth-header";
 import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -13,11 +15,11 @@ const AddEmployee = () => {
 
   const navigate = useNavigate();
   const navigateToReadEmployee = () => {  
-    navigate(`/reademployee`);
+    navigate(`/loggedpage/reademployee`);
   };
   
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
+    navigate(`/loggedpage/administracija`);
   };
  
     const [empName, setEmpName] = useState("");
@@ -37,7 +39,8 @@ const AddEmployee = () => {
 
 
     try {
-      const response = await axios.post('http://localhost:8080/logged/employees/add', {
+      const response = await axios.post(`${API_ROOT_PATH}/employees/add`, 
+      {
         empName, 
         empSurname, 
         empNO,
@@ -46,7 +49,9 @@ const AddEmployee = () => {
         empEmail, 
         empCategory,
         imageUrl
-        });
+      },  
+      {headers: authHeader()}
+      );
 
         console.log('Response:', response.data);
         setSuccessMessage('Darbuotojas sėkmingai įvestas');

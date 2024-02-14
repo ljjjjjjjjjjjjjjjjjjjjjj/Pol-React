@@ -1,5 +1,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import authHeader from "../../services/auth-header";
+import API_ROOT_PATH from '../../main/configLogged.js';
 import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -10,11 +12,11 @@ const EditProduct = () => {
 
   const navigate = useNavigate();
   const navigateToReadProduct = () => {
-    navigate(`/readproduct`);
+    navigate(`/loggedpage/readproduct`);
   };
   
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
+    navigate(`/loggedpage/administracija`);
   };
 
 
@@ -33,7 +35,7 @@ const EditProduct = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/logged/medical-products/get/${selectedProductID}`);
+      const response = await axios.get(`${API_ROOT_PATH}/medical-products/get/${selectedProductID}`,  {headers: authHeader()});
       const productData = response.data;
 
       setProductID(productData.productID);
@@ -56,12 +58,15 @@ const EditProduct = () => {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/logged/medical-products/edit/${selectedProductID}`, {
+    const response = await axios.put(`${API_ROOT_PATH}/medical-products/edit/${selectedProductID}`, 
+    {
       productID,
       productTitle, 
       productSubCategory, 
       productCategory
-      });
+    },  
+    {headers: authHeader()}
+    );
 
       console.log('Response:', response.data);
       setSuccessMessage('Paslauga sėkmingai atnaujinta');

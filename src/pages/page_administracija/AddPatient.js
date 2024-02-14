@@ -2,6 +2,8 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import API_ROOT_PATH from '../../main/configLogged.js';
+import authHeader from "../../services/auth-header";
 import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -13,11 +15,11 @@ const AddPatient = () => {
 
   const navigate = useNavigate();
   const navigateToReadPatient = () => {
-    navigate(`/readpatient`);
+    navigate(`/loggedpage/readpatient`);
   };
   
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
+    navigate(`/loggedpage/administracija`);
   };
  
     const [patientName, setPatientName] = useState("");
@@ -36,15 +38,19 @@ const AddPatient = () => {
 
 
     try {
-      const response = await axios.post('http://localhost:8080/logged/patients/add', {
-        patientName, 
-        patientSurname, 
-        patientNO, 
-        patientAddress, 
-        patientPhone, 
-        patientEmail, 
-        patientCategory
-        });
+      const response = await axios.post(
+        `${API_ROOT_PATH}/patients/add`,
+        { 
+          patientName, 
+          patientSurname, 
+          patientNO, 
+          patientAddress, 
+          patientPhone, 
+          patientEmail, 
+          patientCategory 
+        },
+        {headers: authHeader()}
+        );
 
         console.log('Response:', response.data);
         setSuccessMessage('Pacientas sėkmingai įvestas');

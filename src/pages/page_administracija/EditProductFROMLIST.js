@@ -1,5 +1,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import authHeader from "../../services/auth-header";
+import API_ROOT_PATH from '../../main/configLogged.js';
 import { useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -11,7 +13,7 @@ function EditProductFROMLIST() {
 
   const navigate = useNavigate();
   const navigateToReadProduct = () => {
-    navigate(`/readproduct`);
+    navigate(`/loggedpage/readproduct`);
   };
   
   
@@ -31,7 +33,7 @@ function EditProductFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/logged/medical-products/get/${id}`);
+        const response = await axios.get(`${API_ROOT_PATH}/medical-products/get/${id}`,  {headers: authHeader()});
         const productData = response.data;
               
         setProductID(productData.productID);
@@ -61,12 +63,15 @@ function EditProductFROMLIST() {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/logged/medical-products/edit/${id}`, {
+    const response = await axios.put(`${API_ROOT_PATH}/medical-products/edit/${id}`, 
+    {
       productID, 
       productTitle, 
       productSubCategory,
       productCategory
-      });
+    },  
+    {headers: authHeader()}
+    );
 
       console.log('Response:', response.data);
       handleReset();

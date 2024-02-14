@@ -1,5 +1,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import authHeader from "../../services/auth-header";
+import API_ROOT_PATH from '../../main/configLogged.js';
 import ProductList from '../../methods_and_other/ProductList';
 import { useState,  useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -11,10 +13,10 @@ const ReadProduct = () => {
 
   const navigate = useNavigate();
   const navigateToAddProduct = () => {
-    navigate(`/addproduct`);
+    navigate(`/loggedpage/addproduct`);
   };
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
+    navigate(`/loggedpage/administracija`);
   };
 
   const [products, setProducts] = useState( [] );
@@ -25,7 +27,7 @@ const ReadProduct = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/logged/medical-products/get/all');
+        const response = await axios.get(`${API_ROOT_PATH}/medical-products/get/all`,  {headers: authHeader()});
         
         let sortedProducts = response.data;
 

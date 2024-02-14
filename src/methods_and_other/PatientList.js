@@ -9,10 +9,10 @@ function PatientList({patient}) {
 
  
   const navigateToEditPatient = () => {
-    navigate(`/editpatient/${patient.patientID}`);};
+    navigate(`/loggedpage/editpatient/${patient.patientID}`);};
   
   const navigateToDeletePatient = () => {
-    navigate(`/deletepatient/${patient.patientID}`);};
+    navigate(`/loggedpage/deletepatient/${patient.patientID}`);};
 
     
       return (

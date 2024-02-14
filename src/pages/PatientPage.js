@@ -1,16 +1,14 @@
 import '../main/custom-bootstrap.css';
 import './formats/PatientPage.css';
-import config from '../main/config.js';
+import API_ROOT_PATH from '../main/configLogged.js';
 import authHeader from "../services/auth-header";
 import { useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import AuthService from "../services/auth.service";
 import axios from 'axios';
 
 
 const PatientPage = () => {
-  const currentUser = AuthService.getCurrentUser();
-
+  
   const { idP } = useParams();
    
 
@@ -67,10 +65,8 @@ const PatientPage = () => {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        console.log('LINKAS: ', `http://localhost:8080/logged/patients/get/${patientID}`);
-        console.log('USER: ', currentUser);
         setSuccessMessage('');
-        const response = await axios.get(`http://localhost:8080/logged/patients/get/${patientID}`, {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/patients/get/${patientID}`, {headers: authHeader()});
         const patientData = response.data;
               
         setExistingPatientName(patientData.patientName);

@@ -1,6 +1,8 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import API_ROOT_PATH from '../../main/configLogged.js';
+import authHeader from "../../services/auth-header";
 import { useState, useEffect} from 'react';
 import axios from 'axios';
 import { useNavigate,  useParams } from 'react-router-dom';
@@ -12,7 +14,7 @@ function DeleteProductFROMLIST() {
 
   const navigate = useNavigate();
   const navigateToReadProduct = () => {
-    navigate(`/readproduct`);
+    navigate(`/loggedpage/readproduct`);
   };
   
   
@@ -32,7 +34,7 @@ function DeleteProductFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/logged/medical-products/get/${id}`);
+        const response = await axios.get(`${API_ROOT_PATH}/medical-products/get/${id}`,  {headers: authHeader()});
         const productData = response.data;
               
         setProductID(productData.productID);
@@ -62,7 +64,7 @@ function DeleteProductFROMLIST() {
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/logged/medical-products/delete/${id}`);
+    const response = await axios.delete(`${API_ROOT_PATH}/medical-products/delete/${id}`,  {headers: authHeader()});
 
       console.log('Response:', response.data);
     

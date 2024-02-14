@@ -1,5 +1,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import authHeader from "../../services/auth-header";
+import API_ROOT_PATH from '../../main/configLogged.js';
 import AppointmentList from '../../methods_and_other/AppointmentList';
 import { useState,  useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -11,10 +13,10 @@ const ReadAppointment = () => {
 
   const navigate = useNavigate();
   const navigateToAddAppointment = () => {
-    navigate(`/addappointment`);
+    navigate(`/loggedpage/addappointment`);
   };
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
+    navigate(`/loggedpage/administracija`);
   };
 
   const [appointments, setAppointments] = useState( [] );
@@ -25,7 +27,7 @@ const ReadAppointment = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/logged/appointments/get/all-objects');
+        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/all-objects`,  {headers: authHeader()});
         
         let sortedAppointments = response.data;
 

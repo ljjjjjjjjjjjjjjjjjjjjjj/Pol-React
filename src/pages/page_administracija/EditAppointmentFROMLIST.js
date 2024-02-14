@@ -2,6 +2,8 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import authHeader from "../../services/auth-header";
+import API_ROOT_PATH from '../../main/configLogged.js';
 import HandleEmployeeSelectionEDIT from '../../methods_and_other/HandleEmployeeSelectionEDIT.js';
 import HandlePatientSelectionEDIT from '../../methods_and_other/HandlePatientSelectionEDIT.js';
 import { useState, useEffect} from 'react';
@@ -24,7 +26,7 @@ function EditAppointmentFROMLIST() {
   /*  -----------------   Navigate    ------------------*/
   const navigate = useNavigate();
   const navigateToReadAppointment = () => {
-    navigate(`/readappointment`);
+    navigate(`/loggedpage/readappointment`);
   };
   /*  -----------------   Navigate    ------------------*/
 
@@ -161,7 +163,7 @@ function EditAppointmentFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/logged/appointments/get/objects${id}`);
+        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/objects${id}`,  {headers: authHeader()});
         const appointmentData = response.data;
               
         setAppID(appointmentData.appID);
@@ -242,14 +244,17 @@ function EditAppointmentFROMLIST() {
     console.log('1. EDITAPP - TEST (appPatientID):', appPatientID);    
 
 
-    const request = await axios.put(`http://localhost:8080/logged/appointments/edit/objects${id}`, {
+    const request = await axios.put(`${API_ROOT_PATH}/appointments/edit/objects${id}`, 
+    {
       appID, 
       appCategory, 
       appReason,
       appDate: `${formattedDate}, ${formattedTime}`,
       appEmployeeID,
       appPatientID
-    });
+    },  
+    {headers: authHeader()}
+    );
 
 
 

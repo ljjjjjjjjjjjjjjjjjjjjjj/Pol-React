@@ -1,5 +1,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import authHeader from "../../services/auth-header";
+import API_ROOT_PATH from '../../main/configLogged.js';
 import { useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -11,7 +13,7 @@ function EditPatientFROMLIST() {
 
   const navigate = useNavigate();
   const navigateToReadPatient = () => {
-    navigate(`/readpatient`);
+    navigate(`/loggedpage/readpatient`);
   };
   
   
@@ -34,7 +36,7 @@ function EditPatientFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/logged/patients/get/${id}`);
+        const response = await axios.get(`${API_ROOT_PATH}/patients/get/${id}`,  {headers: authHeader()});
         const patientData = response.data;
               
         setPatientID(patientData.patientID);
@@ -68,7 +70,8 @@ function EditPatientFROMLIST() {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/logged/patients/edit/${id}`, {
+    const response = await axios.put(`${API_ROOT_PATH}/patients/edit/${id}`, 
+    {
       patientID, 
       patientName, 
       patientSurname, 
@@ -77,7 +80,9 @@ function EditPatientFROMLIST() {
       patientPhone, 
       patientEmail, 
       patientCategory
-      });
+    },  
+    {headers: authHeader()}
+    );
 
       console.log('Response:', response.data);
       handleReset();

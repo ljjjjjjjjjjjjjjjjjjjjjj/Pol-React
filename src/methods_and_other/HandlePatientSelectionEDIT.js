@@ -2,6 +2,8 @@
 import '../main/custom-bootstrap.css';
 import './PatientList.css';
 import '../pages/formats/Administracija.css';
+import authHeader from "../services/auth-header";
+import API_ROOT_PATH from '../main/configLogged.js';
 import PatientSelectionRow from './PatientSelectionRow.js';
 import { useState, useEffect} from 'react';
 import axios from 'axios';
@@ -54,10 +56,10 @@ function HandlePatientSelectionEDIT( props ) {
 
   const fetchPatientByNameData = async () => {
     try {
-      const myUrl = `http://localhost:8080/logged/patients/get/name/${patientName}`;
+      const myUrl = `${API_ROOT_PATH}/patients/get/name/${patientName}`;
       console.log('3. Handle - Fetch - (patientName):', patientName);
 
-      const response = await axios.get(myUrl);
+      const response = await axios.get(myUrl,  {headers: authHeader()});
 
       const patientData = response.data;
       setAppSelectedPatients(patientData);

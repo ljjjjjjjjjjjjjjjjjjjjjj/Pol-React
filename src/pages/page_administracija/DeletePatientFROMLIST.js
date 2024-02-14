@@ -1,6 +1,8 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import API_ROOT_PATH from '../../main/configLogged.js';
+import authHeader from "../../services/auth-header";
 import { useState, useEffect} from 'react';
 import axios from 'axios';
 import { useNavigate,  useParams } from 'react-router-dom';
@@ -12,7 +14,7 @@ function DeletePatientFROMLIST() {
 
   const navigate = useNavigate();
   const navigateToReadPatient = () => {
-    navigate(`/readpatient`);
+    navigate(`/loggedpage/readpatient`);
   };
   
   
@@ -36,7 +38,7 @@ function DeletePatientFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/logged/patients/get/${id}`);
+        const response = await axios.get(`${API_ROOT_PATH}/patients/get/${id}`,  {headers: authHeader()});
         const patientData = response.data;
               
         setPatientID(patientData.patientID);
@@ -70,7 +72,7 @@ function DeletePatientFROMLIST() {
 
   try {
   
-    const response = await axios.delete(`http://localhost:8080/logged/patients/delete/${id}`);
+    const response = await axios.delete(`${API_ROOT_PATH}/patients/delete/${id}`,  {headers: authHeader()});
 
       console.log('Response:', response.data);
     

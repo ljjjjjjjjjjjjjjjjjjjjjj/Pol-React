@@ -10,10 +10,10 @@ function EmployeeList({employee}) {
 
  
   const navigateToEditEmployee = () => {
-    navigate(`/editemployee/${employee.empID}`);};
+    navigate(`/loggedpage/editemployee/${employee.empID}`);};
   
   const navigateToDeleteEmployee = () => {
-    navigate(`/deleteemployee/${employee.empID}`);};
+    navigate(`/loggedpage/deleteemployee/${employee.empID}`);};
 
     
       return (

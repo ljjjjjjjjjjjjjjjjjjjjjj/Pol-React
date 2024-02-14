@@ -1,5 +1,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import authHeader from "../../services/auth-header";
+import API_ROOT_PATH from '../../main/configLogged.js';
 import { useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -11,7 +13,7 @@ function EditEmployeeFROMLIST() {
 
   const navigate = useNavigate();
   const navigateToReadEmployee = () => {
-    navigate(`/reademployee`);
+    navigate(`/loggedpage/reademployee`);
   };
   
   
@@ -35,7 +37,7 @@ function EditEmployeeFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/logged/employees/get/${id}`);
+        const response = await axios.get(`${API_ROOT_PATH}/employees/get/${id}`,  {headers: authHeader()});
         const empData = response.data;
               
         setEmpID(empData.empID);
@@ -70,7 +72,8 @@ function EditEmployeeFROMLIST() {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/logged/employees/edit/${id}`, {
+    const response = await axios.put(`${API_ROOT_PATH}/employees/edit/${id}`, 
+    {
       empID,
       empName, 
       empSurname, 
@@ -80,7 +83,9 @@ function EditEmployeeFROMLIST() {
       empEmail, 
       empCategory,
       imageUrl
-      });
+    },  
+    {headers: authHeader()}
+    );
 
       console.log('Response:', response.data);
       handleReset();

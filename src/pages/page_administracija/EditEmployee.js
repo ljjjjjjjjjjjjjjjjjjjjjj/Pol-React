@@ -1,5 +1,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import authHeader from "../../services/auth-header";
+import API_ROOT_PATH from '../../main/configLogged.js';
 import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -10,11 +12,11 @@ const EditEmployee = () => {
 
   const navigate = useNavigate();
   const navigateToReadEmployee = () => {  
-    navigate(`/reademployee`);
+    navigate(`/loggedpage/reademployee`);
   };
   
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
+    navigate(`/loggedpage/administracija`);
   };
 
   const [selectedEmpID, setSelectedEmpID] = useState("");
@@ -38,7 +40,7 @@ const EditEmployee = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8080/logged/employees/get/${selectedEmpID}`);
+      const response = await axios.get(`${API_ROOT_PATH}/employees/get/${selectedEmpID}`,  {headers: authHeader()});
       const empData = response.data;
 
       setEmpID(empData.empID);
@@ -66,7 +68,8 @@ const EditEmployee = () => {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/logged/employees/edit/${selectedEmpID}`, {
+    const response = await axios.put(`${API_ROOT_PATH}/employees/edit/${selectedEmpID}`, 
+    {
       empID,
       empName, 
       empSurname, 
@@ -76,7 +79,9 @@ const EditEmployee = () => {
       empEmail, 
       empCategory,
       imageUrl
-      });
+    },  
+    {headers: authHeader()}
+    );
 
       console.log('Response:', response.data);
       setSuccessMessage('Darbuotojas sėkmingai atnaujintas');

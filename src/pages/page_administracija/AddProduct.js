@@ -2,6 +2,8 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import API_ROOT_PATH from '../../main/configLogged.js';
+import authHeader from "../../services/auth-header";
 import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -13,11 +15,11 @@ const AddProduct = () => {
 
   const navigate = useNavigate();
   const navigateToReadProduct = () => {
-    navigate(`/readproduct`);
+    navigate(`/loggedpage/readproduct`);
   };
   
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
+    navigate(`/loggedpage/administracija`);
   };
  
     const [productTitle, setProductTitle] = useState("");
@@ -32,11 +34,14 @@ const AddProduct = () => {
 
 
     try {
-      const response = await axios.post('http://localhost:8080/logged/medical-products/add', {
+      const response = await axios.post(`${API_ROOT_PATH}/medical-products/add`, 
+      {
         productTitle, 
         productSubCategory,
         productCategory
-        });
+      },  
+      {headers: authHeader()}
+      );
 
         console.log('Response:', response.data);
         setSuccessMessage('Paslauga sėkmingai įvesta');

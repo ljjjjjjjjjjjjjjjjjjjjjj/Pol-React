@@ -4,6 +4,8 @@ import React from 'react';
 import '../../main/custom-bootstrap.css';
 import '../formats/PatientPage.css';
 import '../formats/Administracija.css';
+import API_ROOT_PATH from '../../main/configLogged.js';
+import authHeader from "../../services/auth-header";
 import HandleEmployeeSelectionNEW from '../../methods_and_other/HandleEmployeeSelectionNEW.js';
 import { useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -28,10 +30,10 @@ const AddAppointmentPATIENT = () => {
   /*  -----------------   Navigate    ------------------*/
   const navigate = useNavigate();
   const navigateToReadAppointmentPatient = () => {
-    navigate(`/patientpage/${appPatientID}/readappointmentpatient`);};
+    navigate(`/loggedpage/patientpage/${appPatientID}/readappointmentpatient`);};
   
   const navigateToPatientPage = () => {
-    navigate(`/patientpage/${appPatientID}`);};
+    navigate(`/loggedpage/patientpage/${appPatientID}`);};
   /*  -----------------   Navigate    ------------------*/
 
   
@@ -89,7 +91,7 @@ const AddAppointmentPATIENT = () => {
 
   const handleGetEmployeeInfo = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/logged/employees/get/${appEmployeeID}`);
+      const response = await axios.get(`${API_ROOT_PATH}/employees/get/${appEmployeeID}`,  {headers: authHeader()});
       const employeeData = response.data;
             
 
@@ -138,7 +140,7 @@ const AddAppointmentPATIENT = () => {
   useEffect(() => {
     const handleGetPatientInfo = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/logged/patients/get/${appPatientID}`);
+        const response = await axios.get(`${API_ROOT_PATH}/patients/get/${appPatientID}`,  {headers: authHeader()});
         const patientData = response.data;
               
   
@@ -256,13 +258,16 @@ const AddAppointmentPATIENT = () => {
       console.log('1. EDITAPP - TEST:', appPatientID);
 
 
-      const request = await axios.post('http://localhost:8080/logged/appointments/add-objects', {
+      const request = await axios.post(`${API_ROOT_PATH}/appointments/add-objects`,  
+      {
         appCategory, 
         appReason,
         appDate: `${formattedDate}, ${formattedTime}`,
         appEmployeeID,
         appPatientID
-      });
+      },  
+      {headers: authHeader()}
+      );
 
 
 

@@ -3,6 +3,8 @@
 import React from 'react';
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import API_ROOT_PATH from '../../main/configLogged.js';
+import authHeader from "../../services/auth-header";
 import HandleEmployeeSelectionNEW from '../../methods_and_other/HandleEmployeeSelectionNEW.js';
 import HandlePatientSelectionNEW from '../../methods_and_other/HandlePatientSelectionNEW.js';
 import { useState, useEffect} from 'react';
@@ -25,10 +27,10 @@ const AddAppointment = () => {
   /*  -----------------   Navigate    ------------------*/
   const navigate = useNavigate();
   const navigateToReadAppointment = () => {
-    navigate(`/readappointment`);};
+    navigate(`/loggedpage/readappointment`);};
   
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);};
+    navigate(`/loggedpage/administracija`);};
   /*  -----------------   Navigate    ------------------*/
 
 
@@ -80,10 +82,11 @@ const AddAppointment = () => {
     {handleEmployeeSelect();}
   }, [existingAppEmployeeName]);
 
+  
 
   const handleGetEmployeeInfo = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/logged/employees/get/${appEmployeeID}`);
+      const response = await axios.get(`${API_ROOT_PATH}/employees/get/${appEmployeeID}`,  {headers: authHeader()});
       const employeeData = response.data;
             
 
@@ -91,7 +94,8 @@ const AddAppointment = () => {
       setExistingAppEmployeeName(employeeData.empName);
       setExistingAppEmployeeSurname(employeeData.empSurname);
       setExistingAppEmployeeJobTitle(employeeData.empJobTitle);
-    
+
+      console.info('1. LINKAS: ', (`${API_ROOT_PATH}/employees/get/${appEmployeeID}`));
       console.info('1. EDITAPP - handleGetEmployeeInfo (appEmployeeID): ', (employeeData.empID));
       console.info('1. EDITAPP - handleGetEmployeeInfo (employeeData.empName): ', (employeeData.empName));
       console.info('1. EDITAPP - handleGetEmployeeInfo (employeeData.empSurname): ', (employeeData.empSurname));
@@ -147,10 +151,11 @@ const AddAppointment = () => {
     {handleGetPatientInfo();}
   }, [appPatientID]);
 
+
   
   const handleGetPatientInfo = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/logged/patients/get/${appPatientID}`);
+      const response = await axios.get(`${API_ROOT_PATH}/patients/get/${appPatientID}`,  {headers: authHeader()});
       const patientData = response.data;
             
 
@@ -260,13 +265,16 @@ const AddAppointment = () => {
       console.log('1. EDITAPP - TEST:', appPatientID);
 
 
-      const request = await axios.post('http://localhost:8080/logged/appointments/add-objects', {
+      const request = await axios.post(`${API_ROOT_PATH}/appointments/add-objects`, 
+      {
         appCategory, 
         appReason,
         appDate: `${formattedDate}, ${formattedTime}`,
         appEmployeeID,
         appPatientID
-      });
+      },  
+      {headers: authHeader()}
+      );
 
 
 

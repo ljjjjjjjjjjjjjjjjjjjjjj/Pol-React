@@ -1,5 +1,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import authHeader from "../../services/auth-header";
+import API_ROOT_PATH from '../../main/configLogged.js';
 import PatientList from '../../methods_and_other/PatientList';
 import { useState,  useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -11,10 +13,10 @@ const ReadPatient = () => {
 
   const navigate = useNavigate();
   const navigateToAddPatient = () => {
-    navigate(`/addpatient`);
+    navigate(`/loggedpage/addpatient`);
   };
   const navigateToAdministracija = () => {
-    navigate(`/administracija`);
+    navigate(`/loggedpage/administracija`);
   };
 
   const [patients, setPatients] = useState( [] );
@@ -25,7 +27,7 @@ const ReadPatient = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/logged/patients/get/all');
+        const response = await axios.get(`${API_ROOT_PATH}/patients/get/all`,  {headers: authHeader()});
         
 
         let sortedPatients = response.data;

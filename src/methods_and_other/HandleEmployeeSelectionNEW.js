@@ -1,6 +1,8 @@
 
 import '../main/custom-bootstrap.css';
 import './PatientList.css';
+import authHeader from "../services/auth-header";
+import API_ROOT_PATH from '../main/configLogged.js';
 import EmployeeSelectionRow from './EmployeeSelectionRow.js';
 import { useState, useEffect} from 'react';
 import axios from 'axios';
@@ -26,10 +28,10 @@ function HandleEmployeeSelectionNEW( props ) {
 
   const fetchEmployeeByCategoryData = async () => {
     try {
-      const myUrl = `http://localhost:8080/logged/employees/get/category/${appEmployeeCategory}`;
+      const myUrl = `${API_ROOT_PATH}/employees/get/category/${appEmployeeCategory}`;
       console.log('2. HANDLE - fetchEmployeeByCategoryData (appEmployeeCategory):', appEmployeeCategory);
 
-      const response = await axios.get(myUrl);
+      const response = await axios.get(myUrl,  {headers: authHeader()});
       const employeeData = response.data;
       setAppSelectedEmployees(employeeData);
 
