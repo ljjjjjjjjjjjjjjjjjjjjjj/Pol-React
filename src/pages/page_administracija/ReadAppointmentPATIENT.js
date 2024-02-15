@@ -37,7 +37,7 @@ const ReadAppointmentPATIENT = () => {
 
     
       
-        ;sortedAppointments = sortedAppointments.sort((a, b) => {
+        sortedAppointments = sortedAppointments.sort((a, b) => {
           const dateA = new Date(a[selectedOption]).getTime();
           const dateB = new Date(b[selectedOption]).getTime();
           return dateA - dateB;

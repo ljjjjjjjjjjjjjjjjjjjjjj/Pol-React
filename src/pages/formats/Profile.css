@@ -1,0 +1,54 @@
+
+
+.profile {
+    max-width: 1200px;
+    margin: 0; 
+    margin-left: 30px;
+    margin-top: 50px;
+}
+
+.profile-box-1-content {
+    
+    width: 100%;
+    background: rgba(240, 248, 255, 0.5);
+    padding: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    
+}
+
+
+.personalas h1 {
+    color: rgb(73, 80, 83);
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 0px;
+    margin-bottom: 30px;
+  }
+  
+.personalas h3 {
+    color: rgb(73, 80, 83);
+    font-size: 23px;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.personalas h5 {
+    color: rgba(21, 134, 209, 0.9);
+    font-size: 23px;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+  
+.personalas p {
+    padding-top: 20px;
+   
+}
+  
+  

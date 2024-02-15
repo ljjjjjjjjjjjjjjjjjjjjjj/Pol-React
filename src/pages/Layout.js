@@ -120,7 +120,7 @@ const Layout = () => {
           <p >II&nbsp;&nbsp;- &nbsp;&nbsp;07:00-19:00</p>
           <p >III&nbsp;&nbsp;- &nbsp;&nbsp;07:00-19:00</p>
           <p >IV&nbsp;&nbsp;- &nbsp;&nbsp;07:00-19:00</p>
-          <p >V&nbsp;&nbsp;- &nbsp;&nbsp;07:00-17:00</p>
+          <p >V&nbsp;&nbsp;- &nbsp;&nbsp;07:00-19:00</p>
           <p >VI&nbsp;&nbsp;- &nbsp;&nbsp;Nedirbame</p>
           <p >VII&nbsp;&nbsp;- &nbsp;&nbsp;Nedirbame</p>         
           <p ></p>

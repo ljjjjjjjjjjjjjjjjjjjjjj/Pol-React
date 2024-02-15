@@ -14,7 +14,8 @@ function AppointmentListPATIENT({appointment}) {
     navigate(`/loggedpage/patientpage/${appPatientID}/editappointmentpatient/${appointment.appID}`);};
   
   const navigateToDeleteAppointment = () => {
-    navigate(`/loggedpage/patientpage/${appPatientID}/deleteappointment/${appointment.appID}`);};
+    navigate(`/loggedpage/patientpage/${appPatientID}/deleteappointmentpatient/${appointment.appID}`);};
+    
 
     
       return (

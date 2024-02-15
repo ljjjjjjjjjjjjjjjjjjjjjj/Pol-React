@@ -228,19 +228,19 @@ const Informacija = () => {
           {templatesInfoVisible && (
             <div className='informacija-box-additional-info-content'>
               <p> &emsp;    
-              <a href={ config + 'Vidaus_tvarkos_taisykles.pdf'} 
+              <a href={ config + '/documentsPublic/Vidaus_tvarkos_taisykles.pdf'} 
               target="_blank" rel="noopener noreferrer">
                Vidaus tvarkos taisyklės (pdf)</a>              
               </p>
 
               <p> &emsp;    
-              <a href={ config + 'PACIENTO_SUTIKIMAS_forma_nr.1.pdf'} 
+              <a href={ config + '/documentsPublic/PACIENTO_SUTIKIMAS_forma_nr.1.pdf'} 
               target="_blank" rel="noopener noreferrer">
                Paciento sutikimas dėl jo tyrimo ir gydymo forma Nr.1 (pdf)</a>              
               </p>
 
               <p> &emsp;    
-              <a href={ config + '20231127_KAINYNAS.pdf'} 
+              <a href={ config + '/documentsPublic/20231127_KAINYNAS.pdf'} 
               target="_blank" rel="noopener noreferrer">
                Mokamų asmens sveikatos priežiūros paslaugų kainynas (pdf)</a>              
               </p>

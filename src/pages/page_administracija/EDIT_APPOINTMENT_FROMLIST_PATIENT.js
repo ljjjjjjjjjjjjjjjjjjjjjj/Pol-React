@@ -3,6 +3,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
 import '../formats/PatientPage.css';
+import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
 import HandleEmployeeSelectionEDIT from '../../methods_and_other/HandleEmployeeSelectionEDIT.js';
 import { useState, useEffect} from 'react';
@@ -28,10 +29,10 @@ function EDIT_APPOINTMENT_FROMLIST_PATIENT() {
   /*  -----------------   Navigate    ------------------*/
   const navigate = useNavigate();
   const navigateToReadAppointmentPatient = () => {
-    navigate(`/patientpage/${appPatientID}/readappointmentpatient`);};
+    navigate(`/loggedpage/patientpage/${appPatientID}/readappointmentpatient`);};
   
   const navigateToPatientPage = () => {
-    navigate(`/patientpage/${appPatientID}`);};
+    navigate(`/loggedpage/patientpage/${appPatientID}`);};
   /*  -----------------   Navigate    ------------------*/
 
   
@@ -89,7 +90,7 @@ function EDIT_APPOINTMENT_FROMLIST_PATIENT() {
   useEffect(() => {
     const handleGetPatientInfo = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/patients/get/${appPatientID}`);
+        const response = await axios.get(`${API_ROOT_PATH}/patients/get/${appPatientID}`,  {headers: authHeader()});
         const patientData = response.data;
               
   
@@ -190,7 +191,7 @@ function EDIT_APPOINTMENT_FROMLIST_PATIENT() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/objects${appID}`);
+        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/objects${appID}`,  {headers: authHeader()});
         const appointmentData = response.data;
               
         
@@ -270,14 +271,17 @@ function EDIT_APPOINTMENT_FROMLIST_PATIENT() {
     console.log('1. EDITAPP - TEST (appPatientID):', appPatientID);    
 
 
-    const request = await axios.put(`${API_ROOT_PATH}/appointments/edit/objects${appID}`, {
+    const request = await axios.put(`${API_ROOT_PATH}/appointments/edit/objects${appID}`, 
+    {
       appID, 
       appCategory, 
       appReason,
       appDate: `${formattedDate}, ${formattedTime}`,
       appEmployeeID,
       appPatientID
-    });
+    },  
+    {headers: authHeader()}
+    );
 
 
 

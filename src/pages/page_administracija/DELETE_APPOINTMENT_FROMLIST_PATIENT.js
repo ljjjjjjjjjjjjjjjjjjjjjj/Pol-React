@@ -10,13 +10,20 @@ import { useNavigate,  useParams } from 'react-router-dom';
 
 function DELETE_APPOINTMENT_FROMLIST_PATIENT() {
 
-  const { id } = useParams();
+  const { idA } = useParams();
+  const { idP } = useParams();
 
-  const navigate = useNavigate();
-  const navigateToReadAppointment = () => {
-    navigate(`/loggedpage/readappointment`);
-  };
+   /*  -----------------   Navigate    ------------------*/
+   const navigate = useNavigate();
+   const navigateToReadAppointmentPatient = () => {
+     navigate(`/loggedpage/patientpage/${appPatientID}/readappointmentpatient`);};
+   
+   const navigateToPatientPage = () => {
+     navigate(`/loggedpage/patientpage/${appPatientID}`);};
+   /*  -----------------   Navigate    ------------------*/
+ 
   
+  const [appPatientID] = useState(idP);
   
   const [appID, setAppID] = useState("");
   const [appCategory, setAppCategory] = useState("");
@@ -34,7 +41,7 @@ function DELETE_APPOINTMENT_FROMLIST_PATIENT() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/${id}`,  {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/${idA}`,  {headers: authHeader()});
         const appData = response.data;
               
         setAppID(appData.appID);
@@ -64,7 +71,7 @@ function DELETE_APPOINTMENT_FROMLIST_PATIENT() {
 
   try {
   
-    const response = await axios.delete(`${API_ROOT_PATH}/appointments/delete/${id}`,  {headers: authHeader()});
+    const response = await axios.delete(`${API_ROOT_PATH}/appointments/delete/${idA}`,  {headers: authHeader()});
 
       console.log('Response:', response.data);
     
@@ -157,9 +164,13 @@ const handleReset = () => {
 
 
         <div className='administracija-box-1'>
-          <div className='administracija-box-1-button-box-center'>                  
-            <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-             value="&#9665; Grįžti į sąrašą" onClick={navigateToReadAppointment}/>                                
+          <div className='patientPage-box-2-button-box-center'>
+            <input type='button' className="btn btn-secondary administracija-box-1-button-b"
+              value="&#9665; Rezervacijų sąrašas" onClick={navigateToReadAppointmentPatient} />
+            <br></br>
+            <br></br>
+            <input type='button' className="btn btn-secondary administracija-box-1-button-b"
+              value=" &#9665; Mano puslapis " onClick={navigateToPatientPage} />
           </div>
         </div>
               

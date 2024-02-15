@@ -13,25 +13,25 @@ const Administracija = () => {
   const navigate = useNavigate();
   
 
-  const navigateToAddPatient = () => { navigate('/addpatient'); };
-  const navigateToEditPatient = () => { navigate('/editpatient'); };
-  const navigateToDeletePatient = () => { navigate('/deletepatient'); };
-  const navigateToReadPatient = () => { navigate('/readpatient'); };
+  const navigateToAddPatient = () => { navigate('/loggedpage/addpatient'); };
+  const navigateToEditPatient = () => { navigate('/loggedpage/editpatient'); };
+  const navigateToDeletePatient = () => { navigate('/loggedpage/deletepatient'); };
+  const navigateToReadPatient = () => { navigate('/loggedpage/readpatient'); };
 
-  const navigateToAddEmployee = () => { navigate('/addemployee'); };
-  const navigateToEditEmployee = () => { navigate('/editemployee'); };
-  const navigateToDeleteEmployee = () => { navigate('/deleteemployee'); };
-  const navigateToReadEmployee = () => { navigate('/reademployee'); };
+  const navigateToAddEmployee = () => { navigate('/loggedpage/addemployee'); };
+  const navigateToEditEmployee = () => { navigate('/loggedpage/editemployee'); };
+  const navigateToDeleteEmployee = () => { navigate('/loggedpage/deleteemployee'); };
+  const navigateToReadEmployee = () => { navigate('/loggedpage/reademployee'); };
 
-  const navigateToAddProduct = () => { navigate('/addproduct'); };
-  const navigateToEditProduct = () => { navigate('/editproduct'); };
-  const navigateToDeleteProduct = () => { navigate('/deleteproduct'); };
-  const navigateToReadProduct = () => { navigate('/readproduct'); };
+  const navigateToAddProduct = () => { navigate('/loggedpage/addproduct'); };
+  const navigateToEditProduct = () => { navigate('/loggedpage/editproduct'); };
+  const navigateToDeleteProduct = () => { navigate('/loggedpage/deleteproduct'); };
+  const navigateToReadProduct = () => { navigate('/loggedpage/readproduct'); };
 
-  const navigateToAddAppointment = () => { navigate('/addappointment'); };
-  const navigateToEditAppointment = () => { navigate('/editappointment'); };
-  const navigateToDeleteAppointment = () => { navigate('/deleteappointment'); };
-  const navigateToReadAppointment = () => { navigate('/readappointment'); };
+  const navigateToAddAppointment = () => { navigate('/loggedpage/addappointment'); };
+  const navigateToEditAppointment = () => { navigate('/loggedpage/editappointment'); };
+  const navigateToDeleteAppointment = () => { navigate('/loggedpage/deleteappointment'); };
+  const navigateToReadAppointment = () => { navigate('/loggedpage/readappointment'); };
 
 
 

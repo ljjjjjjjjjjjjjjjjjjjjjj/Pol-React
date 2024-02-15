@@ -1,8 +1,9 @@
 
 import React from "react";
 import AuthService from "../services/auth.service";
+import './formats/Profile.css';
 import { useNavigate } from 'react-router-dom';
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 
 
 
@@ -15,9 +16,16 @@ const Profile = () => {
 
   const [patientID, setPatientID] = useState('');
   const [empID, setEmpID] = useState('');
-  const [tokenManual, setTokenManual] = useState(currentUser.accessToken);
+  const [tokenManual, setTokenManual] = useState('');
 
-  console.log('TEMP tokenManual: ', tokenManual);
+  useEffect(() => {
+    console.log("1. TOKEN:", currentUser.accessToken);
+    if(currentUser.accessToken != null)
+    setTokenManual(currentUser.accessToken)
+  }, [currentUser]);
+
+
+
 
   const navigate = useNavigate();
 
@@ -32,7 +40,7 @@ const Profile = () => {
 
 
   return (
-    <div className="container">
+    <div className="profile">
 
     <div>
     <br></br>
@@ -44,20 +52,27 @@ const Profile = () => {
     <br></br>
     </div>
 
+
+    <div className="profile-box-1-content">   
       
-        <h3>
-          <strong>{currentUser.username}</strong> Profile
-        </h3>
+      <h3>Profile info</h3>
+
+      <br></br>
+
+      <p>
+        <strong>User name: </strong> {currentUser.username} 
+      </p>
       
       <p>
-        <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)} ...{" "}
+        
+        <strong>Token: </strong> {currentUser.accessToken.substring(0, 20)} ...{" "}
         {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
       </p>
       <p>
-        <strong>Id:</strong> {currentUser.id}
+        <strong>Id: </strong> {currentUser.id}
       </p>
       <p>
-        <strong>Email:</strong> {currentUser.email}
+        <strong>Email: </strong> {currentUser.email}
       </p>
       <strong>Authorities:</strong>
       <ul>
@@ -65,7 +80,7 @@ const Profile = () => {
           currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
       </ul>
 
-
+    </div>    
 
       <div>
         <br></br>
