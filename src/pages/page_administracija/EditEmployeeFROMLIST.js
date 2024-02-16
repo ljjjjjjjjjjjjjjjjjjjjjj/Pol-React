@@ -1,20 +1,27 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import NavigateToEmployee from '../../methods_and_other/NavigateToEmployee.js';
 import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
 import { useState, useEffect} from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
+
+
+
+
+
+
+
+
+
+
 function EditEmployeeFROMLIST() {
-
-  const { id } = useParams();
-
-  const navigate = useNavigate();
-  const navigateToReadEmployee = () => {
-    navigate(`/loggedpage/reademployee`);
-  };
+  const { idI } = useParams();
+  const { idE } = useParams();
+  
   
   
   const [empID, setEmpID] = useState("");  
@@ -37,7 +44,7 @@ function EditEmployeeFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/employees/get/${id}`,  {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/employees/get/${idI}`,  {headers: authHeader()});
         const empData = response.data;
               
         setEmpID(empData.empID);
@@ -72,7 +79,7 @@ function EditEmployeeFROMLIST() {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`${API_ROOT_PATH}/employees/edit/${id}`, 
+    const response = await axios.put(`${API_ROOT_PATH}/employees/edit/${idI}`, 
     {
       empID,
       empName, 
@@ -240,13 +247,14 @@ const handleReset = () => {
             <input type='reset' className="btn btn-secondary administracija-box-1-button-g" 
             value="Išvalyti" onClick={handleReset}/>
             </div>
+
                      
             <div className='administracija-box-1'>
-              <div className='administracija-box-1-button-box-center'>                  
-                <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                 value="Grįžti į sąrašą" onClick={navigateToReadEmployee}/>                              
+              <div className='administracija-box-1'>
+                < NavigateToEmployee idE={idE} />
               </div>
             </div>
+
                    
           </form>
         </div>

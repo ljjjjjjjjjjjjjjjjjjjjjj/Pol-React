@@ -1,20 +1,25 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import NavigateToProduct from '../../methods_and_other/NavigateToProduct.js';
 import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
 import { useState, useEffect} from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
+
+
+
+
+
+
+
 
 
 function EditProductFROMLIST() {
 
-  const { id } = useParams();
+  const { idI } = useParams();
+  const { idE } = useParams();
 
-  const navigate = useNavigate();
-  const navigateToReadProduct = () => {
-    navigate(`/loggedpage/readproduct`);
-  };
   
   
   const [productID, setProductID] = useState("");
@@ -33,7 +38,7 @@ function EditProductFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/medical-products/get/${id}`,  {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/medical-products/get/${idI}`,  {headers: authHeader()});
         const productData = response.data;
               
         setProductID(productData.productID);
@@ -63,7 +68,7 @@ function EditProductFROMLIST() {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`${API_ROOT_PATH}/medical-products/edit/${id}`, 
+    const response = await axios.put(`${API_ROOT_PATH}/medical-products/edit/${idI}`, 
     {
       productID, 
       productTitle, 
@@ -173,14 +178,15 @@ const handleReset = () => {
             <input type='reset' className="btn btn-secondary administracija-box-1-button-g" 
             value="Išvalyti" onClick={handleReset}/>
             </div>
+
                      
             <div className='administracija-box-1'>
-              <div className='administracija-box-1-button-box'>                  
-                <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                 value="Grįžti į sąrašą" onClick={navigateToReadProduct}/>                              
+              <div className='administracija-box-1'>
+                < NavigateToProduct idE={idE} />
               </div>
             </div>
                    
+
           </form>
         </div>
       </div>

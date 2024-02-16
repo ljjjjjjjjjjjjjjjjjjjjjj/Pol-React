@@ -1,21 +1,25 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import NavigateToAppointment from '../../methods_and_other/NavigateToAppointment.js';
 import API_ROOT_PATH from '../../main/configLogged.js';
 import authHeader from "../../services/auth-header";
 import { useState, useEffect} from 'react';
 import axios from 'axios';
-import { useNavigate,  useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
+
+
+
+
 
 
 function DeleteAppointmentFROMLIST() {
 
-  const { id } = useParams();
+  const { idI } = useParams();
+  const { idE } = useParams();
+  
 
-  const navigate = useNavigate();
-  const navigateToReadAppointment = () => {
-    navigate(`/loggedpage/readappointment`);
-  };
   
   
   const [appID, setAppID] = useState("");
@@ -34,7 +38,7 @@ function DeleteAppointmentFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/${id}`,  {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/${idI}`,  {headers: authHeader()});
         const appData = response.data;
               
         setAppID(appData.appID);
@@ -64,7 +68,7 @@ function DeleteAppointmentFROMLIST() {
 
   try {
   
-    const response = await axios.delete(`${API_ROOT_PATH}/appointments/delete/${id}`,  {headers: authHeader()});
+    const response = await axios.delete(`${API_ROOT_PATH}/appointments/delete/${idI}`,  {headers: authHeader()});
 
       console.log('Response:', response.data);
     
@@ -157,12 +161,13 @@ const handleReset = () => {
 
 
         <div className='administracija-box-1'>
-          <div className='administracija-box-1-button-box-center'>                  
-            <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-             value="&#9665; Grįžti į sąrašą" onClick={navigateToReadAppointment}/>                                
+          <div className='administracija-box-1'>
+            < NavigateToAppointment idE={idE} />
           </div>
         </div>
-              
+
+
+   
             
              
       </div>

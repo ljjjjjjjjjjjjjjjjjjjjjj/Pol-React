@@ -1,24 +1,24 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import NavigateToEmployee from '../../methods_and_other/NavigateToEmployee.js';
 import API_ROOT_PATH from '../../main/configLogged.js';
 import authHeader from "../../services/auth-header";
 import { useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
 
-const DeleteEmployee = () => {
 
-  const navigate = useNavigate();
-  const navigateToReadEmployee = () => {  
-    navigate(`/loggedpage/reademployee`);
-  };
+
+
+
+
+
+const DeleteEmployee = () => {
+  const { idE } = useParams();
   
-  const navigateToAdministracija = () => {
-    navigate(`/loggedpage/administracija`);
-  };
 
 
   const [selectedEmpID, setSelectedEmpID] = useState("");
@@ -242,12 +242,9 @@ const handlePartReset = () => {
               </div>
               )}
 
-                <div className='administracija-box-1'>
-                  <div className='administracija-box-1-button-box-center'>                  
-                    <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                     value="&#9665; Darbuotojų sąrašas" onClick={navigateToReadEmployee}/>   
-                    <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                     value=" &#9665; Administracija " onClick={navigateToAdministracija}/>                                     
+                <div className='administracija-box-1'>                 
+                  <div className='administracija-box-1'>
+                    < NavigateToEmployee idE={idE} />
                   </div>
                 </div>
             
@@ -266,22 +263,3 @@ const handlePartReset = () => {
 
   
   export default DeleteEmployee;
-
-  /*
-  const [patientID, setEmployeeID] = useState("");
-  const [patientName, setEmployeeName] = useState("");
-  const [patientSurname, setEmployeeSurname] = useState("");
-  const [patientAddress, setEmployeeAddress] = useState("");
-  const [patientPhone, setEmployeePhone] = useState("");
-  const [patientEmail, setEmployeeEmail] = useState("");
-  const [patientCategory, setEmployeeCategory] = useState("");
-
-
-  setEmployeeID('');
-  setEmployeeName('');
-  setEmployeeSurname('');
-  setEmployeeAddress(''); 
-  setEmployeePhone(''); 
-  setEmployeeEmail(''); 
-  setEmployeeCategory('');
-  */

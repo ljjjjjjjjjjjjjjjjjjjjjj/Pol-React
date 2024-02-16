@@ -1,37 +1,34 @@
 import '../main/custom-bootstrap.css';
 import './formats/Administracija.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-
-
-
-
- 
 
 const Administracija = () => {
+  const { idE } = useParams();
+  const [currentEmployeeID] = idE;
 
   const navigate = useNavigate();
   
 
-  const navigateToAddPatient = () => { navigate('/loggedpage/addpatient'); };
-  const navigateToEditPatient = () => { navigate('/loggedpage/editpatient'); };
-  const navigateToDeletePatient = () => { navigate('/loggedpage/deletepatient'); };
-  const navigateToReadPatient = () => { navigate('/loggedpage/readpatient'); };
+  const navigateToAddPatient = () => { navigate(`/loggedpage/${currentEmployeeID}/addpatient`); };
+  const navigateToEditPatient = () => { navigate(`/loggedpage/${currentEmployeeID}/editpatient`); };
+  const navigateToDeletePatient = () => { navigate(`/loggedpage/${currentEmployeeID}/deletepatient`); };
+  const navigateToReadPatient = () => { navigate(`/loggedpage/${currentEmployeeID}/readpatient`); };
 
-  const navigateToAddEmployee = () => { navigate('/loggedpage/addemployee'); };
-  const navigateToEditEmployee = () => { navigate('/loggedpage/editemployee'); };
-  const navigateToDeleteEmployee = () => { navigate('/loggedpage/deleteemployee'); };
-  const navigateToReadEmployee = () => { navigate('/loggedpage/reademployee'); };
+  const navigateToAddEmployee = () => { navigate(`/loggedpage/${currentEmployeeID}/addemployee`); };
+  const navigateToEditEmployee = () => { navigate(`/loggedpage/${currentEmployeeID}/editemployee`); };
+  const navigateToDeleteEmployee = () => { navigate(`/loggedpage/${currentEmployeeID}/deleteemployee`); };
+  const navigateToReadEmployee = () => { navigate(`/loggedpage/${currentEmployeeID}/reademployee`); };
 
-  const navigateToAddProduct = () => { navigate('/loggedpage/addproduct'); };
-  const navigateToEditProduct = () => { navigate('/loggedpage/editproduct'); };
-  const navigateToDeleteProduct = () => { navigate('/loggedpage/deleteproduct'); };
-  const navigateToReadProduct = () => { navigate('/loggedpage/readproduct'); };
+  const navigateToAddProduct = () => { navigate(`/loggedpage/${currentEmployeeID}/addproduct`); };
+  const navigateToEditProduct = () => { navigate(`/loggedpage/${currentEmployeeID}/editproduct`); };
+  const navigateToDeleteProduct = () => { navigate(`/loggedpage/${currentEmployeeID}/deleteproduct`); };
+  const navigateToReadProduct = () => { navigate(`/loggedpage/${currentEmployeeID}/readproduct`); };
 
-  const navigateToAddAppointment = () => { navigate('/loggedpage/addappointment'); };
-  const navigateToEditAppointment = () => { navigate('/loggedpage/editappointment'); };
-  const navigateToDeleteAppointment = () => { navigate('/loggedpage/deleteappointment'); };
-  const navigateToReadAppointment = () => { navigate('/loggedpage/readappointment'); };
+  const navigateToAddAppointment = () => { navigate(`/loggedpage/${currentEmployeeID}/addappointment`); };
+  const navigateToEditAppointment = () => { navigate(`/loggedpage/${currentEmployeeID}/editappointment`); };
+  const navigateToDeleteAppointment = () => { navigate(`/loggedpage/${currentEmployeeID}/deleteappointment`); };
+  const navigateToReadAppointment = () => { navigate(`/loggedpage/${currentEmployeeID}/readappointment`); };
 
 
 

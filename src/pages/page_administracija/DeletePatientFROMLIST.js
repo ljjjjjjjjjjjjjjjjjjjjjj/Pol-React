@@ -1,22 +1,24 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
-import API_ROOT_PATH from '../../main/configLogged.js';
 import authHeader from "../../services/auth-header";
+import API_ROOT_PATH from '../../main/configLogged.js';
+import NavigateToPatient from '../../methods_and_other/NavigateToPatient.js';
 import { useState, useEffect} from 'react';
 import axios from 'axios';
-import { useNavigate,  useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
+
+
+
+
 
 
 function DeletePatientFROMLIST() {
+  const { idI } = useParams();
+  const { idE } = useParams();
 
-  const { id } = useParams();
 
-  const navigate = useNavigate();
-  const navigateToReadPatient = () => {
-    navigate(`/loggedpage/readpatient`);
-  };
-  
   
   const [patientID, setPatientID] = useState("");
   const [patientName, setPatientName] = useState("");
@@ -38,7 +40,7 @@ function DeletePatientFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/patients/get/${id}`,  {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/patients/get/${idI}`,  {headers: authHeader()});
         const patientData = response.data;
               
         setPatientID(patientData.patientID);
@@ -72,7 +74,7 @@ function DeletePatientFROMLIST() {
 
   try {
   
-    const response = await axios.delete(`${API_ROOT_PATH}/patients/delete/${id}`,  {headers: authHeader()});
+    const response = await axios.delete(`${API_ROOT_PATH}/patients/delete/${idI}`,  {headers: authHeader()});
 
       console.log('Response:', response.data);
     
@@ -173,10 +175,7 @@ const handleReset = () => {
 
 
         <div className='administracija-box-1'>
-          <div className='administracija-box-1-button-box'>                  
-            <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-             value="&#9665; Grįžti į sąrašą" onClick={navigateToReadPatient}/>                                
-          </div>
+          < NavigateToPatient idE={idE} />
         </div>
               
             

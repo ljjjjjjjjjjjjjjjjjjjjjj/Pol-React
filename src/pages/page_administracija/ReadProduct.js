@@ -4,20 +4,37 @@ import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
 import ProductList from '../../methods_and_other/ProductList';
 import { useState,  useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
 
-const ReadProduct = () => {
 
+
+
+
+
+
+
+
+
+const ReadProduct = () => {
+  const { idE } = useParams();
+  const [currentEmployeeID] = idE;
+  
+
+
+  /*  -----------------   Navigate    ------------------*/
   const navigate = useNavigate();
   const navigateToAddProduct = () => {
-    navigate(`/loggedpage/addproduct`);
+    navigate(`/loggedpage/${currentEmployeeID}/addproduct`);
   };
   const navigateToAdministracija = () => {
-    navigate(`/loggedpage/administracija`);
+    navigate(`/loggedpage/${currentEmployeeID}/administracija`);
   };
+  /*  -----------------   Navigate    ------------------*/
+
+
 
   const [products, setProducts] = useState( [] );
   const [selectedOption, setSelectedOption] = useState("");

@@ -1,24 +1,25 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import NavigateToProduct from '../../methods_and_other/NavigateToProduct.js';
 import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
 import { useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
 
+
+
+
+
+
+
+
 const EditProduct = () => {
+  const { idE } = useParams();
 
-  const navigate = useNavigate();
-  const navigateToReadProduct = () => {
-    navigate(`/loggedpage/readproduct`);
-  };
   
-  const navigateToAdministracija = () => {
-    navigate(`/loggedpage/administracija`);
-  };
-
 
   const [selectedProductID, setSelectedProductID] = useState("");
 
@@ -196,16 +197,13 @@ const handleReset = () => {
             </form>
             </div>
 
+
             <div className='administracija-box-1'>
-                  <div className='administracija-box-1-button-box-center'>                  
-                    <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                     value="&#9665; Pacientų sąrašas" onClick={navigateToReadProduct}/>
-                     <br></br>
-                     <br></br>
-                    <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                     value=" &#9665; Administracija " onClick={navigateToAdministracija}/>                                     
-                  </div>
-                </div>
+              <div className='administracija-box-1'>
+                < NavigateToProduct idE={idE} />
+              </div>
+            </div>
+
 
           </div>
       </div>

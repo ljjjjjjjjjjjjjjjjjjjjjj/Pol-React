@@ -2,12 +2,13 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import NavigateToAppointment from '../../methods_and_other/NavigateToAppointment.js';
 import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
 import HandleEmployeeSelectionEDIT from '../../methods_and_other/HandleEmployeeSelectionEDIT.js';
 import HandlePatientSelectionEDIT from '../../methods_and_other/HandlePatientSelectionEDIT.js';
 import { useState, useEffect} from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -19,21 +20,23 @@ import { getDay } from 'date-fns';
 
 
 
+
+
+
+
+
+
+
+
 function EditAppointmentFROMLIST() {
+  const { idI } = useParams();
+  const { idE } = useParams();
+ 
 
-  
-
-  /*  -----------------   Navigate    ------------------*/
-  const navigate = useNavigate();
-  const navigateToReadAppointment = () => {
-    navigate(`/loggedpage/readappointment`);
-  };
-  /*  -----------------   Navigate    ------------------*/
 
   
   
   /*  -----------------   Const setters    ------------------*/
-  const { id } = useParams();
   const [appID, setAppID] = useState("");
   const [appCategory, setAppCategory] = useState("");
   const [appReason, setAppReason] = useState("");
@@ -163,7 +166,7 @@ function EditAppointmentFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/objects${id}`,  {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/objects${idI}`,  {headers: authHeader()});
         const appointmentData = response.data;
               
         setAppID(appointmentData.appID);
@@ -213,7 +216,7 @@ function EditAppointmentFROMLIST() {
   
   
   
-  }, [id] ); // Appointment array - to run once 
+  }, [idI] ); // Appointment array - to run once 
 
   
   
@@ -244,7 +247,7 @@ function EditAppointmentFROMLIST() {
     console.log('1. EDITAPP - TEST (appPatientID):', appPatientID);    
 
 
-    const request = await axios.put(`${API_ROOT_PATH}/appointments/edit/objects${id}`, 
+    const request = await axios.put(`${API_ROOT_PATH}/appointments/edit/objects${idI}`, 
     {
       appID, 
       appCategory, 
@@ -451,13 +454,14 @@ return (
             <input type='reset' className="btn btn-secondary administracija-box-1-button-g" 
             value="Išvalyti" onClick={handleReset}/>
             </div>
+
                      
             <div className='administracija-box-1'>
-              <div className='administracija-box-1-button-box'>                  
-                <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                 value="Grįžti į sąrašą" onClick={navigateToReadAppointment}/>                              
+              <div className='administracija-box-1'>
+                < NavigateToAppointment idE={idE} />
               </div>
             </div>
+
                    
           </form>
           </div>

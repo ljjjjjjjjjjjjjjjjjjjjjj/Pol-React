@@ -4,20 +4,28 @@ import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
 import AppointmentList from '../../methods_and_other/AppointmentList';
 import { useState,  useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
 
-const ReadAppointment = () => {
 
+
+const ReadAppointment = () => {
+  const { idE } = useParams();
+  const [currentEmployeeID] = idE;
+  
+
+  /*  -----------------   Navigate    ------------------*/
   const navigate = useNavigate();
   const navigateToAddAppointment = () => {
-    navigate(`/loggedpage/addappointment`);
+    navigate(`/loggedpage/${currentEmployeeID}/addappointment`);
   };
   const navigateToAdministracija = () => {
-    navigate(`/loggedpage/administracija`);
+    navigate(`/loggedpage/${currentEmployeeID}/administracija`);
   };
+  /*  -----------------   Navigate    ------------------*/
+
 
   const [appointments, setAppointments] = useState( [] );
   const [selectedOption, setSelectedOption] = useState("");

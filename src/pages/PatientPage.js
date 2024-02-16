@@ -15,9 +15,7 @@ const PatientPage = () => {
   const navigate = useNavigate();
 
 
-  /* const navigateToEditPatient = () => {
-      navigate(`/editpatient/${appPatientID}`);};
-  */
+
 
   const navigateToReadAppointment = () => {
     navigate(`readappointmentpatient`);

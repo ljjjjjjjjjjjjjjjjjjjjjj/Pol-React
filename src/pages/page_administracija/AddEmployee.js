@@ -2,25 +2,23 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import NavigateToEmployee from '../../methods_and_other/NavigateToEmployee.js';
 import API_ROOT_PATH from '../../main/configLogged.js';
 import authHeader from "../../services/auth-header";
 import { useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useParams  } from 'react-router-dom';
 import axios from 'axios';
 
 
 
 
-const AddEmployee = () => {
 
-  const navigate = useNavigate();
-  const navigateToReadEmployee = () => {  
-    navigate(`/loggedpage/reademployee`);
-  };
+
+
+const AddEmployee = () => {
+  const { idE } = useParams();
   
-  const navigateToAdministracija = () => {
-    navigate(`/loggedpage/administracija`);
-  };
+  
  
     const [empName, setEmpName] = useState("");
     const [empSurname, setEmpSurname] = useState("");
@@ -219,14 +217,14 @@ const AddEmployee = () => {
   
               </form>
 
+
                 <div className='administracija-box-1'>
-                  <div className='administracija-box-1-button-box-center'>                  
-                    <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                     value="&#9665; Darbuotojų sąrašas" onClick={navigateToReadEmployee}/>   
-                    <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                     value=" &#9665; Administracija " onClick={navigateToAdministracija}/>                                     
+                  <div className='administracija-box-1'>
+                    < NavigateToEmployee idE={idE} />
                   </div>
                 </div>
+
+
               </div>
             </div>
         </div>

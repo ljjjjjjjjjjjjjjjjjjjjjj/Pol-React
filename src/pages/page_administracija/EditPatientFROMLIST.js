@@ -1,21 +1,22 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import NavigateToPatient from '../../methods_and_other/NavigateToPatient.js';
 import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
 import { useState, useEffect} from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
+
+
+
 function EditPatientFROMLIST() {
+  const { idI } = useParams();
+  const { idE } = useParams();
 
-  const { id } = useParams();
 
-  const navigate = useNavigate();
-  const navigateToReadPatient = () => {
-    navigate(`/loggedpage/readpatient`);
-  };
-  
+
   
   const [patientID, setPatientID] = useState("");
   const [patientName, setPatientName] = useState("");
@@ -36,7 +37,7 @@ function EditPatientFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/patients/get/${id}`,  {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/patients/get/${idI}`,  {headers: authHeader()});
         const patientData = response.data;
               
         setPatientID(patientData.patientID);
@@ -70,7 +71,7 @@ function EditPatientFROMLIST() {
     event.preventDefault();
 
   try {
-    const response = await axios.put(`${API_ROOT_PATH}/patients/edit/${id}`, 
+    const response = await axios.put(`${API_ROOT_PATH}/patients/edit/${idI}`, 
     {
       patientID, 
       patientName, 
@@ -225,9 +226,8 @@ const handleReset = () => {
             </div>
                      
             <div className='administracija-box-1'>
-              <div className='administracija-box-1-button-box'>                  
-                <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                 value="Grįžti į sąrašą" onClick={navigateToReadPatient}/>                              
+              <div className='administracija-box-1'>
+                < NavigateToPatient idE={idE} />
               </div>
             </div>
                    

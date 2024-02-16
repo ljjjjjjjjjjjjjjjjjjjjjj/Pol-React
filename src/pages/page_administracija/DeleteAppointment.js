@@ -1,25 +1,23 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import NavigateToAppointment from '../../methods_and_other/NavigateToAppointment.js';
 import API_ROOT_PATH from '../../main/configLogged.js';
 import authHeader from "../../services/auth-header";
 import { useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
 
-const DeleteAppointment = () => {
 
-  
-  const navigate = useNavigate();
-  const navigateToReadAppointment = () => {
-    navigate(`/loggedpage/readappointment`);
-  };
-  
-  const navigateToAdministracija = () => {
-    navigate(`/loggedpage/administracija`);
-  };
+
+
+
+const DeleteAppointment = () => {
+  const { idE } = useParams();
+
+
 
   const [selectedAppID, setSelectedAppID] = useState("");
   
@@ -216,14 +214,10 @@ const handlePartReset = () => {
               </div>
               )}
 
+
               <div className='administracija-box-main'>
-                <div className='administracija-box-1-button-box-center'>                  
-                  <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                   value="&#9665; Rezervacijų sąrašas" onClick={navigateToReadAppointment}/>
-                   <br></br>
-                   <br></br>
-                  <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                   value=" &#9665; Administracija " onClick={navigateToAdministracija}/>                                     
+                <div className='administracija-box-1'>
+                  < NavigateToAppointment idE={idE} />
                 </div>
               </div>
             
