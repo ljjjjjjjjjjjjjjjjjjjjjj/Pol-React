@@ -2,18 +2,27 @@
 import '../main/custom-bootstrap.css';
 import './PatientList.css';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
+
+
+
+
+
 
 
 function EmployeeList({employee}) {
+  const { idE } = useParams();
+  const [currentEmployeeID] = idE;
 
   const navigate = useNavigate();
 
  
   const navigateToEditEmployee = () => {
-    navigate(`/loggedpage/editemployee/${employee.empID}`);};
+    navigate(`/loggedpage/${currentEmployeeID}/editemployee/${employee.empID}`);};
   
   const navigateToDeleteEmployee = () => {
-    navigate(`/loggedpage/deleteemployee/${employee.empID}`);};
+    navigate(`/loggedpage/${currentEmployeeID}/deleteemployee/${employee.empID}`);};
 
     
       return (

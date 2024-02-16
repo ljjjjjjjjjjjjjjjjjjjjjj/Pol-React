@@ -1,18 +1,27 @@
 import '../main/custom-bootstrap.css';
 import './PatientList.css';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
+
+
+
+
+
 
 
 function ProductList({product}) {
+  const { idE } = useParams();
+  const [currentEmployeeID] = idE;
 
   const navigate = useNavigate();
 
  
   const navigateToEditProduct = () => {
-    navigate(`/loggedpage/editproduct/${product.productID}`);};
+    navigate(`/loggedpage/${currentEmployeeID}/editproduct/${product.productID}`);};
   
   const navigateToDeleteProduct = () => {
-    navigate(`/loggedpage/deleteproduct/${product.productID}`);};
+    navigate(`/loggedpage/${currentEmployeeID}/deleteproduct/${product.productID}`);};
 
     
       return (

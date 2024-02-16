@@ -58,7 +58,7 @@ return (
 
       
       <Route path="/" element={<Layout />}>
-        <Route path="home" element={<Home />} />
+        <Route index element={<Home />} />
         <Route path="informacija" element={<Informacija />} />
         <Route path="paslaugos" element={<Paslaugos />} />
         <Route path="personalas" element={<Personalas />} />

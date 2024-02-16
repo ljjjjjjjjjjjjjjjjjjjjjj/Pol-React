@@ -279,13 +279,13 @@ const handleReset = () => {
           </form>
 
 
-              {isAuthorized(["USER", "EMPL"]) && !isAuthorized(["ADMIN", "MODERATOR"]) && (
+              {isAuthorized(["ROLE_USER", "ROLE_EMPL"]) && !isAuthorized(["ROLE_ADMIN", "ROLE_MODERATOR"]) && (
                 <div className='administracija-box-1'>
                 < NavigateToAdmin idE={idE} />
                 </div>
               )}
 
-              {isAuthorized(["ADMIN", "MODERATOR"]) && ( 
+              {isAuthorized(["ROLE_ADMIN", "ROLE_MODERATOR"]) && ( 
                 <div className='administracija-box-1'>
                 < NavigateToEmployee idE={idE} />
                 </div>

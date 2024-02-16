@@ -22,8 +22,6 @@ import { getDay } from 'date-fns';
 
 
 
-
-
 const AddAppointment = () => {
   const { idE } = useParams();
   

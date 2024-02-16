@@ -1,6 +1,6 @@
 
 import './formats/Layout.css';
-import React, { useState } from 'react';
+import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import AuthService from "../services/auth.service";
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +14,7 @@ const Layout = () => {
 
   const handleLogout = () => {
     AuthService.logout();
-    navigate("/home");
+    navigate("/");
     
   };
 
@@ -45,27 +45,32 @@ const Layout = () => {
             </header>
     
             <nav className='list'>  
-             <ul className='list'>
-               <li className='item'>
-                 <Link to="/" className='link'>Pradžia</Link>
-               </li>
-               <li className='item'>
-                 <Link to="/informacija" className='link'>Informacija</Link>
-               </li>
-               <li className='item'>
-                 <Link to='/paslaugos' className='link'>Paslaugos</Link>
-               </li>
-               <li className='item'>
-                 <Link to='/personalas' className='link'>Personalas</Link>
-               </li>
-               <li className='item'>
-                 <Link to="/kontaktai" className='link'>Kontaktai</Link>
-               </li>
-               <li className='item'>
-                 <Link to="/loggedpage/profile" className='link' style={{ backgroundColor: 'rgba(65, 192, 64, 0.8)' }}>Mano puslapis</Link>
-               </li>
-               
-             </ul>
+              <ul className='list'>
+                <li className='item'>
+                  <Link to="/" className='link'>Pradžia</Link>
+                </li>
+                <li className='item'>
+                  <Link to="/informacija" className='link'>Informacija</Link>
+                </li>
+                <li className='item'>
+                  <Link to='/paslaugos' className='link'>Paslaugos</Link>
+                </li>
+                <li className='item'>
+                  <Link to='/personalas' className='link'>Personalas</Link>
+                </li>
+                <li className='item'>
+                  <Link to="/kontaktai" className='link'>Kontaktai</Link>
+                </li>
+                {isLoggedIn ? (
+                  <li className='item'>
+                      <Link to="/loggedpage/profile" className='link' style={{ backgroundColor: 'rgba(65, 192, 64, 0.8)' }}>Mano puslapis</Link>
+                  </li>
+                    ) : (
+                  <li className='item'>
+                      <Link to="/signin" className='link' style={{ backgroundColor: 'rgba(65, 192, 64, 0.8)' }}>Mano puslapis</Link>
+                  </li>
+                )}
+              </ul>
             </nav>
 
           </div>

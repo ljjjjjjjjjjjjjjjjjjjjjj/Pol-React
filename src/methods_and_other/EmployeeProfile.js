@@ -4,6 +4,7 @@ import '../main/custom-bootstrap.css';
 import '../pages/formats/Administracija.css';
 import authHeader from "../services/auth-header";
 import API_ROOT_PATH from '../main/configLogged.js';
+import config from '../main/config.js';
 import { useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthService from "../services/auth.service";
@@ -83,39 +84,45 @@ handleEmployeeSearch();
     
     return (
       <div className='administracija-employee-profile-box'>
-        <h1>Mano profilis</h1>
+
+        <div className='administracija-employee-profile-box-container'>
+        
                
-        <div className='administracija-employee-profile-box'>
-          <p> <strong> Vardas: </strong>           &ensp; {currentEmployeeName  } </p>       
-          <p> <strong> Pavardė: </strong>          &ensp; {currentEmployeeSurname} </p>            
-          <p> <strong> Asmens kodas: </strong>     &ensp; {currentEmployeeNO} </p>     
-          <p> <strong> Adresas: </strong>          &ensp; {currentEmployeeAddress} </p>         
-          <p> <strong> Tel. nr.: </strong>         &ensp; {currentEmployeePhone} </p>      
-          <p> <strong> E-mail: </strong>           &ensp; {currentEmployeeEmail} </p> 
-          <p> <strong> Pareigos: </strong>         &ensp; {currentEmployeeJobTitle} </p>         
-          <p> <strong> Skyrius: </strong>          &ensp; {currentEmployeeCategory} </p>
-          <p> <strong> Puslapio prieiga: </strong>          &ensp; 
-
-          {currentUser.roles &&
-          currentUser.roles.map((role, index) => <span key={index}>{role}  &ensp;</span>)} 
-
-          </p>           
-          <p> <strong> Profilio foto nuoroda: </strong> &ensp; {currentEmployeeImageUrl} </p> 
-
-
-
-          <div className='administracija-employee-profile-box'>
+          <div  className='administracija-employee-profile-box-left'>
+  
+            <h1>Mano profilis</h1>
+  
+            <p> <strong> Vardas: </strong>           &ensp; {currentEmployeeName  } </p>       
+            <p> <strong> Pavardė: </strong>          &ensp; {currentEmployeeSurname} </p>            
+            <p> <strong> Asmens kodas: </strong>     &ensp; {currentEmployeeNO} </p>     
+            <p> <strong> Adresas: </strong>          &ensp; {currentEmployeeAddress} </p>         
+            <p> <strong> Tel. nr.: </strong>         &ensp; {currentEmployeePhone} </p>      
+            <p> <strong> E-mail: </strong>           &ensp; {currentEmployeeEmail} </p> 
+            <p> <strong> Pareigos: </strong>         &ensp; {currentEmployeeJobTitle} </p>         
+            <p> <strong> Skyrius: </strong>          &ensp; {currentEmployeeCategory} </p>
+            <p> <strong> Puslapio prieiga: </strong>          &ensp; 
+  
+            {currentUser.roles &&
+            currentUser.roles.map((role, index) => <span key={index}>{role}  &ensp;</span>)} 
+  
+            </p>           
+            <p> <strong> Profilio foto nuoroda: </strong> &ensp; {currentEmployeeImageUrl} </p> 
+  
+  
             <br></br>
             <button type="button" className="btn btn-primary administracija-box-1-button-b" onClick={navigateToEditEmployee}>
                 Koreguoti duomenis 
             </button>
-          </div>  
+             
+          </div> 
+  
 
-
-
-
-        </div> 
+  
+          <div  className='administracija-employee-profile-box-right'>
+            <img src={ config + currentEmployeeImageUrl} alt={`${currentEmployeeName}_${currentEmployeeSurname}`} />
+          </div> 
                      
+        </div>
       </div>
       
       

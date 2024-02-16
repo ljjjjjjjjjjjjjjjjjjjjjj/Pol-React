@@ -3,7 +3,7 @@ import React from "react";
 import AuthService from "../services/auth.service";
 import './formats/Profile.css';
 import { useNavigate } from 'react-router-dom';
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 
 
 
@@ -14,10 +14,8 @@ import { useState} from 'react';
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
 
-  const [patientID, setPatientID] = useState('');
-  const [empID, setEmpID] = useState('');
-  
-
+  const [patientID, setPatientID] = useState(1);
+  const [empID, setEmpID] = useState(1);
   
 
 
@@ -30,6 +28,33 @@ const Profile = () => {
   const navigateToPatientPage = () => {
     navigate(`/loggedpage/patientpage/${patientID}`);
   };
+
+
+  /*  --------------------------------  USER ROLES  --------------------------------  */
+  const [userRoles, setUserRoles] = useState([]);
+
+  useEffect(() => {
+    const fetchUserRoles = async () => {
+      try {
+        
+        const user = AuthService.getCurrentUser();
+        if (user) {
+          setUserRoles(user.roles); // Assuming the roles are stored in the user object
+          console.log("User roles:", user.roles)
+        }
+      } catch (error) {
+        console.error("Error fetching user roles:", error);
+      }
+    };
+
+    fetchUserRoles();
+  }, []);
+
+  const isAuthorized = (requiredRoles) => {
+    return requiredRoles.some(role => userRoles.includes(role));
+  };
+  /*  --------------------------------  USER ROLES  --------------------------------  */
+
 
 
 
@@ -79,47 +104,51 @@ const Profile = () => {
       <div>
         <br></br>
             <p> <strong>Pasirinkite kategoriją ir ID numerį (šio pasirinkimo nebus įgyvendinus 'signin' funkcionalumą) </strong> <br></br><br></br> </p>
+
+            {isAuthorized(["ROLE_USER", "ROLE_EMPL", "ROLE_MODERATOR", "ROLE_ADMIN"]) && ( 
+              <div className='administracija-box-1'>                  
+                <label>Įveskite paciento ID numerį (nuo 1 iki 12; ir nuo 52 iki 54):
+                      <input style={{ width: '50px', }}
+                        type="text" 
+                        value={patientID}
+                        onChange={(e) => setPatientID(e.target.value)}
+                      />                 
+                </label>
+
                 
-            <label>Įveskite paciento ID numerį (nuo 1 iki 12; ir nuo 52 iki 54):
-                  <input style={{ width: '50px', }}
-                    type="text" 
-                    value={patientID}
-                    onChange={(e) => setPatientID(e.target.value)}
-                  />
-                  
-            </label>
+                <div className='administracija-box-1'>
+                  <div className='administracija-box-1-button-box'>                  
+                    <input type='button' className="btn btn-primary administracija-box-1-button-b" 
+                     value=" Pacientų sąrašas " onClick={navigateToPatientPage}/>                                              
+                  </div>
+                </div>
 
-            <div>
-              <br></br>
-            </div>
-
-            <label>Įveskite darbuotojo ID numerį (nuo 1 iki 12):
-                  <input style={{ width: '50px', }}
-                    type="text" 
-                    value={empID}
-                    onChange={(e) => setEmpID(e.target.value)}
-                  />
-            </label>
-
-            <div>
-              <p>&ensp;</p>
-            </div>
-
-            <div className='administracija-box-1'>
-              <br></br>
-              <div className='administracija-box-1-button-box'>                  
-                <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
-                 value=" Pacientų sąrašas " onClick={navigateToPatientPage}/>
-                 <br></br>
-                 <br></br>
-                <input type='button' className="btn btn-secondary administracija-box-1-button-g" 
-                 value="  Administracija " onClick={navigateToAdministracija}/>                                     
               </div>
+            )}
+
+
+            {isAuthorized(["ROLE_EMPL", "ROLE_MODERATOR", "ROLE_ADMIN"]) && ( 
+              <div className='administracija-box-1'> 
+                <label>Įveskite darbuotojo ID numerį (nuo 1 iki 12):
+                      <input style={{ width: '50px', }}
+                        type="text" 
+                        value={empID}
+                        onChange={(e) => setEmpID(e.target.value)}
+                      />
+                </label>
+    
+                <div className='administracija-box-1'>
+                  <br></br>
+                  <div className='administracija-box-1-button-box'>                                   
+                    <input type='button' className="btn btn-primary administracija-box-1-button-b" 
+                     value="  Administracija " onClick={navigateToAdministracija}/>                                     
+                  </div>
+                </div>
+
             </div>
+            )}
 
-
-
-
+            
             
         <br></br>
       </div>

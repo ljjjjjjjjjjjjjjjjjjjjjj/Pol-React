@@ -89,7 +89,7 @@ const Administracija = () => {
 
 
             
-    {isAuthorized(["ADMIN", "MODERATOR"]) && (        
+    {isAuthorized(["ROLE_ADMIN", "ROLE_MODERATOR"]) && (        
       <div className='administracija-box-main'> 
       { /* -------------------------    1. PACIENTAI    -------------------------------    START */}
 
@@ -136,7 +136,7 @@ const Administracija = () => {
 
 
 
-      {isAuthorized(["ADMIN", "MODERATOR"]) && ( 
+      {isAuthorized(["ROLE_ADMIN", "ROLE_MODERATOR"]) && ( 
       <div className='administracija-box-main'>
         <p /* ------------------------    2. DARBUOTOJAI   ---------------------------   START */> </p>
         <h3>Darbuotojų sąrašo valdymas</h3>
