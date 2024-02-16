@@ -4,11 +4,12 @@ import React from 'react';
 import '../../main/custom-bootstrap.css';
 import '../formats/PatientPage.css';
 import '../formats/Administracija.css';
+import NavigateToPATIENTPAGE from '../../methods_and_other/NavigateToPATIENTPAGE.js';
 import API_ROOT_PATH from '../../main/configLogged.js';
 import authHeader from "../../services/auth-header";
 import HandleEmployeeSelectionNEW from '../../methods_and_other/HandleEmployeeSelectionNEW.js';
 import { useState, useEffect} from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -22,22 +23,15 @@ import { getDay } from 'date-fns';
 
 
 
+
+
+
+
+
+
+
 const AddAppointmentPATIENT = () => {
-
   const { idP } = useParams();
-  
-
-  /*  -----------------   Navigate    ------------------*/
-  const navigate = useNavigate();
-  const navigateToReadAppointmentPatient = () => {
-    navigate(`/loggedpage/patientpage/${appPatientID}/readappointmentpatient`);};
-  
-  const navigateToPatientPage = () => {
-    navigate(`/loggedpage/patientpage/${appPatientID}`);};
-  /*  -----------------   Navigate    ------------------*/
-
-  
-
 
 
 
@@ -486,21 +480,8 @@ const AddAppointmentPATIENT = () => {
 
 
 
-
-
-
-
-
-
               <div className='administracija-box-1'>
-                <div className='administracija-box-1-button-box-center'>
-                  <input type='button' className="btn btn-secondary administracija-box-1-button-b"
-                    value="&#9665; Rezervacijų sąrašas" onClick={navigateToReadAppointmentPatient} />
-                  <br></br>
-                  <br></br>
-                  <input type='button' className="btn btn-secondary administracija-box-1-button-b"
-                    value=" &#9665; Mano puslapis " onClick={navigateToPatientPage} />
-                </div>
+                < NavigateToPATIENTPAGE idP={idP} />
               </div>
 
 
