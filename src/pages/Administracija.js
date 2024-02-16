@@ -1,6 +1,13 @@
 import '../main/custom-bootstrap.css';
 import './formats/Administracija.css';
+import EmployeeProfile from '../methods_and_other/EmployeeProfile.js';
+import API_ROOT_PATH from '../main/configLogged.js';
+import authHeader from "../services/auth-header";
+import { useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import AuthService from "../services/auth.service";
+
 
 
 const Administracija = () => {
@@ -9,7 +16,6 @@ const Administracija = () => {
 
   const navigate = useNavigate();
   
-
   const navigateToAddPatient = () => { navigate(`/loggedpage/${currentEmployeeID}/addpatient`); };
   const navigateToEditPatient = () => { navigate(`/loggedpage/${currentEmployeeID}/editpatient`); };
   const navigateToDeletePatient = () => { navigate(`/loggedpage/${currentEmployeeID}/deletepatient`); };
@@ -32,6 +38,31 @@ const Administracija = () => {
 
 
 
+  
+  /*  --------------------------------  USER ROLES  --------------------------------  */
+  const [userRoles, setUserRoles] = useState([]);
+
+  useEffect(() => {
+    const fetchUserRoles = async () => {
+      try {
+        const user = AuthService.getCurrentUser();
+        if (user) {
+          setUserRoles(user.roles); // Assuming the roles are stored in the user object
+        }
+      } catch (error) {
+        console.error("Error fetching user roles:", error);
+      }
+    };
+
+    fetchUserRoles();
+  }, []);
+
+  const isAuthorized = (requiredRoles) => {
+    return requiredRoles.some(role => userRoles.includes(role));
+  };
+  /*  --------------------------------  USER ROLES  --------------------------------  */
+
+
 
 
 
@@ -44,6 +75,9 @@ const Administracija = () => {
    {/* ---------------------------------      PSL     ----------------------------------    START */}
    <h1>Administracija</h1>
 
+    <EmployeeProfile idE={idE}/>
+
+
     
     <div className='administracija-box-container'> 
     {/* -----------------------------      ALL BOXES     -------------------------------    START */}
@@ -55,7 +89,7 @@ const Administracija = () => {
 
 
             
-              
+    {isAuthorized(["ADMIN", "MODERATOR"]) && (        
       <div className='administracija-box-main'> 
       { /* -------------------------    1. PACIENTAI    -------------------------------    START */}
 
@@ -89,6 +123,7 @@ const Administracija = () => {
         <p /* -------------------------   1.PACIENTAI   ----------------------------------- END */> </p>
       </div> 
       </div> 
+      )}
 
 
 
@@ -101,38 +136,39 @@ const Administracija = () => {
 
 
 
-
+      {isAuthorized(["ADMIN", "MODERATOR"]) && ( 
       <div className='administracija-box-main'>
-       <p /* ------------------------    2. DARBUOTOJAI   ---------------------------   START */> </p>
-       <h3>Darbuotojų sąrašo valdymas</h3>
-                       
-      <div className='administracija-box-4items-container'>                
-        
- 
-        <div className='administracija-box-4items-items'                      /* READ - P */>                                                                      
-            <button type="button" className="btn btn-primary" onClick={navigateToReadEmployee}>
-              Rodyti ir koreguoti <br></br> darbuotojų sąrašą</button>                          
-        </div>
+        <p /* ------------------------    2. DARBUOTOJAI   ---------------------------   START */> </p>
+        <h3>Darbuotojų sąrašo valdymas</h3>
 
-        <div className='administracija-box-4items-items'                      /* ADD - P */>                                                            
-            <button type="button" className="btn btn-primary" onClick={navigateToAddEmployee}>
-              Įvesti naują darbuotoją <br></br></button>                                     
-        </div>
-                     
-        <div className='administracija-box-4items-items'                      /* EDIT - P */>                                                                              
-            <button type="button" className="btn btn-primary" onClick={navigateToEditEmployee}>
-              Koreguoti duomenis <br></br> (pagal ID)</button>                           
-        </div>
-
-        <div className='administracija-box-4items-items'                      /* DELETE - P */>                                                                              
-            <button type="button" className="btn btn-primary" onClick={navigateToDeleteEmployee}>
-              Ištrinti darbuotoją <br></br> (pagal ID)</button>                      
-        </div>
+                        
+        <div className='administracija-box-4items-container'>                
              
-                 
-       <p /* -------------------------   2. DARBUOTOJAI   --------------------------------- END */> </p>
+          <div className='administracija-box-4items-items'                      /* READ - P */>                                                                      
+              <button type="button" className="btn btn-primary" onClick={navigateToReadEmployee}>
+                Rodyti ir koreguoti <br></br> darbuotojų sąrašą</button>                          
+          </div>
+  
+          <div className='administracija-box-4items-items'                      /* ADD - P */>                                                            
+              <button type="button" className="btn btn-primary" onClick={navigateToAddEmployee}>
+                Įvesti naują darbuotoją <br></br></button>                                     
+          </div>
+                       
+          <div className='administracija-box-4items-items'                      /* EDIT - P */>                                                                              
+              <button type="button" className="btn btn-primary" onClick={navigateToEditEmployee}>
+                Koreguoti duomenis <br></br> (pagal ID)</button>                           
+          </div>
+  
+          <div className='administracija-box-4items-items'                      /* DELETE - P */>                                                                              
+              <button type="button" className="btn btn-primary" onClick={navigateToDeleteEmployee}>
+                Ištrinti darbuotoją <br></br> (pagal ID)</button>                      
+          </div>
+                                  
+          <p /* -------------------------   2. DARBUOTOJAI   --------------------------------- END */> </p>
+           
+        </div>
       </div>
-      </div>
+      )}
 
 
 

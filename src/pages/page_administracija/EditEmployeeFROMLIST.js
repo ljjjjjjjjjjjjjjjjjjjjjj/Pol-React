@@ -1,10 +1,12 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
 import NavigateToEmployee from '../../methods_and_other/NavigateToEmployee.js';
+import NavigateToAdmin from '../../methods_and_other/NavigateToEmployee.js';
 import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
 import { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
+import AuthService from "../../services/auth.service";
 import axios from 'axios';
 
 
@@ -37,6 +39,31 @@ function EditEmployeeFROMLIST() {
 
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+
+    
+  /*  --------------------------------  USER ROLES  --------------------------------  */
+  const [userRoles, setUserRoles] = useState([]);
+
+  useEffect(() => {
+    const fetchUserRoles = async () => {
+      try {
+        const user = AuthService.getCurrentUser();
+        if (user) {
+          setUserRoles(user.roles); // Assuming the roles are stored in the user object
+        }
+      } catch (error) {
+        console.error("Error fetching user roles:", error);
+      }
+    };
+
+    fetchUserRoles();
+  }, []);
+
+  const isAuthorized = (requiredRoles) => {
+    return requiredRoles.some(role => userRoles.includes(role));
+  };
+  /*  --------------------------------  USER ROLES  --------------------------------  */
 
 
   
@@ -248,15 +275,31 @@ const handleReset = () => {
             value="Išvalyti" onClick={handleReset}/>
             </div>
 
-                     
-            <div className='administracija-box-1'>
-              <div className='administracija-box-1'>
-                < NavigateToEmployee idE={idE} />
-              </div>
-            </div>
-
                    
           </form>
+
+
+              {isAuthorized(["USER", "EMPL"]) && !isAuthorized(["ADMIN", "MODERATOR"]) && (
+                <div className='administracija-box-1'>
+                < NavigateToAdmin idE={idE} />
+                </div>
+              )}
+
+              {isAuthorized(["ADMIN", "MODERATOR"]) && ( 
+                <div className='administracija-box-1'>
+                < NavigateToEmployee idE={idE} />
+                </div>
+              )}
+
+
+
+
+
+
+
+
+
+
         </div>
       </div>
     </div>

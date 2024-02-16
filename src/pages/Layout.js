@@ -1,12 +1,22 @@
 
-
+import './formats/Layout.css';
 import React, { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import './formats/Layout.css';
+import AuthService from "../services/auth.service";
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Layout = () => {
+
+  const isLoggedIn = !!AuthService.getCurrentUser();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    AuthService.logout();
+    navigate("/home");
+    
+  };
 
   
 
@@ -20,8 +30,17 @@ const Layout = () => {
                <div className='upper-header'>
                  <img src="./logo-blue.png" alt={"logo"} /> 
                  <p>Istaigos pavadinimas</p>
-                 <Link to="/signin" type="button" className='link-login'> <span className='bust-in-silhouette'>&#128100;</span> Prisijungti&ensp;</Link>
                  
+                 {isLoggedIn ? (
+                      <button onClick={handleLogout} className='link-login'>
+                        <span className='bust-in-silhouette'>&#128100;</span> Sign-out&ensp;
+                      </button>
+                    ) : (
+                      <Link to="/signin" type="button" className='link-login'>
+                        <span className='bust-in-silhouette'>&#128100;</span> Sign-in&ensp;
+                      </Link>
+                    )}
+
                </div>     
             </header>
     

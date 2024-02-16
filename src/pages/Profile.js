@@ -3,7 +3,7 @@ import React from "react";
 import AuthService from "../services/auth.service";
 import './formats/Profile.css';
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect} from 'react';
+import { useState} from 'react';
 
 
 
@@ -16,21 +16,15 @@ const Profile = () => {
 
   const [patientID, setPatientID] = useState('');
   const [empID, setEmpID] = useState('');
-  const [tokenManual, setTokenManual] = useState('');
+  
 
-  useEffect(() => {
-    console.log("1. TOKEN:", currentUser.accessToken);
-    if(currentUser.accessToken != null)
-    setTokenManual(currentUser.accessToken)
-  }, [currentUser]);
-
-
+  
 
 
   const navigate = useNavigate();
 
   const navigateToAdministracija = () => {
-    navigate('/loggedpage/administracija');
+    navigate(`/loggedpage/${empID}/administracija`);
   };
 
   const navigateToPatientPage = () => {
