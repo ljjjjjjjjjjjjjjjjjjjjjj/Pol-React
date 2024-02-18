@@ -1,11 +1,8 @@
 import '../main/custom-bootstrap.css';
 import './formats/Administracija.css';
 import EmployeeProfile from '../methods_and_other/EmployeeProfile.js';
-import API_ROOT_PATH from '../main/configLogged.js';
-import authHeader from "../services/auth-header";
 import { useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
 import AuthService from "../services/auth.service";
 
 

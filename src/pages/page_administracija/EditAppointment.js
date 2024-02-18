@@ -1,9 +1,15 @@
+
+
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
 import NavigateToAppointment from '../../methods_and_other/NavigateToAppointment.js';
-import authHeader from "../../services/auth-header";
+import authHeader from "../../services/auth-header.js";
 import API_ROOT_PATH from '../../main/configLogged.js';
-import { useState} from 'react';
+import HandleEmployeeSelectionEDIT from '../../methods_and_other/HandleEmployeeSelectionEDIT.js';
+import HandlePatientSelectionEDIT from '../../methods_and_other/HandlePatientSelectionEDIT.js';
+import HandleInfoPatient from '../../methods_and_other/HandleInfoPatient.js';
+import HandleInfoEmployee from '../../methods_and_other/HandleInfoEmployee.js';
+import { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
@@ -20,20 +26,104 @@ import { getDay } from 'date-fns';
 
 
 
-const EditAppointment = () => {
+
+
+
+
+
+function EditAppointment() {
   const { idE } = useParams();
-  
+
 
   
 
-  const [selectedAppID, setSelectedAppID] = useState("");
 
-  const [appID, setAppID] = useState("");
-  const [appCategory, setAppCategory] = useState("");
-  const [appReason, setAppReason] = useState("");
-  const [appDate, setAppDate] = useState("");
 
+  
+  /*  -----------------   Const setters    ------------------*/
+  const [appID, setAppID] = useState(''); 
+  const [appCategory, setAppCategory] = useState('');
+  const [appReason, setAppReason] = useState('');
+
+
+  const [patientSelectionField, setPatientSelectionField] = useState(false);
+  const [employeeSelectionField, setEmployeeSelectionField] = useState(false);
+  const [otherSelectionField, setOtherSelectionField] = useState(false);
+
+
+
+  /*  -----------------   Const setters    ------------------*/
+
+
+
+
+
+  /*  -----------------   Employee    ------------------*/
+  const [appEmployeeID, setAppEmployeeID] = useState('');
+  
+
+  const [existingAppEmployeeID, setExistingAppEmployeeID] = useState('');
+  const [existingAppEmployeeName, setExistingAppEmployeeName] = useState('');
+  const [existingAppEmployeeSurname, setExistingAppEmployeeSurname] = useState('');
+  const [existingAppEmployeeJobTitle, setExistingAppEmployeeJobTitle] = useState('');
+  const [existingAppEmployeeCategory, setExistingAppEmployeeCategory] = useState('');
+
+  const handleEmployeeSelect = (employee, info) => {
+    setAppEmployeeID(employee);
+    setExistingAppEmployeeName(info.empName);
+    setExistingAppEmployeeSurname(info.empSurname);
+    setExistingAppEmployeeJobTitle(info.empJobTitle);
+  };
+
+ 
+  useEffect(() => {
+    console.log("1. EDITAPP - employee useEffect (appEmployee):", appEmployeeID);
+    if (appEmployeeID == null)
+    {handleEmployeeSelect();}
+  }, [appEmployeeID]);
+  /*  -----------------   Employee    ------------------*/
+
+
+
+
+
+  /*  ------------------   Patient    -------------------*/
+  const [appPatientID, setAppPatientID] = useState('');
+  
+
+  const [existingAppPatientID, setExistingAppPatientID] = useState('');
+  const [existingAppPatientName, setExistingAppPatientName] = useState('');
+  const [existingAppPatientSurname, setExistingAppPatientSurname] = useState('');
+  const [existingAppPatientNO, setExistingAppPatientNO] = useState('');
+
+
+
+
+
+  const handlePatientSelect = (patient) => {
+    setAppPatientID(patient);
+   
+    
+  };
+  
+
+  useEffect(() => {
+   console.log("1. EDITAPP - patient useEffect (appPatientID):", appPatientID);
+   if (appPatientID == null)
+   {handlePatientSelect();}
+ }, [appPatientID]);
+  /*  ------------------   Patient    -------------------*/
+
+
+
+
+
+
+
+
+  
   /*  -----------------   Date    ------------------*/
+  const [appDate, setAppDate] = useState("");
   registerLocale('lt', lt); // Register Lithuanian locale
   setDefaultLocale('lt'); // Set Lithuanian locale as the default
 
@@ -50,10 +140,10 @@ const EditAppointment = () => {
   };
 
 
-
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedHour, setSelectedHour] = useState('');
   const [selectedMinute, setSelectedMinute] = useState('');
+
 
   const handleDateFilter = (date) => {
     const day = getDay(date);
@@ -72,77 +162,136 @@ const EditAppointment = () => {
     setSelectedHour(parseInt(selectedHour));
     setSelectedMinute(parseInt(selectedMinute));
   };
-
   /*  -----------------   Date    ------------------*/
 
+
+
+
+
+  /*  -----------------   Handling    ------------------*/
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+
+
   
-  const handleSearchSubmit = async (event) => {
-    event.preventDefault();
+  const handleSearchSubmit = async (e) => {
+      e.preventDefault();
+      console.log('appID:', appID);
+      try {
+        setPatientSelectionField(true);
+        setEmployeeSelectionField(true);
+        setOtherSelectionField(true);
+        
+        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/objects${appID}`,  {headers: authHeader()});
+        const appointmentData = response.data;
+              
+    
+        setAppCategory(appointmentData.appCategory);
+        setAppReason(appointmentData.appReason);
+        setAppDate(appointmentData.appDate);
 
-    try {
-      const response = await axios.get(`${API_ROOT_PATH}/appointments/get/${selectedAppID}`,  {headers: authHeader()});
-      const appointmentData = response.data;
-            
-      setAppID(appointmentData.appID);
-      setAppCategory(appointmentData.appCategory);
-      setAppReason(appointmentData.appReason);
-      setAppDate(appointmentData.appDate);
+        setAppEmployeeID(appointmentData.appEmployeeID);
+        console.info('1. EDITAPP - handleSearchSubmit (appEmployeeID): ', (appointmentData.appEmployeeID));
 
-      const appDateObj = appointmentData.appDate ? new Date(appointmentData.appDate) : getInitialDate();
+        setExistingAppEmployeeID(appointmentData.appEmployeeID);
+        setExistingAppEmployeeName(appointmentData.empName);
+        setExistingAppEmployeeSurname(appointmentData.empSurname);
+        setExistingAppEmployeeJobTitle(appointmentData.empJobTitle);
+        setExistingAppEmployeeCategory(appointmentData.empCategory);
 
-      setSelectedDate(appDateObj);
-      setSelectedHour(appDateObj.getHours());
-      setSelectedMinute(appDateObj.getMinutes());
-      
-                    
-      setSuccessMessage('');
-      setErrorMessage('');
-                 
-    } catch (error) {
-      console.error('Error:', error);
-      setSuccessMessage('');
-      setErrorMessage('Rezervacija su tokiu ID nerasta');
-    }
+        console.info('1. EDITAPP - handleSearchSubmit (appointmentData.empCategory): ', (appointmentData.empCategory), '(ID): ', (appointmentData.appEmployeeID));
+        
+        setAppPatientID(appointmentData.appPatientID);
+        setExistingAppPatientID(appointmentData.appPatientID);
+        setExistingAppPatientName(appointmentData.patientName);
+        setExistingAppPatientSurname(appointmentData.patientSurname);
+        setExistingAppPatientNO(appointmentData.patientNO);
+        
+        console.info('1. EDITAPP - handleSearchSubmit (appointmentData.appPatientID): ', (appointmentData.appPatientID));
+
+        const appDateObj = appointmentData.appDate ? new Date(appointmentData.appDate) : getInitialDate();
+
+        setSelectedDate(appDateObj);
+        setSelectedHour(appDateObj.getHours());
+        setSelectedMinute(appDateObj.getMinutes());
+        
+                      
+        setSuccessMessage('');
+        setErrorMessage('');
+
+        
+                   
+      } catch (error) {
+        console.error('1. EDITAPP - Error:', error);
+        setSuccessMessage('');
+        setErrorMessage('Rezervacija su tokiu ID nerasta');
+      }
   };
   
+
+
+  
+  
+  
+
 
   const handleAppointmentEditSubmit = async (event) => {
     event.preventDefault();
 
   try {
 
+    if (!appEmployeeID || !appPatientID) {
+      setErrorMessage('Būtina pasirinkti gydytoją ir pacientą.');
+      return;
+    }
+
+
+
+
     const formattedDate = selectedDate
-        ? format(selectedDate, 'yyyy/MM/dd')
-        : '';
+      ? format(selectedDate, 'yyyy/MM/dd')
+      : ''
+    ;
     const formattedTime = selectedDate
       ? `${selectedHour}:${selectedMinute.toString().padStart(2, '0')}`
-      : '';
+      : ''
+    ;
 
-    const response = await axios.put(`${API_ROOT_PATH}/appointments/edit/${selectedAppID}`, 
+    console.log('1. EDITAPP - TEST (appEmployeeID):', appEmployeeID);
+    console.log('1. EDITAPP - TEST (appPatientID):', appPatientID);    
+
+
+    const request = await axios.put(`${API_ROOT_PATH}/appointments/edit/objects${appID}`, 
     {
-      appID,
+      appID, 
       appCategory, 
-      appReason, 
-      appDate: `${formattedDate}, ${formattedTime}`
+      appReason,
+      appDate: `${formattedDate}, ${formattedTime}`,
+      appEmployeeID,
+      appPatientID
     },  
     {headers: authHeader()}
     );
 
-      console.log('Response:', response.data);
-      setSuccessMessage(<div>Rezervacija sėkmingai atnaujinta: <br /> <br />
-                          <strong>Data ir laikas:</strong> &nbsp; {formattedDate} &nbsp; ({formattedTime} val.)<br /> 
-                          <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
-                          <strong>Priežastis:</strong> &nbsp; {appReason}</div>);
-      setErrorMessage('');
 
-      handleReset();
+
+    console.log('1. EDITAPP - Request:', request.data);
       
-    
+    setSuccessMessage(<div>Rezervacija sėkmingai atnaujina: <br /> <br />
+                        <strong>Data ir laikas:</strong> &nbsp; {formattedDate} &nbsp; ({formattedTime} val.)<br /> 
+                        <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
+                        <strong>Priežastis:</strong> &nbsp; {appReason} <br />
+                        <strong>Gydytojas:</strong> &nbsp;  <HandleInfoEmployee appEmployeeID={appEmployeeID} />  <br />
+                        <strong>Pacientas:</strong> &nbsp;  <HandleInfoPatient appPatientID={appPatientID} /> </div>);
+    setErrorMessage('');
+
+
+    handleReset();
+      
+          
   } catch (error) {
-      console.error('Error:', error);
+      console.error('1. EDITAPP - Error:', error);
       setSuccessMessage('');
       setErrorMessage('Rezervacija NEBUVO atnaujinta');
     
@@ -150,16 +299,37 @@ const EditAppointment = () => {
 };
 
 const handleReset = () => {
-  setSelectedAppID('');
+  
+  setPatientSelectionField(false);
+  setEmployeeSelectionField(false);
+  setOtherSelectionField(false);
+
+
+  setSelectedDate( getInitialDate());
+  setSelectedHour(7);
+  setSelectedMinute(0); 
+
   setAppID('');
   setAppCategory('');
   setAppReason('');
 
-  setSelectedDate(getInitialDate());
-  setSelectedHour(7);
-  setSelectedMinute(0); 
+  setAppEmployeeID('');
+  setExistingAppEmployeeID('');
+  setExistingAppEmployeeName('');
+  setExistingAppEmployeeSurname('');
+  setExistingAppEmployeeJobTitle('');
+  setExistingAppEmployeeCategory('');
 
+  setAppPatientID('');
+  setExistingAppPatientID('');
+  setExistingAppPatientName('');
+  setExistingAppPatientSurname('');
+  setExistingAppPatientNO('');
+ 
+
+  
 };
+/*  -----------------   Handling    ------------------*/
 
 
 
@@ -169,9 +339,9 @@ const handleReset = () => {
  
 
 
-  return (
+return (
 
-  <div className='administracija'>
+<div className='administracija'>
 
   <div className='administracija-box-container'>
 
@@ -179,134 +349,210 @@ const handleReset = () => {
     <h1>Administracija</h1>
     </div>
 
-      <div className='administracija-box-1'>
-          <h3>Rezervacijų sąrašo valdymas</h3>
+    <div className='administracija-box-1'>
+      <h3>Rezervacijų sąrašo valdymas - keisti esamos rezervacijos duomenis</h3>                          
+      
+      <div className='administracija-box-1-plus'>
+
+          <form onSubmit={handleSearchSubmit}>
+
+            <label>Įveskite rezervacijos ID numerį:
+              <input 
+                style={{ width: '50px', }}
+                type="text" 
+                value={appID}
+                onChange={(e) => setAppID(e.target.value)}
+              />
+            </label>
+                 
+            <div className='administracija-box-1-button-box'>
+            <p>&nbsp;</p>
+            <input 
+              type="submit" 
+              className="btn btn-primary administracija-box-1-button-b"
+              value="Patvirtinti"
+            />
+            <p>&nbsp;</p>
+            </div>
+
+
+          </form>
+        </div>
+         
+
+
+      <div className='administracija-box-3-PATIENTS-main'>
+        <h4>1.1. Pasirinkti gydytoją</h4>
+        <h5>Gydytojas: <strong>{existingAppEmployeeName}  {existingAppEmployeeSurname} ({existingAppEmployeeJobTitle})</strong></h5>
+
+
+
+        {!!employeeSelectionField && (
+        <HandleEmployeeSelectionEDIT 
           
-          <div>
+          
+          idInfo={existingAppEmployeeID}
+          nameInfo={existingAppEmployeeName}
+          surnameInfo={existingAppEmployeeSurname}
+          jobTitleInfo={existingAppEmployeeJobTitle}
+          categoryInfo={existingAppEmployeeCategory}
 
-            <h4>3. Keisti esamos rezervacijos duomenis</h4>
+          onEmployeeSelect={handleEmployeeSelect}          
+        />
+        )}
 
-            <div className='administracija-box-1-plus'>
-              <form  onSubmit={handleSearchSubmit}>
-                <label>Įveskite rezervacijos ID numerį:
-                  <input style={{ width: '50px', }}
-                    type="text" 
-                    value={selectedAppID}
-                    onChange={(e) => setSelectedAppID(e.target.value)}
-                  />
-                </label>
 
-                <div className='administracija-box-1-button-box'>
-                <p></p>
-                <input type="submit" className="btn btn-primary administracija-box-1-button-b"
-                       value="Patvirtinti" />
-                <p>&nbsp;</p>
+        <p>&nbsp;</p>
+      </div>
+
+
+      <div className='administracija-box-3-PATIENTS-main'>
+        <h4>1.2. Pasirinkti pacientą</h4>
+        <h5>Pacientas: <strong>{existingAppPatientName}  {existingAppPatientSurname} ({existingAppPatientNO})</strong></h5> 
+
+        {!!patientSelectionField && (
+        <HandlePatientSelectionEDIT 
+        
+          idInfoPatient={existingAppPatientID}
+          nameInfoPatient={existingAppPatientName}
+          surnameInfoPatient={existingAppPatientSurname}
+          noInfoPatient={existingAppPatientNO}
+        
+          onPatientSelect={handlePatientSelect}/>
+        )}
+
+              
+      </div>
+
+
+
+
+
+
+
+
+      <div className='administracija-box-1'>
+        <h4>1.3. Kiti duomenys: </h4>
+
+        <div className='administracija-box-3-PATIENTS-plus'>
+
+        {!!otherSelectionField && (
+
+          <form onSubmit={handleAppointmentEditSubmit}>
+            <label> Kategorija (gyvai, telefonu arba ūmus):
+              <input
+                type='text'
+                value={appCategory}
+                onChange={(p) => setAppCategory(p.target.value)}
+              />
+            </label>
+
+                
+            <label> Priežastis (nusiskundimai):
+              <input
+                type='text'
+                value={appReason}
+                onChange={(p) => setAppReason(p.target.value)}
+              />
+            </label>
+
+
+
+            <br></br>
+            <p>Data: &emsp;&emsp;&emsp; <strong style={{color:'#3883b5'}}>{appDate}</strong></p>    
+            <label > Data:
+              <div className='administracija-box-1-datepicker'>
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={handleDateChange}
+                  dateFormat="yyyy/MM/dd"
+                  filterDate={handleDateFilter}
+                            
+                />
+                <div className='administracija-box-1'>
+                  <label>Laikas:</label>
+                  <select 
+                    onChange={handleTimeChange}
+                    defaultValue={`${selectedHour.toString().padStart(2, '0')}:${selectedMinute.toString().padStart(2, '0')}`}
+                  >
+                    {[...Array(13).keys()].map((hour) => (
+                      [...Array(4).keys()].map((quarter) => {
+                        const time = `${(hour + 7).toString().padStart(2, '0')}:${(quarter * 15).toString().padStart(2, '0')}`;
+                        return (
+                          time <= "19:00" && (
+                            <option key={time} value={time}>
+                              {time}
+                            </option>
+                          )
+                        );
+                      })
+                    ))}
+                  </select>
                 </div>
-
-
-            </form>
-          </div>
-
-
-
+              </div>
+            </label>
+                         
+                    
+                         
             <div>
-            <form onSubmit={handleAppointmentEditSubmit}>
-
-              <p>&ensp;ID:&emsp;&emsp;&emsp; <strong style={{color:'#3883b5'}}>{appID}</strong> </p>
-            
-               
-               
-              <label> Kategorija: 
-              <input 
-              type='text' 
-              value={appCategory} 
-              onChange={(p) => setAppCategory(p.target.value)} 
-              />
-              </label>
-               
-               
-               
-              <label> Priežastis: 
-              <input 
-              type='text' 
-              value={appReason} 
-              onChange={(p) => setAppReason(p.target.value)}              
-              />
-              </label>
-
-
-
-              <br></br>
-                <label> Data: &emsp;&emsp;&emsp; {appDate} <br></br>
-                  <div className='administracija-box-1-datepicker'>
-                  <br></br>
-                    <DatePicker
-                      selected={selectedDate}
-                      onChange={handleDateChange}
-                      dateFormat="yyyy/MM/dd"
-                      filterDate={handleDateFilter}
-                    />
-                    <div className='administracija-box-1'>
-                      <label>Laikas:</label>
-                      <select
-                        onChange={handleTimeChange}
-                        defaultValue={`${selectedHour.toString().padStart(2, '0')}:${selectedMinute.toString().padStart(2, '0')}`}
-                      >
-                        {[...Array(13).keys()].map((hour) => (
-                          [...Array(4).keys()].map((quarter) => {
-                            const time = `${(hour + 7).toString().padStart(2, '0')}:${(quarter * 15).toString().padStart(2, '0')}`;
-                            return (
-                              time <= "19:00" && (
-                                <option key={time} value={time}>
-                                  {time}
-                                </option>
-                              )
-                            );
-                          })
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                </label>
-            
-
-              <div>
               <br></br>
               {successMessage && <div className="success-message">{successMessage}</div>}
               {errorMessage && <div className="error-message">{errorMessage}</div>}
               <br></br>
-              </div>
-               
-               
-               
-              <div className='administracija-box-1-button-box'>
-              <br></br>
-              <input type='submit' className="btn btn-primary administracija-box-1-button-b" 
-              value="Išsaugoti" />
-
-              <input type='reset' className="btn btn-secondary administracija-box-1-button-g" 
-              value="Išvalyti" onClick={handleReset}/>
-              </div>
-
-            </form>
+            </div>
+             
+             
+             
+            <div className='administracija-box-1-button-box'>
+            <br></br>
+            <input type='submit' className="btn btn-primary administracija-box-1-button-b" 
+            value="Išsaugoti" />
+                          
+            <input type='reset' className="btn btn-secondary administracija-box-1-button-g" 
+            value="Išvalyti" onClick={handleReset}/>
             </div>
 
-            <div className='administracija-box-1'>                 
-              <div className='administracija-box-1'>
-                < NavigateToAppointment idE={idE} />
-              </div>
-            </div>
+                     
+            
+
+                   
+          </form>
+          )}
+
+            
+
+
 
 
           </div>
+          
+          
+        </div>
+
+          <div>
+                <br></br>
+                {successMessage && <div className="success-message">{successMessage}</div>}
+                {errorMessage && <div className="error-message">{errorMessage}</div>}
+                <br></br>
+          </div>
+
+          <div className='administracija-box-1'>
+            <div className='administracija-box-1'>
+              < NavigateToAppointment idE={idE} />
+            </div>
+          </div>
+
+
       </div>
-  </div>
+    </div>
+  
   </div>
   
   
   
   
   )
+  
 };
 
   
