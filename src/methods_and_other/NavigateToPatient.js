@@ -35,7 +35,7 @@ function NavigateToPatient({idE}) {
         <input 
           type='button' 
           className="btn btn-primary administracija-box-1-button-b" 
-          value="&#9665; Grįžti į sąrašą" 
+          value="&#9665; Pacientų sąrašas" 
           onClick={navigateToReadPatient}
         />  
         <br></br>

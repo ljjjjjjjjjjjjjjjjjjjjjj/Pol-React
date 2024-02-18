@@ -7,6 +7,8 @@ import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
 import HandleEmployeeSelectionEDIT from '../../methods_and_other/HandleEmployeeSelectionEDIT.js';
 import HandlePatientSelectionEDIT from '../../methods_and_other/HandlePatientSelectionEDIT.js';
+import HandleInfoPatient from '../../methods_and_other/HandleInfoPatient.js';
+import HandleInfoEmployee from '../../methods_and_other/HandleInfoEmployee.js';
 import { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -16,6 +18,7 @@ import { format } from 'date-fns';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import lt from 'date-fns/locale/lt'; // Import Lithuanian locale
 import { getDay } from 'date-fns';
+
 
 
 
@@ -40,6 +43,14 @@ function EditAppointmentFROMLIST() {
   const [appID, setAppID] = useState("");
   const [appCategory, setAppCategory] = useState("");
   const [appReason, setAppReason] = useState("");
+
+
+  const [patientSelectionField, setPatientSelectionField] = useState(true);
+  const [employeeSelectionField, setEmployeeSelectionField] = useState(true);
+  const [otherSelectionField, setOtherSelectionField] = useState(true);
+
+
+
   /*  -----------------   Const setters    ------------------*/
 
 
@@ -88,11 +99,10 @@ function EditAppointmentFROMLIST() {
 
 
 
-  const handlePatientSelect = (patient, infoPatient) => {
+  const handlePatientSelect = (patient) => {
     setAppPatientID(patient);
-    setExistingAppPatientName(infoPatient.patientName);
-    setExistingAppPatientSurname(infoPatient.patientSurname);
-    setExistingAppPatientNO(infoPatient.patientNO);
+   
+    
   };
   
 
@@ -234,6 +244,8 @@ function EditAppointmentFROMLIST() {
     }
 
 
+
+
     const formattedDate = selectedDate
       ? format(selectedDate, 'yyyy/MM/dd')
       : ''
@@ -267,8 +279,8 @@ function EditAppointmentFROMLIST() {
                         <strong>Data ir laikas:</strong> &nbsp; {formattedDate} &nbsp; ({formattedTime} val.)<br /> 
                         <strong>Kategorija:</strong> &nbsp; {appCategory} <br />
                         <strong>Priežastis:</strong> &nbsp; {appReason} <br />
-                        <strong>Gydytojas:</strong> &nbsp; {existingAppEmployeeName} {existingAppEmployeeSurname} ({existingAppEmployeeJobTitle})  <br />
-                        <strong>Pacientas:</strong> &nbsp; {existingAppPatientName}  {existingAppPatientSurname} ({existingAppPatientNO})</div>);
+                        <strong>Gydytojas:</strong> &nbsp;  <HandleInfoEmployee appEmployeeID={appEmployeeID} />  <br />
+                        <strong>Pacientas:</strong> &nbsp;  <HandleInfoPatient appPatientID={appPatientID} /> </div>);
     setErrorMessage('');
 
 
@@ -284,6 +296,12 @@ function EditAppointmentFROMLIST() {
 };
 
 const handleReset = () => {
+  
+  setPatientSelectionField(false);
+  setEmployeeSelectionField(false);
+  setOtherSelectionField(false);
+
+
   setSelectedDate( getInitialDate());
   setSelectedHour(7);
   setSelectedMinute(0); 
@@ -336,9 +354,11 @@ return (
 
       <div className='administracija-box-3-PATIENTS-main'>
         <h4>1.1. Pasirinkti gydytoją</h4>
-        <h5>Gydytojas: <strong>{existingAppEmployeeName}  {existingAppEmployeeSurname} ({existingAppEmployeeJobTitle})</strong></h5>  
-       
+        <h5>Gydytojas: <strong>{existingAppEmployeeName}  {existingAppEmployeeSurname} ({existingAppEmployeeJobTitle})</strong></h5>
 
+
+
+        {!!employeeSelectionField && (
         <HandleEmployeeSelectionEDIT 
           
           
@@ -348,9 +368,11 @@ return (
           jobTitleInfo={existingAppEmployeeJobTitle}
           categoryInfo={existingAppEmployeeCategory}
 
-          onEmployeeSelect={handleEmployeeSelect}
-                   
+          onEmployeeSelect={handleEmployeeSelect}          
         />
+        )}
+
+
         <p>&nbsp;</p>
       </div>
 
@@ -358,6 +380,8 @@ return (
       <div className='administracija-box-3-PATIENTS-main'>
         <h4>1.2. Pasirinkti pacientą</h4>
         <h5>Pacientas: <strong>{existingAppPatientName}  {existingAppPatientSurname} ({existingAppPatientNO})</strong></h5> 
+
+        {!!patientSelectionField && (
         <HandlePatientSelectionEDIT 
         
           idInfoPatient={existingAppPatientID}
@@ -366,6 +390,8 @@ return (
           noInfoPatient={existingAppPatientNO}
         
           onPatientSelect={handlePatientSelect}/>
+        )}
+
               
       </div>
 
@@ -380,6 +406,8 @@ return (
         <h4>1.3. Kiti duomenys: </h4>
 
         <div className='administracija-box-3-PATIENTS-plus'>
+
+        {!!otherSelectionField && (
 
           <form onSubmit={handleAppointmentEditSubmit}>
             <label> Kategorija (gyvai, telefonu arba ūmus):
@@ -456,16 +484,36 @@ return (
             </div>
 
                      
-            <div className='administracija-box-1'>
-              <div className='administracija-box-1'>
-                < NavigateToAppointment idE={idE} />
-              </div>
-            </div>
+            
 
                    
           </form>
+          )}
+
+            
+
+
+
+
           </div>
+          
+          
         </div>
+
+          <div>
+                <br></br>
+                {successMessage && <div className="success-message">{successMessage}</div>}
+                {errorMessage && <div className="error-message">{errorMessage}</div>}
+                <br></br>
+          </div>
+
+          <div className='administracija-box-1'>
+            <div className='administracija-box-1'>
+              < NavigateToAppointment idE={idE} />
+            </div>
+          </div>
+
+
       </div>
     </div>
   
@@ -475,6 +523,7 @@ return (
   
   
   )
+  
 };
 
   

@@ -32,6 +32,7 @@ const EditEmployee = () => {
   const [empAddress, setEmpAddress] = useState("");
   const [empPhone, setEmpPhone] = useState("");
   const [empEmail, setEmpEmail] = useState("");
+  const [empJobTitle, setEmpJobTitle] = useState("");
   const [empCategory, setEmpCategory] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
@@ -54,6 +55,7 @@ const EditEmployee = () => {
       setEmpAddress(empData.empAddress);
       setEmpPhone(empData.empPhone);
       setEmpEmail(empData.empEmail);
+      setEmpJobTitle(empData.empJobTitle);
       setEmpCategory(empData.empCategory);
       setImageUrl(empData.imageUrl);
 
@@ -81,6 +83,7 @@ const EditEmployee = () => {
       empAddress, 
       empPhone, 
       empEmail, 
+      empJobTitle,
       empCategory,
       imageUrl
     },  
@@ -110,6 +113,7 @@ const handleReset = () => {
   setEmpAddress(''); 
   setEmpPhone(''); 
   setEmpEmail(''); 
+  setEmpJobTitle('');
   setEmpCategory('');
   setImageUrl('');
   
@@ -224,6 +228,15 @@ const handleReset = () => {
               type='text' 
               value={empEmail} 
               onChange={(p) => setEmpEmail(p.target.value)}               
+              />
+              </label>
+
+
+              <label> Pareigos: 
+              <input 
+              type='text' 
+              value={empJobTitle} 
+              onChange={(p) => setEmpJobTitle(p.target.value)}                
               />
               </label>
 

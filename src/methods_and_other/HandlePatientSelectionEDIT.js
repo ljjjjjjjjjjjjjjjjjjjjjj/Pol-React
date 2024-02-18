@@ -11,39 +11,44 @@ import axios from 'axios';
 
 
 function HandlePatientSelectionEDIT( props ) {
+  const [existingPatientID, setExistingPatientID] = useState("");
+  const [existingPatientName, setExistingPatientName] = useState("");
+  const [existingPatientSurname, setExistingPatientSurname] = useState("");
+  const [existingPatientNO, setExistingPatientNO] = useState("");
 
-  const [appPatientID, setAppPatientID] = useState("");
-  const [patientName, setPatientName] = useState("");
-  const [patientSurname, setPatientSurname] = useState("");
-  const [patientNO, setPatientNO] = useState("");
+  const [newPatientID, setNewPatientID] = useState("");
+  const [newPatientName, setNewPatientName] = useState("");
+  const [newPatientSurname, setNewPatientSurname] = useState("");
+  const [newPatientNO, setNewPatientNO] = useState("");
 
   const [appSelectedPatients, setAppSelectedPatients] = useState( [] );
+  const [patientNameButtonClicked, setPatientNameButtonClicked] = useState(false);
   
 
   
   useEffect(() => {
     if (props.idInfoPatient) {
-      setAppPatientID(props.idInfoPatient);
+      setExistingPatientID(props.idInfoPatient);
     }
   }, [props.idInfoPatient]);
 
 
   useEffect(() => {
     if (props.nameInfoPatient) {
-      setPatientName(props.nameInfoPatient);
+      setExistingPatientName(props.nameInfoPatient);
     }
   }, [props.nameInfoPatient]);
   
  
   useEffect(() => {
     if (props.surnameInfoPatient) {
-      setPatientSurname(props.surnameInfoPatient);
+      setExistingPatientSurname(props.surnameInfoPatient);
     }
   }, [props.surnameInfoPatient]);
 
   useEffect(() => {
     if (props.noInfoPatient) {
-      setPatientNO(props.noInfoPatient);
+      setExistingPatientNO(props.noInfoPatient);
     }
   }, [props.noInfoPatient]);
 
@@ -56,8 +61,8 @@ function HandlePatientSelectionEDIT( props ) {
 
   const fetchPatientByNameData = async () => {
     try {
-      const myUrl = `${API_ROOT_PATH}/patients/get/name/${patientName}`;
-      console.log('3. Handle - Fetch - (patientName):', patientName);
+      const myUrl = `${API_ROOT_PATH}/patients/get/name/${newPatientName}`;
+      console.log('3. Handle - Fetch - (newPatientName):',newPatientName);
 
       const response = await axios.get(myUrl,  {headers: authHeader()});
 
@@ -74,17 +79,17 @@ function HandlePatientSelectionEDIT( props ) {
 
 
   useEffect(() => {
-    console.log("3. Handle - useEffect-Name (patientName):", patientName);
-    if (patientName.length > 0)
+    console.log("3. Handle - useEffect-Name (newPatientName):", newPatientName);
+    if (newPatientName.length > 0)
     {fetchPatientByNameData();}
-  }, [patientName]);
+  }, [newPatientName]);
   
 
   useEffect(() => {
-    console.log("3. Handle - useEffect (appPatientID):", appPatientID);
-    if (appPatientID == null)
+    console.log("3. Handle - useEffect (newPatientID):", newPatientID);
+    if (newPatientID == null)
     {handlePatientNameChange();}
-  }, [appPatientID]);
+  }, [newPatientID]);
 
 
   
@@ -94,7 +99,8 @@ function HandlePatientSelectionEDIT( props ) {
 
   const  handlePatientSearchByName = (event) => {
     
-    console.log("3. handlePatientSearchByName (appPatientName) AA:", patientName);
+    console.log("3. handlePatientSearchByName (appPatientName) AA:", newPatientName);
+    setPatientNameButtonClicked(true);
       
 
   };
@@ -104,22 +110,17 @@ function HandlePatientSelectionEDIT( props ) {
 
   const handlePatientNameChange = (event) => {
     const selectedPatient = event.target.value;
-    setAppPatientID(selectedPatient);
+    setNewPatientID(selectedPatient);
 
     console.log("3. handlePatientNameChange (event.target.value):", event.target.value);
     
 
-    const patientInfo = {
-      empName: patientName,
-      empSurname: patientSurname,
-      empJobTitle: patientNO
-    };
+
 
     console.log("3. HANDOVER TO 1. (selectedPatient):", selectedPatient);
-    console.log("3. HANDOVER TO 1. (patientInfo):", patientInfo);
+   
 
-
-    props.onPatientSelect(selectedPatient, patientInfo); // Send selected employee to parent
+    props.onPatientSelect(selectedPatient); // Send selected employee to parent
     
   
   }
@@ -134,18 +135,20 @@ function HandlePatientSelectionEDIT( props ) {
 
 
       <form className='administracija-box-3-PATIENTS-flex-container'>
-      <label>Ieškoti paciento pagal vardą:
+      <label htmlFor="patientNameInput">Paciento vardas:
         
         <input 
           type="text" 
-          defaultValue={patientName}
-          onChange={(n) => setPatientName(n.target.value)}
+          id="patientNameInput" 
+          onChange={(n) => setNewPatientName(n.target.value)}
           
         />
       </label>
       <div className='administracija-box-3-PATIENTS-with-button'>
-      <input type='button' className="btn btn-primary administracija-box-3-PATIENTS-button" 
-            value="Ieškoti"  onClick={() => handlePatientSearchByName()}/>
+      <input type='button' 
+            className="btn btn-primary administracija-box-3-PATIENTS-button" 
+            value="Ieškoti"  
+            onClick={() => handlePatientSearchByName()}/>
       </div>
       </form>
 
@@ -160,12 +163,21 @@ function HandlePatientSelectionEDIT( props ) {
         <form >
         <label>Pasirinkite pacientą: </label>
         <select
-          value={appPatientID}
+          value={newPatientID}
           onChange={(p) => handlePatientNameChange(p)}
         >
-        <option style={{ color: 'blue' }} value={props.idInfoPatient}>
-            {`${props.nameInfoPatient} ${props.surnameInfoPatient} (${props.noInfoPatient})`} 
+          {!patientNameButtonClicked && (
+            <option style={{ color: 'blue' }} value={props.idInfoPatient}>
+              {`${props.nameInfoPatient} ${props.surnameInfoPatient} (${props.noInfoPatient})`} 
             </option>
+          )}
+
+          {patientNameButtonClicked && (
+            <option value=''>
+              ... 
+            </option>
+          )}
+      
         {(appSelectedPatients ?? []).map((patient) => (
           <PatientSelectionRow key={patient.patientID} patient={patient}/>
         ))}
@@ -181,17 +193,11 @@ function HandlePatientSelectionEDIT( props ) {
 
 
 
-
-
-
-
-
-
-
     </div>
 
     
   );
+
 }
 
 export default HandlePatientSelectionEDIT;

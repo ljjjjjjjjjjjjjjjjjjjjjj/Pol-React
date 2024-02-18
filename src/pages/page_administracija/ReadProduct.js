@@ -48,8 +48,17 @@ const ReadProduct = () => {
         
         let sortedProducts = response.data;
 
+      
         if (selectedOption) {
-        sortedProducts = sortedProducts.sort((a, b) => a[selectedOption].localeCompare(b[selectedOption]));
+          sortedProducts = sortedProducts.sort((a, b) => {
+              const isNumeric = !isNaN(a[selectedOption]) && !isNaN(b[selectedOption]);
+      
+              if (isNumeric) {
+                  return a[selectedOption] - b[selectedOption]; // number comparison
+              } else {                   
+                  return a[selectedOption].localeCompare(b[selectedOption]);  // String comparison
+              }
+          });
         }
         setProducts(sortedProducts);
 

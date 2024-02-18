@@ -39,7 +39,7 @@ const Profile = () => {
         
         const user = AuthService.getCurrentUser();
         if (user) {
-          setUserRoles(user.roles); // Assuming the roles are stored in the user object
+          setUserRoles(user.roles); 
           console.log("User roles:", user.roles)
         }
       } catch (error) {

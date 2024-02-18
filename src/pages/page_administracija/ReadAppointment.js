@@ -29,6 +29,7 @@ const ReadAppointment = () => {
 
   const [appointments, setAppointments] = useState( [] );
   const [selectedOption, setSelectedOption] = useState("");
+ 
   
 
   
@@ -39,10 +40,21 @@ const ReadAppointment = () => {
         
         let sortedAppointments = response.data;
 
+        
+
         if (selectedOption) {
-        sortedAppointments = sortedAppointments.sort((a, b) => a[selectedOption].localeCompare(b[selectedOption]));
+          sortedAppointments = sortedAppointments.sort((a, b) => {
+              const isNumeric = !isNaN(a[selectedOption]) && !isNaN(b[selectedOption]);
+      
+              if (isNumeric) {
+                  return a[selectedOption] - b[selectedOption]; // number comparison
+              } else {                   
+                  return a[selectedOption].localeCompare(b[selectedOption]);  // String comparison
+              }
+          });
         }
         setAppointments(sortedAppointments);
+
 
         console.log('Response:', response.data);
 
@@ -67,17 +79,19 @@ const ReadAppointment = () => {
 
     
       <div className='administracija-drop-down'>
-        <label>Pasirinkti filtrą: </label>
+        <label>Pasirinkti rikiavimą: </label>
         <select value={selectedOption} onChange={handleSelectedOption}>
           <option value="">pasirinkti...</option>
           <option value="appID">ID</option>
           <option value="appCategory">Kategorija</option>
           <option value="appDate">Data</option>
+          <option value="patientName">Pacientas</option>
+          <option value="empName">Gydytojas</option>
         </select>
 
         <input type='button' className="btn btn-secondary administracija-box-1-button-z" 
-                   value="Prideti naują" onClick={navigateToAddAppointment}/>      
-        
+                   value="Prideti naują" onClick={navigateToAddAppointment}/>  
+
       </div>
 
       

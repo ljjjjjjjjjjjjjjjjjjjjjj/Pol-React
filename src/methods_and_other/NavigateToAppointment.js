@@ -35,7 +35,7 @@ function NavigateToAppointment({idE}) {
         <input 
           type='button' 
           className="btn btn-primary administracija-box-1-button-b" 
-          value="&#9665; Grįžti į sąrašą" 
+          value="&#9665; Rezervacijų sąrašas" 
           onClick={navigateToReadAppointment}
         />  
         <br></br>

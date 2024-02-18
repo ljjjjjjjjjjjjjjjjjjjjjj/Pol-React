@@ -54,7 +54,7 @@ const ReadEmployee = () => {
                   return a[selectedOption].localeCompare(b[selectedOption]);  // String comparison
               }
           });
-      }
+        }
         setEmployees(sortedEmployees);
 
         console.log('Response:', response.data);
