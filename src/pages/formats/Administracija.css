@@ -1,72 +1,35 @@
 
+/* 1. Part - a) Main containers */
+/*           b) Main containers' text content */
+/*           c) Main containers' other elements */
+
+
+/* 2. Part - a) Supplementary containers */
+/*           b) Supplementary containers' text content */
+/*           c) Supplementary containers' other elements */
+
+
+
+
+
+
+/*  ---------------------------            1. a) Main containers             -------------------------------  */
+
 .administracija {
     margin: 0 ;
     padding-left: 0px;
 }
 
-.administracija h1 {
-  color: rgb(73, 80, 83);
-  font-size: 30px;
-  font-weight: bold;
-  margin-top: 50px;
-  margin-right: 10px;
-  margin-left: 20px;
-  margin-bottom: 30px;
-}
 
-.administracija h3 {
-    color: rgb(73, 80, 83);
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 30px;
-    margin-right: 10px;
-    margin-left: 10px;
-    margin-bottom: 30px;
-}
 
-.administracija h4 {
-    color: rgb(73, 80, 83);
-    font-size: 20px;
-    margin-top: 50px;
-    margin-right: 10px;
-    margin-left: 10px;
-    margin-bottom: 10px;
-}
+.administracija-box-main {
+    float: left;
+    width: 100%;
+    background:  AliceBlue;
 
-.administracija-drop-down {
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-left: 10px;
-    margin-bottom: 20px;
-}
-
-.administracija-drop-down label {
-    color: rgb(73, 80, 83);
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-left: 10px;
-    margin-bottom: 30px;
+    margin: 5px 20px 20px 10px;  /* top right bottom left */
     
 }
-
-.administracija-drop-down select {
-    padding-left: 5px;
-    padding-right: 20px;
-}
-
-.administracija-list  {
-    width: 95%;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 15px;
-    
-}
-
-
-
-
 
 .administracija-box-container { 
     width: 100%; 
@@ -76,101 +39,32 @@
     
 }
 
-.administracija-box-main {
-    float: left;
-    width: 100%;
-    background:  AliceBlue;
-    padding-left: 10px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    margin-top: 5px;
-    
-}
-
-.administracija-box-4items-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 90%;
-    background:  AliceBlue;
-    padding-left: 10px;
-    margin-right: 20px;
-    margin-left: 20px;
-    margin-bottom: 10px;
-    margin-top: 0px;
-    
-}
-
-
-.administracija-box-4items-items {
-    box-sizing: border-box;
-    flex-basis: calc(25% - 25px); 
-    height: 150px;
-    background:  AliceBlue;
-    padding: 10px;
-    margin-right: 20px;
-    margin-bottom: 0px;
-    margin-top: 0px;
-    border-right: 1.5px solid rgb(230, 238, 245);
-    border-left: 1.5px solid rgb(230, 238, 245);
-  
-}
-
-.administracija-box-4items-items button {   
-    background-color: rgba(49, 165, 238, 0.6);
-    border-color: AliceBlue;
-
-    height: 80%;
-    width: 90%;
-    border-width: 1px;
-    margin-left: 10px;
-
-    color: rgb(255,245,238);
-    font-weight: bold;
-
-    /*font-size: 15px;*/
-    /*font-weight: bold;*/
-    /*color: rgb(70,130,180);*/
-    font-family: 'Montserrat', sans-serif;
-      
- }
-
-
 .administracija-box-1 {
     float: left;
-    width: 90%;
-    height: auto; /* only for demonstration, should be removed */
-    background:  AliceBlue;
-    padding: 10px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    border-bottom: 1.5px solid rgb(230, 238, 245);
-  
-}
-
-.administracija-box-1-plus {
-    float: left;
     width: 100%;
     height: auto; /* only for demonstration, should be removed */
     background:  AliceBlue;
     padding: 10px;
-    margin-left: 0px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    
     border-bottom: 1.5px solid rgb(230, 238, 245);
+
+    margin: 0px 20px 20px 0px;  /* top right bottom left */
   
 }
+
+
 
 .administracija-box-1-center {
     float: left;
-    width: 90%;
+    width: 100%;
     height: auto; /* only for demonstration, should be removed */
     background:  AliceBlue;
     padding: 10px;
-    margin-right: 20px;
-    margin-bottom: 20px;
     border-bottom: 1.5px solid rgb(230, 238, 245);
     align-items: center;
+
+    
+    margin: 0px 20px 20px 0px;  /* top right bottom left */
   
 }
 
@@ -180,66 +74,76 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  ---------------------------            1. b) Main containers's text content             -------------------------------  */
+
+
+.administracija h1 {
+  color: rgb(73, 80, 83);
+  font-size: 30px;
+  font-weight: bold;
+
+  margin: 50px 10px 30px 20px;  /* top right bottom left */
+}
+
+.administracija h3 {
+    color: rgb(73, 80, 83);
+    font-size: 20px;
+    font-weight: bold;
+
+    margin: 30px 10px 30px 10px;  /* top right bottom left */
+}
+
+.administracija h4 {
+    color: rgb(73, 80, 83);
+    font-size: 20px;
+    
+    margin: 50px 10px 10px 10px;  /* top right bottom left */
+}
+
+
+
+
+
+
 .administracija-box-1 h4{
     color: rgb(77, 77, 82);
     font-size: 17px;
     
-    
-
     /*font-weight: bold;*/
 }
 
 
-.administracija-box-1-button-box {   
-   margin-left: 50px;
-   margin-bottom: 30px;
-      
-}
-
-.administracija-box-1-button-box-differnet { 
-    margin-left: 50px;
-    margin-bottom: 30px;
-    margin-top: 30px;
-    padding-top: 10px;
-       
-}
-
-.administracija-box-1-button-box-center { 
-    margin-left: 50px;
-    margin-bottom: 30px;
-    padding-top: 30px;
-    align-items: center;
-    text-align: center;
-    border-top: 1.5px solid rgb(230, 238, 245);
-       
-}
 
 
 
-  
-.administracija-box-1-button-b {   
-   background-color: rgba(52, 152, 219, 0.9);
-    border-color: rgba(62, 162, 229, 0.5);
-    border-width: 1px;
-     
-}
-
-.administracija-box-1-button-g {   
-    background-color: rgba(187, 195, 201, 0.9);
-     border-color: rgba(197, 205, 211, 0.5);
-     border-width: 1px;
-      
- }
-
- .administracija-box-1-button-z {   
-    background-color: rgba(65, 192, 84, 0.8);
-     border-color: rgba(75, 202, 94, 0.4);
-     border-width: 1px;
-     margin-left: 60%;
-      
- }
 
 
+
+
+
+
+
+
+
+/*  ---------------------------            1. c) Main containers's other elements             -------------------------------  */
 
 
 .administracija-box-1 label {
@@ -258,13 +162,97 @@
 }
 
 
-.administracija-box-1-comment {
-    margin-left: 48px;
-    margin-right: 20px;
-    margin-bottom: 0px;
-    opacity: 0.5;
-  
+
+
+
+
+
+
+
+
+
+
+
+/*  ----------------------------------------------------------------------------------------------------------------  */
+/*  ----------------------------------------------------------------------------------------------------------------  */
+/*  ----------------------------------------------------------------------------------------------------------------  */
+/*  ----------------------------------------------------------------------------------------------------------------  */
+/*  ----------------------------------------------------------------------------------------------------------------  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  ---------------------------            2. a) Supplementary containers             -------------------------------  */
+
+
+.administracija-container-for-2  {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    
+     
 }
+
+
+@media (max-width: 750px) {
+    .administracija-container-for-2  {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      flex-basis: 100%;
+    }
+}
+
+
+
+.administracija-table  {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;   
+}
+
+
+
+.administracija-box-4items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    background:  AliceBlue;
+    padding-left: 10px;
+
+    margin: 0px 20px 10px 20px;  /* top right bottom left */  
+}
+
+
+.administracija-box-4items-items {
+    box-sizing: border-box;
+    flex-basis: calc(25% - 25px); 
+    height: 150px;
+    background:  AliceBlue;
+    padding: 10px;
+    border-right: 1.5px solid rgb(230, 238, 245);
+    border-left: 1.5px solid rgb(230, 238, 245);
+
+    margin: 0px 20px 0px 0px;  /* top right bottom left */
+}
+
+
+
+.administracija-box-1-comment {
+    opacity: 0.5;
+    margin: 0px 20px 0px 48px;  /* top right bottom left */ 
+}
+
 
 .administracija-box-1-datepicker {
     float: left;
@@ -272,22 +260,16 @@
     height: auto; /* only for demonstration, should be removed */
     background:  AliceBlue;
     padding-left: 40px;
-    margin-left: 30px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+
+    margin: 0px 20px 20px 30px;  /* top right bottom left */
     
   
 }
 
 .administracija-box-1-product-infolist {
-    margin-left: 20px;
-   
+    margin-left: 20px;  
 }
 
-.administracija-box-1-product-infolist strong{
-    margin-left: 20px;
-    color: #3883b5;
-}
 
 
 .administracija-box-1-cond {
@@ -299,7 +281,7 @@
 .success-message{
     margin-left: 50px;
     color: rgb(110, 118, 122);
-    font-size: 15px;
+    font-size: 1rem;
     
 
 }
@@ -307,7 +289,7 @@
 .error-message{
     margin-left: 50px;
     color: rgb(248, 73, 73);
-    font-size: 15px;
+    font-size: 1rem;
 
 }
 
@@ -326,21 +308,13 @@
     color: rgb(73, 80, 83);
     font-size: 30px;
     font-weight: bold;
-    margin-top: 0px;
-    margin-right: 10px;
-    margin-left: 20px;
-    margin-bottom: 0px;
+
     padding-top: 0px;
+
+    margin: 0px 10px 0px 20px;  /* top right bottom left */
 }
 
- 
-.administracija-box-2 button{   
-    background-color: rgba(52, 152, 219, 0.9);
-    border-color: rgba(62, 162, 229, 0.5);
-    border-width: 5px;
-    margin-left: 20px;
-    
-}
+
 
 .administracija-box-2items-container {
     display: flex;
@@ -349,10 +323,9 @@
     width: 300px;
     background:  AliceBlue;
     padding-left: 10px;
-    margin-right: 20px;
-    margin-left: 80px;
-    margin-bottom: 10px;
-    margin-top: 0px;
+
+
+    margin: 0px 20px 10px 80px;  /* top right bottom left */
     
 }
 
@@ -363,72 +336,45 @@
     height: 150px;
     background:  AliceBlue;
     
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-top: 0px;
     border-right: 1.5px solid rgb(230, 238, 245);
     border-left: 1.5px solid rgb(230, 238, 245);
+
+   
+    margin: 0px 0px 0px 0px;  /* top right bottom left */
   
 }
+
 
 
 .administracija-box-3-with_bottom {
     width: 100%;
     background:  AliceBlue;
     padding: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 0px;
+
+    margin: 0px 20px 0px 20px;  /* top right bottom left */
 }
 
 .administracija-box-3 {
     width: 100%;
     background:  AliceBlue;
     padding: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 0px;
+
+    margin: 0px 20px 0px 20px;  /* top right bottom left */
 }
 
-.administracija-box-3-with-button{
-    align-Items: 'left';   
-    width: 100%;
-    background:  AliceBlue;
-    padding: 10px;
-    margin-left: 120px;
-    margin-right: 20px;
-    margin-bottom: 0px;
-    
-}
 
 .administracija-box-3-PATIENTS-main {
     width: 100%;
     height: auto; 
     background:  AliceBlue;
     padding: 10px;
-    margin-right: 50px;
-    margin-bottom: 20px;
+  
     border-bottom: 1.5px solid rgb(230, 238, 245);
-  
+
+    margin-right: 50px;
+    margin-bottom: 20px; 
 }
 
-.administracija-box-3-PATIENTS-main p {
-   font-size: 1px;
-   padding: 0px;
-  
-}
-
-.administracija-box-3-PATIENTS-main h5 {
-    font-size: 15px;
-    color: rgb(77, 77, 82);
-    padding: 0px;
-   
-}
-
-.administracija-box-3-PATIENTS-main strong{   
-    color:#3883b5;  
-   
-}
 
 
 .administracija-box-3-PATIENTS {
@@ -437,9 +383,8 @@
     width: 100%;
     background:  AliceBlue;
     padding: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 0px;
+     
+    margin: 0px 20px 0px 20px;  /* top right bottom left */
 }
 
 .administracija-box-3-PATIENTS-plus {
@@ -447,10 +392,9 @@
     align-items: left;
     width: 100%;
     background:  AliceBlue;
-    padding: 10px;
-    margin-left: 30px;
-    margin-right: 20px;
-    margin-bottom: 0px;
+    padding: 10px;      
+
+    margin: 0px 20px 0px 30px;  /* top right bottom left */
 }
 
 .administracija-box-3-PATIENTS-flex-container {
@@ -459,58 +403,21 @@
     width: 100%;
     background:  AliceBlue;
     padding: 10px;
-    margin-left: 0px;
-    margin-right: 20px;
-    margin-bottom: 0px;
-  
+
+    margin: 0px 20px 0px 0px;  /* top right bottom left */ 
 }
 
-.administracija-box-3-PATIENTS-flex-container label{
-    margin-right: 10px;
-    margin-left: 0px;
-}
 
-.administracija-box-3-PATIENTS-flex-container input[type="text"]{
-    margin-right: 10px;
-}
-
-.administracija-box-3-PATIENTS-flex-container option{
-    margin-right: 10px;
-    padding-top: 0px;
-    height: 10px;
-}
-
-.administracija-box-3-PATIENTS-with-button{ 
-    margin-left: 0; 
-    margin-top: 6px;
-    margin-right: 20px;
-    margin-bottom: 0px;  
-}
-
-.administracija-box-3-PATIENTS-button{   
-    background-color: rgba(125, 190, 234, 0.9);
-    border-color: rgba(135, 200, 244, 0.5);
-    border-width: 5px;
-    margin-left: 0px;
-    margin-right: 20px;
-
-    padding-top: 1px;
-    padding-bottom: 1px;
-    
-}
 
 .administracija-box-4-PATIENTS {
     display: flex;
     align-items: left;
     width: 100%;
     background:  AliceBlue;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 25px;
-    margin-right: 20px;
-    margin-bottom: 0px;
-}
 
+    padding: 0px 10px 0px 10px;  /* top right bottom left */
+    margin: 0px 20px 0px 25px;  /* top right bottom left */
+}
 
 
 
@@ -519,168 +426,14 @@
     width: 100%;
     height: auto; /* only for demonstration, should be removed */
     background:  AliceBlue;
-    padding: 10px;
-    margin-left: 0px;
-    margin-right: 50px;
-    margin-bottom: 20px;
+   
+    margin: 0px 50px 20px 0px;  /* top right bottom left */
+
     /*border-bottom: 1.5px solid rgb(230, 238, 245);*/
        
 }
 
-.administracija-signin-box-1 h1{ 
-    color: rgb(73, 80, 83);
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 30px;
-    margin-right: 10px;
-    margin-left: 10px;
-    margin-bottom: 30px;
-          
-}
 
-.administracija-signin-box-1 p{ 
-    color: rgb(73, 80, 83);
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 30px;
-    margin-right: 10px;
-    margin-left: 10px;
-    margin-bottom: 30px;
-          
-}
-
-.administracija-signin-box-1 label{ 
-    color: rgb(83, 90, 93);
-    font-size: 17px;
-    font-weight: bold;
-    margin-top: 15px;
-    margin-right: 10px;
-    margin-left: 20px;
-    margin-bottom: 30px;
-          
-}
-
-
-
-
-.administracija-signin-box-button-box-1 { 
-    margin-left: 50px;
-    margin-bottom: 30px;
-    margin-top: 30px;
-    padding-top: 10px;
-       
-}
-
-
-
-.administracija-signin-box-button-box-center { 
-    margin-left: 50px;
-    margin-bottom: 30px;
-    padding-top: 30px;
-    align-items: center;
-    text-align: center;
-    border-top: 1.5px solid rgb(230, 238, 245);
-       
-}
-
-
-
-  
-.administracija-signin-box-1-button-larger-b {   
-     
-    color: #fff;
-    background-color: rgba(30, 190, 237, 0.8);
-    border-radius: 6px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 1.1rem;
-    line-height: 1.3;
-    width: 230px;
-
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    
-
-    margin-right: 10px;
-    margin-left: 10px;
-    
-   
-    border: 1px solid transparent;
-    transition: background-color 0.3s ease; /* Adding a transition for smooth color change */   
-}
-
-
-.administracija-signin-box-1-button-g {   
-    background-color: rgba(192, 200, 206, 0.8);
-    color: #fff;
-    border-radius: 6px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 1.1rem;
-    line-height: 1.3;
-    width: 220px;
-
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-
-    margin-right: 10px;
-    margin-left: 10px;
-    
-   
-    border: 1px solid transparent;
-    transition: background-color 0.3s ease; /* Adding a transition for smooth color change */   
-}
-
-.administracija-signin-box-1-button-smaller-b {   
-     
-    color: #fff;
-    background-color: rgba(30, 190, 237, 0.8);
-    border-radius: 6px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-size: 1rem;
-    line-height: 1.3;
-    
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    
-
-    margin-right: 10px;
-    margin-left: 20px;
-    margin-bottom: 30px;
-    
-   
-    border: 1px solid transparent;
-    transition: background-color 0.3s ease; /* Adding a transition for smooth color change */   
-}
-      
-
-
-
-.administracija-signin-box-1-button-larger-b:hover {
-    background-color: rgba(25, 180, 227, 1); /* Change background color on hover */
-    font-weight: bold;
-}
-
-.administracija-signin-box-1-button-smaller-b:hover {
-    background-color: rgba(25, 180, 227, 1); /* Change background color on hover */
-    
-}
-
-
-.administracija-signin-box-1-button-g:hover {
-    background-color: rgba(185, 195, 201, 0.9); /* Change background color on hover */
-    font-weight: bold;
-}
 
 .administracija-space {
     margin-bottom: 150px;
@@ -690,17 +443,11 @@
 .administracija-employee-profile-box  {
     max-width: 100%;
     background-color: AliceBlue; 
-    margin-top: 0px;
-    margin-right: 10px;
-    margin-left: 0px;
-    margin-bottom: 30px;
-
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
-    padding-bottom: 5px;
-   
+ 
+    padding: 10px 10px 5px 10px;  /* top right bottom left */
+    margin: 0px 0px 30px 0px;  /* top right bottom left */  
 }
+
 
 .administracija-employee-profile-box-container  {
     display: grid;
@@ -708,101 +455,204 @@
     grid-gap: 10px; 
     max-width: 100%;
     background-color: AliceBlue; 
-    margin: 0;
+    
     padding: 0px; 
-   
+    margin: 0;  
 }
-
 
 
 
 .administracija-employee-profile-box-left  {
     grid-column: span 1;
     background-color: AliceBlue; 
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-left: 0px;
-    margin-bottom: 0px;
 
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
-    padding-bottom: 0px;  
+    padding: 0px 0px 0px 0px;  /* top right bottom left */
+    margin: 0px 0px 0px 0px;  /* top right bottom left */
 }
+
 
 .administracija-employee-profile-box-right  {
     grid-column: span 1;
     background-color: AliceBlue; 
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-left: 0px;
-    margin-bottom: 0px;
-
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
-    padding-bottom: 0px;  
+   
     align-items: left;
     text-align: left;
+
+    padding: 0px 0px 0px 0px;  /* top right bottom left */
+    margin: 0px 0px 0px 0px;  /* top right bottom left */
+
 }
 
 
 
-.administracija-employee-profile-box button {
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  ---------------------------            2. b) Supplementary containers's text content             -------------------------------  */
+
+.administracija-box-1-product-infolist strong{
     margin-left: 20px;
-    margin-top: 10px;
-    margin-bottom: 30px;
- 
+    color: #3883b5;
 }
 
-.administracija-employee-profile-box img {
 
-    max-height: 200px;
 
+.administracija-box-3-PATIENTS-main p {
+    font-size: 1px;
+    padding: 0px;
    
-    margin-left: 20px;
-    margin-top: 100px;
-    margin-bottom: 30px;
-    margin-right: 30%;
-    border-width: 4px;
-    border-style: solid;
-    border-color:white;
+ }
  
+ .administracija-box-3-PATIENTS-main h5 {
+     font-size: 15px;
+     color: rgb(77, 77, 82);
+     padding: 0px;
+    
+ }
+ 
+ .administracija-box-3-PATIENTS-main strong{   
+     color:#3883b5;  
+    
+ }
+ 
+
+
+ .administracija-signin-box-1 h1{ 
+    color: rgb(73, 80, 83);
+    font-size: 20px;
+    font-weight: bold;
+ 
+
+    margin: 30px 10px 30px 10px;  /* top right bottom left */
+          
 }
 
-
+.administracija-signin-box-1 p{ 
+    color: rgb(73, 80, 83);
+    font-size: 20px;
+    font-weight: bold;
+    
+    
+    margin: 30px 10px 30px 10px;  /* top right bottom left */
+          
+}
 
 
 .administracija-employee-profile-box h1 {
     color: rgb(73, 80, 83);
-    font-size: 30px;
+    font-size: 1.875rem;
     font-weight: bold;
-    margin-top: 20px;
-    margin-right: 10px;
-    margin-left: 20px;
-    margin-bottom: 30px;
+    margin: 20px 10px 30px 20px;  /* top right bottom left */
 }
   
 .administracija-employee-profile-box h3 {
       color: rgb(73, 80, 83);
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: bold;
-      margin-top: 30px;
-      margin-right: 10px;
-      margin-left: 10px;
-      margin-bottom: 30px;
+      margin: 30px 10px 30px 10px;  /* top right bottom left */
 }
   
   
 .administracija-employee-profile-box p {
       color: rgb(73, 80, 83);
-      margin-top: 0px;
-      margin-right: 0px;
-      margin-left: 20px;
-      margin-bottom: 0px;
+      margin: 0px 0px 0px 20px;  /* top right bottom left */
+
+      
+
+      
       
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  ---------------------------            2. c) Supplementary containers's other elements             -------------------------------  */
+
+
+
+
+.administracija-box-3-PATIENTS-flex-container label{
+     
+    margin: 0px 10px 0px 0px;  /* top right bottom left */
+    
+}
+
+.administracija-box-3-PATIENTS-flex-container input[type="text"]{
+    margin-right: 10px;
+}
+
+.administracija-box-3-PATIENTS-flex-container option{
+    height: 10px;
+    padding-top: 0px;
+
+    margin-right: 10px;
+    
+}
+
+
+.administracija-signin-box-1 label{ 
+    color: rgb(83, 90, 93);
+    font-size: 17px;
+    font-weight: bold;
+   
+    margin: 15px 10px 30px 20px;  /* top right bottom left */         
+}
+
+
+
+
+.administracija-employee-profile-box img {
+
+    max-height: 200px;
+
+    border-width: 4px;
+    border-style: solid;
+    border-color:white;
+
+    margin: 100px 30% 30px 20px;  /* top right bottom left */
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

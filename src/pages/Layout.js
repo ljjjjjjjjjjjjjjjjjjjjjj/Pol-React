@@ -47,27 +47,27 @@ const Layout = () => {
             <nav className='list'>  
               <ul className='list'>
                 <li className='item'>
-                  <Link to="/" className='link'>Pradžia</Link>
+                  <Link to="/" className='header-link-blue'>Pradžia</Link>
                 </li>
                 <li className='item'>
-                  <Link to="/informacija" className='link'>Informacija</Link>
+                  <Link to="/informacija" className='header-link-blue'>Informacija</Link>
                 </li>
                 <li className='item'>
-                  <Link to='/paslaugos' className='link'>Paslaugos</Link>
+                  <Link to='/paslaugos' className='header-link-blue'>Paslaugos</Link>
                 </li>
                 <li className='item'>
-                  <Link to='/personalas' className='link'>Personalas</Link>
+                  <Link to='/personalas' className='header-link-blue'>Personalas</Link>
                 </li>
                 <li className='item'>
-                  <Link to="/kontaktai" className='link'>Kontaktai</Link>
+                  <Link to="/kontaktai" className='header-link-blue'>Kontaktai</Link>
                 </li>
                 {isLoggedIn ? (
                   <li className='item'>
-                      <Link to="/loggedpage/profile" className='link' style={{ backgroundColor: 'rgba(65, 192, 64, 0.8)' }}>Mano puslapis</Link>
+                      <Link to="/loggedpage/profile" className='header-link-green'>Mano puslapis</Link>
                   </li>
                     ) : (
                   <li className='item'>
-                      <Link to="/signin" className='link' style={{ backgroundColor: 'rgba(65, 192, 64, 0.8)' }}>Mano puslapis</Link>
+                      <Link to="/signin" className='header-link-green'>Mano puslapis</Link>
                   </li>
                 )}
               </ul>

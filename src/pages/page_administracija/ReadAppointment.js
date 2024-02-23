@@ -1,5 +1,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import '../formats/ElementsButtons.css';
+import '../formats/ElementsDropdown.css';
 import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
 import AppointmentList from '../../methods_and_other/AppointmentList';
@@ -77,25 +79,37 @@ const ReadAppointment = () => {
     <div className='administracija'>
       <h1>Rezervacijų sąrašas</h1>
 
-    
+
+
+
+
+      <div className='administracija-container-for-2 '>
+
       <div className='administracija-drop-down'>
         <label>Pasirinkti rikiavimą: </label>
-        <select value={selectedOption} onChange={handleSelectedOption}>
-          <option value="">pasirinkti...</option>
-          <option value="appID">ID</option>
-          <option value="appCategory">Kategorija</option>
-          <option value="appDate">Data</option>
-          <option value="patientName">Pacientas</option>
-          <option value="empName">Gydytojas</option>
-        </select>
+          <select value={selectedOption} onChange={handleSelectedOption}>
+            <option value="">pasirinkti...</option>
+            <option value="appID">ID</option>
+            <option value="appCategory">Kategorija</option>
+            <option value="appDate">Data</option>
+            <option value="patientName">Pacientas</option>
+            <option value="empName">Gydytojas</option>
+          </select>
 
-        <input type='button' className="btn btn-secondary administracija-box-1-button-z" 
-                   value="Prideti naują" onClick={navigateToAddAppointment}/>  
+        
+      </div>
+          
+        
+      <div className='button-box-3-rightside'>
+         <input type='button' className="btn btn-success button-1-green" 
+                   value="Prideti naują" onClick={navigateToAddAppointment}/>      
+      </div>
 
+  
       </div>
 
       
-      <div className='administracija-list'>
+      <div className='administracija-table'>
 
         <table className="table table-hover">
 
@@ -121,9 +135,9 @@ const ReadAppointment = () => {
         </table>
 
                 <div className='administracija-box-1'>
-                  <div className='administracija-box-1-button-box-center'>     
+                  <div className='button-box-1-center'>     
                     <p>&ensp;</p>             
-                    <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
+                    <input type='button' className="btn btn-primary button-1-blue" 
                      value="Grįžti atgal" onClick={navigateToAdministracija}/>                              
                   </div>
                 </div>

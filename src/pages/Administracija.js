@@ -1,5 +1,6 @@
 import '../main/custom-bootstrap.css';
 import './formats/Administracija.css';
+import './formats/ElementsButtons.css';
 import EmployeeProfile from '../methods_and_other/EmployeeProfile.js';
 import { useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -97,22 +98,22 @@ const Administracija = () => {
         
  
         <div className='administracija-box-4items-items'                      /* READ - P */>                                                                      
-            <button type="button" className="btn btn-primary" onClick={navigateToReadPatient}>
+            <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToReadPatient}>
               Rodyti ir koreguoti <br></br> pacientų sąrašą</button>                          
         </div>
 
         <div className='administracija-box-4items-items'                      /* ADD - P */>                                                            
-            <button type="button" className="btn btn-primary" onClick={navigateToAddPatient}>
+            <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToAddPatient}>
               Įvesti naują pacientą <br></br> </button>                                     
         </div>
                      
         <div className='administracija-box-4items-items'                      /* EDIT - P */>                                                                              
-            <button type="button" className="btn btn-primary" onClick={navigateToEditPatient}>
+            <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToEditPatient}>
               Koreguoti duomenis <br></br> (pagal ID)</button>                           
         </div>
 
         <div className='administracija-box-4items-items'                      /* DELETE - P */>                                                                              
-            <button type="button" className="btn btn-primary" onClick={navigateToDeletePatient}>
+            <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToDeletePatient}>
               Ištrinti pacientą <br></br> (pagal ID)</button>                      
         </div>
              
@@ -142,22 +143,22 @@ const Administracija = () => {
         <div className='administracija-box-4items-container'>                
              
           <div className='administracija-box-4items-items'                      /* READ - P */>                                                                      
-              <button type="button" className="btn btn-primary" onClick={navigateToReadEmployee}>
+              <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToReadEmployee}>
                 Rodyti ir koreguoti <br></br> darbuotojų sąrašą</button>                          
           </div>
   
           <div className='administracija-box-4items-items'                      /* ADD - P */>                                                            
-              <button type="button" className="btn btn-primary" onClick={navigateToAddEmployee}>
+              <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToAddEmployee}>
                 Įvesti naują darbuotoją <br></br></button>                                     
           </div>
                        
           <div className='administracija-box-4items-items'                      /* EDIT - P */>                                                                              
-              <button type="button" className="btn btn-primary" onClick={navigateToEditEmployee}>
+              <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToEditEmployee}>
                 Koreguoti duomenis <br></br> (pagal ID)</button>                           
           </div>
   
           <div className='administracija-box-4items-items'                      /* DELETE - P */>                                                                              
-              <button type="button" className="btn btn-primary" onClick={navigateToDeleteEmployee}>
+              <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToDeleteEmployee}>
                 Ištrinti darbuotoją <br></br> (pagal ID)</button>                      
           </div>
                                   
@@ -184,22 +185,22 @@ const Administracija = () => {
         
  
         <div className='administracija-box-4items-items'                      /* READ - P */>                                                                      
-            <button type="button" className="btn btn-primary" onClick={navigateToReadProduct}>
+            <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToReadProduct}>
               Rodyti ir koreguoti <br></br> paslaugų sąrašą</button>                          
         </div>
 
         <div className='administracija-box-4items-items'                      /* ADD - P */>                                                            
-            <button type="button" className="btn btn-primary" onClick={navigateToAddProduct}>
+            <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToAddProduct}>
               Įvesti naują paslaugą <br></br> </button>                                     
         </div>
                      
         <div className='administracija-box-4items-items'                      /* EDIT - P */>                                                                              
-            <button type="button" className="btn btn-primary" onClick={navigateToEditProduct}>
+            <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToEditProduct}>
               Koreguoti duomenis <br></br> (pagal ID)</button>                           
         </div>
 
         <div className='administracija-box-4items-items'                      /* DELETE - P */>                                                                              
-            <button type="button" className="btn btn-primary" onClick={navigateToDeleteProduct}>
+            <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToDeleteProduct}>
               Ištrinti paslaugą <br></br> (pagal ID)</button>                      
         </div>
              
@@ -226,22 +227,22 @@ const Administracija = () => {
         
  
         <div className='administracija-box-4items-items'                      /* READ - P */>                                                                      
-            <button type="button" className="btn btn-primary" onClick={navigateToReadAppointment}>
+            <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToReadAppointment}>
               Rodyti ir koreguoti <br></br> rezervacijų sąrašą</button>                          
         </div>
 
         <div className='administracija-box-4items-items'                      /* ADD - P */>                                                            
-            <button type="button" className="btn btn-primary" onClick={navigateToAddAppointment}>
+            <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToAddAppointment}>
               Įvesti naują rezervaciją <br></br> </button>                                     
         </div>
                      
         <div className='administracija-box-4items-items'                      /* EDIT - P */>                                                                              
-            <button type="button" className="btn btn-primary" onClick={navigateToEditAppointment}>
+            <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToEditAppointment}>
               Koreguoti duomenis <br></br> (pagal ID)</button>                           
         </div>
 
         <div className='administracija-box-4items-items'                      /* DELETE - P */>                                                                              
-            <button type="button" className="btn btn-primary" onClick={navigateToDeleteAppointment}>
+            <button type="button" className="btn btn-primary block-button-4items-items" onClick={navigateToDeleteAppointment}>
               Ištrinti rezervaciją <br></br> (pagal ID)</button>                      
         </div>
 

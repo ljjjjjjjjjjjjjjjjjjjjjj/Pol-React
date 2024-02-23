@@ -1,5 +1,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import '../formats/ElementsButtons.css';
+import '../formats/ElementsDropdown.css';
 import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
 import EmployeeList from '../../methods_and_other/EmployeeList';
@@ -78,23 +80,38 @@ const ReadEmployee = () => {
     <div className='administracija'>
       <h1>Darbuotų sąrašas</h1>
 
-    
-      <div className='administracija-drop-down'>
-        <label>Pasirinkti filtrą: </label>
-        <select value={selectedOption} onChange={handleSelectedOption}>
-          <option value="">pasirinkti...</option>
-          <option value="empName">Vardas</option>
-          <option value="empSurname">Pavardė</option>
-          <option value="empNO">No.</option>
-        </select>
 
-        <input type='button' className="btn btn-secondary administracija-box-1-button-z" 
-                   value="Prideti naują" onClick={navigateToAddEmployee}/>      
+
+    
+
+      <div className='administracija-container-for-2 '>
+
+        <div className='administracija-drop-down'>
+          <label>Pasirinkti rikiavimą: </label>
+          <select value={selectedOption} onChange={handleSelectedOption}>
+            <option value="">pasirinkti...</option>
+            <option value="empName">Vardas</option>
+            <option value="empSurname">Pavardė</option>
+            <option value="empNO">No.</option>
+          </select>
+        
+          
+        </div>
+            
+          
+        <div className='button-box-3-rightside'>
+          <input type='button' className="btn btn-success button-1-green" 
+                 value="Prideti naują" onClick={navigateToAddEmployee}/>     
+        </div>
+        
         
       </div>
 
+
+
+
       
-      <div className='administracija-list'>
+      <div className='administracija-table'>
 
         <table className="table table-hover">
 
@@ -123,9 +140,9 @@ const ReadEmployee = () => {
         </table>
 
                 <div className='administracija-box-1'>
-                  <div className='administracija-box-1-button-box-center'>     
+                  <div className='button-box-1-center'>     
                     <p>&ensp;</p>             
-                    <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
+                    <input type='button' className="btn btn-primary button-1-blue" 
                      value="Grįžti atgal" onClick={navigateToAdministracija}/>                              
                   </div>
                 </div>

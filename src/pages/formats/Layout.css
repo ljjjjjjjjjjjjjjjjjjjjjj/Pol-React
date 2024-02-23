@@ -76,19 +76,31 @@ header {
   top: 61px;
   z-index: 999;
   padding-bottom: 3px;
+  flex-wrap: wrap;
    
 }
   
 .item {
   flex: 1;
-  padding: 10;
   text-align: center;
+  margin-bottom: 2px;
 }
 
-.link {
+
+@media (max-width: 750px) {
+  .item {
+    flex-basis: calc(33.33% - 5px); 
+    max-width: calc(33.33% - 5px); 
+
+  }
+}
+
+
+.header-link-blue {
   flex: 1; 
   height: 50px;
   background-color: rgba(52, 152, 219, 0.9);
+  font-size: 1rem;
   color: white;
   padding: 5px ;
   text-align: center;
@@ -96,15 +108,59 @@ header {
   display: flex;
   align-items: center; 
   justify-content: center; 
-  margin-right: 10px;
 
-  
+  margin: 0px 10px 0px 0px;  /* top right bottom left */ 
 }
 
-.link:hover {
+.header-link-blue:hover {
   background-color: #2980b9;
   
 }
+
+@media (max-width: 750px) {
+  .header-link-blue {
+    height: 35px;
+    font-size: 0.95rem;
+    padding: 2px ;
+    margin: 0px 7px 5px 0px;  /* top right bottom left */ 
+  }
+}
+
+
+.header-link-green {
+  flex: 1; 
+  height: 50px;
+  background-color: rgba(65, 192, 64, 0.8);
+  color: white;
+  padding: 5px ;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+
+  margin: 0px 10px 0px 0px;  /* top right bottom left */ 
+}
+
+.header-link-green:hover {
+  background-color: rgba(51, 160, 51, 0.8);
+  
+}
+
+@media (max-width: 750px) {
+  .header-link-green {
+    height: 35px;
+    font-size: 0.95rem;
+    padding: 2px ;
+    margin: 0px 7px 5px 0px;  /* top right bottom left */ 
+  }
+}
+
+
+
+
+
+
 
 
 .link-login {  
@@ -112,8 +168,6 @@ header {
   margin-left: 10px;
   height: 30px;
 
-
- 
   border-color: rgba(169, 166, 163, 0.5);
   border-width: 1.3px;
   border-style: double;
@@ -129,14 +183,16 @@ header {
     
 }
 
-.bust-in-silhouette {
-  color: rgb(157, 169, 173); 
-}
 
 .link-login:hover {
   color:  rgba(86, 94, 99, 0.9);
   background-color: rgba(230, 238, 245, 1);
 }
+
+.bust-in-silhouette {
+  color: rgb(157, 169, 173); 
+}
+
 
 
 .patientPage-box-1-button-b {   

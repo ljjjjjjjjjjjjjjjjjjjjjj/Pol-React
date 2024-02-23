@@ -1,5 +1,7 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import '../formats/ElementsButtons.css';
+import '../formats/ElementsDropdown.css';
 import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
 import ProductList from '../../methods_and_other/ProductList';
@@ -78,28 +80,48 @@ const ReadProduct = () => {
     setSelectedOption(event.target.value);
   };
 
+
+
+
+
+
+
   return (
 
     <div className='administracija'>
       <h1>Paslaugų sąrašas</h1>
 
-    
-      <div className='administracija-drop-down'>
-        <label>Pasirinkti filtrą: </label>
-        <select value={selectedOption} onChange={handleSelectedOption}>
-          <option value="">pasirinkti...</option>
-          <option value="productID">ID</option>
-          <option value="productTitle">Pavadinimas</option>
-          <option value="productCategory">Kategorija</option>
-        </select>
 
-        <input type='button' className="btn btn-secondary administracija-box-1-button-z" 
-                   value="Prideti naują" onClick={navigateToAddProduct}/>      
+      <div className='administracija-container-for-2 '>
+
+        <div className='administracija-drop-down'>
+          <label>Pasirinkti filtrą: </label>
+          <select value={selectedOption} onChange={handleSelectedOption}>
+            <option value="">pasirinkti...</option>
+            <option value="productID">ID</option>
+            <option value="productTitle">Pavadinimas</option>
+            <option value="productCategory">Kategorija</option>
+          </select>
+        
+          
+        </div>
+            
+          
+        <div className='button-box-3-rightside'>
+          <input type='button' className="btn btn-success button-1-green" 
+                 value="Prideti naują" onClick={navigateToAddProduct}/>     
+        </div>
+        
         
       </div>
 
+
+
+
+
+
       
-      <div className='administracija-list'>
+      <div className='administracija-table'>
 
         <table className="table table-hover">
 
@@ -123,9 +145,9 @@ const ReadProduct = () => {
         </table>
 
                 <div className='administracija-box-1'>
-                  <div className='administracija-box-1-button-box-center'>     
+                  <div className='button-box-1-center'>     
                     <p>&ensp;</p>             
-                    <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
+                    <input type='button' className="btn btn-primary button-1-blue" 
                      value="Grįžti atgal" onClick={navigateToAdministracija}/>                              
                   </div>
                 </div>

@@ -2,6 +2,7 @@
 
 import '../main/custom-bootstrap.css';
 import '../pages/formats/Administracija.css';
+import '../pages/formats/ElementsButtons.css';
 import authHeader from "../services/auth-header";
 import API_ROOT_PATH from '../main/configLogged.js';
 import config from '../main/config.js';
@@ -110,7 +111,7 @@ handleEmployeeSearch();
   
   
             <br></br>
-            <button type="button" className="btn btn-primary administracija-box-1-button-b" onClick={navigateToEditEmployee}>
+            <button type="button" className="btn btn-primary button-1-blue" onClick={navigateToEditEmployee}>
                 Koreguoti duomenis 
             </button>
              
