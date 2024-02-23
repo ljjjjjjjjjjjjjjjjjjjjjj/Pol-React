@@ -6,13 +6,22 @@
 
 .paslaugos h1 {
   color: rgb(73, 80, 83);
-  font-size: 30px;
+  font-size: 1.875rem;
   font-weight: bold;
   margin-top: 50px;
   margin-right: 10px;
   margin-left: 20px;
   margin-bottom: 30px;
 }
+
+
+
+@media (max-width: 800px) {
+    .paslaugos h1{
+      font-size: 1.6rem;
+    }
+}
+
 
 
 

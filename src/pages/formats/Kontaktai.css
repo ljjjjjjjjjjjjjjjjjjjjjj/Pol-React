@@ -8,7 +8,7 @@
   .kontaktai h1 {
     max-width: 1200px;
     color: rgb(73, 80, 83);
-    font-size: 30px;
+    font-size: 1.875rem;
     font-weight: bold;
     margin-top: 50px;
     margin-right: 10px;
@@ -16,6 +16,15 @@
     margin-bottom: 10px;
    
   }
+
+  @media (max-width: 800px) {
+    .kontaktai h1{
+      font-size: 1.6rem;
+    }
+  }
+
+
+
 
   .kontaktai h3 {
     padding-top: 30px;
@@ -49,7 +58,7 @@
   .text-info{
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
-    grid-gap: 0px; /* Adjust the gap between columns */
+    grid-gap: 0px; /*  gap between the columns */
     max-width: 100%;
    
    
@@ -58,10 +67,53 @@
 
   .text-info-2 {
     grid-column: span 1;
-    max-width: 50%;
+    max-width: 100%;
     padding-bottom: 40px;
     
    
+  }
+
+  @media (max-width: 1000px) {
+    .text-info p{
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .text-info h3{
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .text-info p{
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .text-info h3{
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .text-info p{
+      font-size: 0.86rem;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .text-info h3{
+      font-size: 1.05rem;
+    }
+  }
+
+  
+  @media (max-width: 600px) {
+    .text-info {
+      grid-template-columns: 1fr; /* Display as single column, instead of 2 */
+    }
   }
 
 

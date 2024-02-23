@@ -18,13 +18,22 @@ header {
   
 .informacija h1 {
     color: rgb(73, 80, 83);
-    font-size: 30px;
+    font-size: 1.875rem;
     font-weight: bold;
     margin-top: 40px;
     margin-right: 10px;
     margin-left: 20px;
     margin-bottom: 0px;
 }
+
+@media (max-width: 800px) {
+    .informacija h1{
+      font-size: 1.6rem;
+    }
+}
+
+
+
   
 .informacija h3 {
     color: rgba(52, 152, 219, 0.9);

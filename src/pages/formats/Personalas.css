@@ -19,13 +19,19 @@
 
 .personalas h1 {
     color: rgb(73, 80, 83);
-    font-size: 30px;
+    font-size: 1.875rem;
     font-weight: bold;
     margin-top: 10px;
     margin-right: 10px;
     margin-left: 0px;
     margin-bottom: 30px;
-  }
+}
+
+@media (max-width: 800px) {
+    .personalas h1{
+      font-size: 1.6rem;
+    }
+}
   
 .personalas h3 {
     color: rgb(73, 80, 83);

@@ -164,22 +164,18 @@ header {
 
 
 .link-login {  
-  margin-right: 20px; 
-  margin-left: 10px;
-  height: 30px;
+  color: rgb(146, 142, 139);
+  font-size: 0.9375rem;
+  text-decoration: none;
+
+  padding: 3px 10px 5px 10px;  /* top right bottom left */ 
 
   border-color: rgba(169, 166, 163, 0.5);
   border-width: 1.3px;
   border-style: double;
   border-radius: 5px;
-  
-  color: rgb(146, 142, 139);
-  font-size: 15px;
-  padding-top: 3px ; 
-  padding-bottom: 5px ; 
-  padding-left: 10px ; 
-  padding-right: 10px ; 
-  text-decoration: none;
+
+  margin: 0px 20px 0px 10px;  /* top right bottom left */ 
     
 }
 
@@ -188,6 +184,64 @@ header {
   color:  rgba(86, 94, 99, 0.9);
   background-color: rgba(230, 238, 245, 1);
 }
+
+
+.link-login-left {   
+  color: rgb(146, 142, 139);
+  font-size: 0.9375rem;
+  text-decoration: none;
+
+  padding: 3px 10px 3px 10px;  /* top right bottom left */ 
+
+  border-color: rgba(169, 166, 163, 0.5);
+  border-width: 1.3px;
+  border-style: double;
+  border-radius: 5px;
+
+  margin: 5px 20px 0px 5px;  /* top right bottom left */ 
+    
+}
+
+
+@media (max-width: 900px) {
+  .link-login-left {
+    height: 25px;
+    font-size: 0.8rem;
+
+    padding: 2px 10px 5px 10px;  /* top right bottom left */ 
+    margin: 4px 20px 0px 0px;  /* top right bottom left */ 
+    
+  }
+}
+
+
+@media (max-width: 1100px) {
+  .link-login-left {
+    height: 27px;
+    font-size: 0.9rem;
+
+    padding: 2px 10px 6px 10px;  /* top right bottom left */ 
+    margin: 4px 20px 0px 0px;  /* top right bottom left */ 
+    
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .bust-in-silhouette {
   color: rgb(157, 169, 173); 
@@ -276,24 +330,56 @@ header {
   
 }
 
+@media (max-width: 685px) {
+  .content-bottomleft {
+    display: none;
+  }
+}
+
+
+
+
+
 .content-bottomleft p {
-  margin-left: 5%;
-  margin-top: 40px;
-  margin-bottom: 40px;
   color: rgb(95, 103, 106);
-  font-size: 17px;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  font-size: 1.0625rem;
+  padding: 5px;
+  
+  margin: 40px 0px 40px 5%;  /* top right bottom left */ 
   
 }
 
-@media screen and (max-width: 1100px) {
+
+@media (max-width: 1100px) {
   .content-bottomleft p {
-    font-size: 14px; 
+    font-size: 0.9rem;
+    
   }
 }
+
+@media (max-width: 900px) {
+  .content-bottomleft p{
+    font-size: 0.75rem;
+    text-align: left;
+    padding: 20px 0px 0px 0px;  /* top right bottom left */ 
+    margin: 10px 0px 10px 0px;  /* top right bottom left */ 
+
+  }
+}
+
+@media (max-width: 900px) {
+  .hide-900 {
+    display: none; 
+  }
+}
+
+@media (max-width: 700px) {
+  .hide-700 {
+    display: none; 
+  }
+}
+
+
 
 .content-bottomleft h5 {
   margin-left: 5%;
@@ -352,7 +438,7 @@ header {
 .content-container-bottomleft h5,
 .content-container-bottomright h5 {  
   color: rgb(95, 103, 106);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   margin-top: 0; /* Reset margin */
   margin-bottom: 8px; /* Reset margin */
@@ -362,11 +448,44 @@ header {
 .content-container-bottomleft p,
 .content-container-bottomright p {  
   color: rgb(95, 103, 106);
-  font-size: 14px;
+  font-size: 0.875rem;
   margin-top: 2px; /* Reset margin */
   margin-bottom: 0; /* Reset margin */
 
 }
+
+@media (max-width: 800px) {
+  .content-container-bottomleft h5,
+  .content-container-bottomright h5{
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .content-container-bottomleft p,
+  .content-container-bottomright p{
+    font-size: 0.8rem;
+  }
+}
+
+
+@media (max-width: 550px) {
+  .content-container-bottomleft h5,
+  .content-container-bottomright h5{
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .content-container-bottomleft p,
+  .content-container-bottomright p{
+    font-size: 0.72rem;
+    margin-right: 5px;
+  }
+}
+
+
+
 
 .blue-icon {
   color:rgb(49, 171, 215); 

@@ -38,9 +38,9 @@ const Employees = () => {
   return (
     <div className='personalas'>
 
-      <div>   
-           <h1>Personalas</h1>         
-      </div>
+         
+      <h1>Personalas</h1>         
+      
 
        
 
