@@ -48,9 +48,6 @@ function EditAppointmentFROMLIST() {
   const [patientSelectionField, setPatientSelectionField] = useState(true);
   const [employeeSelectionField, setEmployeeSelectionField] = useState(true);
   const [otherSelectionField, setOtherSelectionField] = useState(true);
-
-
-
   /*  -----------------   Const setters    ------------------*/
 
 
@@ -465,7 +462,7 @@ return (
                          
                     
                          
-            <div>
+            <div >
               <br></br>
               {successMessage && <div className="success-message">{successMessage}</div>}
               {errorMessage && <div className="error-message">{errorMessage}</div>}
@@ -500,14 +497,14 @@ return (
           
         </div>
 
-          <div>
+          <div className='administracija-box-1-plus'>
                 <br></br>
                 {successMessage && <div className="success-message">{successMessage}</div>}
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
                 <br></br>
           </div>
 
-          <div className='administracija-box-1'>
+          <div className='administracija-box-1-plus'>
             <div className='administracija-box-1'>
               < NavigateToAppointment idE={idE} />
             </div>

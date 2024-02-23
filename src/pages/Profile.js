@@ -107,7 +107,7 @@ const Profile = () => {
 
             {isAuthorized(["ROLE_USER", "ROLE_EMPL", "ROLE_MODERATOR", "ROLE_ADMIN"]) && ( 
               <div className='administracija-box-1'>                  
-                <label>Įveskite paciento ID numerį (nuo 1 iki 12; ir nuo 52 iki 54):
+                <label>Įveskite paciento ID numerį (nuo 1 iki 12; ir 52 ):
                       <input style={{ width: '50px', }}
                         type="text" 
                         value={patientID}
@@ -129,7 +129,7 @@ const Profile = () => {
 
             {isAuthorized(["ROLE_EMPL", "ROLE_MODERATOR", "ROLE_ADMIN"]) && ( 
               <div className='administracija-box-1'> 
-                <label>Įveskite darbuotojo ID numerį (nuo 1 iki 12):
+                <label>Įveskite darbuotojo ID numerį (1, nuo 3 iki 12, ir 52):
                       <input style={{ width: '50px', }}
                         type="text" 
                         value={empID}

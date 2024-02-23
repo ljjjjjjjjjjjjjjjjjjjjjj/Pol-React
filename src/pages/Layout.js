@@ -92,14 +92,28 @@ const Layout = () => {
                 <br></br>
                 &ensp;
               </p> 
+
+
+
+
+              {isLoggedIn ? (
+                <p className='content-bottomleft'>
+                  <strong> &emsp;&ensp;Registruotis </strong>
+                  <br></br>
+                  &#127760; 
+                  <Link to="/loggedpage/profile" type="button" className='link-login'>  Internetu </Link>                
+                </p>
+                ) : (
+                <p className='content-bottomleft'>
+                  <strong> &emsp;&ensp;Registruotis </strong>
+                  <br></br>
+                  &#127760; 
+                  <Link to="/signin" type="button" className='link-login'>  Internetu </Link>                
+                </p>
+                )}
                  
             
-              <p className='content-bottomleft'>
-                <strong> &emsp;&ensp;Registruotis </strong>
-                <br></br>
-                &#127760; 
-                <Link to="/signin" type="button" className='link-login'>  Internetu </Link>                
-              </p>
+              
               
             </div>
 

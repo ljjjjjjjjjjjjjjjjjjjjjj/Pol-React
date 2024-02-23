@@ -233,6 +233,12 @@ header {
   
 }
 
+@media screen and (max-width: 1100px) {
+  .content-bottomleft p {
+    font-size: 14px; 
+  }
+}
+
 .content-bottomleft h5 {
   margin-left: 5%;
   color: rgb(95, 103, 106);
