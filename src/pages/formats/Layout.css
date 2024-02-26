@@ -191,28 +191,19 @@ header {
   font-size: 0.9375rem;
   text-decoration: none;
 
-  padding: 3px 10px 3px 10px;  /* top right bottom left */ 
+  padding: 2px 8px 3px 8px;  /* top right bottom left */ 
 
   border-color: rgba(169, 166, 163, 0.5);
   border-width: 1.3px;
   border-style: double;
   border-radius: 5px;
 
-  margin: 5px 20px 0px 5px;  /* top right bottom left */ 
+  margin: 5px 20px 0px 0px;  /* top right bottom left */ 
     
 }
 
 
-@media (max-width: 900px) {
-  .link-login-left {
-    height: 25px;
-    font-size: 0.8rem;
 
-    padding: 2px 10px 5px 10px;  /* top right bottom left */ 
-    margin: 4px 20px 0px 0px;  /* top right bottom left */ 
-    
-  }
-}
 
 
 @media (max-width: 1100px) {
@@ -220,24 +211,31 @@ header {
     height: 27px;
     font-size: 0.9rem;
 
-    padding: 2px 10px 6px 10px;  /* top right bottom left */ 
+    padding: 2px 8px 3px 8px;  /* top right bottom left */ 
+    margin: 4px 20px 0px 0px;  /* top right bottom left */ 
+    
+  }
+}
+
+@media (max-width: 900px) {
+  .link-login-left {
+    height: 25px;
+    font-size: 0.75rem;
+
+    padding: 2px 8px 5px 8px;  /* top right bottom left */ 
     margin: 4px 20px 0px 0px;  /* top right bottom left */ 
     
   }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
+@media (max-width: 750px) {
+  .link-login-left {
+    height: 22px;
+    padding: 1px 8px 5px 8px;  /* top right bottom left */ 
+        
+  }
+}
 
 
 

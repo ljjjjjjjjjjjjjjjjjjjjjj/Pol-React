@@ -1,29 +1,28 @@
 header {
     height: 60px;
     width: 100%;
-    padding: 10px;
     text-align: left;
     align-items: left;
     position: fixed;
     background-color: AliceBlue; 
+
+    padding: 10px;
+
     z-index: 1000; /* Ensure the header appears above other elements */
+
 }
   
 .informacija {
-    padding-left: 0px;
     max-width: 100%;
-    /*margin: 0 auto;  Centruoja turinį ekrano viduryje */
-    padding-top: 0px;
+    
 }
   
 .informacija h1 {
     color: rgb(73, 80, 83);
     font-size: 1.875rem;
     font-weight: bold;
-    margin-top: 40px;
-    margin-right: 10px;
-    margin-left: 20px;
-    margin-bottom: 0px;
+   
+    margin: 40px 10px 0px 20px;  /* top right bottom left */
 }
 
 @media (max-width: 800px) {
@@ -34,28 +33,29 @@ header {
 
 
 
-  
-.informacija h3 {
-    color: rgba(52, 152, 219, 0.9);
-    font-size: 23px;
-    font-weight: bold;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
 .informacija h5 {
     color: rgba(21, 134, 209, 0.9);
     font-size: 23px;
     font-weight: bold;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-left: 30px;
-    margin-top: 30px;
+    padding: 20px 0px 20px 0px;  /* top right bottom left */
+    margin: 30px 0px 0px 30px;  /* top right bottom left */
+}
+
+@media (max-width: 900px) {
+    .informacija h5 {
+    font-size: 1.3rem;
+ 
+    }
 }
   
 .informacija p {
-    padding-top: 20px;
-   
+    padding-top: 20px;  
+}
+
+@media (max-width: 900px) {
+    .informacija p {
+        font-size: 0.95rem;
+    }
 }
   
 .informacija ul {
@@ -99,63 +99,77 @@ header {
   
   
 .informacija-box-1 {
-    padding-left: 0px;
-    max-width: 80%;
-    padding-top: 0px;
+    width: 90%;
     align-items: left;
     text-align: left;
-    margin-left: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+
+    margin: 15px 0px 15px 10px;  /* top right bottom left */
+}
+
+@media (max-width: 900px) {
+    .informacija-box-1{
+      width: 90%;
+    }
+}
+
+@media (max-width: 900px) {
+    .informacija-box-1 p {
+        font-size: 0.9rem;
+    }
 }
 
 .informacija-table-1{
-    padding-left: 0px;
     max-width: 80%;
-    padding-top: 0px;
     align-items: left;
     text-align: left;
-    margin-left: 10px;
-    margin-top: 20px;
+
     border-color: lightgrey;
     border-width: 1px;
     border-style: solid;
-    margin-bottom: 40px;
+    
+    margin: 20px 0px 40px 10px;  /* top right bottom left */
 }
 
 .informacija-table-1 table, th, td{
+    padding: 20px 20px 20px 20px;  /* top right bottom left */
     border-color: lightgrey;
     border-width: 1px;
     border-style: solid;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+}  
+
+@media (max-width: 900px) {
+    .informacija-table-1 {
+        font-size: 0.9rem;
+    }
 }
 
 
-.informacija-box-additional-info-header {
-    margin-right: 30px; 
-    margin-left: 10px;
-    background-color: rgba(240, 248, 255, 0.1);
-    
-  
 
+
+.informacija-box-additional-info-header {
+    background-color: rgba(240, 248, 255, 0.1);
+    text-decoration: none;
+    color:  rgb(62, 68, 72);
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: left;
+
+    padding: 10px 10px 10px 10px;  /* top right bottom left */
+    
     border-color: rgba(163, 167, 169, 0.5);
     border-width: 1.3px;
     border-style: double;
     border-radius: 5px;
-    
-    color:  rgb(62, 68, 72);
-    font-size: 20px;
-    font-weight: bold;
-    padding-top: 10px ; 
-    padding-bottom: 10px ; 
-    padding-left: 10px ; 
-    padding-right: 10px ; 
-    text-decoration: none;
+
+    margin: 0px 30px 0px 10px;  /* top right bottom left */
 }
 
+@media (max-width: 900px) {
+    .informacija-box-additional-info-header{
+        font-size: 1rem;
+        padding: 7px 7px 7px 7px;  /* top right bottom left */
+    }
+}
 
 
 .informacija-box-additional-info-header:hover {
@@ -166,17 +180,27 @@ header {
 .informacija-box-additional-info-content {
     padding-left: 0px;
     max-width: 80%;
-    padding-top: 0px;
+    
     align-items: left;
     text-align: left;
+    
     margin-left: 10px;
     margin-top: 20px;
 }
 
-.informacija-box-additional-info-content p {
-    padding-top: 8px;
-   
+@media (max-width: 900px) {
+    .informacija-box-additional-info-content{
+        max-width: 100%;
+        
+        
+    }
 }
+
+.informacija-box-additional-info-content p {
+    padding-top: 8px; 
+}
+
+
 
 .informacija-box-additional-info-content-left {
     padding-top: 8px;

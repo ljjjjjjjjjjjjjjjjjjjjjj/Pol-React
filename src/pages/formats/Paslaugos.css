@@ -8,10 +8,7 @@
   color: rgb(73, 80, 83);
   font-size: 1.875rem;
   font-weight: bold;
-  margin-top: 50px;
-  margin-right: 10px;
-  margin-left: 20px;
-  margin-bottom: 30px;
+  margin: 50px 10px 30px 20px;  /* top right bottom left */ 
 }
 
 
@@ -37,34 +34,61 @@
 }
 
 .box-container {
-    width: 100%; 
-    margin-right: 5px;
+    max-width: 100%; 
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    grid-gap: 0px; /*  gap between the columns */
+    margin: 0px 5px 0px 0px;
+    flex-wrap: wrap;
+    
+}
+
+@media (max-width: 1000px) {
+    .box-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.box-container-item {
+    max-width: 100%;
+    grid-column: span 1;
+    margin: 0px 15px 0px 0px;
     
 }
 
 
+
 .box-1-header {
     float: left;
-    width: 45%;
+    width: 100%;
     height: 50px; /* only for demonstration, should be removed */
     background:  AliceBlue;
     padding: 10px;
     margin-right: 20px;
 }
 
+@media (max-width: 900px) {
+    .box-1-header {
+        height: 42px;
+    }
+}
+
 .box-1-header h3{
     color: rgb(77, 77, 82);
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: bold;
-    
+}
 
-    /*font-weight: bold;*/
+@media (max-width: 900px) {
+    .box-1-header h3{
+        font-size: 1.1rem;  
+    }
 }
 
 .box-1-content {
     float: left;
-    width: 45%;
-    height: 250px; /* only for demonstration, should be removed */
+    width: 100%;
+    min-height: 250px; /* only for demonstration, should be removed */
     background: rgba(240, 248, 255, 0.3);
     padding: 10px;
     margin-right: 20px;
@@ -73,9 +97,17 @@
     border-width: 3px;
 }
 
+@media (max-width: 1000px) {
+    .box-1-content {
+      min-height: 50px;
+      height: auto  ;
+      padding-bottom: 20px;
+    }
+}
+
 .box-1-content ul{ 
     color: rgb(73, 80, 83);
-    font-size: 15px;
+    font-size: 0.95rem;
     margin-top: 0px;
     margin-right: 10px;
     margin-left: 20px;
@@ -83,9 +115,10 @@
 
     /*font-weight: bold;*/
 }
+
 .box-1-content p{   
     color: rgb(73, 80, 83);
-    font-size: 15px;
+    font-size:  0.95rem;
     margin-top: 15px;
     margin-right: 10px;
     margin-left: 20px;
@@ -93,6 +126,20 @@
     
 
     /*font-weight: bold;*/
+}
+
+@media (max-width: 1200px) {
+    .box-1-content ul,
+    .box-1-content p {
+        font-size: 0.92rem;  
+    }
+}
+
+@media (max-width: 900px) {
+    .box-1-content ul,
+    .box-1-content p {
+        font-size: 0.9rem;  
+    }
 }
 
 .box-2-content {   

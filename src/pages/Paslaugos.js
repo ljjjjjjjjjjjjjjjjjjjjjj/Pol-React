@@ -31,87 +31,109 @@ const Products = () => {
       <div className='box-container'>   
            
 
-           <div className='box-1-header'>
-           <h3>Seimos medicina ir slauga</h3>
-           <p></p>
-           </div>
 
-           <div className='box-1-header'>
-           <h3>Gydytojų specialistų konsultacijos</h3>
-           <p></p>
-           </div>
+        <div className='box-container-item'>
+                     
+          <div className='box-1-header'>
+            <h3>Seimos medicina ir slauga</h3>
+            <p></p>
+          </div>
+                    
+          <div className='box-1-content'>
+            <p> </p>
+            <ul>
+              <li>Kūdikių ir vaikų sveikatos priežiūra ir profilaktinis stebėjimas</li>
+              <li>Suaugusiųjų sveikatos priežiūra ir profilaktiniai sveikatos tikrinimai</li>
+              <li>Nėščių moterų sveikatos priežiūra</li>
+              <li>Tyrimų paskyrimas</li>
+              <li>Būtinoji pagalba visiems besikreipiantiems šeimos medicinos skyriaus darbo metu</li>
+              <li>Gyvensenos medicina</li>
+            </ul>
+          </div>
+                      
+        </div>
+                     
+                     
+        <div className='box-container-item'>
 
-           <div className='box-1-content'>
-           <p> </p>
-           <ul>
-             <li>Kūdikių ir vaikų sveikatos priežiūra ir profilaktinis stebėjimas</li>
-             <li>Suaugusiųjų sveikatos priežiūra ir profilaktiniai sveikatos tikrinimai</li>
-             <li>Nėščių moterų sveikatos priežiūra</li>
-             <li>Tyrimų paskyrimas</li>
-             <li>Būtinoji pagalba visiems besikreipiantiems šeimos medicinos skyriaus darbo metu</li>
-             <li>Gyvensenos medicina</li>
-           </ul>
-           </div>
+          <div className='box-1-header'>
+            <h3>Gydytojų specialistų konsultacijos</h3>
+            <p></p>
+          </div>
 
-           <div className='box-1-content'>
-           <p> </p>
-           <ul>
-             <li>Dermatologo</li>
-             <li>Neurologo </li>
-             <li>Otorinolaringologo (LOR) </li>
-             <li>Traumatologo </li>
-           </ul>
-           </div>
+          <div className='box-1-content'>
+            <p> </p>
+            <ul>
+              <li>Dermatologo</li>
+              <li>Neurologo </li>
+              <li>Otorinolaringologo (LOR) </li>
+              <li>Traumatologo </li>
+            </ul>
+          </div>
+
+        </div >
+
+  
       </div>
 
 
       <div className='box-container'> 
 
+        <div className='box-container-item'>
 
-           <div className='box-1-header'>
-           <h3>Odontologija</h3>
-           </div>
+          <div className='box-1-header'>
+            <h3>Odontologija</h3>
+          </div>
 
-          
+          <div className='box-1-content'>
+            <p> </p>
+            <ul>
+              <li>Profilaktinis vaikų ir suaugusiųjų dantų patikrinimas</li>
+              <li>Gydytojo odontologo konsultacijos  </li>
+              <li>Vaikų  dantų dengimas silantinėmis medžiagomis  </li>
+              <li>Traumatologo </li>
+            </ul>
+          </div>
 
-           <div className='box-1-header'>
-           <h3>Tyrimai ir Skiepai</h3>
-           <p></p>
-           </div>
+        </div>
 
-           <div className='box-1-content'>
-           <p> </p>
-             <ul>
-             <li>Profilaktinis vaikų ir suaugusiųjų dantų patikrinimas</li>
-             <li>Gydytojo odontologo konsultacijos  </li>
-             <li>Vaikų  dantų dengimas silantinėmis medžiagomis  </li>
-             <li>Traumatologo </li>
-             </ul>
-           </div>
 
-           <div className='box-1-content'>
+        <div className='box-container-item'>
 
+          <div className='box-1-header'>
+            <h3>Tyrimai ir Skiepai</h3>
+            <p></p>
+          </div>
+
+           
+
+          <div className='box-1-content'>
         
             <p>Tyrimai:</p>
-             <ul>
-             <li>Kraujo bendriniai tyrimai (bendriniai ir tiksliniai)</li>
-             <li>Gripo ir COVID testai </li>
-             <li>Ekoskopija</li>
-             </ul>
+            <ul>
+              <li>Kraujo bendriniai tyrimai (bendriniai ir tiksliniai)</li>
+              <li>Gripo ir COVID testai </li>
+              <li>Ekoskopija</li>
+            </ul>
 
-             <p>Skiepai nuo:</p>
-              <ul>
+            <p>Skiepai nuo:</p>
+            <ul>
               <li>COVID</li>
               <li>Ekinio encefalito </li>
               <li>Stabliges </li>
-              </ul>
-           </div>
+            </ul>
+          </div>
+
+        </div>
+           
       </div>
 
+
+
+
+
+
       <div className='box-container'> 
-
-
-          
 
            <div className='box-2-content'>
            <button type="button" className="btn btn-primary" onClick={navigateToSignIn}>Registruotis internetu</button>

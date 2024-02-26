@@ -105,9 +105,9 @@ const Layout = () => {
                 </p>
                 ) : (
                 <p className='content-bottomleft'>
-                  <strong> &emsp;&ensp;Registruotis: </strong>
+                  <strong> Registruotis: </strong>
                   <br></br>
-                  &#127760; 
+                  <span className='hide-900'>&#127760; </span>
                   <Link to="/signin" type="button" className='link-login-left'>  Internetu </Link>                
                 </p>
                 )}
