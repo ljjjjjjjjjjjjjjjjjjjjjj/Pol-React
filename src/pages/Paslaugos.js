@@ -3,6 +3,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './formats/Paslaugos.css';
+import './formats/ElementsButtons.css';
 import '../main/custom-bootstrap.css';
 
 
@@ -28,18 +29,18 @@ const Products = () => {
     <h1>Teikiamos paslaugos:</h1>
 
 
-      <div className='box-container'>   
+      <div className='paslaugos-box-container'>   
            
 
 
-        <div className='box-container-item'>
+        <div className='paslaugos-box-container-item'>
                      
-          <div className='box-1-header'>
+          <div className='paslaugos-box-1-header'>
             <h3>Seimos medicina ir slauga</h3>
             <p></p>
           </div>
                     
-          <div className='box-1-content'>
+          <div className='paslaugos-box-1-content'>
             <p> </p>
             <ul>
               <li>Kūdikių ir vaikų sveikatos priežiūra ir profilaktinis stebėjimas</li>
@@ -54,14 +55,14 @@ const Products = () => {
         </div>
                      
                      
-        <div className='box-container-item'>
+        <div className='paslaugos-box-container-item'>
 
-          <div className='box-1-header'>
+          <div className='paslaugos-box-1-header'>
             <h3>Gydytojų specialistų konsultacijos</h3>
             <p></p>
           </div>
 
-          <div className='box-1-content'>
+          <div className='paslaugos-box-1-content'>
             <p> </p>
             <ul>
               <li>Dermatologo</li>
@@ -77,15 +78,15 @@ const Products = () => {
       </div>
 
 
-      <div className='box-container'> 
+      <div className='paslaugos-box-container'> 
 
-        <div className='box-container-item'>
+        <div className='paslaugos-box-container-item'>
 
-          <div className='box-1-header'>
+          <div className='paslaugos-box-1-header'>
             <h3>Odontologija</h3>
           </div>
 
-          <div className='box-1-content'>
+          <div className='paslaugos-box-1-content'>
             <p> </p>
             <ul>
               <li>Profilaktinis vaikų ir suaugusiųjų dantų patikrinimas</li>
@@ -98,16 +99,16 @@ const Products = () => {
         </div>
 
 
-        <div className='box-container-item'>
+        <div className='paslaugos-box-container-item'>
 
-          <div className='box-1-header'>
+          <div className='paslaugos-box-1-header'>
             <h3>Tyrimai ir Skiepai</h3>
             <p></p>
           </div>
 
            
 
-          <div className='box-1-content'>
+          <div className='paslaugos-box-1-content'>
         
             <p>Tyrimai:</p>
             <ul>
@@ -133,10 +134,10 @@ const Products = () => {
 
 
 
-      <div className='box-container'> 
+      <div className='button-box-leftside'> 
 
-           <div className='box-2-content'>
-           <button type="button" className="btn btn-primary" onClick={navigateToSignIn}>Registruotis internetu</button>
+           <div className='button-box-leftside-65px-height'>
+           <button type="button" className="btn btn-primary button-1-blue" onClick={navigateToSignIn}>Registruotis internetu</button>
            </div>
 
            
@@ -157,11 +158,11 @@ const Products = () => {
            <img className='home-imagecontainer-cover-image' src="./images/technology-1.jpg" alt={"technology"} /> 
           </div> 
 
-          <h5>Jūsu sveikata rūpintis padeda atnaujinta tyrimų laboratorija, moderni oftalmologų diagnostikos, 
+          <p className='paslaugos-box-3-content'>Jūsu sveikata rūpintis padeda atnaujinta tyrimų laboratorija, moderni oftalmologų diagnostikos, 
             bei echoskopijos tyrimų įranga, ir įdiegtos naujausios odontologijos technologijos.
             <br></br>&ensp;
             <br></br>&ensp;
-          </h5>
+          </p>
 
  
         </div>

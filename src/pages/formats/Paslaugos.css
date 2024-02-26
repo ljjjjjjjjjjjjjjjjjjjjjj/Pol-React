@@ -21,19 +21,7 @@
 
 
 
-
-.product-category {
-    margin: 0 ;
-    padding-left: 0px;
-}
-
-.other {
-    width: 100%;
-    margin: 0 ;
-    padding-left: 0px;
-}
-
-.box-container {
+.paslaugos-box-container {
     max-width: 100%; 
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
@@ -44,12 +32,12 @@
 }
 
 @media (max-width: 1000px) {
-    .box-container {
+    .paslaugos-box-container {
         grid-template-columns: repeat(1, 1fr);
     }
 }
 
-.box-container-item {
+.paslaugos-box-container-item {
     max-width: 100%;
     grid-column: span 1;
     margin: 0px 15px 0px 0px;
@@ -58,7 +46,7 @@
 
 
 
-.box-1-header {
+.paslaugos-box-1-header {
     float: left;
     width: 100%;
     height: 50px; /* only for demonstration, should be removed */
@@ -68,117 +56,85 @@
 }
 
 @media (max-width: 900px) {
-    .box-1-header {
+    .paslaugos-box-1-header {
         height: 42px;
     }
 }
 
-.box-1-header h3{
+.paslaugos-box-1-header h3{
     color: rgb(77, 77, 82);
     font-size: 1.25rem;
     font-weight: bold;
 }
 
 @media (max-width: 900px) {
-    .box-1-header h3{
+    .paslaugos-box-1-header h3{
         font-size: 1.1rem;  
     }
 }
 
-.box-1-content {
+.paslaugos-box-1-content {
     float: left;
     width: 100%;
     min-height: 250px; /* only for demonstration, should be removed */
     background: rgba(240, 248, 255, 0.3);
+
     padding: 10px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    
     border-bottom: 1.5px solid rgba(240, 248, 255, 0.4);
     border-width: 3px;
+
+    margin: 0px 20px 20px 0px;
 }
 
 @media (max-width: 1000px) {
-    .box-1-content {
+    .paslaugos-box-1-content {
       min-height: 50px;
       height: auto  ;
       padding-bottom: 20px;
     }
 }
 
-.box-1-content ul{ 
+.paslaugos-box-1-content ul{ 
     color: rgb(73, 80, 83);
     font-size: 0.95rem;
-    margin-top: 0px;
-    margin-right: 10px;
-    margin-left: 20px;
-    margin-bottom: 0px;
-
-    /*font-weight: bold;*/
+    margin: 0px 10px 0px 20px;
 }
 
-.box-1-content p{   
+.paslaugos-box-1-content p {   
     color: rgb(73, 80, 83);
     font-size:  0.95rem;
-    margin-top: 15px;
-    margin-right: 10px;
-    margin-left: 20px;
-    margin-bottom: 0px;
-    
-
-    /*font-weight: bold;*/
+        
+    margin: 15px 10px 0px 20px;
 }
 
 @media (max-width: 1200px) {
-    .box-1-content ul,
-    .box-1-content p {
+    .paslaugos-box-1-content ul,
+    .paslaugos-box-1-content p {
         font-size: 0.92rem;  
     }
 }
 
 @media (max-width: 900px) {
-    .box-1-content ul,
-    .box-1-content p {
+    .paslaugos-box-1-content ul,
+    .paslaugos-box-1-content p {
         font-size: 0.9rem;  
     }
 }
 
-.box-2-content {   
-    float: left;
-    width: 100%;
-    height: 65px; /* only for demonstration, should be removed */
-    background: rgba(255, 255, 255, 0.4);
-    padding: 10px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    margin-left: 0px;
-    margin-top: 10px;
-    text-align: left;
-}
-  
-.box-2-content button{   
-    background-color: rgba(52, 152, 219, 0.9);
-    border-color: rgba(62, 162, 229, 0.5);
-    border-width: 5px;
-    margin-left: 20px;
-    
- }
+
 
  .paslaugos-box-3-header {
     float: left;
     width: 90%;
     height: auto;
-    background-color: rgba(240, 248, 255, 0.8);
-    
-    padding-top: 15px;
-    padding-right: 10px;
-    padding-left: 20px;
-    padding-bottom: 0px;
-
-   
     align-items: left;
     text-align: left;
-    margin-left: 10px;
-    margin-top: 20px;
+    background-color: rgba(240, 248, 255, 0.8);
+    
+    padding: 15px 10px 0px 20px;
+
+    margin: 20px 0px 0px 10px;
     
 }
 
@@ -186,11 +142,9 @@
     color: rgb(73, 80, 83);
     font-size: 25px;
     font-weight: bold;
-    margin-top: 10px;
-    margin-right: 20px;
-    margin-left: 10px;
-    margin-bottom: 25px;
     padding: 0px;
+
+    margin: 10px 20px 25px 10px;
   }
 
 .paslaugos-box-3-content {
@@ -198,18 +152,17 @@
     width: 90%;
     height: auto;
     background-color: rgba(240, 248, 255, 0.4);
-    
-    padding-top: 15px;
-    padding-right: 10px;
-    padding-left: 20px;
-    padding-bottom: 0px;
-
-   
     align-items: left;
     text-align: left;
-    margin-left: 10px;
-    margin-bottom: 20px;
     
+    padding: 15px 10px 0px 20px;
+          
+    margin: 0px 0px 20px 10px;    
+}
+
+.paslaugos-box-3-content p {
+    margin-top: 15px;
+     
 }
 
 
@@ -217,10 +170,7 @@
  .paslaugos-box-3-content h5 {
     color: rgb(73, 80, 83);
     font-size: 17px;
-    margin-top: 15px;
-    margin-right: 10px;
-    margin-left: 20px;
-    margin-bottom: 0px;
+    margin: 15px 10px 0px 20px;   
   }
   
 

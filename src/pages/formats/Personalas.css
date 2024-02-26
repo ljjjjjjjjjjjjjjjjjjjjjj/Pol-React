@@ -12,8 +12,7 @@
     flex-wrap: wrap;
     justify-content: space-between; /* Sukuria vienodą tarpą tarp kortelių ir išlygina prieš tai buvusią pustuštę vietą */
     gap: 20px; /* Atstumas tarp kortelių */
-    align-items: left;
-    
+    align-items: left;   
 }
 
 

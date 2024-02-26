@@ -13,6 +13,18 @@
     justify-content:  space-between;
     margin-bottom: 15px;
   }
+
+  @media (max-width: 900px) {
+    .employee-card{
+      width: calc(50% - 22px);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .employee-card{
+      width: calc(100% - 42px);
+    }
+  }
   
   .employee-card:hover {
     transform: translateY(-2px); /* pakelia kortelę kai pele užvedama ant jos */
