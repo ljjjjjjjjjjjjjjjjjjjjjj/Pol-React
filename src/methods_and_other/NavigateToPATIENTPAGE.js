@@ -1,6 +1,7 @@
 
 import '../main/custom-bootstrap.css';
 import '../pages/formats/Administracija.css';
+import '../pages/formats/ElementsButtons.css';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -35,7 +36,7 @@ function NavigateToPATIENTPAGE({idP}) {
       <div className='administracija-box-1-button-box-center'>
         <input 
           type='button' 
-          className="btn btn-secondary administracija-box-1-button-b"
+          className="btn btn-primary button-1-blue"
           value="&#9665; Rezervacijų sąrašas" 
           onClick={navigateToReadAppointmentPatient} 
         />
@@ -43,7 +44,7 @@ function NavigateToPATIENTPAGE({idP}) {
         <br></br>
         <input 
           type='button' 
-          className="btn btn-secondary administracija-box-1-button-b"
+          className="btn btn-primary button-1-blue"
           value=" &#9665; Mano puslapis " 
           onClick={navigateToPatientPage} 
         />

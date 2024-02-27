@@ -1,5 +1,6 @@
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import '../formats/ElementsButtons.css';
 import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
 import AppointmentListPATIENT from '../../methods_and_other/AppointmentListPATIENT';
@@ -76,7 +77,7 @@ const ReadAppointmentPATIENT = () => {
       <div className='administracija-drop-down'>
       
 
-        <input type='button' className="btn btn-secondary administracija-box-1-button-z" 
+        <input type='button' className="btn btn-secondary button-1-green" 
                    value="Prideti naują" onClick={navigateToAddAppointment}/>      
         
       </div>
@@ -109,7 +110,7 @@ const ReadAppointmentPATIENT = () => {
                 <div className='administracija-box-1'>
                   <div className='administracija-box-1-button-box-center'>     
                     <p>&ensp;</p>             
-                    <input type='button' className="btn btn-secondary administracija-box-1-button-b" 
+                    <input type='button' className="btn btn-primary button-1-blue" 
                      value="Grįžti atgal" onClick={navigateToPatientPage}/>                              
                   </div>
                 </div>

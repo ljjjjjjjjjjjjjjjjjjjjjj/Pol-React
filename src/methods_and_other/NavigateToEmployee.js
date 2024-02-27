@@ -2,6 +2,7 @@
 
 import '../main/custom-bootstrap.css';
 import '../pages/formats/Administracija.css';
+import '../pages/formats/ElementsButtons.css';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -34,7 +35,7 @@ function NavigateToEmployee({idE}) {
       <div className='administracija-box-1-button-box'>                  
         <input 
           type='button' 
-          className="btn btn-primary administracija-box-1-button-b" 
+          className="btn btn-primary button-1-blue" 
           value="&#9665; Darbuotojų sąrašas" 
           onClick={navigateToReadEmployee}
         />  
@@ -42,7 +43,7 @@ function NavigateToEmployee({idE}) {
         <br></br>
         <input 
           type='button' 
-          className="btn btn-primary administracija-box-1-button-b"
+          className="btn btn-primary button-1-blue"
           value=" &#9665; Administracija " 
           onClick={navigateToAdministracija} 
         />                              

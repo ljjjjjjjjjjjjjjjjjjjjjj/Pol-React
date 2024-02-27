@@ -2,6 +2,7 @@
 import '../main/custom-bootstrap.css';
 import './PatientList.css';
 import '../pages/formats/Administracija.css';
+import '../pages/formats/ElementsButtons.css';
 import authHeader from "../services/auth-header";
 import API_ROOT_PATH from '../main/configLogged.js';
 import PatientSelectionRow from './PatientSelectionRow.js';
@@ -146,7 +147,7 @@ function HandlePatientSelectionEDIT( props ) {
       </label>
       <div className='administracija-box-3-PATIENTS-with-button'>
       <input type='button' 
-            className="btn btn-primary administracija-box-3-PATIENTS-button" 
+            className="btn btn-primary button-1-blue" 
             value="Ieškoti"  
             onClick={() => handlePatientSearchByName()}/>
       </div>

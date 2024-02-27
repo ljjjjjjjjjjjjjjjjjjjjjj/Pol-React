@@ -1,6 +1,7 @@
 
 import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
+import '../formats/ElementsButtons.css';
 import NavigateToProduct from '../../methods_and_other/NavigateToProduct.js';
 import API_ROOT_PATH from '../../main/configLogged.js';
 import authHeader from "../../services/auth-header";
@@ -138,9 +139,9 @@ const handleReset = () => {
             {/* BUTTONS */}
              
             <p>Ar tikrai norite ištrinti šią paslaugą? </p>                      
-            <input type='submit' className="btn btn-primary administracija-box-1-button-b" 
+            <input type='submit' className="btn btn-primary button-1-blue" 
             value="Taip" onClick={handleProductDeleteSubmit}/>                     
-            <input type='reset' className="btn btn-secondary administracija-box-1-button-g" 
+            <input type='reset' className="btn btn-secondary button-1-grey" 
             value="Ne" onClick={handleReset}/>
 
             {/* BUTTONS */}

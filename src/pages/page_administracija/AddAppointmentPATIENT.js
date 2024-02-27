@@ -4,6 +4,7 @@ import React from 'react';
 import '../../main/custom-bootstrap.css';
 import '../formats/PatientPage.css';
 import '../formats/Administracija.css';
+import '../formats/ElementsButtons.css';
 import NavigateToPATIENTPAGE from '../../methods_and_other/NavigateToPATIENTPAGE.js';
 import API_ROOT_PATH from '../../main/configLogged.js';
 import authHeader from "../../services/auth-header";
@@ -435,10 +436,10 @@ const AddAppointmentPATIENT = () => {
                 
                 <div className='administracija-box-1-button-box-differnet'>
                   <br></br>
-                  <input type='submit' className="btn btn-primary administracija-box-1-button-b"
+                  <input type='submit' className="btn btn-primary button-1-blue"
                     value="Išsaugoti" />
 
-                  <input type='reset' className="btn btn-secondary administracija-box-1-button-g"
+                  <input type='reset' className="btn btn-secondary button-1-grey"
                     value="Išvalyti" onClick={handleReset} />
                 </div>
                 
@@ -463,7 +464,7 @@ const AddAppointmentPATIENT = () => {
               <div className='administracija-box-1'>
                 <div className='administracija-box-1-button-box-center'>
                     <br></br>
-                    <input type='button' className="btn btn-primary administracija-box-1-button-z"
+                    <input type='button' className="btn btn-primary button-1-green"
                       value="Įvesti dar vieną rezervaciją" onClick={() => {
                         setButtonBoxSave(true);
                         setButtonBoxNew(false);

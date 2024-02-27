@@ -1,6 +1,7 @@
 
 import '../main/custom-bootstrap.css';
 import './formats/SignIn.css';
+import './formats/ElementsButtons.css';
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -64,9 +65,12 @@ const Register = () => {
   let navigate = useNavigate();
 
 
+  const [activeButton, setActiveButton] = useState('customer');
   const [userType, setUserType] = useState('customer'); 
-  const handleUserTypeChange = (type) => {
-    setUserType(type);
+
+  const handleUserTypeChange = (userType) => {
+    setActiveButton(userType);
+    setUserType(userType);
   };
 
 
@@ -161,15 +165,15 @@ const Register = () => {
 
             <h5>Pasirinkite vartotojo tipą:</h5>
             <div >
-              <button type="button" onClick={setUserType} 
-                className={`signin-box-1-button-larger-b ${userType === 'customer' ? 'active' : ''}`}>
+            <button type="button" onClick={() => handleUserTypeChange('customer')} 
+                className={`signin-register-button-larger-blue ${activeButton === 'customer' ? 'active' : ''}`}>
                 Pacientai ir lankytojai
               </button>
             
             
             
-              <button type="button" onClick={setUserType}
-                className={`signin-box-1-button-larger-g ${userType === 'employee' ? 'active' : ''}`}>
+              <button type="button" onClick={() => handleUserTypeChange('employee')}
+                className={`signin-register-button-larger-grey ${activeButton === 'employee' ? 'active' : ''}`}>
                 Darbuotojai
               </button>
             </div>
@@ -181,7 +185,7 @@ const Register = () => {
               {!successful && (
                 <div>
                   <div className="form-group">
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username">Vartotojo vardas</label>
                     <Input
                       type="text"
                       className="form-control"
@@ -193,7 +197,7 @@ const Register = () => {
                   </div>
     
                   <div className="form-group">
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">E-paštas</label>
                     <Input
                       type="text"
                       className="form-control"
@@ -205,7 +209,7 @@ const Register = () => {
                   </div>
     
                   <div className="form-group">
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Slaptažodis</label>
                     <Input
                       type="password"
                       className="form-control"
@@ -217,7 +221,7 @@ const Register = () => {
                   </div>
     
                   <div className="form-group">
-                    <button className="signin-box-1-button-smaller-b btn-block">Registruotis</button>
+                    <button className="signin-register-button-smaller-blue btn-block">Registruotis</button>
                   </div>
                 </div>
               )}
@@ -242,7 +246,7 @@ const Register = () => {
 
             <div className='signin-box-1-register'>
               <h6>Jau turite paskyrą?</h6>      
-              <button type="button" className="signin-box-1-button-smaller-g" onClick={navigateToSignin}>Prisijungti</button>
+              <button type="button" className="signin-register-button-smaller-grey" onClick={navigateToSignin}>Prisijungti</button>
             </div>
 
 
