@@ -13,7 +13,7 @@ import axios from 'axios';
 const ReadAppointmentPATIENT = () => {
 
   const { idP } = useParams();
-  const [appPatientID, setAppPatientID] = useState(idP);
+  const appPatientID = useState(idP);
 
 
   const navigate = useNavigate();

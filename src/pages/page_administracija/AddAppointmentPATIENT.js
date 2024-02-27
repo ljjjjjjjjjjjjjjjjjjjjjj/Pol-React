@@ -125,7 +125,7 @@ const AddAppointmentPATIENT = () => {
 
   /*  ------------------   Patient    -------------------*/
   
-  const [appPatientID] = useState(idP);
+  const appPatientID = useState(idP);
   const [existingAppPatientName, setExistingAppPatientName] = useState('');
   const [existingAppPatientSurname, setExistingAppPatientSurname] = useState('');
   const [existingAppPatientNO, setExistingAppPatientNO] = useState('');

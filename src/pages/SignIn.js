@@ -5,12 +5,15 @@ import './formats/SignIn.css';
 import './formats/ElementsButtons.css';
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import API_ROOT_PATH from '../main/configLogged.js';
+import axios from 'axios';
 
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
 import AuthService from "../services/auth.service";
+import authHeader from "../services/auth-header";
 
 const required = (value) => {
   if (!value) {
@@ -56,6 +59,8 @@ const SignIn = () => {
 
 
 
+
+
   
 
   /* ----------------------------   onChange   ---------------------------- */
@@ -85,6 +90,7 @@ const SignIn = () => {
 
   /* ----------------------------   Handle Sign-in   ---------------------------- */
   
+  
   const handleLogin = (e) => {
     e.preventDefault();
     setMessage("");
@@ -98,20 +104,28 @@ const SignIn = () => {
         () => {
           const user = AuthService.getCurrentUser(); 
           const currentUser = AuthService.getCurrentUser();
+
+          
           if (user && user.roles) {
             console.log("User roles:", user.roles);
-
-            
+           
             const canAccessAsEmployee = user.roles.includes("ROLE_EMPL") || user.roles.includes("ROLE_MODERATOR") || user.roles.includes("ROLE_ADMIN");
             const canAccessAsCustomer = user.roles.includes("ROLE_USER") || canAccessAsEmployee; 
+
 
             if (activeButton === 'employee' && canAccessAsEmployee) {
               navigate(`/loggedpage/${currentUser.id}/administracija`); 
             } else if (activeButton === 'customer' && canAccessAsCustomer) {
               navigate(`/loggedpage/patientpage/${currentUser.id}`); 
             } else {
-              setMessage("Neteisingi prisijungimo duomenys. Pasirinkite teisingą vartotojo tipą.");
+              if (activeButton === 'employee') {
+              setMessage("Neteisingi prisijungimo duomenys. Jeigu esate naujas darbuotojas, įsitikinkite, jog jūsų prisijungimas aktyvuotas.");
               setLoading(false);
+              } else{
+                  setMessage("Neteisingi prisijungimo duomenys.");
+                  setLoading(false);
+              }
+              
             }
           } else {
             setMessage("Neteisingi prisijungimo duomenys.");

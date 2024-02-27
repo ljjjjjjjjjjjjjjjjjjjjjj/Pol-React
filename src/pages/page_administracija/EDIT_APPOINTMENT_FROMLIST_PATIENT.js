@@ -78,7 +78,7 @@ function EDIT_APPOINTMENT_FROMLIST_PATIENT() {
 
   /*  ------------------   Patient    -------------------*/
   
-  const [appPatientID] = useState(idP);
+  const appPatientID = useState(idP);
   const [existingAppPatientName, setExistingAppPatientName] = useState('');
   const [existingAppPatientSurname, setExistingAppPatientSurname] = useState('');
   const [existingAppPatientNO, setExistingAppPatientNO] = useState('');

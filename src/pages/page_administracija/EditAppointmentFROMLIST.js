@@ -4,12 +4,15 @@ import '../../main/custom-bootstrap.css';
 import '../formats/Administracija.css';
 import '../formats/ElementsButtons.css';
 import NavigateToAppointment from '../../methods_and_other/NavigateToAppointment.js';
-import authHeader from "../../services/auth-header";
 import API_ROOT_PATH from '../../main/configLogged.js';
+
 import HandleEmployeeSelectionEDIT from '../../methods_and_other/HandleEmployeeSelectionEDIT.js';
 import HandlePatientSelectionEDIT from '../../methods_and_other/HandlePatientSelectionEDIT.js';
 import HandleInfoPatient from '../../methods_and_other/HandleInfoPatient.js';
 import HandleInfoEmployee from '../../methods_and_other/HandleInfoEmployee.js';
+
+import authHeader from "../../services/auth-header";
+
 import { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -174,7 +177,7 @@ function EditAppointmentFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/objects${idI}`,  {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/objects/${idI}`,  {headers: authHeader()});
         const appointmentData = response.data;
               
         setAppID(appointmentData.appID);

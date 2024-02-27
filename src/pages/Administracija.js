@@ -2,37 +2,72 @@ import '../main/custom-bootstrap.css';
 import './formats/Administracija.css';
 import './formats/ElementsButtons.css';
 import EmployeeProfile from '../methods_and_other/EmployeeProfile.js';
+import API_ROOT_PATH from '../main/configLogged.js';
+
+import AuthService from "../services/auth.service";
+import authHeader from "../services/auth-header";
+
 import { useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import AuthService from "../services/auth.service";
+import axios from 'axios';
 
 
 
 const Administracija = () => {
   const currentUser = AuthService.getCurrentUser();
-  const currentEmployeeID = currentUser.id;
 
   const navigate = useNavigate();
   
-  const navigateToAddPatient = () => { navigate(`/loggedpage/${currentEmployeeID}/addpatient`); };
-  const navigateToEditPatient = () => { navigate(`/loggedpage/${currentEmployeeID}/editpatient`); };
-  const navigateToDeletePatient = () => { navigate(`/loggedpage/${currentEmployeeID}/deletepatient`); };
-  const navigateToReadPatient = () => { navigate(`/loggedpage/${currentEmployeeID}/readpatient`); };
+  const navigateToAddPatient = () => { navigate(`/loggedpage/${empID}/addpatient`); };
+  const navigateToEditPatient = () => { navigate(`/loggedpage/${empID}/editpatient`); };
+  const navigateToDeletePatient = () => { navigate(`/loggedpage/${empID}/deletepatient`); };
+  const navigateToReadPatient = () => { navigate(`/loggedpage/${empID}/readpatient`); };
 
-  const navigateToAddEmployee = () => { navigate(`/loggedpage/${currentEmployeeID}/addemployee`); };
-  const navigateToEditEmployee = () => { navigate(`/loggedpage/${currentEmployeeID}/editemployee`); };
-  const navigateToDeleteEmployee = () => { navigate(`/loggedpage/${currentEmployeeID}/deleteemployee`); };
-  const navigateToReadEmployee = () => { navigate(`/loggedpage/${currentEmployeeID}/reademployee`); };
+  const navigateToAddEmployee = () => { navigate(`/loggedpage/${empID}/addemployee`); };
+  const navigateToEditEmployee = () => { navigate(`/loggedpage/${empID}/editemployee`); };
+  const navigateToDeleteEmployee = () => { navigate(`/loggedpage/${empID}/deleteemployee`); };
+  const navigateToReadEmployee = () => { navigate(`/loggedpage/${empID}/reademployee`); };
 
-  const navigateToAddProduct = () => { navigate(`/loggedpage/${currentEmployeeID}/addproduct`); };
-  const navigateToEditProduct = () => { navigate(`/loggedpage/${currentEmployeeID}/editproduct`); };
-  const navigateToDeleteProduct = () => { navigate(`/loggedpage/${currentEmployeeID}/deleteproduct`); };
-  const navigateToReadProduct = () => { navigate(`/loggedpage/${currentEmployeeID}/readproduct`); };
+  const navigateToAddProduct = () => { navigate(`/loggedpage/${empID}/addproduct`); };
+  const navigateToEditProduct = () => { navigate(`/loggedpage/${empID}/editproduct`); };
+  const navigateToDeleteProduct = () => { navigate(`/loggedpage/${empID}/deleteproduct`); };
+  const navigateToReadProduct = () => { navigate(`/loggedpage/${empID}/readproduct`); };
 
-  const navigateToAddAppointment = () => { navigate(`/loggedpage/${currentEmployeeID}/addappointment`); };
-  const navigateToEditAppointment = () => { navigate(`/loggedpage/${currentEmployeeID}/editappointment`); };
-  const navigateToDeleteAppointment = () => { navigate(`/loggedpage/${currentEmployeeID}/deleteappointment`); };
-  const navigateToReadAppointment = () => { navigate(`/loggedpage/${currentEmployeeID}/readappointment`); };
+  const navigateToAddAppointment = () => { navigate(`/loggedpage/${empID}/addappointment`); };
+  const navigateToEditAppointment = () => { navigate(`/loggedpage/${empID}/editappointment`); };
+  const navigateToDeleteAppointment = () => { navigate(`/loggedpage/${empID}/deleteappointment`); };
+  const navigateToReadAppointment = () => { navigate(`/loggedpage/${empID}/readappointment`); };
+
+
+
+   /* ----------------------------   User Individual   ---------------------------- */
+   const currentUserEmail = currentUser.email; 
+   const [showUserInfo, setShowUserInfo] = useState(false);
+   const [showNoUserFound, setShowNoUserFound] = useState(false);
+   const [empID, setEmpID] =useState();   
+   
+   useEffect(() => {
+     const handleEmailSearch = async () => {
+       try {
+         const response = await axios.get(`${API_ROOT_PATH}/employees/get-email/${currentUser.email}`, { headers: authHeader() });
+         const employeeData = response.data;
+ 
+         if (employeeData != null) {
+           setEmpID(employeeData.empID);
+           setShowUserInfo(true);
+         } else {
+           setShowNoUserFound(true);
+         }
+       } catch (error) {
+         console.error('Error:', error);
+       }
+     };
+ 
+     handleEmailSearch();
+   }, [currentUser.email]);
+ 
+   /* ----------------------------   User Individual   ---------------------------- */
+ 
 
 
 
@@ -45,7 +80,7 @@ const Administracija = () => {
       try {
         const user = AuthService.getCurrentUser();
         if (user) {
-          setUserRoles(user.roles); // Assuming the roles are stored in the user object
+          setUserRoles(user.roles);
         }
       } catch (error) {
         console.error("Error fetching user roles:", error);
@@ -60,6 +95,10 @@ const Administracija = () => {
   };
   /*  --------------------------------  USER ROLES  --------------------------------  */
 
+  
+
+
+
 
 
 
@@ -73,10 +112,27 @@ const Administracija = () => {
    {/* ---------------------------------      PSL     ----------------------------------    START */}
    <h1>Administracija</h1>
 
-    <EmployeeProfile idE={currentEmployeeID}/>
+    {showUserInfo && (
+    <EmployeeProfile idE={empID}/>
+    )}
 
 
-    
+
+    {showNoUserFound && (
+      <div className='patientPage-box-2-without-bottom-line'>
+        
+            
+        <p> <strong> Jūsų duomenys dar nėra įvesti į sistemą. </strong>  </p>       
+        <p> Dėl savo duomenų įvedimo arba koregavimo kreipkitės į registratūrą. </p>  
+        <p> Peržiūrėti ir koreguoti duomenis galėsite tik atnaujinus jūsų profilio informaciją. </p>           
+        <br></br>
+         
+        
+      </div>     
+    )} 
+
+
+    {showUserInfo && (
     <div className='administracija-box-container'> 
     {/* -----------------------------      ALL BOXES     -------------------------------    START */}
 
@@ -254,6 +310,7 @@ const Administracija = () => {
 
     
     </div>
+     )}
 
   </div>)
 
