@@ -1,6 +1,7 @@
 Poliklinikos Puslapis
 
 Apie Projektą
+
 Šis projektas yra sukurtas su React ir leidžia vartotojams (klientams ir darbuotojams) pasijungti į poliklinikos puslapį. Puslapis rodo įvairią informaciją, yra galimybė prisijungti, koreguoti savo profilius, rezervacijas ir kt. 
 
 
