@@ -1,41 +1,41 @@
-Poliklinikos Puslapis
+# Clinic Page Project
 
-Apie Projektą
+## Project Status
 
-Šis projektas yra sukurtas su React ir leidžia vartotojams (klientams ir darbuotojams) pasijungti į poliklinikos puslapį. Puslapis rodo įvairią informaciją, yra galimybė prisijungti, koreguoti savo profilius, rezervacijas ir kt. 
+The project is not yet completed. There are plans to optimize the existing code and implement new features.
 
+## About The Project
 
-Pradžia
-Norėdami pradėti, įsitikinkite, kad turite įdiegtas šias priklausomybes:
+This project is created with React and allows users (clients and employees) to access the clinic's webpage. The page displays various information, and offers the possibility to log in, edit profiles, reservations, etc.
 
-Node.js
-npm (Node.js paketų tvarkyklė)
-Klonuokite repozitoriją ir įdiekite priklausomybes:
+## Getting Started
 
-git clone https://github.com/ljjjjjjjjjjjjjjjjjjjjjj/Pol-React.git
-cd Pol-React
-npm install
+To get started, make sure you have the following dependencies installed:
 
+- Node.js
+- npm (Node.js package manager)
 
-Naudojimas
-Norėdami paleisti projektą, naudokite šią komandą:
-npm start
-Projektas bus paleistas localhost portu 3000. Naršyklėje eikite į http://localhost:3000, kad pamatytumėte puslapį.
-
-Šio projekto Spring-bbot dalis pasiekiama per šią nuorodą:
-https://github.com/ljjjjjjjjjjjjjjjjjjjjjj/PoliklinikosApp-Spring.git
+Clone the repository and install dependencies:
+- git clone https://github.com/ljjjjjjjjjjjjjjjjjjjjjj/Pol-React.git
+- cd Pol-React
+- npm install
 
 
-Priklausomybės
-React
-Create React App
+## Usage
 
+To run the project, use the following command: npm start
 
-Licencija
-Šis projektas yra licencijuotas pagal MIT licenciją
+The project will run on localhost port 3000. Go to http://localhost:3000 in your browser to view the page.
 
+The Spring-boot part of this project is available at this link:
 
+[https://github.com/ljjjjjjjjjjjjjjjjjjjjjj/PoliklinikosApp-Spring.git](https://github.com/ljjjjjjjjjjjjjjjjjjjjjj/PoliklinikosApp-Spring.git)
 
+## Dependencies
 
+- React
+- Create React App
 
+## License
 
+This project is licensed under the MIT License.
