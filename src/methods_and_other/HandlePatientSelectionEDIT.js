@@ -62,7 +62,7 @@ function HandlePatientSelectionEDIT( props ) {
 
   const fetchPatientByNameData = async () => {
     try {
-      const myUrl = `${API_ROOT_PATH}/patients/get/name/${newPatientName}`;
+      const myUrl = `${API_ROOT_PATH}/patients/get-name/${newPatientName}`;
       console.log('3. Handle - Fetch - (newPatientName):',newPatientName);
 
       const response = await axios.get(myUrl,  {headers: authHeader()});

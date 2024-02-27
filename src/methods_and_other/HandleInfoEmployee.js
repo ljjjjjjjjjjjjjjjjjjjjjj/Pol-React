@@ -22,7 +22,7 @@ function HandleInfoEmployee( { appEmployeeID } ) {
 
   const fetchEmployeeByIDdata = async () => {
     try {
-      const myUrl = `${API_ROOT_PATH}/employees/get/${empID}`;
+      const myUrl = `${API_ROOT_PATH}/employees/get-id/${empID}`;
       console.log('4. Handle - Fetch - (empID):', empID);
 
       const response = await axios.get(myUrl ,  {headers: authHeader()});

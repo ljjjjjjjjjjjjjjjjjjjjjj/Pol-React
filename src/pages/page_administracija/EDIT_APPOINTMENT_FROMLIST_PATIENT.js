@@ -36,7 +36,7 @@ function EDIT_APPOINTMENT_FROMLIST_PATIENT() {
   
   
   /*  -----------------   Const setters    ------------------*/
-  const [appID] = useState(idA);
+  const appID = useState(idA);
   const [appCategory, setAppCategory] = useState("");
   const [appReason, setAppReason] = useState("");
   /*  -----------------   Const setters    ------------------*/
@@ -88,7 +88,7 @@ function EDIT_APPOINTMENT_FROMLIST_PATIENT() {
   useEffect(() => {
     const handleGetPatientInfo = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/patients/get/${appPatientID}`,  {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/patients/get-id/${appPatientID}`,  {headers: authHeader()});
         const patientData = response.data;
               
   

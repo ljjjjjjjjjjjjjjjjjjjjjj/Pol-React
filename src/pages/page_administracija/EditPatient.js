@@ -42,7 +42,7 @@ const EditPatient = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`${API_ROOT_PATH}/patients/get/${selectedPatientID}`,  {headers: authHeader()});
+      const response = await axios.get(`${API_ROOT_PATH}/patients/get-id/${selectedPatientID}`,  {headers: authHeader()});
       const patientData = response.data;
 
       setPatientID(patientData.patientID);

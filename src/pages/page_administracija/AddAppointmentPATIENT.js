@@ -86,7 +86,7 @@ const AddAppointmentPATIENT = () => {
 
   const handleGetEmployeeInfo = async () => {
     try {
-      const response = await axios.get(`${API_ROOT_PATH}/employees/get/${appEmployeeID}`,  {headers: authHeader()});
+      const response = await axios.get(`${API_ROOT_PATH}/employees/get-id/${appEmployeeID}`,  {headers: authHeader()});
       const employeeData = response.data;
             
 
@@ -135,7 +135,7 @@ const AddAppointmentPATIENT = () => {
   useEffect(() => {
     const handleGetPatientInfo = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/patients/get/${appPatientID}`,  {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/patients/get-id/${appPatientID}`,  {headers: authHeader()});
         const patientData = response.data;
               
   

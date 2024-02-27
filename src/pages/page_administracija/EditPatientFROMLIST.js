@@ -38,7 +38,7 @@ function EditPatientFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/patients/get/${idI}`,  {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/patients/get-id/${idI}`,  {headers: authHeader()});
         const patientData = response.data;
               
         setPatientID(patientData.patientID);

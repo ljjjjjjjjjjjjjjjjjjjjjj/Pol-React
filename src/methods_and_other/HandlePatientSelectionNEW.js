@@ -22,7 +22,7 @@ function HandlePatientSelectionNEW( { onPatientSelect } ) {
 
   const fetchPatientByNameData = async () => {
     try {
-      const myUrl = `${API_ROOT_PATH}/patients/get/name/${appPatientName}`;
+      const myUrl = `${API_ROOT_PATH}/patients/get-name/${appPatientName}`;
       console.log('3. Handle - Fetch - (appPatientName):', appPatientName);
 
       const response = await axios.get(myUrl ,  {headers: authHeader()});

@@ -46,7 +46,7 @@ const EditEmployee = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`${API_ROOT_PATH}/employees/get/${selectedEmpID}`,  {headers: authHeader()});
+      const response = await axios.get(`${API_ROOT_PATH}/employees/get-id/${selectedEmpID}`,  {headers: authHeader()});
       const empData = response.data;
 
       setEmpID(empData.empID);

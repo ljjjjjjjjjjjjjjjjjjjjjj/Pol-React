@@ -22,7 +22,7 @@ function HandleInfoPatient( { appPatientID } ) {
 
   const fetchPatientByIDdata = async () => {
     try {
-      const myUrl = `${API_ROOT_PATH}/patients/get/${patientID}`;
+      const myUrl = `${API_ROOT_PATH}/patients/get-id/${patientID}`;
       console.log('4. Handle - Fetch - (patientID):', patientID);
 
       const response = await axios.get(myUrl ,  {headers: authHeader()});

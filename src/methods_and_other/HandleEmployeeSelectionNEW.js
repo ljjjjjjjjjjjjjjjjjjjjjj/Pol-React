@@ -28,7 +28,7 @@ function HandleEmployeeSelectionNEW( props ) {
 
   const fetchEmployeeByCategoryData = async () => {
     try {
-      const myUrl = `${API_ROOT_PATH}/employees/get/category/${appEmployeeCategory}`;
+      const myUrl = `${API_ROOT_PATH}/employees/get-category/${appEmployeeCategory}`;
       console.log('2. HANDLE - fetchEmployeeByCategoryData (appEmployeeCategory):', appEmployeeCategory);
 
       const response = await axios.get(myUrl,  {headers: authHeader()});

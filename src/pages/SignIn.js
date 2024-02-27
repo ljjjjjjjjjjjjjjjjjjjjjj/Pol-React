@@ -22,10 +22,29 @@ const required = (value) => {
   }
 };
 
+
+
+
+
+
+
+
 const SignIn = () => {
+
+  /* ----------------------------   Navigate   ---------------------------- */
   let navigate = useNavigate();
 
+  const navigateToRegister = () => {
+    navigate('/register');
+  };
+  /* ----------------------------   Navigate   ---------------------------- */
+  
 
+
+
+
+
+  /* ----------------------------   User Type   ---------------------------- */
   const [activeButton, setActiveButton] = useState('customer');
   const [userType, setUserType] = useState('customer'); 
 
@@ -33,16 +52,13 @@ const SignIn = () => {
     setActiveButton(userType);
     setUserType(userType);
   };
+  /* ----------------------------   User Type   ---------------------------- */
+
+
 
   
 
-
-  const navigateToRegister = () => {
-    navigate('/register');
-  };
-  
-
-
+  /* ----------------------------   onChange   ---------------------------- */
   const form = useRef();
   const checkBtn = useRef();
 
@@ -60,37 +76,65 @@ const SignIn = () => {
     const password = e.target.value;
     setPassword(password);
   };
+  /* ----------------------------   onChange   ---------------------------- */
 
+
+
+
+
+
+  /* ----------------------------   Handle Sign-in   ---------------------------- */
+  
   const handleLogin = (e) => {
     e.preventDefault();
-
     setMessage("");
     setLoading(true);
-
+           
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
+
       AuthService.login(username, password).then(
         () => {
-          navigate("/loggedpage/profile");
-          window.location.reload();
+          const user = AuthService.getCurrentUser(); 
+          const currentUser = AuthService.getCurrentUser();
+          if (user && user.roles) {
+            console.log("User roles:", user.roles);
+
+            
+            const canAccessAsEmployee = user.roles.includes("ROLE_EMPL") || user.roles.includes("ROLE_MODERATOR") || user.roles.includes("ROLE_ADMIN");
+            const canAccessAsCustomer = user.roles.includes("ROLE_USER") || canAccessAsEmployee; 
+
+            if (activeButton === 'employee' && canAccessAsEmployee) {
+              navigate(`/loggedpage/${currentUser.id}/administracija`); 
+            } else if (activeButton === 'customer' && canAccessAsCustomer) {
+              navigate(`/loggedpage/patientpage/${currentUser.id}`); 
+            } else {
+              setMessage("Neteisingi prisijungimo duomenys. Pasirinkite teisingą vartotojo tipą.");
+              setLoading(false);
+            }
+          } else {
+            setMessage("Neteisingi prisijungimo duomenys.");
+            setLoading(false);
+          }
         },
         (error) => {
           const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-
+            (error.response && error.response.data && error.response.data.message) ||
+            error.message || error.toString();
           setLoading(false);
-          setMessage(resMessage);
+          setMessage(`Neteisingi prisijungimo duomenys.`);
         }
       );
     } else {
       setLoading(false);
     }
   };
+  /* ----------------------------   Handle Sign-in   ---------------------------- */
+
+
+
+
 
   return (
 

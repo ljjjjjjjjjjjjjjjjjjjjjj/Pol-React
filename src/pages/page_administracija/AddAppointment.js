@@ -75,7 +75,7 @@ const AddAppointment = () => {
 
   const handleGetEmployeeInfo = async () => {
     try {
-      const response = await axios.get(`${API_ROOT_PATH}/employees/get/${appEmployeeID}`,  {headers: authHeader()});
+      const response = await axios.get(`${API_ROOT_PATH}/employees/get-id/${appEmployeeID}`,  {headers: authHeader()});
       const employeeData = response.data;
             
 
@@ -84,7 +84,7 @@ const AddAppointment = () => {
       setExistingAppEmployeeSurname(employeeData.empSurname);
       setExistingAppEmployeeJobTitle(employeeData.empJobTitle);
 
-      console.info('1. LINKAS: ', (`${API_ROOT_PATH}/employees/get/${appEmployeeID}`));
+      console.info('1. LINKAS: ', (`${API_ROOT_PATH}/employees/get-id/${appEmployeeID}`));
       console.info('1. EDITAPP - handleGetEmployeeInfo (appEmployeeID): ', (employeeData.empID));
       console.info('1. EDITAPP - handleGetEmployeeInfo (employeeData.empName): ', (employeeData.empName));
       console.info('1. EDITAPP - handleGetEmployeeInfo (employeeData.empSurname): ', (employeeData.empSurname));
@@ -144,7 +144,7 @@ const AddAppointment = () => {
   
   const handleGetPatientInfo = async () => {
     try {
-      const response = await axios.get(`${API_ROOT_PATH}/patients/get/${appPatientID}`,  {headers: authHeader()});
+      const response = await axios.get(`${API_ROOT_PATH}/patients/get-id/${appPatientID}`,  {headers: authHeader()});
       const patientData = response.data;
             
 

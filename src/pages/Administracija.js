@@ -9,8 +9,8 @@ import AuthService from "../services/auth.service";
 
 
 const Administracija = () => {
-  const { idE } = useParams();
-  const [currentEmployeeID] = idE;
+  const currentUser = AuthService.getCurrentUser();
+  const currentEmployeeID = currentUser.id;
 
   const navigate = useNavigate();
   
@@ -73,7 +73,7 @@ const Administracija = () => {
    {/* ---------------------------------      PSL     ----------------------------------    START */}
    <h1>Administracija</h1>
 
-    <EmployeeProfile idE={idE}/>
+    <EmployeeProfile idE={currentEmployeeID}/>
 
 
     

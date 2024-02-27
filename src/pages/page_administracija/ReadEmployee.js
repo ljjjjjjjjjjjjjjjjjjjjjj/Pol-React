@@ -42,7 +42,7 @@ const ReadEmployee = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/employees/get/all`,  {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/employees/get-all`,  {headers: authHeader()});
         
         let sortedEmployees = response.data;
 

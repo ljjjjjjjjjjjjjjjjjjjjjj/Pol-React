@@ -64,7 +64,7 @@ const PatientPage = () => {
     const handleSearchSubmit = async () => {
       try {
         setSuccessMessage('');
-        const response = await axios.get(`${API_ROOT_PATH}/patients/get/${patientID}`, {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/patients/get-id/${patientID}`, {headers: authHeader()});
         const patientData = response.data;
               
         setExistingPatientName(patientData.patientName);
@@ -102,7 +102,7 @@ const PatientPage = () => {
   return (
 
   <div className='patientPage'>
-   <h1>Patient page ({patientID})</h1>
+   <h1>Paciento puslapis ({patientID})</h1>
 
     <div className='patientPage-box-container'>
       

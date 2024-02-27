@@ -17,7 +17,7 @@ import axios from 'axios';
 
 
 function EmployeeProfile({idE}) {
-  const [currentEmployeeID] = idE;
+  const currentEmployeeID = idE;
   const currentUser = AuthService.getCurrentUser();
 
   const navigate = useNavigate();
@@ -49,7 +49,7 @@ function EmployeeProfile({idE}) {
   const handleEmployeeSearch = async () => {
     try {
       setSuccessMessage('');
-      const response = await axios.get(`${API_ROOT_PATH}/employees/get/${currentEmployeeID}`, {headers: authHeader()});
+      const response = await axios.get(`${API_ROOT_PATH}/employees/get-id/${currentEmployeeID}`, {headers: authHeader()});
       const employeeData = response.data;
             
       setCurrentEmployeeName(employeeData.empName);

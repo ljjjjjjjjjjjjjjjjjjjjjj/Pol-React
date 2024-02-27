@@ -46,7 +46,7 @@ function DeleteEmployeeFROMLIST() {
   useEffect(() => {
     const handleSearchSubmit = async () => {
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/employees/get/${idI}`,  {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/employees/get-id/${idI}`,  {headers: authHeader()});
         const empData = response.data;
               
         setEmpID(empData.empID);

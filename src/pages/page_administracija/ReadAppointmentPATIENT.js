@@ -32,7 +32,7 @@ const ReadAppointmentPATIENT = () => {
   useEffect(() => {
     const fetchData = async () => { 
       try {
-        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/all-patient-objects${appPatientID}`,  {headers: authHeader()});
+        const response = await axios.get(`${API_ROOT_PATH}/appointments/get/all-patient-objects/${appPatientID}`,  {headers: authHeader()});
         
         let sortedAppointments = response.data;
 
